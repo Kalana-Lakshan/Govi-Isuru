@@ -1,14 +1,50 @@
-version: '3.8'
+
+
 services:
+  # 1. AI Service (Python/FastAPI/Flask)
+  ai-service:
+    build: ./ai-service
+    container_name: govi-isuru-ai
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      # Format: host_path:container_path
+      - ./ai-service/rice_model_v2.h5:/app/rice_model_v2.h5
+    env_file: ./ai-service/.env
+    networks:
+      - govi_network
+
+  # 2. Backend Server (Node.js)
   backend:
     build: ./server
+    container_name: govi-isuru-backend
+    restart: always
     ports:
       - "5000:5000"
     env_file: ./server/.env
-  
+    depends_on:
+      - ai-service
+    networks:
+      - govi_network
+
+  # 3. Frontend Client (React + Nginx)
   frontend:
-    build: ./client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_AI_SERVICE_URL=http://localhost:8000
+    container_name: govi-isuru-frontend
+    restart: always
+    
     ports:
       - "80:80"
     depends_on:
       - backend
+    networks:
+      - govi_network
+
+networks:
+  govi_network:
+    driver: bridge

@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 import io
 
+
 app = FastAPI()
 
 # Enable CORS for React

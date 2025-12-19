@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+tensorflow>=2.18.0
+numpy<2.0.0
+opencv-python-headless
+pillow
+tf_keras

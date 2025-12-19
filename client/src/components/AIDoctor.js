@@ -43,6 +43,7 @@ const AIDoctor = ({ lang }) => {
     setResult(null);
   };
 
+  const AI_SERVICE_URL = process.env.REACT_APP_AI_SERVICE_URL || 'http://localhost:8000';
   const handleAnalyze = async () => {
     if (!file) return;
     setLoading(true);
@@ -50,7 +51,7 @@ const AIDoctor = ({ lang }) => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:8000/predict', formData);
+      const response = await axios.post(`${AI_SERVICE_URL}/predict`, formData);
       setResult(response.data);
     } catch (error) {
       console.error("Error connecting to AI service", error);
