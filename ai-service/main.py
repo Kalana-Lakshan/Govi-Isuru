@@ -1,11 +1,25 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
+import os
+import io
+import numpy as np
+import tensorflow as tf
+from google import genai  # Use the new unified SDK
+from PIL import Image
+from dotenv import load_dotenv
+from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-import tensorflow as tf
-import numpy as np
-from PIL import Image
-import io
 
+# 1. Load Environment Variables
+load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
+
+# 2. Configure Gemini Client
+# The new SDK uses a Client object for all interactions
+client = genai.Client(api_key=api_key)
+
+# Active model IDs as of late 2025
+# 'gemini-3.0-flash' or 'gemini-2.5-flash' are stable options
+MODEL_ID = "gemini-2.5-flash" 
 
 app = FastAPI()
 
@@ -17,19 +31,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 1. Load the Trained Model
+# 3. Load the Trained AI Model
 print("Loading AI Model...")
+model = None
 try:
-    # Use your latest balanced model
     model = tf.keras.models.load_model('rice_model_v2.h5')
+    print("Model v2 loaded successfully.")
 except Exception as e:
-    print(f"Error loading model: {e}")
-    # Fallback to old model if v2 isn't found
-    model = tf.keras.models.load_model('rice_model.h5')
+    print(f"Error loading model v2: {e}. Attempting fallback...")
+    try:
+        model = tf.keras.models.load_model('rice_model.h5')
+        print("Fallback model loaded successfully.")
+    except Exception as fallback_e:
+        print(f"Critical Error: No models found. {fallback_e}")
 
-# Define your classes in the EXACT order they were trained
+# 4. Disease Data Configuration
 class_names = ['Bacterial leaf blight', 'Brown spot', 'Leaf smut']
-
 treatments = {
     'Bacterial leaf blight': {
         "si": "නයිට්‍රජන් පොහොර භාවිතය අඩු කරන්න. ජල මට්ටම පාලනය කරන්න.",
@@ -45,38 +62,51 @@ treatments = {
     }
 }
 
+# 5. Image Preprocessing Utility
 def preprocess_image(image_bytes):
     img = Image.open(io.BytesIO(image_bytes))
-    img = img.convert('RGB') # Ensure 3 channels
+    img = img.convert('RGB')
     img = img.resize((224, 224)) 
     img = np.array(img)
-    img = img / 255.0 # Must match training rescale
-    img = np.expand_dims(img, axis=0) # Shape becomes (1, 224, 224, 3)
+    img = img / 255.0
+    img = np.expand_dims(img, axis=0)
     return img
+
+# 6. API Endpoints
+
+@app.post("/chat")
+async def chat(request: Request):
+    try:
+        data = await request.json()
+        user_message = data.get("message")
+        print(f"User message received: {user_message}")
+
+        # Use the new Client generate_content method
+        response = client.models.generate_content(
+            model=MODEL_ID,
+            contents=user_message
+        )
+        
+        if response and response.text:
+            return {"reply": response.text}
+        return {"reply": "I heard you, but I couldn't generate an answer."}
+            
+    except Exception as e:
+        print(f"DETAILED CHAT ERROR: {e}") 
+        return {"reply": "I am having trouble connecting to my brain right now."}
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
+    if model is None:
+        raise HTTPException(status_code=500, detail="Model not initialized.")
     try:
-        # Read and Process Image
         image_bytes = await file.read()
         processed_image = preprocess_image(image_bytes)
-        
-        # 2. Get Prediction Probabilities
-        predictions = model.predict(processed_image) # Returns e.g. [[0.1, 0.8, 0.1]]
-        
-        # 3. Extract highest confidence index and value
-        # predictions[0] converts [[...]] to [...]
+        predictions = model.predict(processed_image)
         predicted_index = np.argmax(predictions[0]) 
         confidence = float(np.max(predictions[0])) 
-        
-        # 4. Map index to the Disease Name
         predicted_class = class_names[predicted_index]
-        
-        treatment_info = treatments.get(predicted_class, {
-            "si": "ප්‍රතිකාර දත්ත නොමැත", 
-            "en": "No treatment data available"
-        })
-
+        treatment_info = treatments.get(predicted_class, {"si": "දත්ත නැත", "en": "No data"})
         return {
             "disease": predicted_class,
             "confidence": confidence,
