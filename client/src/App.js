@@ -6,7 +6,7 @@ import WeatherAdvisor from './components/WeatherAdvisor';
 import MarketTrends from './components/MarketTrends';
 import Register from './components/Register';
 import Login from './components/Login';
-
+import ChatBot from './components/ChatBot';
 const translations = {
   en: { 
     title: "Govi Isuru", 
@@ -165,7 +165,7 @@ export default function App() {
             {view === 'trends' && <MarketTrends lang={lang} />}
           </div>
         </div>
-
+    `    <ChatBot />
         <footer className="text-center text-gray-400 text-xs py-10">
           © 2025 {t.title} — {t.footer}
         </footer>
