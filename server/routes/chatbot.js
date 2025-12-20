@@ -42,9 +42,63 @@ function getRandomItem(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
+// Extract context from conversation history
+function extractContextFromHistory(history) {
+  const context = {
+    crop: null,
+    season: null,
+    disease: null,
+    lastTopic: null
+  };
+
+  if (!history || history.length === 0) return context;
+
+  // Go through history in reverse to find most recent context
+  for (let i = history.length - 1; i >= 0; i--) {
+    const msg = history[i];
+    if (msg.role === 'user') {
+      const text = msg.content;
+      
+      // Extract crop if not found yet
+      if (!context.crop) {
+        context.crop = detectCrop(text);
+      }
+      
+      // Extract season if not found yet
+      if (!context.season) {
+        context.season = detectSeason(text);
+      }
+      
+      // Extract disease if not found yet
+      if (!context.disease) {
+        context.disease = detectDisease(text);
+      }
+    }
+    
+    // Track last topic from bot response
+    if (msg.role === 'assistant' && msg.intent && !context.lastTopic) {
+      context.lastTopic = msg.intent;
+    }
+  }
+
+  return context;
+}
+
+// Handle follow-up questions that reference previous context
+function isFollowUpQuestion(message) {
+  const followUpPatterns = [
+    'what about', 'how about', 'and for', 'same for',
+    'also', 'what if', 'in that case', 'then',
+    'more info', 'more details', 'tell me more',
+    'ඒ ගැන', 'ඒකත්', 'තව', 'ඒ වගේම'
+  ];
+  const msg = message.toLowerCase();
+  return followUpPatterns.some(pattern => msg.includes(pattern));
+}
+
 // Main chat endpoint
 router.post('/chat', (req, res) => {
-  const { message, crop: userCrop, season: userSeason, language: userLanguage } = req.body;
+  const { message, crop: userCrop, season: userSeason, language: userLanguage, history } = req.body;
 
   if (!message || message.trim() === '') {
     return res.status(400).json({ error: 'Message is required' });
@@ -63,14 +117,32 @@ router.post('/chat', (req, res) => {
     });
   }
 
-  // Detect intent, crop, and season
-  const intent = detectIntent(message);
-  const crop = userCrop || detectCrop(message);
-  const season = userSeason || detectSeason(message);
-  const specificDisease = detectDisease(message);
+  // Extract context from conversation history
+  const historyContext = extractContextFromHistory(history || []);
+  const isFollowUp = isFollowUpQuestion(message);
+
+  // Detect intent, crop, and season from current message
+  const currentIntent = detectIntent(message);
+  const currentCrop = detectCrop(message);
+  const currentSeason = detectSeason(message);
+  const currentDisease = detectDisease(message);
+
+  // Use current detection, fall back to history context, then user override
+  const intent = currentIntent !== 'UNKNOWN' ? currentIntent : (isFollowUp ? historyContext.lastTopic : 'UNKNOWN');
+  const crop = userCrop || currentCrop || historyContext.crop || 'rice';
+  const season = userSeason || currentSeason || historyContext.season;
+  const specificDisease = currentDisease || historyContext.disease;
 
   let response = null;
   let source = 'Department of Agriculture Sri Lanka Guidelines';
+
+  // Add context acknowledgment for follow-up questions
+  let contextPrefix = '';
+  if (isFollowUp && historyContext.crop && !currentCrop) {
+    contextPrefix = langKey === 'si' 
+      ? `${historyContext.crop === 'rice' ? 'වී' : historyContext.crop} සඳහා: `
+      : `For ${historyContext.crop}: `;
+  }
 
   try {
     // Handle different intents
@@ -180,15 +252,20 @@ router.post('/chat', (req, res) => {
       answer: getRandomItem(fallbacks[langKey]),
       intent: 'UNKNOWN',
       detected: { crop, season, intent },
-      source: 'Govi Isuru Assistant'
+      source: 'Govi Isuru Assistant',
+      context: { crop, season, disease: specificDisease }
     });
   }
 
+  // Add context prefix for follow-up questions
+  const finalResponse = contextPrefix + response;
+
   res.json({
-    answer: response,
+    answer: finalResponse,
     intent,
     detected: { crop, season, language: langKey },
-    source
+    source,
+    context: { crop, season, disease: specificDisease }
   });
 });
 

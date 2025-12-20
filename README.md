@@ -1,11 +1,14 @@
 # 🌾 Govi Isuru - Smart Farming Platform for Sri Lanka
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![React](https://img.shields.io/badge/React-19.2.3-blue.svg)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.x-blue.svg)](https://reactjs.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Python-green.svg)](https://fastapi.tiangolo.com/)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-brightgreen.svg)](https://nodejs.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://tensorflow.org/)
 
-**Govi Isuru** (Sinhala: ගොවි ඉසුරු) is a comprehensive digital farming platform designed to empower Sri Lankan farmers with AI-driven crop disease detection, real-time market intelligence, weather advisory, and a peer-to-peer marketplace. The name "Govi Isuru" translates to "Farmer's Fortune" in Sinhala, reflecting our mission to bring prosperity to the agricultural community.
+**Govi Isuru** (Sinhala: ගොවි ඉසුරු) is a comprehensive digital farming platform designed to empower Sri Lankan farmers with AI-driven crop disease detection, real-time market intelligence, weather advisory, community disease alerts, and a peer-to-peer marketplace. The name "Govi Isuru" translates to "Farmer's Fortune" in Sinhala, reflecting our mission to bring prosperity to the agricultural community.
+
+---
 
 ## 📋 Table of Contents
 
@@ -21,142 +24,166 @@
 - [Contributing](#-contributing)
 - [License](#-license)
 
+---
+
 ## ✨ Features
 
-### 🤖 AI Crop Doctor
-- **Deep Learning Disease Detection**: Upload photos of rice crop leaves to detect diseases like Bacterial Leaf Blight, Brown Spot, and Leaf Smut
-- **Confidence Scoring**: Get prediction confidence levels for accurate diagnosis
-- **Treatment Recommendations**: Receive bilingual (English/Sinhala) treatment guidance for detected diseases
-- **Transfer Learning**: Utilizes MobileNetV2 pre-trained on ImageNet for superior accuracy with limited training data
-- **Balanced Model Training**: Implements class weighting to handle imbalanced datasets
+### 🤖 AI Crop Doctor with Grad-CAM Explainability
+- **Deep Learning Disease Detection**: Upload photos of rice crop leaves to detect 8 different conditions:
+  - Bacterial Leaf Blight
+  - Brown Spot
+  - Healthy Rice Leaf
+  - Leaf Blast
+  - Leaf Scald
+  - Narrow Brown Leaf Spot
+  - Rice Hispa
+  - Sheath Blight
+- **Grad-CAM Visualization**: See exactly where the AI model focuses to make its diagnosis - builds trust and transparency
+- **Confidence Scoring**: Get prediction confidence levels with visual progress bars
+- **Treatment Recommendations**: Receive bilingual (English/Sinhala) treatment guidance with numbered steps
+- **Medical Report Style Results**: Professional diagnosis report with severity badges and context
+- **Transfer Learning**: Utilizes MobileNetV2 pre-trained on ImageNet for superior accuracy
+
+### 🚨 Community Disease Alert System
+- **Location-Based Alerts**: Real-time disease alerts for your GN Division area
+- **Severity Indicators**: Critical, High, Medium, Low severity with color-coded badges
+- **Automatic Reporting**: AI diagnoses automatically report to community monitoring system
+- **Outbreak Detection**: Multiple case alerts notify nearby farmers of potential outbreaks
+- **District Statistics**: View total reports and top diseases in your region
 
 ### 📊 Market Intelligence Dashboard
 - **Price Trend Analytics**: Visualize historical price trends for major crops (Rice, Chili, Tea) across 6 months
 - **District Price Comparison**: Compare real-time prices across major Sri Lankan economic centers:
-  - Dambulla
-  - Thambutthegama
-  - Keppetipola
-  - Colombo (Manning Market)
-  - Kandy
+  - Dambulla, Thambutthegama, Keppetipola, Colombo (Manning Market), Kandy
 - **Interactive Charts**: Built with Recharts for responsive data visualization
-- **Data-Driven Decisions**: Help farmers choose optimal selling times and locations
+- **Quick Stats Cards**: At-a-glance price summaries with trend indicators
 
-### 🛒 AgroLink Marketplace
+### 🛒 AgroLink Marketplace with Reputation System
 - **Peer-to-Peer Trading**: Direct connection between farmers and buyers
-- **Comprehensive Listings**: Post and browse crop listings with details:
-  - Farmer name, location, phone
-  - Crop type, quantity, price
-  - Date posted
-- **Instant Communication**: 
-  - WhatsApp integration for quick messaging
-  - Direct call functionality
-  - Pre-filled message templates in English and Sinhala
-- **MongoDB-Powered**: Scalable storage for marketplace data
+- **Farmer Reputation System**: Star ratings, verified badges, and sales history
+- **Top Rated Farmers**: Showcase of highest-rated community members
+- **Comprehensive Listings**: Post and browse crop listings with full details
+- **Instant Communication**: WhatsApp integration and direct call functionality
+- **Mark as Sold**: Track successful transactions and build reputation
+- **Feedback & Reviews**: Rate sellers after transactions
 
 ### 🌤️ Weather Advisory
 - **Real-Time Weather Data**: Integration with OpenWeatherMap API
-- **Location-Based Forecasting**: Automatic geolocation or manual district selection
-- **5-Day Forecast**: Plan agricultural activities with extended weather predictions
+- **Location-Based Forecasting**: Automatic geolocation detection
+- **5-Day Forecast**: Plan agricultural activities with extended predictions
 - **Agricultural Recommendations**: 
   - Humidity-based fungal disease warnings
-  - Rain alerts for fertilizer application timing
-  - Wind speed and temperature data
-- **Localized Insights**: Weather data specific to Sri Lankan farming regions
+  - Rain alerts for fertilizer timing
+  - Temperature advisories for crop protection
+
+### 💬 AI Crop Chatbot
+- **Natural Language Q&A**: Ask farming questions in plain language
+- **Knowledge Base**: Built-in agricultural knowledge for Sri Lankan crops
+- **Bilingual Support**: Responds in English or Sinhala
 
 ### 👤 User Authentication & Profiles
 - **Secure Registration**: JWT-based authentication with bcrypt password hashing
-- **Administrative Location Tracking**: 
-  - District-level data
-  - DS Division (Divisional Secretariat)
-  - GN Division (Grama Niladhari) for precise location tracking
+- **Administrative Location Tracking**: District → DS Division → GN Division
+- **Progress Indicator**: Visual registration completion progress
 - **Persistent Sessions**: Token-based login with localStorage
-- **User Dashboard**: Personalized greeting with location badge
 
 ### 🌐 Bilingual Support
 - **Full English/Sinhala Translation**: Toggle between languages instantly
-- **Cultural Adaptation**: 
-  - Sinhala Unicode support
-  - Localized terminology for agricultural concepts
-  - Culturally appropriate messaging
+- **Sinhala Unicode Support**: Complete Sinhala text rendering
+- **Localized Terminology**: Culturally appropriate agricultural terms
+
+---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 19.2.3**: Modern UI with hooks and context
-- **Tailwind CSS 3.4.1**: Utility-first styling for responsive design
-- **Lucide React**: Beautiful, consistent icon library
-- **Recharts 3.6.0**: Data visualization for market analytics
-- **Axios 1.13.2**: HTTP client for API communication
-- **React Router**: (Implicit navigation via state management)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| React | 19.x | UI Framework with Hooks |
+| Tailwind CSS | 3.4.x | Utility-first Styling |
+| Lucide React | Latest | Icon Library |
+| Recharts | 3.6.x | Data Visualization |
+| Axios | 1.13.x | HTTP Client |
 
-### Backend (Server)
-- **Node.js**: Runtime environment
-- **Express 5.2.1**: Web application framework
-- **MongoDB**: Database via Mongoose 9.0.2
-- **Mongoose**: ODM for MongoDB with schema validation
-- **JWT (jsonwebtoken 9.0.3)**: Secure authentication
-- **Bcrypt.js 3.0.3**: Password hashing
-- **CORS 2.8.5**: Cross-origin resource sharing
-- **Dotenv 17.2.3**: Environment variable management
+### Backend (Node.js Server)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Node.js | 22.x | Runtime Environment |
+| Express | 5.x | Web Framework |
+| MongoDB | Atlas | Cloud Database |
+| Mongoose | 9.x | ODM for MongoDB |
+| JWT | 9.x | Authentication |
+| Bcrypt.js | 3.x | Password Hashing |
 
-### AI Service
-- **FastAPI**: High-performance Python web framework
-- **TensorFlow/Keras**: Deep learning model training and inference
-- **Pillow (PIL)**: Image processing
-- **NumPy**: Numerical computations
-- **Uvicorn**: ASGI server for FastAPI
-- **Scikit-learn**: Class weight calculation for balanced training
+### AI Service (Python)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| FastAPI | Latest | High-performance API |
+| TensorFlow/Keras | 2.x | Deep Learning |
+| MobileNetV2 | Pre-trained | Base Model |
+| Grad-CAM | Custom | Model Explainability |
+| Pillow | Latest | Image Processing |
+| NumPy | Latest | Numerical Computing |
 
 ### DevOps & Deployment
-- **Docker**: Containerization for all services
-- **Docker Compose**: Multi-container orchestration
-- **Nginx**: Reverse proxy for React production build
-- **Multi-stage Builds**: Optimized container images
+| Technology | Purpose |
+|------------|---------|
+| Docker | Containerization |
+| Docker Compose | Multi-container orchestration |
+| Nginx | Reverse proxy |
+
+---
 
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                         CLIENT (React)                       │
-│  - UI Components (AIDoctor, Marketplace, Weather, Trends)   │
-│  - State Management (useState, useEffect)                   │
-│  - Axios HTTP Client                                        │
-└────────────┬──────────────────────────┬─────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                         CLIENT (React + Tailwind)                   │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐   │
+│  │  AI Doctor  │ │ Marketplace │ │   Weather   │ │   Alerts    │   │
+│  │ + Grad-CAM  │ │ + Ratings   │ │  Advisory   │ │  Community  │   │
+│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘   │
+└────────────┬──────────────────────────┬─────────────────────────────┘
              │                          │
              │ REST API                 │ REST API
-             │ (Port 5000)              │ (Port 8888)
+             │ (Port 5000)              │ (Port 8000)
              ▼                          ▼
-┌────────────────────────┐   ┌────────────────────────────┐
-│   BACKEND (Express)    │   │   AI SERVICE (FastAPI)     │
-│  - User Auth (JWT)     │   │  - TensorFlow Model        │
-│  - Marketplace CRUD    │   │  - Image Preprocessing     │
-│  - Market Price API    │   │  - Disease Prediction      │
-│  - MongoDB Integration │   │  - Treatment Data          │
-└───────────┬────────────┘   └────────────────────────────┘
-            │
+┌────────────────────────────┐   ┌─────────────────────────────────┐
+│   BACKEND (Express.js)     │   │   AI SERVICE (FastAPI + TF)     │
+│  ├─ User Auth (JWT)        │   │  ├─ MobileNetV2 Model           │
+│  ├─ Marketplace CRUD       │   │  ├─ 8-Class Disease Detection   │
+│  ├─ Reputation System      │   │  ├─ Grad-CAM Visualization      │
+│  ├─ Disease Alerts         │   │  ├─ Image Preprocessing         │
+│  ├─ Market Price API       │   │  └─ Treatment Recommendations   │
+│  └─ MongoDB Integration    │   └─────────────────────────────────┘
+└───────────┬────────────────┘
             │ Mongoose ODM
             ▼
-┌────────────────────────┐
-│   MongoDB (Cloud)      │
-│  - Users Collection    │
-│  - Listings Collection │
-└────────────────────────┘
+┌────────────────────────────┐
+│   MongoDB Atlas (Cloud)    │
+│  ├─ Users Collection       │
+│  ├─ Listings Collection    │
+│  ├─ Alerts Collection      │
+│  ├─ Feedbacks Collection   │
+│  └─ Reputations Collection │
+└────────────────────────────┘
 
 External APIs:
-- OpenWeatherMap API (Weather data)
-- MongoDB Atlas (Database hosting)
+├─ OpenWeatherMap API (Weather data)
+└─ MongoDB Atlas (Database hosting)
 ```
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - **Node.js** v22.x or higher
 - **Python** 3.8+ (for AI service)
-- **MongoDB** (Local or MongoDB Atlas account)
-- **Docker** (optional, for containerized deployment)
+- **MongoDB Atlas** account (free tier available)
 - **OpenWeatherMap API Key** (free tier available)
 
-### Installation
+### Quick Start
 
 #### 1. Clone the Repository
 ```bash
@@ -170,11 +197,15 @@ cd server
 npm install
 
 # Create .env file
-echo "MONGO_URI=your_mongodb_connection_string" > .env
-echo "JWT_SECRET=your_secret_key" >> .env
-echo "PORT=5000" >> .env
+# On Windows PowerShell:
+@"
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=5000
+"@ | Out-File -FilePath .env -Encoding utf8
 
 # Start the server
+node index.js
 ```
 
 #### 3. Setup Frontend Client
@@ -182,7 +213,7 @@ echo "PORT=5000" >> .env
 cd ../client
 npm install
 
-# Create .env file for weather API
+# Create .env file
 echo "REACT_APP_WEATHER_KEY=your_openweathermap_api_key" > .env
 
 # Start development server
@@ -192,88 +223,97 @@ npm start
 #### 4. Setup AI Service
 ```bash
 cd ../ai-service
-pip install fastapi uvicorn tensorflow pillow numpy python-multipart scikit-learn
+pip install -r requirements.txt
 
-# Ensure the trained model exists
-# If not, run the training script:
-python train_model.py
+# Or install manually:
+pip install fastapi uvicorn tensorflow pillow numpy python-multipart
 
 # Start the AI service
-python main.py
+uvicorn main:app --reload --port 8000
 ```
 
-The application will be accessible at:
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
-- **AI Service**: http://localhost:8888
+### Access Points
+| Service | URL | Description |
+|---------|-----|-------------|
+| Frontend | http://localhost:3000 | React Application |
+| Backend API | http://localhost:5000 | Express Server |
+| AI Service | http://localhost:8000 | FastAPI + TensorFlow |
+| API Docs | http://localhost:8000/docs | Swagger UI |
 
 ### Docker Deployment
-
-For production deployment using Docker:
 
 ```bash
 # From the root directory
 docker-compose up --build
 
-# Access the application
-# Frontend: http://localhost:80
-# Backend: http://localhost:5000
+# Access: Frontend at http://localhost:80, Backend at http://localhost:5000
 ```
 
-**Note**: The AI service is not yet containerized in docker-compose.yml. To add it, create a Dockerfile in `ai-service/` and extend docker-compose.yml.
+---
 
 ## 📁 Project Structure
 
 ```
 govi-isuru/
-├── client/                          # React Frontend
+├── 📂 client/                       # React Frontend
 │   ├── public/                      # Static assets
 │   ├── src/
-│   │   ├── components/              # React components
-│   │   │   ├── AIDoctor.js          # Disease detection UI
+│   │   ├── components/
+│   │   │   ├── AIDoctor.js          # Disease detection + Grad-CAM
+│   │   │   ├── CommunityAlerts.js   # Disease alert system
 │   │   │   ├── Marketplace.js       # P2P marketplace
 │   │   │   ├── MarketTrends.js      # Analytics dashboard
-│   │   │   ├── PriceAnalytics.js    # Line chart component
-│   │   │   ├── PriceComparison.js   # Bar chart component
-│   │   │   ├── WeatherAdvisor.js    # Weather forecast UI
+│   │   │   ├── PriceAnalytics.js    # Price trend charts
+│   │   │   ├── PriceComparison.js   # District comparison
+│   │   │   ├── WeatherAdvisor.js    # Weather forecast
+│   │   │   ├── WeatherTab.js        # Weather tab component
+│   │   │   ├── ReputationBadge.js   # Farmer ratings
+│   │   │   ├── FeedbackForm.js      # Review system
 │   │   │   ├── Register.js          # User registration
 │   │   │   └── Login.js             # User login
 │   │   ├── data/
 │   │   │   └── sriLankaData.js      # Administrative divisions
-│   │   ├── App.js                   # Main application component
-│   │   ├── index.js                 # React entry point
-│   │   └── index.css                # Global styles
-│   ├── Dockerfile                   # Multi-stage build for React
-│   ├── package.json                 # Dependencies
-│   └── tailwind.config.js           # Tailwind configuration
+│   │   ├── App.js                   # Main app with sidebar
+│   │   ├── App.css                  # Global animations
+│   │   └── index.js                 # Entry point
+│   ├── package.json
+│   └── tailwind.config.js
 │
-├── server/                          # Node.js Backend
+├── 📂 server/                       # Node.js Backend
 │   ├── models/
 │   │   └── User.js                  # User schema
 │   ├── index.js                     # Express server
-│   ├── Dockerfile                   # Node.js container
-│   ├── package.json                 # Dependencies
-│   └── .env                         # Environment variables (not in repo)
+│   └── package.json
 │
-├── ai-service/                      # Python AI Service
+├── 📂 ai-service/                   # Python AI Service
 │   ├── dataset/                     # Training images
-│   │   ├── Bacterial leaf blight/
-│   │   ├── Brown spot/
-│   │   └── Leaf smut/
-│   ├── main.py                      # FastAPI prediction API
-│   ├── train_model.py               # Model training script
-│   ├── rice_model_v2.h5             # Trained model (generated)
-│   └── __pycache__/                 # Python cache
+│   │   ├── train/                   # Training set (8 classes)
+│   │   ├── valid/                   # Validation set
+│   │   └── test/                    # Test set
+│   ├── models/
+│   │   ├── rice_disease_model.keras # Trained model
+│   │   ├── class_indices.json       # Class mappings
+│   │   └── disease_info.json        # Disease details
+│   ├── main.py                      # FastAPI server + Grad-CAM
+│   ├── train_model.py               # Training script
+│   └── test_model.py                # Model evaluation
 │
-├── docker-compose.yml               # Multi-container orchestration
-└── README.md                        # This file
+├── docker-compose.yml               # Container orchestration
+└── README.md                        # Documentation
 ```
+
+---
 
 ## 📡 API Documentation
 
-### Backend Server (Express)
+### Backend Server (Express - Port 5000)
 
 #### Authentication
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/register` | POST | Register new user |
+| `/api/login` | POST | User login |
 
 **POST** `/api/register`
 ```json
@@ -285,7 +325,6 @@ govi-isuru/
   "gnDivision": "string"
 }
 ```
-**Response**: `{ "token": "JWT", "user": {...} }`
 
 **POST** `/api/login`
 ```json
@@ -298,30 +337,38 @@ govi-isuru/
 
 #### Marketplace
 
-**GET** `/api/listings`
-- Returns all marketplace listings (sorted by date, newest first)
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/listings` | GET | Get all listings |
+| `/api/listings` | POST | Create listing |
+| `/api/listings/:id/sold` | PUT | Mark as sold |
 
-**POST** `/api/listings`
-```json
-{
-  "farmerName": "string",
-  "cropType": "string",
-  "quantity": "string",
-  "price": "string",
-  "location": "string",
-  "phone": "string"
-}
-```
+#### Disease Alerts
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/alerts` | GET | Get alerts (with location filter) |
+| `/api/alerts` | POST | Create disease alert |
+| `/api/alerts/stats` | GET | Get district statistics |
+
+**GET** `/api/alerts?gnDivision=Godagama&district=Matara`
+
+#### Reputation System
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/reputation/:farmerId` | GET | Get farmer reputation |
+| `/api/reputation/:farmerId/feedback` | POST | Submit feedback |
+| `/api/reputation/top` | GET | Get top-rated farmers |
 
 #### Market Data
 
-**GET** `/api/price-trends`
-- Returns 6-month price trend data for Rice, Chili, Tea
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/price-trends` | GET | 6-month price trends |
+| `/api/market-prices` | GET | Current market prices |
 
-**GET** `/api/market-prices`
-- Returns current prices across 5 major Sri Lankan districts
-
-### AI Service (FastAPI)
+### AI Service (FastAPI - Port 8000)
 
 **POST** `/predict`
 - **Content-Type**: `multipart/form-data`
@@ -332,106 +379,155 @@ govi-isuru/
 {
   "disease": "Bacterial leaf blight",
   "confidence": 0.89,
-  "treatment": "Reduce Nitrogen fertilizer. Manage water levels properly.",
-  "treatment_si": "නයිට්‍රජන් පොහොර භාවිතය අඩු කරන්න. ජල මට්ටම පාලනය කරන්න."
+  "treatment": "Reduce nitrogen fertilizer application...",
+  "treatment_si": "නයිට්‍රජන් පොහොර භාවිතය අඩු කරන්න...",
+  "gradcam": "data:image/png;base64,..."
 }
 ```
+
+**Note**: The `gradcam` field contains a base64-encoded heatmap overlay showing where the AI model focused to make its prediction.
+
+---
 
 ## 🧠 AI Model Information
 
 ### Model Architecture
 - **Base Model**: MobileNetV2 (pre-trained on ImageNet)
-- **Transfer Learning**: Frozen base, custom top layers
-- **Input Shape**: 224x224x3 RGB images
-- **Output Classes**: 3 (Bacterial leaf blight, Brown spot, Leaf smut)
-- **Final Activation**: Softmax (multi-class classification)
+- **Transfer Learning**: Frozen base layers, trainable top
+- **Input Shape**: 224×224×3 RGB images
+- **Output Classes**: 8 rice disease categories
+- **Final Activation**: Softmax
+
+### Disease Classes
+| Class | Description |
+|-------|-------------|
+| Bacterial Leaf Blight | Bacterial infection causing yellow lesions |
+| Brown Spot | Fungal disease with brown circular spots |
+| Healthy Rice Leaf | No disease detected |
+| Leaf Blast | Fungal disease with diamond-shaped lesions |
+| Leaf Scald | Bacterial disease with water-soaked lesions |
+| Narrow Brown Leaf Spot | Linear brown lesions on leaves |
+| Rice Hispa | Insect pest damage with tunneling patterns |
+| Sheath Blight | Fungal infection at leaf sheath |
+
+### Model Architecture Details
+```
+MobileNetV2 (frozen) → GlobalAveragePooling2D → Dense(256, ReLU) 
+    → Dropout(0.3) → Dense(128, ReLU) → Dense(8, Softmax)
+```
+
+### Grad-CAM Explainability
+The model includes **Gradient-weighted Class Activation Mapping** (Grad-CAM) to visualize which regions of the leaf image the model focused on to make its prediction. This provides:
+- **Transparency**: Farmers can see the evidence behind diagnoses
+- **Trust**: Visual proof that the AI is looking at the right areas
+- **Education**: Helps farmers learn to identify symptoms themselves
 
 ### Training Configuration
-- **Optimizer**: Adam (learning rate: 0.0001)
-- **Loss Function**: Categorical Crossentropy
-- **Epochs**: 15
-- **Batch Size**: 32
-- **Data Augmentation**: 
-  - Rotation (40°)
-  - Width/Height shift (20%)
-  - Shear, Zoom (20%)
-  - Horizontal flip
-- **Validation Split**: 20%
-- **Class Balancing**: Computed class weights to handle imbalanced dataset
+| Parameter | Value |
+|-----------|-------|
+| Optimizer | Adam |
+| Learning Rate | 0.0001 |
+| Loss Function | Categorical Crossentropy |
+| Epochs | 15 |
+| Batch Size | 32 |
+| Validation Split | train/valid/test folders |
+| Class Balancing | Computed class weights |
+
+### Data Augmentation
+- Rotation: 40°
+- Width/Height shift: 20%
+- Shear: 20%
+- Zoom: 20%
+- Horizontal flip: Yes
+- Fill mode: Nearest
+
+### Dataset Structure
+```
+ai-service/dataset/
+├── train/
+│   ├── Bacterial leaf blight/
+│   ├── Brown spot/
+│   ├── Healthy Rice Leaf/
+│   ├── Leaf Blast/
+│   ├── Leaf scald/
+│   ├── Narrow Brown Leaf Spot/
+│   ├── Rice Hispa/
+│   └── Sheath Blight/
+├── valid/
+│   └── (same 8 classes)
+└── test/
+    └── (same 8 classes)
+```
+
+### Model Performance
+- **Test Accuracy**: ~54% (8-class classification)
+- **Model File**: `ai-service/models/rice_disease_model.keras`
+- **Class Indices**: `ai-service/models/class_indices.json`
 
 ### Training the Model
-
 ```bash
 cd ai-service
 python train_model.py
 ```
 
-This will:
-1. Load images from `dataset/` directory
-2. Apply data augmentation
-3. Calculate class weights for balanced training
-4. Train MobileNetV2 with custom layers
-5. Save the model as `rice_model_v2.h5`
+### Testing the Model
+```bash
+cd ai-service
+python test_model.py
+```
 
-### Dataset Structure
-```
-ai-service/dataset/
-├── Bacterial leaf blight/
-│   ├── image1.jpg
-│   ├── image2.jpg
-│   └── ...
-├── Brown spot/
-│   └── ...
-└── Leaf smut/
-    └── ...
-```
+---
 
 ## 🔐 Environment Variables
 
-### Backend Server (`.env` in `server/`)
+### Backend Server (`server/.env`)
 ```env
 MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/govi-isuru
 JWT_SECRET=your_super_secret_key_here
 PORT=5000
 ```
 
-### Frontend Client (`.env` in `client/`)
+### Frontend Client (`client/.env`)
 ```env
 REACT_APP_WEATHER_KEY=your_openweathermap_api_key
 ```
 
-**Important**: 
-- Never commit `.env` files to version control
-- For MongoDB Atlas, whitelist your IP address in Network Access
-- OpenWeatherMap free tier allows 1,000 calls/day
+> ⚠️ **Important**: Never commit `.env` files to version control. Add them to `.gitignore`.
+
+---
 
 ## 📸 Screenshots
 
-### AI Crop Doctor
-![AI Doctor Interface](docs/screenshots/ai-doctor.png)
-*Upload crop leaf images for instant disease diagnosis with treatment recommendations*
+### AI Crop Doctor with Grad-CAM
+*Upload crop leaf images for instant disease diagnosis with Grad-CAM heatmap visualization*
 
-### Marketplace
-![Marketplace](docs/screenshots/marketplace.png)
-*Connect directly with buyers through WhatsApp or phone calls*
+### Community Disease Alerts
+*Real-time disease alerts with severity indicators for your local area*
+
+### Marketplace with Reputation
+*Connect directly with rated farmers through WhatsApp or phone calls*
 
 ### Market Trends
-![Market Analytics](docs/screenshots/market-trends.png)
 *Visualize price trends and compare rates across districts*
 
 ### Weather Advisory
-![Weather Forecast](docs/screenshots/weather.png)
 *5-day weather forecast with agricultural recommendations*
+
+---
 
 ## 🌟 Key Innovations
 
-1. **Bilingual Support**: First-class Sinhala language support for rural farmers
-2. **Offline-First Design**: Core features work with minimal internet (planned)
-3. **Location Intelligence**: GN Division-level precision for hyper-local services
-4. **Class-Balanced ML**: Ensures minority disease classes are detected accurately
-5. **Transfer Learning**: Achieves high accuracy with limited training data
-6. **Integrated Communication**: Direct WhatsApp/call links from marketplace
-7. **Farmer-Centric UX**: Simplified, icon-driven interface for low digital literacy
+| Innovation | Description |
+|------------|-------------|
+| 🔬 **Grad-CAM Explainability** | Visual AI explanations showing where the model looks to make diagnoses |
+| 🚨 **Community Alert System** | Location-based disease outbreak warnings for farmers |
+| ⭐ **Reputation System** | Trust-based marketplace with farmer ratings and reviews |
+| 🌐 **Bilingual Support** | First-class Sinhala language support for rural farmers |
+| 📍 **Location Intelligence** | GN Division-level precision for hyper-local services |
+| ⚖️ **Class-Balanced ML** | Ensures minority disease classes are detected accurately |
+| 🔄 **Transfer Learning** | Achieves high accuracy with limited training data |
+| 📱 **Integrated Communication** | Direct WhatsApp/call links from marketplace |
+| 👨‍🌾 **Farmer-Centric UX** | Simplified, icon-driven interface for all literacy levels |
 
 ## 🤝 Contributing
 
@@ -450,10 +546,13 @@ We welcome contributions from the community! To contribute:
 - Ensure mobile responsiveness
 - Update documentation for new features
 
+---
+
 ## 📝 Future Roadmap
 
 - [ ] Containerize AI service in Docker
-- [ ] Add more crop types and diseases
+- [ ] Add more crop types (vegetables, fruits)
+- [ ] Expand disease detection beyond rice
 - [ ] Implement real-time chat for marketplace
 - [ ] Integrate government subsidy information
 - [ ] Add soil health monitoring
@@ -462,6 +561,9 @@ We welcome contributions from the community! To contribute:
 - [ ] IoT sensor integration for farm monitoring
 - [ ] AI-powered crop yield prediction
 - [ ] Community forum for farmers
+- [ ] Offline mode for areas with poor connectivity
+
+---
 
 ## 📄 License
 
