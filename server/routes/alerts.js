@@ -247,8 +247,234 @@ router.get('/stats', async (req, res) => {
 });
 
 /**
+ * GET /api/alerts/history
+ * Get alert history for a location
+ */
+router.get('/history', async (req, res) => {
+  try {
+    const { gnDivision, dsDivision, district, limit } = req.query;
+
+    const query = {};
+    if (gnDivision) query.gnDivision = gnDivision;
+    if (dsDivision) query.dsDivision = dsDivision;
+    if (district) query.district = district;
+
+    const alerts = await CommunityAlert.find(query)
+      .sort({ createdAt: -1 })
+      .limit(Number.parseInt(limit) || 20);
+
+    res.json({
+      success: true,
+      count: alerts.length,
+      alerts
+    });
+  } catch (error) {
+    console.error('Error getting alert history:', error);
+    res.status(500).json({ error: 'Failed to get alert history' });
+  }
+});
+
+/**
+ * GET /api/alerts/heatmap
+ * Get heatmap data for disease visualization
+ */
+router.get('/heatmap', async (req, res) => {
+  try {
+    const { district, disease, severity, days } = req.query;
+    
+    const heatmapData = await alertService.getHeatmapData({
+      district,
+      disease,
+      severity,
+      days: Number.parseInt(days) || 30
+    });
+    
+    res.json({
+      success: true,
+      count: heatmapData.length,
+      data: heatmapData
+    });
+  } catch (error) {
+    console.error('Error getting heatmap data:', error);
+    res.status(500).json({ error: 'Failed to get heatmap data' });
+  }
+});
+
+/**
+ * GET /api/alerts/timeseries
+ * Get time-series outbreak data
+ */
+router.get('/timeseries', async (req, res) => {
+  try {
+    const { district, disease, gnDivision, days } = req.query;
+    
+    const timeSeriesData = await alertService.getTimeSeriesData({
+      district,
+      disease,
+      gnDivision,
+      days: Number.parseInt(days) || 30
+    });
+    
+    res.json({
+      success: true,
+      ...timeSeriesData
+    });
+  } catch (error) {
+    console.error('Error getting time series data:', error);
+    res.status(500).json({ error: 'Failed to get time series data' });
+  }
+});
+
+/**
+ * GET /api/alerts/flagged
+ * Get flagged reports for admin review
+ */
+router.get('/flagged', authMiddleware, async (req, res) => {
+  try {
+    const { district, limit } = req.query;
+    
+    const reports = await alertService.getFlaggedReports({
+      district,
+      limit: Number.parseInt(limit) || 50
+    });
+    
+    res.json({
+      success: true,
+      count: reports.length,
+      reports
+    });
+  } catch (error) {
+    console.error('Error getting flagged reports:', error);
+    res.status(500).json({ error: 'Failed to get flagged reports' });
+  }
+});
+
+/**
+ * PUT /api/alerts/reports/:id/review
+ * Admin review a flagged report
+ */
+router.put('/reports/:id/review', authMiddleware, async (req, res) => {
+  try {
+    const { status, flaggedReason } = req.body;
+    
+    if (!['verified', 'rejected', 'flagged'].includes(status)) {
+      return res.status(400).json({ error: 'Invalid status. Must be verified, rejected, or flagged' });
+    }
+    
+    const report = await alertService.reviewReport(req.params.id, {
+      status,
+      flaggedReason,
+      reviewedBy: req.user?.username || 'admin'
+    });
+    
+    if (!report) {
+      return res.status(404).json({ error: 'Report not found' });
+    }
+    
+    res.json({
+      success: true,
+      message: `Report ${status}`,
+      report
+    });
+  } catch (error) {
+    console.error('Error reviewing report:', error);
+    res.status(500).json({ error: 'Failed to review report' });
+  }
+});
+
+/**
+ * GET /api/alerts/outbreak-summary
+ * Get outbreak summary statistics
+ */
+router.get('/outbreak-summary', async (req, res) => {
+  try {
+    const { district, days } = req.query;
+    const daysNum = Number.parseInt(days) || 7;
+    
+    const timeWindow = new Date(Date.now() - daysNum * 24 * 60 * 60 * 1000);
+    
+    const matchQuery = { createdAt: { $gte: timeWindow } };
+    if (district) matchQuery.district = district;
+    
+    // Get summary statistics from DiseaseReport
+    const [totalReports, diseaseBreakdownRaw, severityBreakdown, locationBreakdownRaw] = await Promise.all([
+      DiseaseReport.countDocuments(matchQuery),
+      
+      DiseaseReport.aggregate([
+        { $match: { ...matchQuery, disease: { $ne: null, $ne: '' } } },
+        { $group: { _id: '$disease', count: { $sum: 1 } } },
+        { $sort: { count: -1 } },
+        { $limit: 10 }
+      ]),
+      
+      DiseaseReport.aggregate([
+        { $match: matchQuery },
+        { $group: { _id: '$severity', count: { $sum: 1 } } }
+      ]),
+      
+      DiseaseReport.aggregate([
+        { $match: { ...matchQuery, district: { $ne: null, $ne: '' } } },
+        { $group: { _id: '$district', count: { $sum: 1 } } },
+        { $sort: { count: -1 } },
+        { $limit: 10 }
+      ])
+    ]);
+    
+    // If DiseaseReport has no data, fallback to CommunityAlert aggregation
+    let diseaseBreakdown = diseaseBreakdownRaw;
+    let locationBreakdown = locationBreakdownRaw;
+    
+    if (diseaseBreakdown.length === 0 || locationBreakdown.length === 0) {
+      const alertMatchQuery = { status: { $in: ['active', 'monitoring'] } };
+      if (district) alertMatchQuery.district = district;
+      
+      const [alertDiseaseBreakdown, alertLocationBreakdown] = await Promise.all([
+        CommunityAlert.aggregate([
+          { $match: alertMatchQuery },
+          { $group: { _id: '$disease', count: { $sum: '$reportCount' } } },
+          { $sort: { count: -1 } },
+          { $limit: 10 }
+        ]),
+        
+        CommunityAlert.aggregate([
+          { $match: alertMatchQuery },
+          { $group: { _id: '$district', count: { $sum: '$reportCount' } } },
+          { $sort: { count: -1 } },
+          { $limit: 10 }
+        ])
+      ]);
+      
+      if (diseaseBreakdown.length === 0) diseaseBreakdown = alertDiseaseBreakdown;
+      if (locationBreakdown.length === 0) locationBreakdown = alertLocationBreakdown;
+    }
+    
+    // Get active alerts count
+    const activeAlerts = await CommunityAlert.countDocuments({
+      status: 'active',
+      ...(district ? { district } : {})
+    });
+    
+    res.json({
+      success: true,
+      summary: {
+        totalReports,
+        activeAlerts,
+        timeRange: `Last ${daysNum} days`,
+        diseaseBreakdown: diseaseBreakdown.map(d => ({ disease: d._id, count: d.count })),
+        severityBreakdown: severityBreakdown.map(s => ({ severity: s._id, count: s.count })),
+        topLocations: locationBreakdown.map(l => ({ district: l._id, count: l.count }))
+      }
+    });
+  } catch (error) {
+    console.error('Error getting outbreak summary:', error);
+    res.status(500).json({ error: 'Failed to get outbreak summary' });
+  }
+});
+
+/**
  * PUT /api/alerts/:id/resolve
  * Resolve an alert (admin only - simplified for now)
+ * NOTE: This route must be at the end to avoid catching named routes like /outbreak-summary
  */
 router.put('/:id/resolve', authMiddleware, async (req, res) => {
   try {
@@ -266,34 +492,6 @@ router.put('/:id/resolve', authMiddleware, async (req, res) => {
   } catch (error) {
     console.error('Error resolving alert:', error);
     res.status(500).json({ error: 'Failed to resolve alert' });
-  }
-});
-
-/**
- * GET /api/alerts/history
- * Get alert history for a location
- */
-router.get('/history', async (req, res) => {
-  try {
-    const { gnDivision, dsDivision, district, limit } = req.query;
-
-    const query = {};
-    if (gnDivision) query.gnDivision = gnDivision;
-    if (dsDivision) query.dsDivision = dsDivision;
-    if (district) query.district = district;
-
-    const alerts = await CommunityAlert.find(query)
-      .sort({ createdAt: -1 })
-      .limit(parseInt(limit) || 20);
-
-    res.json({
-      success: true,
-      count: alerts.length,
-      alerts
-    });
-  } catch (error) {
-    console.error('Error getting alert history:', error);
-    res.status(500).json({ error: 'Failed to get alert history' });
   }
 });
 

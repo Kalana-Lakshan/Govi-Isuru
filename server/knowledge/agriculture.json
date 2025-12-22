@@ -114,5 +114,82 @@
       "info": "Agricultural Insurance Board provides coverage for crop damage. Register at your local Agrarian Service Center.",
       "si": "කෘෂිකාර්මික රක්ෂණ මණ්ඩලය බෝග හානි සඳහා ආවරණය සපයයි. ඔබේ ප්‍රදේශයේ කෘෂිකාර්මික සේවා මධ්‍යස්ථානයේ ලියාපදිංචි වන්න."
     }
+  },
+  "tea": {
+    "general": {
+      "fertilizer": {
+        "recommendation": "Apply T 750 mixture (NPK 10:5:10) at 160-200 kg/ha every 2 months. For young tea, use T 200 mixture. Apply urea during wet months. Add dolomite for soil pH correction if needed.",
+        "si": "T 750 මිශ්‍රණය (NPK 10:5:10) මාස 2කට වරක් හෙක්ටයාරයකට 160-200 kg යොදන්න. තරුණ තේ සඳහා T 200 මිශ්‍රණය භාවිතා කරන්න. තෙත් මාසවල යුරියා යොදන්න. අවශ්‍ය නම් පස් pH නිවැරදි කිරීමට ඩොලමයිට් එක් කරන්න."
+      },
+      "planting": {
+        "recommendation": "Plant tea during May-June or October-November. Use VP (Vegetatively Propagated) plants. Spacing: 1.2m x 0.6m for high density. Prepare planting holes 45cm x 45cm x 45cm.",
+        "si": "මැයි-ජූනි හෝ ඔක්තෝබර්-නොවැම්බර් මාසවල තේ වගා කරන්න. VP (ශාකමය ප්‍රචාරණය කළ) පැල භාවිතා කරන්න. පරතරය: ඉහළ ඝනත්වය සඳහා 1.2m x 0.6m. 45cm x 45cm x 45cm වගා කුහර සකස් කරන්න."
+      },
+      "harvest": {
+        "recommendation": "Pluck every 7-10 days during wet season, 10-14 days in dry season. Use 'two leaves and a bud' plucking standard. Avoid over-plucking. Best plucking time is early morning.",
+        "si": "තෙත් සමයේ දින 7-10කට වරක්, වියළි සමයේ දින 10-14කට වරක් කොළ නෙලන්න. 'කොළ දෙකක් හා මුකුළක්' නෙලීම් ප්‍රමිතිය භාවිතා කරන්න. අධික නෙලීමෙන් වළකින්න. හොඳම නෙලීම් වේලාව උදේ පාන්දරය."
+      }
+    },
+    "diseases": {
+      "blister_blight": {
+        "symptoms": "Light colored blister-like spots on young leaves. Blisters turn white and velvety underneath. Severely affected leaves curl and die.",
+        "treatment": "Apply copper-based fungicides. Maintain proper shade. Improve drainage. Spray Hexaconazole or Propiconazole. Remove infected shoots during plucking.",
+        "si": "තරුණ කොළ මත සැහැල්ලු පැහැති බිබිලි වැනි ලප. බිබිලි පහළින් සුදු හා මැහැලි වේ. දරුණු ලෙස පීඩිත කොළ කරකැවී මිය යයි. තඹ පාදක දිලීර නාශක යොදන්න. නිසි සෙවන පවත්වන්න. ජලාපවහනය වැඩි දියුණු කරන්න. හෙක්සාකොනසෝල් හෝ ප්‍රොපිකොනසෝල් ඉසින්න."
+      },
+      "brown_blight": {
+        "symptoms": "Brown lesions on mature leaves starting from tips and margins. Lesions spread causing leaf death. Common during monsoon.",
+        "treatment": "Prune affected branches. Apply copper hydroxide. Avoid excess nitrogen. Improve air circulation through proper pruning.",
+        "si": "අග සහ දාරවලින් ආරම්භ වන පරිණත කොළ මත දුඹුරු තුවාල. තුවාල පැතිර කොළ මිය යයි. මෝසම් කාලයේ බහුල වේ. පීඩිත අතු කප්පාදු කරන්න. කොපර් හයිඩ්‍රොක්සයිඩ් යොදන්න. අධික නයිට්‍රජන් වළකින්න."
+      },
+      "gray_blight": {
+        "symptoms": "Grayish-brown spots with dark margins on leaves. Often appears after drought stress or nutrient deficiency.",
+        "treatment": "Apply Mancozeb fungicide. Correct nutrient deficiencies. Remove infected leaves. Maintain proper soil moisture.",
+        "si": "කොළ මත තද දාර සහිත අළු-දුඹුරු ලප. බොහෝ විට නියඟ ආතතිය හෝ පෝෂක ඌනතාවයෙන් පසු පෙනේ. මැන්කොසෙබ් දිලීර නාශක යොදන්න. පෝෂක ඌනතා නිවැරදි කරන්න. ආසාදිත කොළ ඉවත් කරන්න."
+      },
+      "red_rust": {
+        "symptoms": "Orange-red rusty patches on upper leaf surface. Raised pustules containing spores. Mainly affects shaded areas.",
+        "treatment": "Improve light penetration through shade management. Apply copper fungicides. Remove heavily infected branches. Reduce shade tree density.",
+        "si": "කොළ මතුපිට ඉහළ පැත්තේ තැඹිලි-රතු මලකඩ ලප. බීජාණු අඩංගු ඉහළට නැඟුණු පැස්ටියුල. ප්‍රධාන වශයෙන් සෙවන ප්‍රදේශවලට බලපායි. සෙවන කළමනාකරණය හරහා ආලෝකය වැඩි කරන්න. තඹ දිලීර නාශක යොදන්න."
+      },
+      "healthy": {
+        "symptoms": "No disease symptoms. Leaves are green, shiny, and healthy.",
+        "treatment": "Continue good agricultural practices. Monitor regularly for pest and disease symptoms.",
+        "si": "රෝග ලක්ෂණ නැත. කොළ කොළ පැහැති, බබළන සහ සෞඛ්‍ය සම්පන්න වේ. හොඳ කෘෂිකාර්මික පිළිවෙත් දිගටම කරගෙන යන්න. පළිබෝධ සහ රෝග ලක්ෂණ සඳහා නිතරම නිරීක්ෂණය කරන්න."
+      }
+    },
+    "pests": {
+      "tea_mosquito_bug": {
+        "symptoms": "Brown lesions on young shoots. Dry brown patches on leaves. Severe damage to tender stems.",
+        "treatment": "Spray neem-based insecticides. Use pheromone traps. Apply Thiamethoxam or Imidacloprid during peak infestation.",
+        "si": "තරුණ අංකුර මත දුඹුරු තුවාල. කොළ මත වියළි දුඹුරු පැල්ලම්. මෘදු කඳන්වලට දරුණු හානි. කොහොඹ පාදක කෘමිනාශක ඉසින්න. ෆෙරමෝන උගුල් භාවිතා කරන්න."
+      },
+      "red_spider_mite": {
+        "symptoms": "Bronzing of upper leaf surface. Fine webbing on leaves. Yellow speckling becoming brown.",
+        "treatment": "Apply miticides like Dicofol or Propargite. Increase humidity. Introduce predatory mites. Remove heavily infested shoots.",
+        "si": "කොළ මතුපිට ඉහළ පැත්තේ ලෝකඩ පාට ගැන්වීම. කොළ මත සියුම් දැල්. කහ ලප දුඹුරු පාට වීම. ඩයිකොෆෝල් හෝ ප්‍රොපාගයිට් වැනි මයිටිසයිඩ යොදන්න."
+      },
+      "tea_tortrix": {
+        "symptoms": "Rolled leaves tied with silk. Caterpillars inside rolled leaves. Holes in mature leaves.",
+        "treatment": "Hand-pick rolled leaves. Apply Bacillus thuringiensis (Bt). Use light traps for adult moths.",
+        "si": "සේද සමඟ බැඳුණු රෝල් කළ කොළ. රෝල් කළ කොළ තුළ කැට්පිලර්. පරිණත කොළ වල සිදුරු. රෝල් කළ කොළ අතින් ඉවත් කරන්න. Bacillus thuringiensis (Bt) යොදන්න."
+      },
+      "shot_hole_borer": {
+        "symptoms": "Tiny circular holes in stems and branches. Sawdust-like frass at entry holes. Branch dieback.",
+        "treatment": "Prune and burn affected branches. Apply carbofuran granules at base. Maintain bush vigor through proper fertilization.",
+        "si": "කඳන් සහ අතුවල කුඩා රවුම් සිදුරු. ඇතුල්වන සිදුරුවල දැව කුඩු වැනි අපද්‍රව්‍ය. අතු මිය යාම. පීඩිත අතු කප්පාදු කර පුළුස්සන්න. පාමුල කාබෝෆියුරන් කැට යොදන්න."
+      }
+    },
+    "water_management": {
+      "recommendation": "Tea requires 1200-1400mm annual rainfall. Maintain soil moisture through mulching. Install drip irrigation in dry areas. Good drainage is essential - waterlogging causes root rot.",
+      "si": "තේ සඳහා වාර්ෂික වර්ෂාපතනය 1200-1400mm අවශ්‍යයි. වැසුම් හරහා පස් තෙතමනය පවත්වන්න. වියළි ප්‍රදේශවල බින්දු වාරිමාර්ග ස්ථාපනය කරන්න. හොඳ ජලාපවහනය අත්‍යවශ්‍යයි - ජල රැඳීම මූල කුණුවීමට හේතු වේ."
+    },
+    "shade_management": {
+      "recommendation": "Maintain 30-40% shade using shade trees like Gliricidia or Grevillea. Reduce shade during monsoon. Regulate shade to control blister blight.",
+      "si": "ග්ලිරිසිඩියා හෝ ග්‍රෙවිලියා වැනි සෙවන ගස් භාවිතයෙන් 30-40% සෙවන පවත්වන්න. මෝසම් කාලයේ සෙවන අඩු කරන්න. බිබිලි රෝගය පාලනය කිරීමට සෙවන නියාමනය කරන්න."
+    },
+    "pruning": {
+      "recommendation": "Prune tea bushes every 3-5 years. Best time for pruning: December-January. Leave 45-55cm from ground. Allow 8-10 weeks recovery before first plucking.",
+      "si": "සෑම වසර 3-5කට වරක් තේ පඳුරු කප්පාදු කරන්න. කප්පාදු කිරීමට හොඳම කාලය: දෙසැම්බර්-ජනවාරි. බිමේ සිට 45-55cm තබන්න. පළමු නෙලීමට පෙර සති 8-10ක් යථා තත්ත්වයට පත්වීමට ඉඩ දෙන්න."
+    }
   }
 }

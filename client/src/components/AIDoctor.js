@@ -3,7 +3,7 @@ import axios from 'axios';
 import { 
   Upload, Loader2, CheckCircle, AlertTriangle, Bell, MapPin, Info,
   Microscope, Stethoscope, Shield, Calendar, Leaf, Activity, Brain,
-  FileText, ChevronRight
+  FileText, ChevronRight, Coffee
 } from 'lucide-react';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
@@ -18,6 +18,7 @@ const AIDoctor = ({ lang, user }) => {
   const [reportStatus, setReportStatus] = useState(null);
   const [alertsTriggered, setAlertsTriggered] = useState([]);
   const [showGradCam, setShowGradCam] = useState(false);
+  const [cropType, setCropType] = useState('rice'); // 'rice' or 'tea'
 
   const t = {
     en: {
@@ -46,7 +47,12 @@ const AIDoctor = ({ lang, user }) => {
       monitoringActive: "Community monitoring active",
       reportLogged: "Report logged for",
       alertTriggered: "Alert Triggered!",
-      multipleCases: "Multiple cases detected in your area. Nearby farmers will be notified."
+      multipleCases: "Multiple cases detected in your area. Nearby farmers will be notified.",
+      selectCrop: "Select Crop Type",
+      rice: "Rice",
+      tea: "Tea",
+      riceDesc: "Analyze rice leaf diseases",
+      teaDesc: "Analyze tea leaf diseases"
     },
     si: {
       title: "ගොවි ඉසුරු",
@@ -74,7 +80,12 @@ const AIDoctor = ({ lang, user }) => {
       monitoringActive: "ප්‍රජා අධීක්ෂණය සක්‍රියයි",
       reportLogged: "වාර්තාව සටහන් විය",
       alertTriggered: "අනතුරු ඇඟවීම!",
-      multipleCases: "ඔබගේ ප්‍රදේශයේ රෝග අවස්ථා කිහිපයක් හඳුනාගෙන ඇත. අසල්වැසි ගොවීන්ට දැනුම් දෙනු ලැබේ."
+      multipleCases: "ඔබගේ ප්‍රදේශයේ රෝග අවස්ථා කිහිපයක් හඳුනාගෙන ඇත. අසල්වැසි ගොවීන්ට දැනුම් දෙනු ලැබේ.",
+      selectCrop: "බෝග වර්ගය තෝරන්න",
+      rice: "වී",
+      tea: "තේ",
+      riceDesc: "වී පත්‍ර රෝග විශ්ලේෂණය",
+      teaDesc: "තේ පත්‍ර රෝග විශ්ලේෂණය"
     }
   };
 
@@ -98,7 +109,7 @@ const AIDoctor = ({ lang, user }) => {
       const response = await axios.post(
         `${API_BASE}/api/alerts/disease-report`,
         {
-          crop: 'Rice',
+          crop: cropType === 'rice' ? 'Rice' : 'Tea',
           disease: predictionResult.disease,
           confidence: predictionResult.confidence,
           district: user.district,
@@ -134,7 +145,8 @@ const AIDoctor = ({ lang, user }) => {
       setTimeout(() => setAnalysisStep(2), 800);
       setTimeout(() => setAnalysisStep(3), 1600);
 
-      const response = await axios.post(`${AI_API}/predict`, formData);
+      // Use crop-specific endpoint
+      const response = await axios.post(`${AI_API}/predict/${cropType}`, formData);
       const data = response.data;
       
       const mappedResult = {
@@ -146,12 +158,15 @@ const AIDoctor = ({ lang, user }) => {
         description: data.description,
         severity: data.severity,
         all_predictions: data.all_predictions,
-        gradcam: data.gradcam
+        gradcam: data.gradcam,
+        crop_type: data.crop_type
       };
       
       setResult(mappedResult);
       
-      if (data.prediction && data.prediction !== 'Healthy Rice Leaf') {
+      // Check if it's a disease (not healthy)
+      const isHealthy = data.prediction.toLowerCase().includes('healthy');
+      if (data.prediction && !isHealthy) {
         await reportToAlertSystem({
           disease: data.prediction,
           confidence: data.confidence,
@@ -195,6 +210,50 @@ const AIDoctor = ({ lang, user }) => {
           {text.sectionTitle}
         </h2>
         <p className="text-gray-500 mt-1">{text.subtitle}</p>
+      </div>
+
+      {/* Crop Type Selector */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-gray-700 mb-3">{text.selectCrop}</label>
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            onClick={() => { setCropType('rice'); setResult(null); }}
+            className={`flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
+              cropType === 'rice' 
+                ? 'border-green-500 bg-green-50 shadow-md' 
+                : 'border-gray-200 hover:border-green-300 hover:bg-green-50/30'
+            }`}
+          >
+            <div className={`p-2 rounded-lg ${cropType === 'rice' ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
+              <Leaf className="h-6 w-6" />
+            </div>
+            <div className="text-left">
+              <div className={`font-semibold ${cropType === 'rice' ? 'text-green-700' : 'text-gray-700'}`}>
+                🌾 {text.rice}
+              </div>
+              <div className="text-xs text-gray-500">{text.riceDesc}</div>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => { setCropType('tea'); setResult(null); }}
+            className={`flex items-center gap-3 p-4 rounded-xl border-2 transition-all ${
+              cropType === 'tea' 
+                ? 'border-green-500 bg-green-50 shadow-md' 
+                : 'border-gray-200 hover:border-green-300 hover:bg-green-50/30'
+            }`}
+          >
+            <div className={`p-2 rounded-lg ${cropType === 'tea' ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
+              <Coffee className="h-6 w-6" />
+            </div>
+            <div className="text-left">
+              <div className={`font-semibold ${cropType === 'tea' ? 'text-green-700' : 'text-gray-700'}`}>
+                🍵 {text.tea}
+              </div>
+              <div className="text-xs text-gray-500">{text.teaDesc}</div>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Upload Card */}

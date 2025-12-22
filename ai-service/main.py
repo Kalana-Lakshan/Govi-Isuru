@@ -1,6 +1,7 @@
 """
-Rice Leaf Disease Prediction API with Grad-CAM Visualization
+Multi-Crop Disease Prediction API with Grad-CAM Visualization
 FastAPI service for Govi Isuru Smart Farming Platform
+Supports Rice and Tea Leaf Disease Detection
 """
 
 import os
@@ -13,22 +14,37 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from PIL import Image
 import cv2
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import uvicorn
+from enum import Enum
 
-# Configuration
-MODEL_PATH = "models/rice_disease_model.keras"
-CLASS_INDICES_PATH = "models/class_indices.json"
-DISEASE_INFO_PATH = "models/disease_info.json"
+# Configuration - Multi-crop support
+MODELS_CONFIG = {
+    "rice": {
+        "model_path": "models/best_model.keras",
+        "class_indices_path": "models/class_indices.json",
+        "disease_info_path": "models/disease_info.json"
+    },
+    "tea": {
+        "model_path": "models/tea/tea_best_model.keras",
+        "class_indices_path": "models/tea/tea_class_indices.json",
+        "disease_info_path": "models/tea/tea_disease_info.json"
+    }
+}
 IMAGE_SIZE = (224, 224)
+
+# Crop type enum
+class CropType(str, Enum):
+    rice = "rice"
+    tea = "tea"
 
 # Initialize FastAPI
 app = FastAPI(
-    title="Govi Isuru - Rice Disease Predictor",
-    description="AI-powered rice leaf disease detection with Grad-CAM visualization",
-    version="2.0.0"
+    title="Govi Isuru - Multi-Crop Disease Predictor",
+    description="AI-powered crop disease detection for Rice and Tea with Grad-CAM visualization",
+    version="3.0.0"
 )
 
 # CORS middleware
@@ -40,46 +56,63 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global variables for model and metadata
-model = None
-class_indices = None
-class_names = None
-disease_info = None
+# Global variables for models and metadata (multi-crop)
+models = {}
+class_indices = {}
+class_names = {}
+disease_info = {}
 
-def load_model_and_metadata():
-    """Load the trained model and metadata"""
-    global model, class_indices, class_names, disease_info
+def load_crop_model(crop_type: str):
+    """Load model and metadata for a specific crop type"""
+    global models, class_indices, class_names, disease_info
     
-    print("🔄 Loading model and metadata...")
+    config = MODELS_CONFIG.get(crop_type)
+    if not config:
+        print(f"⚠️ Unknown crop type: {crop_type}")
+        return False
+    
+    print(f"\n🔄 Loading {crop_type} model and metadata...")
     
     # Load model
-    if os.path.exists(MODEL_PATH):
-        model = keras.models.load_model(MODEL_PATH)
-        print(f"✅ Model loaded from {MODEL_PATH}")
+    if os.path.exists(config["model_path"]):
+        models[crop_type] = keras.models.load_model(config["model_path"])
+        print(f"✅ {crop_type.title()} model loaded from {config['model_path']}")
     else:
-        print(f"⚠️ Model not found at {MODEL_PATH}")
+        print(f"⚠️ {crop_type.title()} model not found at {config['model_path']}")
         return False
     
     # Load class indices
-    if os.path.exists(CLASS_INDICES_PATH):
-        with open(CLASS_INDICES_PATH, 'r') as f:
-            class_indices = json.load(f)
-        class_names = {v: k for k, v in class_indices.items()}
-        print(f"✅ Class indices loaded: {list(class_indices.keys())}")
+    if os.path.exists(config["class_indices_path"]):
+        with open(config["class_indices_path"], 'r') as f:
+            class_indices[crop_type] = json.load(f)
+        class_names[crop_type] = {int(k): v for k, v in class_indices[crop_type].items()}
+        print(f"✅ {crop_type.title()} class indices loaded: {list(class_names[crop_type].values())}")
     else:
-        print(f"⚠️ Class indices not found")
+        print(f"⚠️ {crop_type.title()} class indices not found")
         return False
     
     # Load disease info
-    if os.path.exists(DISEASE_INFO_PATH):
-        with open(DISEASE_INFO_PATH, 'r', encoding='utf-8') as f:
-            disease_info = json.load(f)
-        print(f"✅ Disease info loaded")
+    if os.path.exists(config["disease_info_path"]):
+        with open(config["disease_info_path"], 'r', encoding='utf-8') as f:
+            disease_info[crop_type] = json.load(f)
+        print(f"✅ {crop_type.title()} disease info loaded")
     else:
-        print(f"⚠️ Disease info not found, using defaults")
-        disease_info = {}
+        print(f"⚠️ {crop_type.title()} disease info not found, using defaults")
+        disease_info[crop_type] = {}
     
     return True
+
+def load_all_models():
+    """Load all available models"""
+    print("=" * 60)
+    print("🌾🍵 Loading All Crop Disease Models")
+    print("=" * 60)
+    
+    results = {}
+    for crop_type in MODELS_CONFIG.keys():
+        results[crop_type] = load_crop_model(crop_type)
+    
+    return results
 
 def preprocess_image(image_bytes):
     """Preprocess image for model prediction"""
@@ -262,20 +295,25 @@ def create_heatmap_only(heatmap):
 
 @app.on_event("startup")
 async def startup_event():
-    """Load model on startup"""
-    success = load_model_and_metadata()
-    if not success:
-        print("⚠️ Model loading failed. Please train the model first.")
+    """Load all models on startup"""
+    results = load_all_models()
+    for crop, success in results.items():
+        if not success:
+            print(f"⚠️ {crop.title()} model loading failed. Please train the model first.")
 
 @app.get("/")
 async def root():
     """API health check"""
     return {
         "status": "healthy",
-        "service": "Govi Isuru Rice Disease Predictor",
-        "version": "2.0.0",
-        "model_loaded": model is not None,
-        "classes": list(class_indices.keys()) if class_indices else []
+        "service": "Govi Isuru Multi-Crop Disease Predictor",
+        "version": "3.0.0",
+        "supported_crops": list(MODELS_CONFIG.keys()),
+        "models_loaded": {crop: (crop in models) for crop in MODELS_CONFIG.keys()},
+        "classes": {
+            crop: list(class_indices.get(crop, {}).values()) 
+            for crop in MODELS_CONFIG.keys()
+        }
     }
 
 @app.get("/health")
@@ -283,13 +321,35 @@ async def health_check():
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "model_loaded": model is not None
+        "models_loaded": {crop: (crop in models) for crop in MODELS_CONFIG.keys()}
+    }
+
+@app.get("/crops")
+async def get_supported_crops():
+    """Get list of supported crop types"""
+    return {
+        "crops": [
+            {
+                "type": crop,
+                "name": crop.title(),
+                "model_loaded": crop in models,
+                "classes_count": len(class_names.get(crop, {}))
+            }
+            for crop in MODELS_CONFIG.keys()
+        ]
     }
 
 @app.post("/predict")
-async def predict_disease(file: UploadFile = File(...)):
+async def predict_disease(
+    file: UploadFile = File(...),
+    crop_type: CropType = Query(default=CropType.rice, description="Type of crop (rice or tea)")
+):
     """
-    Predict rice leaf disease from uploaded image
+    Predict crop disease from uploaded image
+    
+    Parameters:
+    - file: Image file
+    - crop_type: Type of crop (rice or tea)
     
     Returns:
     - prediction: Disease name
@@ -298,10 +358,12 @@ async def predict_disease(file: UploadFile = File(...)):
     - disease_info: Treatment and information
     - gradcam: Grad-CAM visualization (base64)
     """
-    if model is None:
+    crop = crop_type.value
+    
+    if crop not in models:
         raise HTTPException(
             status_code=503,
-            detail="Model not loaded. Please ensure the model is trained and available."
+            detail=f"{crop.title()} model not loaded. Please ensure the model is trained and available."
         )
     
     # Validate file type
@@ -318,13 +380,14 @@ async def predict_disease(file: UploadFile = File(...)):
         # Preprocess
         img_array, original_image = preprocess_image(image_bytes)
         
-        # Predict
+        # Predict using the correct model
+        model = models[crop]
         predictions = model.predict(img_array, verbose=0)[0]
         
         # Get top prediction
         predicted_idx = int(np.argmax(predictions))
         confidence = float(predictions[predicted_idx])
-        predicted_class = class_names[predicted_idx]
+        predicted_class = class_names[crop][predicted_idx]
         
         # Generate Grad-CAM
         gradcam_data = None
@@ -338,20 +401,21 @@ async def predict_disease(file: UploadFile = File(...)):
                 "heatmap": heatmap_base64
             }
         
-        # Get disease information
-        info = disease_info.get(predicted_class, {})
+        # Get disease information for this crop
+        info = disease_info.get(crop, {}).get(predicted_class, {})
         
         # Build all predictions
         all_preds = []
         for idx, prob in enumerate(predictions):
             all_preds.append({
-                "class": class_names[idx],
+                "class": class_names[crop][idx],
                 "probability": float(prob)
             })
         all_preds.sort(key=lambda x: x['probability'], reverse=True)
         
         return JSONResponse({
             "success": True,
+            "crop_type": crop,
             "prediction": predicted_class,
             "confidence": confidence,
             "si_name": info.get("si_name", predicted_class),
@@ -368,42 +432,77 @@ async def predict_disease(file: UploadFile = File(...)):
             detail=f"Prediction failed: {str(e)}"
         )
 
+# Legacy endpoint for backward compatibility with rice predictions
+@app.post("/predict/rice")
+async def predict_rice_disease(file: UploadFile = File(...)):
+    """Legacy endpoint for rice disease prediction"""
+    return await predict_disease(file=file, crop_type=CropType.rice)
+
+@app.post("/predict/tea")
+async def predict_tea_disease(file: UploadFile = File(...)):
+    """Endpoint for tea disease prediction"""
+    return await predict_disease(file=file, crop_type=CropType.tea)
+
 @app.get("/classes")
-async def get_classes():
-    """Get list of all disease classes"""
-    if class_indices is None:
+async def get_all_classes():
+    """Get list of all disease classes for all crops"""
+    result = {}
+    
+    for crop in MODELS_CONFIG.keys():
+        if crop in class_indices:
+            classes_with_info = []
+            for class_name in class_indices[crop].values():
+                info = disease_info.get(crop, {}).get(class_name, {})
+                classes_with_info.append({
+                    "name": class_name,
+                    "si_name": info.get("si_name", class_name),
+                    "severity": info.get("severity", "unknown")
+                })
+            result[crop] = classes_with_info
+    
+    return {"classes": result}
+
+@app.get("/classes/{crop_type}")
+async def get_crop_classes(crop_type: CropType):
+    """Get list of disease classes for a specific crop"""
+    crop = crop_type.value
+    
+    if crop not in class_indices:
         return {"classes": []}
     
     classes_with_info = []
-    for class_name in class_indices.keys():
-        info = disease_info.get(class_name, {})
+    for class_name in class_indices[crop].values():
+        info = disease_info.get(crop, {}).get(class_name, {})
         classes_with_info.append({
             "name": class_name,
             "si_name": info.get("si_name", class_name),
             "severity": info.get("severity", "unknown")
         })
     
-    return {"classes": classes_with_info}
+    return {"crop": crop, "classes": classes_with_info}
 
-@app.get("/disease/{disease_name}")
-async def get_disease_info(disease_name: str):
-    """Get detailed information about a specific disease"""
-    if disease_info is None:
-        raise HTTPException(status_code=503, detail="Disease info not loaded")
+@app.get("/disease/{crop_type}/{disease_name}")
+async def get_disease_info_by_crop(crop_type: CropType, disease_name: str):
+    """Get detailed information about a specific disease for a crop"""
+    crop = crop_type.value
+    
+    if crop not in disease_info:
+        raise HTTPException(status_code=503, detail=f"Disease info for {crop} not loaded")
     
     # Find disease (case-insensitive)
-    for name, info in disease_info.items():
-        if name.lower() == disease_name.lower():
+    for name, info in disease_info[crop].items():
+        if name.lower() == disease_name.lower() or name.lower().replace('_', ' ') == disease_name.lower():
             return {
+                "crop": crop,
                 "name": name,
                 **info
             }
     
-    raise HTTPException(status_code=404, detail=f"Disease '{disease_name}' not found")
+    raise HTTPException(status_code=404, detail=f"Disease '{disease_name}' not found for {crop}")
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("🌾 Govi Isuru - Rice Disease Predictor API")
+    print("🌾🍵 Govi Isuru - Multi-Crop Disease Predictor API")
     print("=" * 60)
     
     # Check for GPU

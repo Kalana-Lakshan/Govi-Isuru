@@ -53,15 +53,27 @@ const followUpSuggestions = {
       "Flood prevention tips?",
       "When to delay field work?"
     ],
+    SHADE: [
+      "Best shade trees for tea?",
+      "How much shade is ideal?",
+      "When to reduce shade?",
+      "Shade tree spacing?"
+    ],
+    PRUNING: [
+      "When to prune tea bushes?",
+      "What height for pruning?",
+      "Recovery time after pruning?",
+      "Tools for pruning?"
+    ],
     GREETING: [
       "What fertilizer for rice?",
       "How to treat plant diseases?",
-      "When to harvest rice?",
+      "Tea plucking tips?",
       "Upload a plant photo 📷"
     ],
     UNKNOWN: [
       "Tell me about rice farming",
-      "Common rice diseases?",
+      "Tea disease prevention?",
       "Fertilizer recommendations?",
       "Upload photo for diagnosis 📷"
     ]
@@ -115,15 +127,27 @@ const followUpSuggestions = {
       "ගංවතුර වැළැක්වීමේ ඉඟි?",
       "කෙත් වැඩ ප්‍රමාද කළ යුත්තේ කවදාද?"
     ],
+    SHADE: [
+      "තේ සඳහා හොඳම සෙවන ගස්?",
+      "කොපමණ සෙවනක් සුදුසුද?",
+      "සෙවන අඩු කළ යුත්තේ කවදාද?",
+      "සෙවන ගස් පරතරය?"
+    ],
+    PRUNING: [
+      "තේ පඳුරු කප්පාදු කරන්නේ කවදාද?",
+      "කප්පාදු සඳහා උස කොපමණද?",
+      "කප්පාදු කිරීමෙන් පසු යථා කාලය?",
+      "කප්පාදු මෙවලම්?"
+    ],
     GREETING: [
       "වී සඳහා පොහොර කුමක්ද?",
       "ශාක රෝග ප්‍රතිකාර කරන්නේ කෙසේද?",
-      "වී අස්වනු නෙලන්නේ කවදාද?",
+      "තේ නෙලීමේ ඉඟි?",
       "ශාක ඡායාරූපයක් උඩුගත කරන්න 📷"
     ],
     UNKNOWN: [
       "වී වගාව ගැන කියන්න",
-      "පොදු වී රෝග මොනවාද?",
+      "තේ රෝග වැළැක්වීම?",
       "පොහොර නිර්දේශ?",
       "රෝග විනිශ්චය සඳහා ඡායාරූපයක් 📷"
     ]
@@ -134,17 +158,17 @@ const translations = {
   en: {
     title: "Crop Assistant",
     subtitle: "Ask me about farming!",
-    placeholder: "Ask about fertilizer, diseases, planting...",
+    placeholder: "Ask about rice, tea, fertilizer, diseases...",
     send: "Send",
     typing: "Thinking...",
     source: "Source",
     suggestions: [
       "What fertilizer for rice in Yala?",
-      "How to treat rice blast disease?",
+      "How to treat tea blister blight?",
       "When to harvest rice?",
-      "Water management tips"
+      "Tea pruning advice"
     ],
-    welcome: "👋 Hello! I'm your Govi Isuru farming assistant. Ask me about fertilizers, diseases, planting, or harvesting! You can also upload plant photos for disease diagnosis.",
+    welcome: "👋 Hello! I'm your Govi Isuru farming assistant. Ask me about rice or tea - fertilizers, diseases, planting, or harvesting! You can also upload plant photos for disease diagnosis.",
     uploadImage: "Upload plant photo",
     analyzing: "Analyzing image...",
     diagnosisResult: "Disease Diagnosis",
@@ -160,17 +184,17 @@ const translations = {
   si: {
     title: "බෝග සහායක",
     subtitle: "ගොවිතැන් ගැන මගෙන් අහන්න!",
-    placeholder: "පොහොර, රෝග, වගාව ගැන අහන්න...",
+    placeholder: "වී, තේ, පොහොර, රෝග ගැන අහන්න...",
     send: "යවන්න",
     typing: "සිතමින්...",
     source: "මූලාශ්‍රය",
     suggestions: [
       "යාල කන්නයේ වී සඳහා පොහොර?",
-      "වී බ්ලාස්ට් රෝගයට ප්‍රතිකාර?",
+      "තේ බිබිලි රෝගයට ප්‍රතිකාර?",
       "වී අස්වනු නෙලන්නේ කවදාද?",
-      "ජල කළමනාකරණ ඉඟි"
+      "තේ කප්පාදු උපදෙස්"
     ],
-    welcome: "👋 ආයුබෝවන්! මම ඔබේ ගොවි ඉසුරු ගොවිතැන් සහායකයා. පොහොර, රෝග, වගා කිරීම හෝ අස්වනු නෙලීම ගැන මගෙන් අහන්න! රෝග හඳුනා ගැනීමට ශාක ඡායාරූප උඩුගත කරන්න.",
+    welcome: "👋 ආයුබෝවන්! මම ඔබේ ගොවි ඉසුරු ගොවිතැන් සහායකයා. වී හෝ තේ ගැන - පොහොර, රෝග, වගා කිරීම හෝ අස්වනු නෙලීම ගැන මගෙන් අහන්න! රෝග හඳුනා ගැනීමට ශාක ඡායාරූප උඩුගත කරන්න.",
     uploadImage: "ශාක ඡායාරූපය උඩුගත කරන්න",
     analyzing: "රූපය විශ්ලේෂණය කරමින්...",
     diagnosisResult: "රෝග විනිශ්චය",
@@ -294,6 +318,7 @@ export default function CropChatbot({ lang = 'en' }) {
   const [isAnalyzingImage, setIsAnalyzingImage] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
+  const [selectedCropType, setSelectedCropType] = useState('rice'); // New: crop type for image analysis
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
   const recognitionRef = useRef(null);
@@ -513,7 +538,9 @@ export default function CropChatbot({ lang = 'en' }) {
     const userMessage = {
       id: Date.now(),
       type: 'user',
-      text: lang === 'si' ? '🔍 මෙම ශාකයේ රෝගය හඳුනා ගන්න' : '🔍 Diagnose this plant',
+      text: lang === 'si' 
+        ? `🔍 මෙම ${selectedCropType === 'tea' ? 'තේ' : 'වී'} ශාකයේ රෝගය හඳුනා ගන්න` 
+        : `🔍 Diagnose this ${selectedCropType} plant`,
       image: imageUrl,
       timestamp: new Date()
     };
@@ -521,11 +548,11 @@ export default function CropChatbot({ lang = 'en' }) {
     setIsAnalyzingImage(true);
 
     try {
-      // Send image to AI service
+      // Send image to AI service with crop type
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post('http://localhost:8000/predict', formData, {
+      const response = await axios.post(`http://localhost:8000/predict/${selectedCropType}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
@@ -565,7 +592,7 @@ export default function CropChatbot({ lang = 'en' }) {
       // Update context with detected disease
       setCurrentContext(prev => ({
         ...prev,
-        crop: 'rice',
+        crop: selectedCropType,
         disease: prediction
       }));
 
@@ -771,6 +798,35 @@ export default function CropChatbot({ lang = 'en' }) {
 
       {/* Input */}
       <div className="p-4 bg-white border-t border-slate-100">
+        {/* Crop type selector for image analysis */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs text-slate-500">
+            {lang === 'si' ? 'රෝග විනිශ්චය සඳහා බෝගය:' : 'Crop for diagnosis:'}
+          </span>
+          <div className="flex gap-1">
+            <button
+              onClick={() => setSelectedCropType('rice')}
+              className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                selectedCropType === 'rice'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              🌾 {lang === 'si' ? 'වී' : 'Rice'}
+            </button>
+            <button
+              onClick={() => setSelectedCropType('tea')}
+              className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                selectedCropType === 'tea'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              🍃 {lang === 'si' ? 'තේ' : 'Tea'}
+            </button>
+          </div>
+        </div>
+
         {/* Voice listening indicator */}
         {isListening && (
           <div className="flex items-center justify-center gap-2 mb-3 py-2 bg-red-50 rounded-lg border border-red-200">

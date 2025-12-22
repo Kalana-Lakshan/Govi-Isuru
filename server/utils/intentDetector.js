@@ -3,17 +3,19 @@
 
 // Synonym mappings for better understanding
 const synonyms = {
-  fertilizer: ['fertilizer', 'fertiliser', 'urea', 'npk', 'potash', 'nitrogen', 'phosphate', 'manure', 'compost', 'පොහොර', 'යුරියා', 'poshora', 'pohora'],
-  disease: ['disease', 'sick', 'infection', 'fungus', 'bacteria', 'virus', 'blight', 'blast', 'spot', 'smut', 'ලෙඩ', 'රෝග', 'ආසාදනය', 'leda', 'roga'],
-  pest: ['pest', 'insect', 'bug', 'worm', 'borer', 'hopper', 'කෘමි', 'පළිබෝධ', 'krumi'],
-  planting: ['planting', 'sowing', 'seed', 'seedling', 'transplant', 'වගා', 'බීජ', 'පැල', 'waga', 'bija'],
-  harvest: ['harvest', 'harvesting', 'yield', 'crop', 'reap', 'අස්වනු', 'අස්වැන්න', 'aswanu'],
-  water: ['water', 'irrigation', 'watering', 'drought', 'flood', 'rain', 'ජලය', 'වාරිමාර්ග', 'jalaya'],
-  weather: ['weather', 'rain', 'sun', 'humidity', 'temperature', 'climate', 'කාලගුණ', 'වැස්ස', 'kalaguna'],
+  fertilizer: ['fertilizer', 'fertiliser', 'urea', 'npk', 'potash', 'nitrogen', 'phosphate', 'manure', 'compost', 'පොහොර', 'යුරියා', 'poshora', 'pohora', 't750', 't200', 'dolomite'],
+  disease: ['disease', 'sick', 'infection', 'fungus', 'bacteria', 'virus', 'blight', 'blast', 'spot', 'smut', 'rust', 'ලෙඩ', 'රෝග', 'ආසාදනය', 'leda', 'roga', 'blister', 'බිබිලි'],
+  pest: ['pest', 'insect', 'bug', 'worm', 'borer', 'hopper', 'mite', 'tortrix', 'mosquito bug', 'කෘමි', 'පළිබෝධ', 'krumi'],
+  planting: ['planting', 'sowing', 'seed', 'seedling', 'transplant', 'වගා', 'බීජ', 'පැල', 'waga', 'bija', 'spacing'],
+  harvest: ['harvest', 'harvesting', 'yield', 'crop', 'reap', 'pluck', 'plucking', 'අස්වනු', 'අස්වැන්න', 'aswanu', 'නෙලීම'],
+  water: ['water', 'irrigation', 'watering', 'drought', 'flood', 'rain', 'drainage', 'ජලය', 'වාරිමාර්ග', 'jalaya'],
+  weather: ['weather', 'rain', 'sun', 'humidity', 'temperature', 'climate', 'monsoon', 'කාලගුණ', 'වැස්ස', 'kalaguna'],
   organic: ['organic', 'natural', 'compost', 'ජෛව', 'සාම්ප්‍රදායික', 'jaiwa'],
   government: ['government', 'subsidy', 'scheme', 'insurance', 'support', 'රජය', 'සහනාධාර', 'rajaya'],
   yala: ['yala', 'april', 'may', 'june', 'july', 'august', 'dry season', 'යාල', 'yala'],
-  maha: ['maha', 'october', 'november', 'december', 'january', 'february', 'wet season', 'මහ']
+  maha: ['maha', 'october', 'november', 'december', 'january', 'february', 'wet season', 'මහ'],
+  shade: ['shade', 'shadow', 'gliricidia', 'grevillea', 'සෙවන', 'shadow tree', 'shade management'],
+  pruning: ['pruning', 'prune', 'trim', 'cut', 'කප්පාදු', 'cutting', 'bush maintenance']
 };
 
 // Crop detection patterns
@@ -21,16 +23,22 @@ const cropPatterns = {
   rice: ['rice', 'paddy', ' වී', 'හාල්', 'ගොයම'],
   vegetables: ['vegetable', 'veggies', 'එළවලු', 'බෝග'],
   chili: ['chili', 'chilli', 'pepper', 'මිරිස්'],
-  tea: ['tea', 'තේ'],
+  tea: ['tea', 'තේ', 'තේ කොළ', 'tea leaf', 'tea plant', 'tea bush'],
   coconut: ['coconut', 'පොල්']
 };
 
-// Disease name patterns
+// Disease name patterns - includes both rice and tea diseases
 const diseasePatterns = {
-  blast: ['blast', 'පිපිරුම'],
-  bacterial_leaf_blight: ['bacterial', 'blight', 'බැක්ටීරියා'],
+  // Rice diseases
+  blast: ['blast', 'පිපිරුම', 'leaf blast'],
+  bacterial_leaf_blight: ['bacterial', 'blight', 'බැක්ටීරියා', 'bacterial leaf'],
   brown_spot: ['brown spot', 'brown', 'දුඹුරු ලප'],
-  leaf_smut: ['smut', 'black powder', 'ස්මට්']
+  leaf_smut: ['smut', 'black powder', 'ස්මට්'],
+  // Tea diseases
+  blister_blight: ['blister', 'blister blight', 'බිබිලි', 'බිබිලි රෝගය'],
+  brown_blight: ['brown blight', 'tea brown', 'දුඹුරු පිළිස්සුම'],
+  gray_blight: ['gray blight', 'grey blight', 'අළු පිළිස්සුම'],
+  red_rust: ['red rust', 'rust', 'රතු මලකඩ', 'මලකඩ']
 };
 
 function detectIntent(message) {
@@ -80,6 +88,16 @@ function detectIntent(message) {
   // Check for government schemes intent
   if (synonyms.government.some(word => msg.includes(word))) {
     intents.push('GOVERNMENT');
+  }
+
+  // Check for shade management intent (tea specific)
+  if (synonyms.shade.some(word => msg.includes(word))) {
+    intents.push('SHADE');
+  }
+
+  // Check for pruning intent (tea specific)
+  if (synonyms.pruning.some(word => msg.includes(word))) {
+    intents.push('PRUNING');
   }
 
   // Return primary intent or UNKNOWN

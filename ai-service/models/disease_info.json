@@ -1,6 +1,6 @@
 {
   "Bacterial Leaf Blight": {
-    "si_name": "බැක්ටීරියා පත්‍ර අංගමාරය",
+    "si_name": "බකටරය පතර අගමරය",
     "description": "Caused by Xanthomonas oryzae. Yellow to white lesions along leaf veins.",
     "treatment": [
       "Use certified disease-free seeds",
@@ -11,7 +11,7 @@
     "severity": "high"
   },
   "Brown Spot": {
-    "si_name": "දුඹුරු පුල්ලි රෝගය",
+    "si_name": "දඹර පලල රගය",
     "description": "Fungal disease causing oval brown spots with gray centers on leaves.",
     "treatment": [
       "Apply fungicides like Mancozeb or Carbendazim",
@@ -22,7 +22,7 @@
     "severity": "medium"
   },
   "Healthy Rice Leaf": {
-    "si_name": "නිරෝගී වී පත්‍රය",
+    "si_name": "නරග ව පතරය",
     "description": "The leaf is healthy with no signs of disease.",
     "treatment": [
       "Continue good agricultural practices",
@@ -33,7 +33,7 @@
     "severity": "none"
   },
   "Leaf Blast": {
-    "si_name": "පත්‍ර පිපිරුම් රෝගය",
+    "si_name": "පතර පපරම රගය",
     "description": "Caused by Magnaporthe oryzae. Diamond-shaped lesions with gray centers.",
     "treatment": [
       "Apply Tricyclazole or Isoprothiolane fungicide",
@@ -44,7 +44,7 @@
     "severity": "high"
   },
   "Leaf scald": {
-    "si_name": "පත්‍ර පිළිස්සුම් රෝගය",
+    "si_name": "පතර පළසසම රගය",
     "description": "Fungal disease with zonate lesions starting from leaf tips.",
     "treatment": [
       "Apply fungicides at early infection stage",
@@ -55,7 +55,7 @@
     "severity": "medium"
   },
   "Narrow Brown Leaf Spot": {
-    "si_name": "පටු දුඹුරු පත්‍ර ලප රෝගය",
+    "si_name": "පට දඹර පතර ලප රගය",
     "description": "Linear brown lesions on leaves caused by Cercospora oryzae.",
     "treatment": [
       "Apply Mancozeb or Zineb fungicides",
@@ -66,7 +66,7 @@
     "severity": "medium"
   },
   "Rice Hispa": {
-    "si_name": "වී හිස්පා පළිබෝධය",
+    "si_name": "ව හසප පළබධය",
     "description": "Insect pest causing white streaks by scraping leaf surface.",
     "treatment": [
       "Apply Chlorpyrifos or Carbofuran insecticide",
@@ -77,7 +77,7 @@
     "severity": "medium"
   },
   "Sheath Blight": {
-    "si_name": "කොපු අංගමාරය",
+    "si_name": "කප අගමරය",
     "description": "Fungal disease with irregular grayish-green lesions on sheaths.",
     "treatment": [
       "Apply Validamycin or Hexaconazole fungicide",

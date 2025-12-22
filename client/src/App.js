@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import CropChatbot from './components/CropChatbot';
 import CommunityAlerts from './components/CommunityAlerts';
+import AlertsDashboard from './components/AlertsDashboard';
 
 const translations = {
   en: { 
@@ -200,7 +201,7 @@ export default function App() {
             {view === 'market' && <Marketplace lang={lang} currentUser={user} />}
             {view === 'weather' && <WeatherAdvisor lang={lang} lat={coords.lat} lon={coords.lon} />}
             {view === 'trends' && <MarketTrends lang={lang} />}
-            {view === 'alerts' && <CommunityAlerts user={user} language={lang} />}
+            {view === 'alerts' && <AlertsDashboard user={user} language={lang} />}
           </div>
         </div>
 

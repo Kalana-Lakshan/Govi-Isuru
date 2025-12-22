@@ -1,10 +1,1 @@
-{
-  "Bacterial Leaf Blight": 0,
-  "Brown Spot": 1,
-  "Healthy Rice Leaf": 2,
-  "Leaf Blast": 3,
-  "Leaf scald": 4,
-  "Narrow Brown Leaf Spot": 5,
-  "Rice Hispa": 6,
-  "Sheath Blight": 7
-}
+{"0": "Bacterial Leaf Blight", "1": "Brown Spot", "2": "Healthy Rice Leaf", "3": "Leaf Blast", "4": "Leaf scald", "5": "Narrow Brown Leaf Spot", "6": "Rice Hispa", "7": "Sheath Blight"}

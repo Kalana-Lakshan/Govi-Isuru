@@ -6,28 +6,28 @@ const knowledge = require('../knowledge/agriculture.json');
 // Predefined greeting responses
 const greetings = {
   en: [
-    "Hello! I'm your Govi Isuru farming assistant. Ask me about fertilizers, diseases, planting, or harvesting!",
-    "Welcome farmer! How can I help you today? I can provide advice on rice cultivation, pest control, and more.",
-    "Ayubowan! Ready to help with your farming questions. What would you like to know?"
+    "Hello! I'm your Govi Isuru farming assistant. Ask me about fertilizers, diseases, planting, or harvesting for rice and tea!",
+    "Welcome farmer! How can I help you today? I can provide advice on rice and tea cultivation, pest control, and more.",
+    "Ayubowan! Ready to help with your farming questions. What would you like to know about rice or tea?"
   ],
   si: [
-    "ආයුබෝවන්! මම ඔබේ ගොවි ඉසුරු ගොවිතැන් සහායකයා. පොහොර, රෝග, වගා කිරීම හෝ අස්වනු නෙලීම ගැන මගෙන් අහන්න!",
-    "ගොවි මහත්තයා/මහත්මිය, ආයුබෝවන්! අද ඔබට මට උදව් කරන්නේ කෙසේද? වී වගාව, පළිබෝධ පාලනය සහ තවත් දේ ගැන උපදෙස් දිය හැක.",
-    "ආයුබෝවන්! ඔබේ ගොවිතැන් ප්‍රශ්නවලට උදව් කිරීමට සූදානම්. ඔබ දැන ගැනීමට කැමති දේ කුමක්ද?"
+    "ආයුබෝවන්! මම ඔබේ ගොවි ඉසුරු ගොවිතැන් සහායකයා. වී සහ තේ සඳහා පොහොර, රෝග, වගා කිරීම හෝ අස්වනු නෙලීම ගැන මගෙන් අහන්න!",
+    "ගොවි මහත්තයා/මහත්මිය, ආයුබෝවන්! අද ඔබට මට උදව් කරන්නේ කෙසේද? වී සහ තේ වගාව, පළිබෝධ පාලනය සහ තවත් දේ ගැන උපදෙස් දිය හැක.",
+    "ආයුබෝවන්! ඔබේ ගොවිතැන් ප්‍රශ්නවලට උදව් කිරීමට සූදානම්. වී හෝ තේ ගැන ඔබ දැන ගැනීමට කැමති දේ කුමක්ද?"
   ]
 };
 
 // Fallback responses
 const fallbacks = {
   en: [
-    "I'm not sure about that. Could you ask about fertilizers, diseases, planting, or harvesting for rice?",
-    "I don't have information on that topic yet. Try asking about rice cultivation, pest control, or weather advice!",
-    "Sorry, I couldn't understand. Please try asking about farming topics like fertilizer, diseases, or water management."
+    "I'm not sure about that. Could you ask about fertilizers, diseases, planting, or harvesting for rice or tea?",
+    "I don't have information on that topic yet. Try asking about rice or tea cultivation, pest control, or weather advice!",
+    "Sorry, I couldn't understand. Please try asking about farming topics like fertilizer, diseases, or water management for rice or tea."
   ],
   si: [
-    "ඒ ගැන මට විශ්වාස නැත. වී සඳහා පොහොර, රෝග, වගා කිරීම හෝ අස්වනු නෙලීම ගැන අහන්න පුළුවන්ද?",
-    "එම මාතෘකාව ගැන මට තවම තොරතුරු නැත. වී වගාව, පළිබෝධ පාලනය හෝ කාලගුණ උපදෙස් ගැන අහන්න!",
-    "සමාවෙන්න, මට තේරුණේ නැත. පොහොර, රෝග හෝ ජල කළමනාකරණය වැනි ගොවිතැන් මාතෘකා ගැන අහන්න."
+    "ඒ ගැන මට විශ්වාස නැත. වී හෝ තේ සඳහා පොහොර, රෝග, වගා කිරීම හෝ අස්වනු නෙලීම ගැන අහන්න පුළුවන්ද?",
+    "එම මාතෘකාව ගැන මට තවම තොරතුරු නැත. වී හෝ තේ වගාව, පළිබෝධ පාලනය හෝ කාලගුණ උපදෙස් ගැන අහන්න!",
+    "සමාවෙන්න, මට තේරුණේ නැත. වී හෝ තේ සඳහා පොහොර, රෝග හෝ ජල කළමනාකරණය වැනි ගොවිතැන් මාතෘකා ගැන අහන්න."
   ]
 };
 
@@ -190,6 +190,10 @@ router.post('/chat', (req, res) => {
           response = langKey === 'si'
             ? knowledge[crop][season].planting.si
             : knowledge[crop][season].planting.recommendation;
+        } else if (knowledge[crop] && knowledge[crop].general && knowledge[crop].general.planting) {
+          response = langKey === 'si'
+            ? knowledge[crop].general.planting.si
+            : knowledge[crop].general.planting.recommendation;
         }
         break;
 
@@ -198,6 +202,10 @@ router.post('/chat', (req, res) => {
           response = langKey === 'si'
             ? knowledge[crop][season].harvest.si
             : knowledge[crop][season].harvest.recommendation;
+        } else if (knowledge[crop] && knowledge[crop].general && knowledge[crop].general.harvest) {
+          response = langKey === 'si'
+            ? knowledge[crop].general.harvest.si
+            : knowledge[crop].general.harvest.recommendation;
         }
         break;
 
@@ -236,6 +244,26 @@ router.post('/chat', (req, res) => {
           const schemes = Object.values(knowledge.government_schemes);
           response = schemes.map(s => langKey === 'si' ? s.si : s.info).join(' ');
           source = 'Government of Sri Lanka Agricultural Services';
+        }
+        break;
+
+      case 'SHADE':
+        // Tea-specific shade management
+        if (knowledge.tea && knowledge.tea.shade_management) {
+          response = langKey === 'si'
+            ? knowledge.tea.shade_management.si
+            : knowledge.tea.shade_management.recommendation;
+          source = 'Tea Research Institute Guidelines';
+        }
+        break;
+
+      case 'PRUNING':
+        // Tea-specific pruning advice
+        if (knowledge.tea && knowledge.tea.pruning) {
+          response = langKey === 'si'
+            ? knowledge.tea.pruning.si
+            : knowledge.tea.pruning.recommendation;
+          source = 'Tea Research Institute Guidelines';
         }
         break;
 
@@ -282,7 +310,9 @@ router.get('/topics', (req, res) => {
         'Water management',
         'Weather-based advice',
         'Organic farming tips',
-        'Government schemes & subsidies'
+        'Government schemes & subsidies',
+        'Tea shade management',
+        'Tea pruning advice'
       ],
       si: [
         'පොහොර නිර්දේශ',
@@ -293,11 +323,15 @@ router.get('/topics', (req, res) => {
         'ජල කළමනාකරණය',
         'කාලගුණ පදනම් උපදෙස්',
         'ජෛව ගොවිතැන් ඉඟි',
-        'රජයේ යෝජනා ක්‍රම සහ සහනාධාර'
+        'රජයේ යෝජනා ක්‍රම සහ සහනාධාර',
+        'තේ සෙවන කළමනාකරණය',
+        'තේ කප්පාදු උපදෙස්'
       ]
     },
-    crops: ['rice', 'vegetables'],
-    seasons: ['yala', 'maha']
+    crops: ['rice', 'tea', 'vegetables'],
+    seasons: ['yala', 'maha'],
+    teaDiseases: ['blister_blight', 'brown_blight', 'gray_blight', 'red_rust'],
+    riceDiseases: ['blast', 'bacterial_leaf_blight', 'brown_spot', 'leaf_smut']
   });
 });
 

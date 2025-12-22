@@ -15,10 +15,20 @@ const UserSchema = new mongoose.Schema({
   total_feedbacks: { type: Number, default: 0 },
   is_verified_farmer: { type: Boolean, default: false },
   
+  // False Report Tracking (Alert System)
+  false_report_count: { type: Number, default: 0 },
+  account_flagged: { type: Boolean, default: false },
+  last_report_at: { type: Date },
+  
+  // Role for admin moderation
+  role: { type: String, enum: ['farmer', 'admin', 'moderator'], default: 'farmer' },
+  
   createdAt: { type: Date, default: Date.now }
 });
 
 // Index for reputation queries
 UserSchema.index({ reputation_score: -1 });
+UserSchema.index({ role: 1 });
+UserSchema.index({ account_flagged: 1 });
 
 module.exports = mongoose.model('User', UserSchema);

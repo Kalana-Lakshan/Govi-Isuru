@@ -1,0 +1,62 @@
+{
+  "Blister Blight": {
+    "si_name": "බිබිලි අංගමාරය",
+    "description": "Caused by Exobasidium vexans fungus. White to pink blisters appear on young leaves, turning brown as they age.",
+    "treatment": [
+      "Apply copper-based fungicides like Bordeaux mixture",
+      "Remove and destroy infected leaves",
+      "Improve air circulation by proper pruning",
+      "Avoid overhead irrigation during wet weather",
+      "Apply systemic fungicides like Hexaconazole"
+    ],
+    "severity": "high"
+  },
+  "Brown Blight": {
+    "si_name": "දුඹුරු අංගමාරය",
+    "description": "Caused by Colletotrichum camelliae. Brown necrotic patches appear on mature leaves, often with concentric rings.",
+    "treatment": [
+      "Apply fungicides containing Carbendazim",
+      "Prune and remove infected branches",
+      "Maintain proper drainage in tea fields",
+      "Apply balanced fertilization",
+      "Use copper oxychloride spray preventively"
+    ],
+    "severity": "medium"
+  },
+  "Gray Blight": {
+    "si_name": "අළු අංගමාරය",
+    "description": "Caused by Pestalotiopsis species. Gray spots with dark margins appear on leaves, leading to defoliation.",
+    "treatment": [
+      "Apply Mancozeb or Copper fungicides",
+      "Remove infected plant material",
+      "Maintain optimal plant spacing",
+      "Avoid waterlogging in fields",
+      "Apply preventive sprays during monsoon"
+    ],
+    "severity": "medium"
+  },
+  "Healthy": {
+    "si_name": "නිරෝගී තේ පත්‍රය",
+    "description": "The tea leaf is healthy with no signs of disease. Good dark green color with proper texture.",
+    "treatment": [
+      "Continue regular monitoring for early disease detection",
+      "Maintain good agricultural practices",
+      "Apply balanced NPK fertilization",
+      "Ensure proper irrigation management",
+      "Practice integrated pest management"
+    ],
+    "severity": "none"
+  },
+  "Red Rust": {
+    "si_name": "රතු මළ රෝගය",
+    "description": "Caused by Cephaleuros parasiticus algae. Orange-red rusty patches appear on upper leaf surface.",
+    "treatment": [
+      "Apply copper-based fungicides",
+      "Improve air circulation through pruning",
+      "Remove heavily infected leaves",
+      "Apply lime sulfur spray",
+      "Maintain proper shade management"
+    ],
+    "severity": "medium"
+  }
+}
