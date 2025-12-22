@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle } from 'lucide-react';
+import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper } from 'lucide-react';
 import AIDoctor from './components/AIDoctor';
 import Marketplace from './components/Marketplace';
 import WeatherAdvisor from './components/WeatherAdvisor';
@@ -9,6 +9,8 @@ import Login from './components/Login';
 import CropChatbot from './components/CropChatbot';
 import CommunityAlerts from './components/CommunityAlerts';
 import AlertsDashboard from './components/AlertsDashboard';
+import AgriNews from './components/AgriNews';
+import NewsWidget from './components/NewsWidget';
 
 const translations = {
   en: { 
@@ -18,6 +20,7 @@ const translations = {
     trends: "Market Trends",
     weather: "Weather Advisory",
     alerts: "Disease Alerts",
+    news: "Agri News",
     logout: "Logout",
     footer: "Empowering Sri Lankan Farmers" 
   },
@@ -28,6 +31,7 @@ const translations = {
     trends: "මිල ප්‍රවණතා", 
     weather: "කාලගුණ උපදෙස්",
     alerts: "රෝග අනතුරු ඇඟවීම්",
+    news: "ගොවි ප්‍රවෘත්ති",
     logout: "පද්ධතියෙන් ඉවත් වන්න",
     footer: "ශ්‍රී ලාංකීය ගොවීන් සවිබල ගැන්වීම" 
   }
@@ -99,6 +103,7 @@ export default function App() {
     { id: 'market', icon: ShoppingBag, label: t.market, emoji: '🛒' },
     { id: 'weather', icon: CloudSun, label: t.weather, emoji: '🌤️' },
     { id: 'alerts', icon: AlertTriangle, label: t.alerts, emoji: '⚠️' },
+    { id: 'news', icon: Newspaper, label: t.news, emoji: '📰' },
   ];
 
   // 4. MAIN APP DASHBOARD
@@ -197,11 +202,21 @@ export default function App() {
           <div className="space-y-6">
             {/* Show Community Alerts on AI Doctor view */}
             {view === 'doctor' && <CommunityAlerts user={user} language={lang} />}
-            {view === 'doctor' && <AIDoctor lang={lang} user={user} />}
+            {view === 'doctor' && (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="lg:col-span-2">
+                  <AIDoctor lang={lang} user={user} />
+                </div>
+                <div className="lg:col-span-1">
+                  <NewsWidget lang={lang} onViewAll={() => setView('news')} maxItems={4} />
+                </div>
+              </div>
+            )}
             {view === 'market' && <Marketplace lang={lang} currentUser={user} />}
             {view === 'weather' && <WeatherAdvisor lang={lang} lat={coords.lat} lon={coords.lon} />}
             {view === 'trends' && <MarketTrends lang={lang} />}
             {view === 'alerts' && <AlertsDashboard user={user} language={lang} />}
+            {view === 'news' && <AgriNews lang={lang} user={user} />}
           </div>
         </div>
 

@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken');
 const chatbotRoutes = require('./routes/chatbot');
 const alertRoutes = require('./routes/alerts');
 const reputationRoutes = require('./routes/reputation');
+const newsRoutes = require('./routes/news');
 
 const app = express();
 
@@ -25,6 +26,9 @@ app.use('/api/alerts', alertRoutes);
 
 // Farmer Reputation API Routes
 app.use('/api/reputation', reputationRoutes);
+
+// Agriculture News API Routes
+app.use('/api/news', newsRoutes);
 
 // 2. Connect to Database using environment variable
 // We remove the hardcoded string and the deprecated options (no longer needed in Mongoose 6+)
