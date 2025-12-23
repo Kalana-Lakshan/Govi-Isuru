@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper } from 'lucide-react';
+import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper, BarChart3 } from 'lucide-react';
 import AIDoctor from './components/AIDoctor';
 import Marketplace from './components/Marketplace';
 import WeatherAdvisor from './components/WeatherAdvisor';
@@ -11,6 +11,7 @@ import CommunityAlerts from './components/CommunityAlerts';
 import AlertsDashboard from './components/AlertsDashboard';
 import AgriNews from './components/AgriNews';
 import NewsWidget from './components/NewsWidget';
+import YieldPrediction from './components/YieldPrediction';
 
 const translations = {
   en: { 
@@ -21,6 +22,7 @@ const translations = {
     weather: "Weather Advisory",
     alerts: "Disease Alerts",
     news: "Agri News",
+    yieldForecast: "Yield Forecast",
     logout: "Logout",
     footer: "Empowering Sri Lankan Farmers" 
   },
@@ -32,6 +34,7 @@ const translations = {
     weather: "කාලගුණ උපදෙස්",
     alerts: "රෝග අනතුරු ඇඟවීම්",
     news: "ගොවි ප්‍රවෘත්ති",
+    yieldForecast: "අස්වැන්න අනාවැකි",
     logout: "පද්ධතියෙන් ඉවත් වන්න",
     footer: "ශ්‍රී ලාංකීය ගොවීන් සවිබල ගැන්වීම" 
   }
@@ -99,6 +102,7 @@ export default function App() {
   // Navigation items config
   const navItems = [
     { id: 'doctor', icon: LayoutDashboard, label: t.doctor, emoji: '🩺' },
+    { id: 'yield', icon: BarChart3, label: t.yieldForecast, emoji: '🌾' },
     { id: 'trends', icon: TrendingUp, label: t.trends, emoji: '📈' },
     { id: 'market', icon: ShoppingBag, label: t.market, emoji: '🛒' },
     { id: 'weather', icon: CloudSun, label: t.weather, emoji: '🌤️' },
@@ -217,6 +221,7 @@ export default function App() {
             {view === 'trends' && <MarketTrends lang={lang} />}
             {view === 'alerts' && <AlertsDashboard user={user} language={lang} />}
             {view === 'news' && <AgriNews lang={lang} user={user} />}
+            {view === 'yield' && <YieldPrediction lang={lang} />}
           </div>
         </div>
 

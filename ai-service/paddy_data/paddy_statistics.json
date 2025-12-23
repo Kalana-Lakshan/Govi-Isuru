@@ -1,0 +1,5050 @@
+{
+  "metadata": {
+    "source": "Department of Census and Statistics, Sri Lanka",
+    "years_covered": "2015-2024",
+    "seasons": [
+      "Maha",
+      "Yala"
+    ],
+    "districts_count": 25,
+    "total_records": 475,
+    "generated_date": "2025-01-01"
+  },
+  "climate_zones": {
+    "wet_zone": [
+      "Colombo",
+      "Gampaha",
+      "Kalutara",
+      "Galle",
+      "Matara",
+      "Ratnapura",
+      "Kegalle"
+    ],
+    "dry_zone": [
+      "Jaffna",
+      "Kilinochchi",
+      "Mannar",
+      "Mullaitivu",
+      "Vavuniya",
+      "Batticaloa",
+      "Ampara",
+      "Trincomalee",
+      "Anuradhapura",
+      "Polonnaruwa",
+      "Puttalam",
+      "Hambantota"
+    ],
+    "intermediate": [
+      "Kandy",
+      "Matale",
+      "NuwaraEliya",
+      "Kurunegala",
+      "Badulla",
+      "Monaragala"
+    ]
+  },
+  "district_statistics": {
+    "Colombo": {
+      "avg_yield_kg_ha": 3210.53,
+      "min_yield_kg_ha": 2650,
+      "max_yield_kg_ha": 3620,
+      "std_dev": 287.7,
+      "stability_index": 0.9104,
+      "trend_per_year": 0.0062,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Gampaha": {
+      "avg_yield_kg_ha": 3118.42,
+      "min_yield_kg_ha": 2520,
+      "max_yield_kg_ha": 3580,
+      "std_dev": 311.26,
+      "stability_index": 0.9002,
+      "trend_per_year": 0.0075,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Kalutara": {
+      "avg_yield_kg_ha": 3050.0,
+      "min_yield_kg_ha": 2450,
+      "max_yield_kg_ha": 3520,
+      "std_dev": 312.41,
+      "stability_index": 0.8976,
+      "trend_per_year": 0.008,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Kandy": {
+      "avg_yield_kg_ha": 3418.95,
+      "min_yield_kg_ha": 2850,
+      "max_yield_kg_ha": 3880,
+      "std_dev": 298.08,
+      "stability_index": 0.9128,
+      "trend_per_year": 0.0063,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Matale": {
+      "avg_yield_kg_ha": 3650.53,
+      "min_yield_kg_ha": 3050,
+      "max_yield_kg_ha": 4120,
+      "std_dev": 299.58,
+      "stability_index": 0.9179,
+      "trend_per_year": 0.0064,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "NuwaraEliya": {
+      "avg_yield_kg_ha": 2855.26,
+      "min_yield_kg_ha": 2380,
+      "max_yield_kg_ha": 3280,
+      "std_dev": 263.13,
+      "stability_index": 0.9078,
+      "trend_per_year": 0.0079,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Galle": {
+      "avg_yield_kg_ha": 3064.21,
+      "min_yield_kg_ha": 2520,
+      "max_yield_kg_ha": 3520,
+      "std_dev": 293.62,
+      "stability_index": 0.9042,
+      "trend_per_year": 0.0096,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Matara": {
+      "avg_yield_kg_ha": 3196.84,
+      "min_yield_kg_ha": 2680,
+      "max_yield_kg_ha": 3650,
+      "std_dev": 290.4,
+      "stability_index": 0.9092,
+      "trend_per_year": 0.0091,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Hambantota": {
+      "avg_yield_kg_ha": 4147.89,
+      "min_yield_kg_ha": 3480,
+      "max_yield_kg_ha": 4650,
+      "std_dev": 323.39,
+      "stability_index": 0.922,
+      "trend_per_year": 0.0071,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Jaffna": {
+      "avg_yield_kg_ha": 3851.05,
+      "min_yield_kg_ha": 3180,
+      "max_yield_kg_ha": 4350,
+      "std_dev": 322.37,
+      "stability_index": 0.9163,
+      "trend_per_year": 0.0076,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Kilinochchi": {
+      "avg_yield_kg_ha": 4064.21,
+      "min_yield_kg_ha": 3350,
+      "max_yield_kg_ha": 4580,
+      "std_dev": 339.61,
+      "stability_index": 0.9164,
+      "trend_per_year": 0.0088,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Mannar": {
+      "avg_yield_kg_ha": 4238.42,
+      "min_yield_kg_ha": 3580,
+      "max_yield_kg_ha": 4750,
+      "std_dev": 324.88,
+      "stability_index": 0.9233,
+      "trend_per_year": 0.0079,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Mullaitivu": {
+      "avg_yield_kg_ha": 3998.42,
+      "min_yield_kg_ha": 3320,
+      "max_yield_kg_ha": 4520,
+      "std_dev": 331.35,
+      "stability_index": 0.9171,
+      "trend_per_year": 0.0086,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Vavuniya": {
+      "avg_yield_kg_ha": 4141.58,
+      "min_yield_kg_ha": 3450,
+      "max_yield_kg_ha": 4650,
+      "std_dev": 330.9,
+      "stability_index": 0.9201,
+      "trend_per_year": 0.0079,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Batticaloa": {
+      "avg_yield_kg_ha": 4352.11,
+      "min_yield_kg_ha": 3650,
+      "max_yield_kg_ha": 4920,
+      "std_dev": 338.83,
+      "stability_index": 0.9221,
+      "trend_per_year": 0.0093,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Ampara": {
+      "avg_yield_kg_ha": 4626.84,
+      "min_yield_kg_ha": 3950,
+      "max_yield_kg_ha": 5180,
+      "std_dev": 328.65,
+      "stability_index": 0.929,
+      "trend_per_year": 0.0086,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Trincomalee": {
+      "avg_yield_kg_ha": 4417.89,
+      "min_yield_kg_ha": 3720,
+      "max_yield_kg_ha": 4980,
+      "std_dev": 335.67,
+      "stability_index": 0.924,
+      "trend_per_year": 0.0091,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Kurunegala": {
+      "avg_yield_kg_ha": 3842.11,
+      "min_yield_kg_ha": 3180,
+      "max_yield_kg_ha": 4350,
+      "std_dev": 322.33,
+      "stability_index": 0.9161,
+      "trend_per_year": 0.0084,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Puttalam": {
+      "avg_yield_kg_ha": 3704.74,
+      "min_yield_kg_ha": 3050,
+      "max_yield_kg_ha": 4220,
+      "std_dev": 322.13,
+      "stability_index": 0.913,
+      "trend_per_year": 0.009,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Anuradhapura": {
+      "avg_yield_kg_ha": 4350.53,
+      "min_yield_kg_ha": 3620,
+      "max_yield_kg_ha": 4920,
+      "std_dev": 342.34,
+      "stability_index": 0.9213,
+      "trend_per_year": 0.0095,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Polonnaruwa": {
+      "avg_yield_kg_ha": 4716.32,
+      "min_yield_kg_ha": 4020,
+      "max_yield_kg_ha": 5280,
+      "std_dev": 338.55,
+      "stability_index": 0.9282,
+      "trend_per_year": 0.0084,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Badulla": {
+      "avg_yield_kg_ha": 3447.37,
+      "min_yield_kg_ha": 2880,
+      "max_yield_kg_ha": 3950,
+      "std_dev": 306.16,
+      "stability_index": 0.9112,
+      "trend_per_year": 0.0085,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Monaragala": {
+      "avg_yield_kg_ha": 3876.84,
+      "min_yield_kg_ha": 3280,
+      "max_yield_kg_ha": 4380,
+      "std_dev": 313.26,
+      "stability_index": 0.9192,
+      "trend_per_year": 0.0077,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Ratnapura": {
+      "avg_yield_kg_ha": 3191.58,
+      "min_yield_kg_ha": 2620,
+      "max_yield_kg_ha": 3650,
+      "std_dev": 291.8,
+      "stability_index": 0.9086,
+      "trend_per_year": 0.0088,
+      "years_of_data": 10,
+      "total_records": 19
+    },
+    "Kegalle": {
+      "avg_yield_kg_ha": 3082.63,
+      "min_yield_kg_ha": 2480,
+      "max_yield_kg_ha": 3550,
+      "std_dev": 300.59,
+      "stability_index": 0.9025,
+      "trend_per_year": 0.0101,
+      "years_of_data": 10,
+      "total_records": 19
+    }
+  },
+  "historical_data": [
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8755,
+      "production_mt": 28453.75,
+      "yield_kg_ha": 3250
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12625,
+      "production_mt": 40147.5,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13630,
+      "production_mt": 42525.6,
+      "yield_kg_ha": 3120
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 21825,
+      "production_mt": 75296.25,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16835,
+      "production_mt": 61952.8,
+      "yield_kg_ha": 3680
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6175,
+      "production_mt": 17598.75,
+      "yield_kg_ha": 2850
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 17655,
+      "production_mt": 53847.75,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14935,
+      "production_mt": 47493.3,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 44200,
+      "production_mt": 182104.0,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 29355,
+      "production_mt": 113016.75,
+      "yield_kg_ha": 3850
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23520,
+      "production_mt": 94550.4,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17390,
+      "production_mt": 72690.2,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22725,
+      "production_mt": 89763.75,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16830,
+      "production_mt": 69003.0,
+      "yield_kg_ha": 4100
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 50925,
+      "production_mt": 217959.0,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 76930,
+      "production_mt": 347723.6,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 50925,
+      "production_mt": 221523.75,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 62335,
+      "production_mt": 238119.7,
+      "yield_kg_ha": 3820
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 31200,
+      "production_mt": 113880.0,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 81420,
+      "production_mt": 348477.6,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 73225,
+      "production_mt": 340496.25,
+      "yield_kg_ha": 4650
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 22050,
+      "production_mt": 75411.0,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 32825,
+      "production_mt": 126376.25,
+      "yield_kg_ha": 3850
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 25935,
+      "production_mt": 82473.3,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2015,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 18685,
+      "production_mt": 56989.25,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6566,
+      "production_mt": 19566.68,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 9468,
+      "production_mt": 26983.8,
+      "yield_kg_ha": 2850
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10222,
+      "production_mt": 28110.5,
+      "yield_kg_ha": 2750
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16368,
+      "production_mt": 51559.2,
+      "yield_kg_ha": 3150
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 12626,
+      "production_mt": 42675.88,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 4631,
+      "production_mt": 12272.15,
+      "yield_kg_ha": 2650
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13241,
+      "production_mt": 36809.98,
+      "yield_kg_ha": 2780
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11201,
+      "production_mt": 32706.92,
+      "yield_kg_ha": 2920
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 33150,
+      "production_mt": 127627.5,
+      "yield_kg_ha": 3850
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22016,
+      "production_mt": 77496.32,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17640,
+      "production_mt": 64915.2,
+      "yield_kg_ha": 3680
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 13042,
+      "production_mt": 51124.64,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17043,
+      "production_mt": 62206.95,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 12622,
+      "production_mt": 47711.16,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 38193,
+      "production_mt": 152008.14,
+      "yield_kg_ha": 3980
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 57697,
+      "production_mt": 246943.16,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 38193,
+      "production_mt": 154681.65,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 46751,
+      "production_mt": 164563.52,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23400,
+      "production_mt": 79092.0,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 61065,
+      "production_mt": 243038.7,
+      "yield_kg_ha": 3980
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 54918,
+      "production_mt": 238893.3,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16537,
+      "production_mt": 52091.55,
+      "yield_kg_ha": 3150
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 24618,
+      "production_mt": 88132.44,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 19451,
+      "production_mt": 56796.92,
+      "yield_kg_ha": 2920
+    },
+    {
+      "year": 2015,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14013,
+      "production_mt": 38956.14,
+      "yield_kg_ha": 2780
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8415,
+      "production_mt": 28442.7,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12500,
+      "production_mt": 41000.0,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 15515,
+      "production_mt": 49958.3,
+      "yield_kg_ha": 3220
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 23400,
+      "production_mt": 83772.0,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 17020,
+      "production_mt": 64335.6,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6240,
+      "production_mt": 18408.0,
+      "yield_kg_ha": 2950
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 16170,
+      "production_mt": 51420.6,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14935,
+      "production_mt": 48986.8,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 40375,
+      "production_mt": 170382.5,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 25935,
+      "production_mt": 102443.25,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22295,
+      "production_mt": 92524.25,
+      "yield_kg_ha": 4150
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17020,
+      "production_mt": 72845.6,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 20475,
+      "production_mt": 83538.0,
+      "yield_kg_ha": 4080
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17490,
+      "production_mt": 73807.8,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 47045,
+      "production_mt": 206057.1,
+      "yield_kg_ha": 4380
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 84780,
+      "production_mt": 391683.6,
+      "yield_kg_ha": 4620
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 49350,
+      "production_mt": 219607.5,
+      "yield_kg_ha": 4450
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 69870,
+      "production_mt": 273890.4,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 35100,
+      "production_mt": 132678.0,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 86730,
+      "production_mt": 379877.4,
+      "yield_kg_ha": 4380
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 78300,
+      "production_mt": 371925.0,
+      "yield_kg_ha": 4750
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 23520,
+      "production_mt": 82790.4,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 31525,
+      "production_mt": 124523.75,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 30780,
+      "production_mt": 100958.4,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2016,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 17205,
+      "production_mt": 54711.9,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6311,
+      "production_mt": 16724.15,
+      "yield_kg_ha": 2650
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 9375,
+      "production_mt": 23625.0,
+      "yield_kg_ha": 2520
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11636,
+      "production_mt": 28508.2,
+      "yield_kg_ha": 2450
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 17550,
+      "production_mt": 50017.5,
+      "yield_kg_ha": 2850
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 12765,
+      "production_mt": 38933.25,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 4680,
+      "production_mt": 11138.4,
+      "yield_kg_ha": 2380
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12127,
+      "production_mt": 30560.04,
+      "yield_kg_ha": 2520
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11201,
+      "production_mt": 30018.68,
+      "yield_kg_ha": 2680
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 30281,
+      "production_mt": 105377.88,
+      "yield_kg_ha": 3480
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19451,
+      "production_mt": 61854.18,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16721,
+      "production_mt": 56015.35,
+      "yield_kg_ha": 3350
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 12765,
+      "production_mt": 45698.7,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 15356,
+      "production_mt": 50981.92,
+      "yield_kg_ha": 3320
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 13117,
+      "production_mt": 45253.65,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 35283,
+      "production_mt": 128782.95,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 63585,
+      "production_mt": 251160.75,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 37012,
+      "production_mt": 137684.64,
+      "yield_kg_ha": 3720
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 52402,
+      "production_mt": 166638.36,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 26325,
+      "production_mt": 80291.25,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 65047,
+      "production_mt": 235470.14,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 58725,
+      "production_mt": 236074.5,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 17640,
+      "production_mt": 50803.2,
+      "yield_kg_ha": 2880
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 23643,
+      "production_mt": 77549.04,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 23085,
+      "production_mt": 60482.7,
+      "yield_kg_ha": 2620
+    },
+    {
+      "year": 2016,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12903,
+      "production_mt": 31999.44,
+      "yield_kg_ha": 2480
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8670,
+      "production_mt": 29651.4,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13625,
+      "production_mt": 45643.75,
+      "yield_kg_ha": 3350
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13630,
+      "production_mt": 44706.4,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 24525,
+      "production_mt": 88780.5,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16835,
+      "production_mt": 64814.75,
+      "yield_kg_ha": 3850
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6305,
+      "production_mt": 19041.1,
+      "yield_kg_ha": 3020
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 16335,
+      "production_mt": 53088.75,
+      "yield_kg_ha": 3250
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 15225,
+      "production_mt": 51460.5,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 42500,
+      "production_mt": 184875.0,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 29070,
+      "production_mt": 117733.5,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 26215,
+      "production_mt": 112200.2,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 18130,
+      "production_mt": 80134.6,
+      "yield_kg_ha": 4420
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 24300,
+      "production_mt": 101574.0,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16665,
+      "production_mt": 72492.75,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 44620,
+      "production_mt": 201682.4,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 74575,
+      "production_mt": 356468.5,
+      "yield_kg_ha": 4780
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 52500,
+      "production_mt": 240450.0,
+      "yield_kg_ha": 4580
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 65075,
+      "production_mt": 261601.5,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 33475,
+      "production_mt": 129883.0,
+      "yield_kg_ha": 3880
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 87615,
+      "production_mt": 396019.8,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 68875,
+      "production_mt": 336110.0,
+      "yield_kg_ha": 4880
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 24500,
+      "production_mt": 88690.0,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 31850,
+      "production_mt": 128992.5,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 29925,
+      "production_mt": 101146.5,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2017,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 19980,
+      "production_mt": 65534.4,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6502,
+      "production_mt": 20026.16,
+      "yield_kg_ha": 3080
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10218,
+      "production_mt": 30143.1,
+      "yield_kg_ha": 2950
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10222,
+      "production_mt": 29439.36,
+      "yield_kg_ha": 2880
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 18393,
+      "production_mt": 60329.04,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 12626,
+      "production_mt": 44443.52,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 4728,
+      "production_mt": 12860.16,
+      "yield_kg_ha": 2720
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12251,
+      "production_mt": 35772.92,
+      "yield_kg_ha": 2920
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11418,
+      "production_mt": 34824.9,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 31875,
+      "production_mt": 128137.5,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 21802,
+      "production_mt": 81103.44,
+      "yield_kg_ha": 3720
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19661,
+      "production_mt": 77071.12,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 13597,
+      "production_mt": 55475.76,
+      "yield_kg_ha": 4080
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 18225,
+      "production_mt": 70166.25,
+      "yield_kg_ha": 3850
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 12498,
+      "production_mt": 50241.96,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 33465,
+      "production_mt": 139883.7,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 55931,
+      "production_mt": 250570.88,
+      "yield_kg_ha": 4480
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 39375,
+      "production_mt": 167343.75,
+      "yield_kg_ha": 4250
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 48806,
+      "production_mt": 179606.08,
+      "yield_kg_ha": 3680
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 25106,
+      "production_mt": 89126.3,
+      "yield_kg_ha": 3550
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 65711,
+      "production_mt": 274671.98,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 51656,
+      "production_mt": 235034.8,
+      "yield_kg_ha": 4550
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 18375,
+      "production_mt": 60270.0,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 23887,
+      "production_mt": 88859.64,
+      "yield_kg_ha": 3720
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 22443,
+      "production_mt": 68451.15,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2017,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14985,
+      "production_mt": 43756.2,
+      "yield_kg_ha": 2920
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8840,
+      "production_mt": 30763.2,
+      "yield_kg_ha": 3480
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12125,
+      "production_mt": 41467.5,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13195,
+      "production_mt": 44203.25,
+      "yield_kg_ha": 3350
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 23625,
+      "production_mt": 86940.0,
+      "yield_kg_ha": 3680
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 20165,
+      "production_mt": 79046.8,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6500,
+      "production_mt": 20020.0,
+      "yield_kg_ha": 3080
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 15180,
+      "production_mt": 50397.6,
+      "yield_kg_ha": 3320
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13920,
+      "production_mt": 48024.0,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 45900,
+      "production_mt": 202878.0,
+      "yield_kg_ha": 4420
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 28500,
+      "production_mt": 117420.0,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22295,
+      "production_mt": 96983.25,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19425,
+      "production_mt": 87801.0,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23625,
+      "production_mt": 101115.0,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16830,
+      "production_mt": 74388.6,
+      "yield_kg_ha": 4420
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 45590,
+      "production_mt": 210625.8,
+      "yield_kg_ha": 4620
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 81640,
+      "production_mt": 398403.2,
+      "yield_kg_ha": 4880
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 57225,
+      "production_mt": 267813.0,
+      "yield_kg_ha": 4680
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 65760,
+      "production_mt": 270931.2,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 32825,
+      "production_mt": 130643.5,
+      "yield_kg_ha": 3980
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 82305,
+      "production_mt": 380249.1,
+      "yield_kg_ha": 4620
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 78300,
+      "production_mt": 389934.0,
+      "yield_kg_ha": 4980
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 25235,
+      "production_mt": 93874.2,
+      "yield_kg_ha": 3720
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 31200,
+      "production_mt": 129480.0,
+      "yield_kg_ha": 4150
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 29355,
+      "production_mt": 101274.75,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2018,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 19795,
+      "production_mt": 66313.25,
+      "yield_kg_ha": 3350
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6630,
+      "production_mt": 20884.5,
+      "yield_kg_ha": 3150
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 9093,
+      "production_mt": 27460.86,
+      "yield_kg_ha": 3020
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 9896,
+      "production_mt": 29193.2,
+      "yield_kg_ha": 2950
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 17718,
+      "production_mt": 59355.3,
+      "yield_kg_ha": 3350
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 15123,
+      "production_mt": 54140.34,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 4875,
+      "production_mt": 13552.5,
+      "yield_kg_ha": 2780
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11385,
+      "production_mt": 33927.3,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10440,
+      "production_mt": 32572.8,
+      "yield_kg_ha": 3120
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 34425,
+      "production_mt": 141831.0,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 21375,
+      "production_mt": 81652.5,
+      "yield_kg_ha": 3820
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16721,
+      "production_mt": 67218.42,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 14568,
+      "production_mt": 61476.96,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17718,
+      "production_mt": 69986.1,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 12622,
+      "production_mt": 52002.64,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 34192,
+      "production_mt": 147709.44,
+      "yield_kg_ha": 4320
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 61230,
+      "production_mt": 282882.6,
+      "yield_kg_ha": 4620
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 42918,
+      "production_mt": 187980.84,
+      "yield_kg_ha": 4380
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 49320,
+      "production_mt": 186429.6,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 24618,
+      "production_mt": 89855.7,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 61728,
+      "production_mt": 266664.96,
+      "yield_kg_ha": 4320
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 58725,
+      "production_mt": 274833.0,
+      "yield_kg_ha": 4680
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 18926,
+      "production_mt": 63969.88,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 23400,
+      "production_mt": 89388.0,
+      "yield_kg_ha": 3820
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 22016,
+      "production_mt": 68689.92,
+      "yield_kg_ha": 3120
+    },
+    {
+      "year": 2018,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14846,
+      "production_mt": 44834.92,
+      "yield_kg_ha": 3020
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8075,
+      "production_mt": 28424.0,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12625,
+      "production_mt": 43556.25,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13920,
+      "production_mt": 47049.6,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 21600,
+      "production_mt": 81000.0,
+      "yield_kg_ha": 3750
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 17575,
+      "production_mt": 69948.5,
+      "yield_kg_ha": 3980
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6240,
+      "production_mt": 19656.0,
+      "yield_kg_ha": 3150
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 15510,
+      "production_mt": 52423.8,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13630,
+      "production_mt": 47977.6,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 43350,
+      "production_mt": 195942.0,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 30780,
+      "production_mt": 129891.6,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22050,
+      "production_mt": 98122.5,
+      "yield_kg_ha": 4450
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17205,
+      "production_mt": 79487.1,
+      "yield_kg_ha": 4620
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 21150,
+      "production_mt": 92637.0,
+      "yield_kg_ha": 4380
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 15675,
+      "production_mt": 70851.0,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 44135,
+      "production_mt": 208317.2,
+      "yield_kg_ha": 4720
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 79285,
+      "production_mt": 394839.3,
+      "yield_kg_ha": 4980
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 47250,
+      "production_mt": 225855.0,
+      "yield_kg_ha": 4780
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 73295,
+      "production_mt": 309304.9,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 35425,
+      "production_mt": 144534.0,
+      "yield_kg_ha": 4080
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 84960,
+      "production_mt": 401011.2,
+      "yield_kg_ha": 4720
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 73225,
+      "production_mt": 371983.0,
+      "yield_kg_ha": 5080
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 26215,
+      "production_mt": 100141.3,
+      "yield_kg_ha": 3820
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 35425,
+      "production_mt": 150556.25,
+      "yield_kg_ha": 4250
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 29070,
+      "production_mt": 102326.4,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2019,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 17945,
+      "production_mt": 61371.9,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6056,
+      "production_mt": 18046.88,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 9468,
+      "production_mt": 26983.8,
+      "yield_kg_ha": 2850
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10440,
+      "production_mt": 29023.2,
+      "yield_kg_ha": 2780
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16200,
+      "production_mt": 51516.0,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 13181,
+      "production_mt": 45079.02,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 4680,
+      "production_mt": 12261.6,
+      "yield_kg_ha": 2620
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11632,
+      "production_mt": 32802.24,
+      "yield_kg_ha": 2820
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10222,
+      "production_mt": 30154.9,
+      "yield_kg_ha": 2950
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 32512,
+      "production_mt": 127447.04,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23085,
+      "production_mt": 83567.7,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16537,
+      "production_mt": 63171.34,
+      "yield_kg_ha": 3820
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 12903,
+      "production_mt": 51870.06,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 15862,
+      "production_mt": 59482.5,
+      "yield_kg_ha": 3750
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 11756,
+      "production_mt": 46083.52,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 33101,
+      "production_mt": 136376.12,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 59463,
+      "production_mt": 262826.46,
+      "yield_kg_ha": 4420
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 35437,
+      "production_mt": 148126.66,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 54971,
+      "production_mt": 198995.02,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 26568,
+      "production_mt": 92456.64,
+      "yield_kg_ha": 3480
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 63720,
+      "production_mt": 262526.4,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 54918,
+      "production_mt": 246032.64,
+      "yield_kg_ha": 4480
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 19661,
+      "production_mt": 63308.42,
+      "yield_kg_ha": 3220
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 26568,
+      "production_mt": 96973.2,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 21802,
+      "production_mt": 64969.96,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2019,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13458,
+      "production_mt": 38355.3,
+      "yield_kg_ha": 2850
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8160,
+      "production_mt": 29212.8,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13500,
+      "production_mt": 47520.0,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14500,
+      "production_mt": 50025.0,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 21600,
+      "production_mt": 82512.0,
+      "yield_kg_ha": 3820
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16835,
+      "production_mt": 68181.75,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6435,
+      "production_mt": 20720.7,
+      "yield_kg_ha": 3220
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 17490,
+      "production_mt": 60340.5,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14645,
+      "production_mt": 52429.1,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 39525,
+      "production_mt": 181024.5,
+      "yield_kg_ha": 4580
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 28500,
+      "production_mt": 121980.0,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23275,
+      "production_mt": 105203.0,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17390,
+      "production_mt": 81385.2,
+      "yield_kg_ha": 4680
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 20475,
+      "production_mt": 91113.75,
+      "yield_kg_ha": 4450
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16500,
+      "production_mt": 75570.0,
+      "yield_kg_ha": 4580
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 45105,
+      "production_mt": 217406.1,
+      "yield_kg_ha": 4820
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 75360,
+      "production_mt": 382828.8,
+      "yield_kg_ha": 5080
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 54600,
+      "production_mt": 266448.0,
+      "yield_kg_ha": 4880
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 65075,
+      "production_mt": 278521.0,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 30550,
+      "production_mt": 126782.5,
+      "yield_kg_ha": 4150
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 85845,
+      "production_mt": 413772.9,
+      "yield_kg_ha": 4820
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 77575,
+      "production_mt": 401838.5,
+      "yield_kg_ha": 5180
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 25725,
+      "production_mt": 99813.0,
+      "yield_kg_ha": 3880
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 34775,
+      "production_mt": 150228.0,
+      "yield_kg_ha": 4320
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 30210,
+      "production_mt": 108151.8,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2020,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 18130,
+      "production_mt": 63092.4,
+      "yield_kg_ha": 3480
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6120,
+      "production_mt": 19706.4,
+      "yield_kg_ha": 3220
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10125,
+      "production_mt": 31590.0,
+      "yield_kg_ha": 3120
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10875,
+      "production_mt": 33168.75,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16200,
+      "production_mt": 55890.0,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 12626,
+      "production_mt": 46463.68,
+      "yield_kg_ha": 3680
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 4826,
+      "production_mt": 13898.88,
+      "yield_kg_ha": 2880
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13117,
+      "production_mt": 40400.36,
+      "yield_kg_ha": 3080
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10983,
+      "production_mt": 35365.26,
+      "yield_kg_ha": 3220
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 29643,
+      "production_mt": 125093.46,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 21375,
+      "production_mt": 83790.0,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17456,
+      "production_mt": 72442.4,
+      "yield_kg_ha": 4150
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 13042,
+      "production_mt": 56341.44,
+      "yield_kg_ha": 4320
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 15356,
+      "production_mt": 62652.48,
+      "yield_kg_ha": 4080
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 12375,
+      "production_mt": 52222.5,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 33828,
+      "production_mt": 150534.6,
+      "yield_kg_ha": 4450
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 56520,
+      "production_mt": 268470.0,
+      "yield_kg_ha": 4750
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 40950,
+      "production_mt": 185094.0,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 48806,
+      "production_mt": 191319.52,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22912,
+      "production_mt": 86607.36,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 64383,
+      "production_mt": 286504.35,
+      "yield_kg_ha": 4450
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 58181,
+      "production_mt": 280432.42,
+      "yield_kg_ha": 4820
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 19293,
+      "production_mt": 67139.64,
+      "yield_kg_ha": 3480
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 26081,
+      "production_mt": 102237.52,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 22657,
+      "production_mt": 72955.54,
+      "yield_kg_ha": 3220
+    },
+    {
+      "year": 2020,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13597,
+      "production_mt": 42422.64,
+      "yield_kg_ha": 3120
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8585,
+      "production_mt": 31077.7,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12750,
+      "production_mt": 45645.0,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14935,
+      "production_mt": 52571.2,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 20475,
+      "production_mt": 79443.0,
+      "yield_kg_ha": 3880
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 17205,
+      "production_mt": 70884.6,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6825,
+      "production_mt": 22386.0,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 17985,
+      "production_mt": 63307.2,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14210,
+      "production_mt": 51866.5,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 38250,
+      "production_mt": 177862.5,
+      "yield_kg_ha": 4650
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 27930,
+      "production_mt": 121495.5,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 24010,
+      "production_mt": 109965.8,
+      "yield_kg_ha": 4580
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17390,
+      "production_mt": 82602.5,
+      "yield_kg_ha": 4750
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22950,
+      "production_mt": 103734.0,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 16830,
+      "production_mt": 78259.5,
+      "yield_kg_ha": 4650
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 48500,
+      "production_mt": 238620.0,
+      "yield_kg_ha": 4920
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 80070,
+      "production_mt": 414762.6,
+      "yield_kg_ha": 5180
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 55125,
+      "production_mt": 274522.5,
+      "yield_kg_ha": 4980
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 65760,
+      "production_mt": 286056.0,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 30550,
+      "production_mt": 128921.0,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 94695,
+      "production_mt": 465899.4,
+      "yield_kg_ha": 4920
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 76125,
+      "production_mt": 401940.0,
+      "yield_kg_ha": 5280
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 22295,
+      "production_mt": 88065.25,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 31200,
+      "production_mt": 136656.0,
+      "yield_kg_ha": 4380
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 31065,
+      "production_mt": 113387.25,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2021,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 17390,
+      "production_mt": 61734.5,
+      "yield_kg_ha": 3550
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6438,
+      "production_mt": 19635.9,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 9562,
+      "production_mt": 28207.9,
+      "yield_kg_ha": 2950
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11201,
+      "production_mt": 32258.88,
+      "yield_kg_ha": 2880
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 15356,
+      "production_mt": 50367.68,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 12903,
+      "production_mt": 45418.56,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 5118,
+      "production_mt": 13920.96,
+      "yield_kg_ha": 2720
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13488,
+      "production_mt": 39384.96,
+      "yield_kg_ha": 2920
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10657,
+      "production_mt": 32503.85,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 28687,
+      "production_mt": 116182.35,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 20947,
+      "production_mt": 78551.25,
+      "yield_kg_ha": 3750
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 18007,
+      "production_mt": 71667.86,
+      "yield_kg_ha": 3980
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 13042,
+      "production_mt": 54124.3,
+      "yield_kg_ha": 4150
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17212,
+      "production_mt": 67471.04,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 12622,
+      "production_mt": 51119.1,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 36375,
+      "production_mt": 155685.0,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 60052,
+      "production_mt": 275038.16,
+      "yield_kg_ha": 4580
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 41343,
+      "production_mt": 179842.05,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 49320,
+      "production_mt": 184950.0,
+      "yield_kg_ha": 3750
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22912,
+      "production_mt": 82941.44,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 71021,
+      "production_mt": 303969.88,
+      "yield_kg_ha": 4280
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 57093,
+      "production_mt": 265482.45,
+      "yield_kg_ha": 4650
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16721,
+      "production_mt": 55513.72,
+      "yield_kg_ha": 3320
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 23400,
+      "production_mt": 87750.0,
+      "yield_kg_ha": 3750
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 23298,
+      "production_mt": 71058.9,
+      "yield_kg_ha": 3050
+    },
+    {
+      "year": 2021,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13042,
+      "production_mt": 38473.9,
+      "yield_kg_ha": 2950
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8330,
+      "production_mt": 24823.4,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12750,
+      "production_mt": 36720.0,
+      "yield_kg_ha": 2880
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13920,
+      "production_mt": 39254.4,
+      "yield_kg_ha": 2820
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 21375,
+      "production_mt": 67972.5,
+      "yield_kg_ha": 3180
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 18500,
+      "production_mt": 63270.0,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6695,
+      "production_mt": 17741.75,
+      "yield_kg_ha": 2650
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14850,
+      "production_mt": 42322.5,
+      "yield_kg_ha": 2850
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13485,
+      "production_mt": 40185.3,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 45475,
+      "production_mt": 178262.0,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 26505,
+      "production_mt": 95948.1,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23765,
+      "production_mt": 91495.25,
+      "yield_kg_ha": 3850
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19055,
+      "production_mt": 76601.1,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22725,
+      "production_mt": 85900.5,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17985,
+      "production_mt": 70501.2,
+      "yield_kg_ha": 3920
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 45590,
+      "production_mt": 189198.5,
+      "yield_kg_ha": 4150
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 74575,
+      "production_mt": 329621.5,
+      "yield_kg_ha": 4420
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 54600,
+      "production_mt": 230412.0,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 63020,
+      "production_mt": 228132.4,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 29900,
+      "production_mt": 104052.0,
+      "yield_kg_ha": 3480
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 82305,
+      "production_mt": 341565.75,
+      "yield_kg_ha": 4150
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 78300,
+      "production_mt": 353916.0,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 22050,
+      "production_mt": 71001.0,
+      "yield_kg_ha": 3220
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 30224,
+      "production_mt": 110317.6,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 30780,
+      "production_mt": 91724.4,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2022,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 18315,
+      "production_mt": 52747.2,
+      "yield_kg_ha": 2880
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6247,
+      "production_mt": 16741.96,
+      "yield_kg_ha": 2680
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 9562,
+      "production_mt": 24669.96,
+      "yield_kg_ha": 2580
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10440,
+      "production_mt": 26308.8,
+      "yield_kg_ha": 2520
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16031,
+      "production_mt": 46169.28,
+      "yield_kg_ha": 2880
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 13875,
+      "production_mt": 43290.0,
+      "yield_kg_ha": 3120
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 5021,
+      "production_mt": 11949.98,
+      "yield_kg_ha": 2380
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11137,
+      "production_mt": 28399.35,
+      "yield_kg_ha": 2550
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10113,
+      "production_mt": 27102.84,
+      "yield_kg_ha": 2680
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 34106,
+      "production_mt": 121076.3,
+      "yield_kg_ha": 3550
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19878,
+      "production_mt": 65199.84,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17823,
+      "production_mt": 62024.04,
+      "yield_kg_ha": 3480
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 14291,
+      "production_mt": 52162.15,
+      "yield_kg_ha": 3650
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17043,
+      "production_mt": 58287.06,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 13488,
+      "production_mt": 47882.4,
+      "yield_kg_ha": 3550
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 34192,
+      "production_mt": 129245.76,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 55931,
+      "production_mt": 226520.55,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 40950,
+      "production_mt": 157657.5,
+      "yield_kg_ha": 3850
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 47265,
+      "production_mt": 155029.2,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 22425,
+      "production_mt": 70638.75,
+      "yield_kg_ha": 3150
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 61728,
+      "production_mt": 233331.84,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 58725,
+      "production_mt": 241947.0,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 16537,
+      "production_mt": 48288.04,
+      "yield_kg_ha": 2920
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 22668,
+      "production_mt": 75257.76,
+      "yield_kg_ha": 3320
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 23085,
+      "production_mt": 61867.8,
+      "yield_kg_ha": 2680
+    },
+    {
+      "year": 2022,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13736,
+      "production_mt": 35438.88,
+      "yield_kg_ha": 2580
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8925,
+      "production_mt": 30166.5,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13625,
+      "production_mt": 45235.0,
+      "yield_kg_ha": 3320
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 15370,
+      "production_mt": 49952.5,
+      "yield_kg_ha": 3250
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 21150,
+      "production_mt": 75717.0,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 17575,
+      "production_mt": 67136.5,
+      "yield_kg_ha": 3820
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 7020,
+      "production_mt": 21200.4,
+      "yield_kg_ha": 3020
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 15675,
+      "production_mt": 51414.0,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14210,
+      "production_mt": 48598.2,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 43775,
+      "production_mt": 189108.0,
+      "yield_kg_ha": 4320
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 26505,
+      "production_mt": 106550.1,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 25480,
+      "production_mt": 108290.0,
+      "yield_kg_ha": 4250
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19240,
+      "production_mt": 85040.8,
+      "yield_kg_ha": 4420
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 24300,
+      "production_mt": 101574.0,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 17985,
+      "production_mt": 77695.2,
+      "yield_kg_ha": 4320
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 46075,
+      "production_mt": 209641.25,
+      "yield_kg_ha": 4550
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 83210,
+      "production_mt": 401072.2,
+      "yield_kg_ha": 4820
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 47250,
+      "production_mt": 218295.0,
+      "yield_kg_ha": 4620
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 66445,
+      "production_mt": 267108.9,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 33475,
+      "production_mt": 129883.0,
+      "yield_kg_ha": 3880
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 93810,
+      "production_mt": 426835.5,
+      "yield_kg_ha": 4550
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 72500,
+      "production_mt": 356700.0,
+      "yield_kg_ha": 4920
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 25480,
+      "production_mt": 92237.6,
+      "yield_kg_ha": 3620
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 29900,
+      "production_mt": 121095.0,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 30780,
+      "production_mt": 104036.4,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2023,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 18315,
+      "production_mt": 60073.2,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 6693,
+      "production_mt": 20614.44,
+      "yield_kg_ha": 3080
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10218,
+      "production_mt": 30449.64,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11527,
+      "production_mt": 33658.84,
+      "yield_kg_ha": 2920
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 15862,
+      "production_mt": 52027.36,
+      "yield_kg_ha": 3280
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 13181,
+      "production_mt": 46397.12,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 5265,
+      "production_mt": 14478.75,
+      "yield_kg_ha": 2750
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 11756,
+      "production_mt": 34680.2,
+      "yield_kg_ha": 2950
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 10657,
+      "production_mt": 32823.56,
+      "yield_kg_ha": 3080
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 32831,
+      "production_mt": 131980.62,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19878,
+      "production_mt": 73946.16,
+      "yield_kg_ha": 3720
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19110,
+      "production_mt": 75484.5,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 14430,
+      "production_mt": 59451.6,
+      "yield_kg_ha": 4120
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 18225,
+      "production_mt": 70713.0,
+      "yield_kg_ha": 3880
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 13488,
+      "production_mt": 54221.76,
+      "yield_kg_ha": 4020
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 34556,
+      "production_mt": 146863.0,
+      "yield_kg_ha": 4250
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 62407,
+      "production_mt": 282079.64,
+      "yield_kg_ha": 4520
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 35437,
+      "production_mt": 153087.84,
+      "yield_kg_ha": 4320
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 49833,
+      "production_mt": 185378.76,
+      "yield_kg_ha": 3720
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 25106,
+      "production_mt": 89879.48,
+      "yield_kg_ha": 3580
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 70357,
+      "production_mt": 299017.25,
+      "yield_kg_ha": 4250
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 54375,
+      "production_mt": 251212.5,
+      "yield_kg_ha": 4620
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 19110,
+      "production_mt": 63445.2,
+      "yield_kg_ha": 3320
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 22425,
+      "production_mt": 84093.75,
+      "yield_kg_ha": 3750
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 23085,
+      "production_mt": 71101.8,
+      "yield_kg_ha": 3080
+    },
+    {
+      "year": 2023,
+      "season": "Yala",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 13736,
+      "production_mt": 40933.28,
+      "yield_kg_ha": 2980
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Colombo",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 8245,
+      "production_mt": 29022.4,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Gampaha",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 12250,
+      "production_mt": 42262.5,
+      "yield_kg_ha": 3450
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Kalutara",
+      "province": "Western",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 14645,
+      "production_mt": 49500.1,
+      "yield_kg_ha": 3380
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Kandy",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 22950,
+      "production_mt": 85374.0,
+      "yield_kg_ha": 3720
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Matale",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 20165,
+      "production_mt": 79651.75,
+      "yield_kg_ha": 3950
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "NuwaraEliya",
+      "province": "Central",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 6240,
+      "production_mt": 19656.0,
+      "yield_kg_ha": 3150
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Galle",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 16995,
+      "production_mt": 58122.9,
+      "yield_kg_ha": 3420
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Matara",
+      "province": "Southern",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 15515,
+      "production_mt": 55078.25,
+      "yield_kg_ha": 3550
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Hambantota",
+      "province": "Southern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 38675,
+      "production_mt": 173264.0,
+      "yield_kg_ha": 4480
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Jaffna",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 30210,
+      "production_mt": 126277.8,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Kilinochchi",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23520,
+      "production_mt": 103958.4,
+      "yield_kg_ha": 4420
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Mannar",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 19610,
+      "production_mt": 89813.8,
+      "yield_kg_ha": 4580
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Mullaitivu",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 23625,
+      "production_mt": 102768.75,
+      "yield_kg_ha": 4350
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Vavuniya",
+      "province": "Northern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 14850,
+      "production_mt": 66528.0,
+      "yield_kg_ha": 4480
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Batticaloa",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 51410,
+      "production_mt": 242655.2,
+      "yield_kg_ha": 4720
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Ampara",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 81640,
+      "production_mt": 406567.2,
+      "yield_kg_ha": 4980
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Trincomalee",
+      "province": "Eastern",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 56175,
+      "production_mt": 268516.5,
+      "yield_kg_ha": 4780
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Kurunegala",
+      "province": "North Western",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 73980,
+      "production_mt": 309236.4,
+      "yield_kg_ha": 4180
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Puttalam",
+      "province": "North Western",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 33800,
+      "production_mt": 136890.0,
+      "yield_kg_ha": 4050
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Anuradhapura",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 92925,
+      "production_mt": 438606.0,
+      "yield_kg_ha": 4720
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Polonnaruwa",
+      "province": "North Central",
+      "climate_zone": "dry_zone",
+      "harvested_area_ha": 77575,
+      "production_mt": 394081.0,
+      "yield_kg_ha": 5080
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Badulla",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 22050,
+      "production_mt": 83349.0,
+      "yield_kg_ha": 3780
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Monaragala",
+      "province": "Uva",
+      "climate_zone": "intermediate",
+      "harvested_area_ha": 33800,
+      "production_mt": 142636.0,
+      "yield_kg_ha": 4220
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Ratnapura",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 26790,
+      "production_mt": 94300.8,
+      "yield_kg_ha": 3520
+    },
+    {
+      "year": 2024,
+      "season": "Maha",
+      "district": "Kegalle",
+      "province": "Sabaragamuwa",
+      "climate_zone": "wet_zone",
+      "harvested_area_ha": 18315,
+      "production_mt": 62637.3,
+      "yield_kg_ha": 3420
+    }
+  ]
+}

@@ -511,6 +511,299 @@ async def get_disease_info_by_crop(crop_type: CropType, disease_name: str):
     
     raise HTTPException(status_code=404, detail=f"Disease '{disease_name}' not found for {crop}")
 
+
+# ==================== YIELD PREDICTION ENDPOINTS ====================
+
+# Initialize yield predictor
+yield_predictor = None
+
+def get_yield_predictor():
+    """Get or initialize the yield predictor"""
+    global yield_predictor
+    if yield_predictor is None:
+        try:
+            from yield_predictor import YieldPredictor
+            from pathlib import Path
+            
+            data_path = Path(__file__).parent / "paddy_data" / "paddy_statistics.json"
+            model_path = Path(__file__).parent / "models" / "yield_predictor.pkl"
+            
+            yield_predictor = YieldPredictor()
+            
+            # Try to load existing model
+            if model_path.exists():
+                yield_predictor.load_model(model_path)
+                print("✅ Yield predictor model loaded")
+            
+            # Always load data for historical trends (even if model exists)
+            if data_path.exists():
+                yield_predictor.load_data(data_path)
+                print("✅ Yield predictor historical data loaded")
+            else:
+                print("⚠️ Yield predictor data not found. Run extract_paddy_data.py first.")
+        except Exception as e:
+            print(f"⚠️ Could not initialize yield predictor: {e}")
+            yield_predictor = None
+    
+    return yield_predictor
+
+
+@app.get("/yield/predict")
+async def predict_yield(
+    district: str = Query(..., description="District name"),
+    season: str = Query(..., description="Season: Maha or Yala"),
+    year: int = Query(..., description="Year for prediction"),
+    area_ha: float = Query(1.0, description="Area in hectares (optional)")
+):
+    """
+    Predict paddy yield for a given district, season, and year
+    """
+    predictor = get_yield_predictor()
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Yield predictor not available")
+    
+    try:
+        result = predictor.predict(district, season, year, area_ha)
+        
+        # Get district stats for additional info
+        stats = predictor.district_stats.get(district, {})
+        stability_index = 1 - stats.get('stability_index', 0.5)  # Convert CV to stability
+        
+        # Convert confidence string to numeric value
+        confidence_map = {'high': 0.9, 'medium': 0.7, 'low': 0.5}
+        confidence_value = confidence_map.get(result.get('confidence', 'medium'), 0.7)
+        
+        # Calculate total production
+        predicted_yield = result.get('predicted_yield_kg_ha', 0)
+        total_production = predicted_yield * (area_ha or 1.0)
+        
+        return {
+            "success": True,
+            "district": district,
+            "season": season,
+            "year": year,
+            "yield_kg_ha": predicted_yield,
+            "predicted_yield_kg_ha": predicted_yield,  # Keep for backward compatibility
+            "total_production_kg": round(total_production, 2),
+            "confidence": confidence_value,
+            "confidence_level": result.get('confidence', 'medium'),
+            "stability_index": round(max(0, min(1, stability_index)), 3),
+            "yield_range": {
+                "min": result.get('historical_min', predicted_yield * 0.8),
+                "max": result.get('historical_max', predicted_yield * 1.2)
+            },
+            "method": result.get('method', 'statistical'),
+            "historical_avg": result.get('historical_avg', predicted_yield)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/yield/profit")
+async def predict_profit(
+    district: str = Query(..., description="District name"),
+    season: str = Query(..., description="Season: Maha or Yala"),
+    year: int = Query(..., description="Year for prediction"),
+    area_ha: float = Query(..., description="Cultivated area in hectares"),
+    cost_per_ha: float = Query(None, description="Production cost per hectare (optional)"),
+    price_per_kg: float = Query(None, description="Expected paddy price per kg (optional)")
+):
+    """
+    Predict profit for paddy cultivation
+    """
+    predictor = get_yield_predictor()
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Yield predictor not available")
+    
+    try:
+        result = predictor.predict_profit(
+            district, season, year, area_ha, cost_per_ha, price_per_kg
+        )
+        return {
+            "success": True,
+            "district": district,
+            "season": season,
+            "year": year,
+            **result
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/yield/warning")
+async def get_early_warning(
+    district: str = Query(..., description="District name"),
+    season: str = Query(..., description="Season: Maha or Yala"),
+    year: int = Query(..., description="Year for prediction")
+):
+    """
+    Get early warning and risk assessment for a district/season
+    """
+    predictor = get_yield_predictor()
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Yield predictor not available")
+    
+    try:
+        result = predictor.generate_early_warning(district, season, year)
+        return {
+            "success": True,
+            **result
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/yield/rankings")
+async def get_district_rankings():
+    """
+    Get districts ranked by yield, stability, and overall performance
+    Returns a flat array suitable for frontend display
+    """
+    predictor = get_yield_predictor()
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Yield predictor not available")
+    
+    try:
+        # Get district stats from predictor
+        if not predictor.district_stats:
+            # Return empty rankings if no data
+            return {
+                "success": True,
+                "rankings": []
+            }
+        
+        # Build rankings from district statistics
+        rankings = []
+        max_yield = max(stats.get('avg_yield', 0) for stats in predictor.district_stats.values())
+        
+        for district, stats in predictor.district_stats.items():
+            avg_yield = stats.get('avg_yield', 0)
+            
+            # stability_index in predictor is stored as CV (coefficient of variation)
+            # where LOWER is better (1 - original_stability_index)
+            # So we need to convert back: higher stability score = better
+            stability_cv = stats.get('stability_index', 0.5)
+            stability_score = 1 - stability_cv  # Convert CV back to stability (higher = better)
+            stability_score = max(0, min(1, stability_score))  # Clamp to 0-1
+            
+            trend = stats.get('trend_slope', 0)
+            
+            # Calculate overall score: 60% yield, 40% stability
+            yield_score = (avg_yield / max_yield) if max_yield > 0 else 0  # Normalize to 0-1
+            overall_score = (yield_score * 0.6 + stability_score * 0.4) * 100
+            
+            rankings.append({
+                'district': district,
+                'avg_yield': round(avg_yield, 0),
+                'stability': round(stability_score, 3),  # 0-1, higher = better
+                'trend': round(trend, 4),  # Keep as decimal, frontend multiplies by 100
+                'overall_score': round(overall_score, 1)
+            })
+        
+        # Sort by overall score (descending)
+        rankings.sort(key=lambda x: x['overall_score'], reverse=True)
+        
+        return {
+            "success": True,
+            "rankings": rankings
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/yield/district-stats")
+async def get_district_statistics(
+    district: str = Query(None, description="District name (optional, returns all if not specified)")
+):
+    """
+    Get historical statistics for a district or all districts
+    """
+    predictor = get_yield_predictor()
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Yield predictor not available")
+    
+    try:
+        if district:
+            if district not in predictor.district_stats:
+                raise HTTPException(status_code=404, detail=f"District '{district}' not found")
+            return {
+                "success": True,
+                "district": district,
+                "statistics": predictor.district_stats[district]
+            }
+        else:
+            return {
+                "success": True,
+                "districts": predictor.district_stats
+            }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/yield/trends")
+async def get_yield_trends(
+    district: str = Query(None, description="District name (optional)"),
+    season: str = Query(None, description="Season: Maha or Yala (optional)")
+):
+    """
+    Get historical yield trends
+    """
+    predictor = get_yield_predictor()
+    if predictor is None:
+        raise HTTPException(status_code=503, detail="Yield predictor not available")
+    
+    try:
+        if predictor.historical_data is None:
+            raise HTTPException(status_code=503, detail="Historical data not loaded")
+        
+        data = predictor.historical_data.copy()
+        
+        if district:
+            data = data[data['district'] == district]
+        if season:
+            data = data[data['season'] == season]
+        
+        # Aggregate by year
+        trends = data.groupby(['year', 'season']).agg({
+            'yield_kg_ha': 'mean',
+            'production_mt': 'sum',
+            'harvested_area_ha': 'sum'
+        }).reset_index()
+        
+        trends = trends.rename(columns={
+            'yield_kg_ha': 'avg_yield_kg_ha',
+            'production_mt': 'total_production_mt',
+            'harvested_area_ha': 'total_area_ha'
+        })
+        
+        return {
+            "success": True,
+            "filter": {
+                "district": district,
+                "season": season
+            },
+            "trends": trends.to_dict(orient='records')
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/yield/climate-zones")
+async def get_climate_zones():
+    """
+    Get districts grouped by climate zone
+    """
+    from yield_predictor import CLIMATE_ZONES
+    return {
+        "success": True,
+        "climate_zones": CLIMATE_ZONES
+    }
+
+
 if __name__ == "__main__":
     print("=" * 60)
     print("🌾🍵 Govi Isuru - Multi-Crop Disease Predictor API")

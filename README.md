@@ -102,7 +102,32 @@
   - Rain alerts for fertilizer timing
   - Temperature advisories for crop protection
 
-### 💬 AI Crop Chatbot with Advanced Features
+### � Yield Prediction & Analytics
+- **AI-Powered Yield Forecasting**: Predict paddy yield for any district, season, and year
+  - Machine Learning model trained on 10 years of Sri Lankan paddy data (2015-2024)
+  - Statistical prediction with trend adjustment for future years
+  - Covers all 25 districts across Wet Zone, Dry Zone, and Intermediate climate zones
+- **Profit Calculator**: Estimate farming profitability with:
+  - Revenue projection based on predicted yield
+  - Customizable cost per hectare and paddy price inputs
+  - ROI (Return on Investment) calculation
+  - Break-even yield analysis
+- **Early Warning System**: Risk assessment with:
+  - Yield deviation warnings (critical/high/medium/low)
+  - Profitability alerts
+  - Bilingual recommendations (English/Sinhala)
+  - Risk score visualization
+- **District Rankings**: Compare all 25 districts by:
+  - Average yield (kg/ha)
+  - Stability index (consistency)
+  - Year-over-year trend
+  - Overall performance score with medal indicators (🥇🥈🥉)
+- **Historical Trends**: 10-year data visualization showing:
+  - Maha and Yala season comparisons
+  - Production trends by year
+  - Area harvested statistics
+
+### �💬 AI Crop Chatbot with Advanced Features
 - **Natural Language Q&A**: Ask farming questions in plain language
 - **Multi-Crop Knowledge Base**: Built-in agricultural knowledge for Sri Lankan crops including Rice, Tea, and Chili
 - **Bilingual Support**: Responds in English or Sinhala
@@ -174,6 +199,10 @@
 │  │  AI Doctor  │ │ Marketplace │ │   Weather   │ │   Alerts    │   │
 │  │ + Grad-CAM  │ │ + Ratings   │ │  Advisory   │ │  Community  │   │
 │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘   │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐   │
+│  │   Yield     │ │   Market    │ │   Agri      │ │     AI      │   │
+│  │ Prediction  │ │   Trends    │ │   News      │ │   Chatbot   │   │
+│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘   │
 └────────────┬──────────────────────────┬─────────────────────────────┘
              │                          │
              │ REST API                 │ REST API
@@ -181,17 +210,17 @@
              ▼                          ▼
 ┌────────────────────────────┐   ┌─────────────────────────────────┐
 │   BACKEND (Express.js)     │   │   AI SERVICE (FastAPI + TF)     │
-│  ├─ User Auth (JWT)        │   │  ├─ MobileNetV2 Models          │
-│  ├─ Marketplace CRUD       │   │  ├─ Rice: 8-Class Detection     │
-│  ├─ Reputation System      │   │  ├─ Tea: 5-Class Detection      │
-│  ├─ Disease Alerts         │   │  ├─ Chili: 4-Class Detection    │
+│  ├─ User Auth (JWT)        │   │  ├─ MobileNetV2 Disease Models  │
+│  ├─ Marketplace CRUD       │   │  │  ├─ Rice: 8-Class Detection  │
+│  ├─ Reputation System      │   │  │  ├─ Tea: 5-Class Detection   │
+│  ├─ Disease Alerts         │   │  │  └─ Chili: 4-Class Detection │
 │  ├─ Market Price API       │   │  ├─ Grad-CAM Visualization      │
-│  ├─ News API + AI Summary  │   │  ├─ Image Preprocessing         │
-│  ├─ TTS Audio Proxy        │   │  └─ Treatment Recommendations   │
-│  └─ MongoDB Integration    │   └─────────────────────────────────┘
-└───────────┬────────────────┘
-            │ Mongoose ODM
-            ▼
+│  ├─ News API + AI Summary  │   │  ├─ Yield Prediction ML Model   │
+│  ├─ TTS Audio Proxy        │   │  │  ├─ 25 District Stats        │
+│  └─ MongoDB Integration    │   │  │  ├─ Profit Calculator        │
+└───────────┬────────────────┘   │  │  └─ Early Warning System     │
+            │ Mongoose ODM       │  └─ Treatment Recommendations   │
+            ▼                    └─────────────────────────────────┘
 ┌────────────────────────────┐
 │   MongoDB Atlas (Cloud)    │
 │  ├─ Users Collection       │
@@ -301,6 +330,7 @@ govi-isuru/
 │   │   │   ├── CommunityAlerts.js   # Disease alert system
 │   │   │   ├── Marketplace.js       # P2P marketplace
 │   │   │   ├── MarketTrends.js      # Analytics dashboard
+│   │   │   ├── YieldPrediction.js   # 📊 Yield forecasting & analytics
 │   │   │   ├── PriceAnalytics.js    # Price trend charts
 │   │   │   ├── PriceComparison.js   # District comparison
 │   │   │   ├── WeatherAdvisor.js    # Weather forecast
@@ -353,10 +383,13 @@ govi-isuru/
 │   │   ├── train/                   # Training set (4 classes)
 │   │   ├── valid/                   # Validation set
 │   │   └── test/                    # Test set
+│   ├── paddy_data/                  # 📊 Yield prediction data
+│   │   └── paddy_statistics.json    # 10-year historical data (2015-2024)
 │   ├── models/
 │   │   ├── best_model.keras         # Rice disease model
 │   │   ├── class_indices.json       # Rice class mappings
 │   │   ├── disease_info.json        # Rice disease details (EN/SI)
+│   │   ├── yield_predictor.pkl      # 📊 Yield prediction ML model
 │   │   ├── tea/
 │   │   │   ├── tea_best_model.keras # Tea disease model
 │   │   │   ├── tea_class_indices.json
@@ -365,7 +398,8 @@ govi-isuru/
 │   │       ├── chili_best_model.keras # Chili disease model
 │   │       ├── chili_class_indices.json
 │   │       └── chili_disease_info.json
-│   ├── main.py                      # FastAPI server + Grad-CAM
+│   ├── main.py                      # FastAPI server + Grad-CAM + Yield APIs
+│   ├── yield_predictor.py           # 📊 Yield prediction ML module
 │   ├── train_model.py               # Rice training script
 │   ├── train_tea_model.py           # Tea training script
 │   ├── train_chili_model.py         # Chili training script
@@ -505,6 +539,82 @@ govi-isuru/
 
 **Note**: The `gradcam` field contains a base64-encoded heatmap overlay showing where the AI model focused to make its prediction.
 
+#### Yield Prediction Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/yield/predict` | GET | Predict yield for district/season/year |
+| `/yield/profit` | GET | Calculate profit forecast |
+| `/yield/warning` | GET | Get early warning and risk assessment |
+| `/yield/rankings` | GET | Get district rankings |
+| `/yield/trends` | GET | Get historical yield trends |
+| `/yield/climate-zones` | GET | Get districts by climate zone |
+
+**GET** `/yield/predict?district=Anuradhapura&season=Maha&year=2025&area_ha=1`
+```json
+{
+  "success": true,
+  "district": "Anuradhapura",
+  "season": "Maha",
+  "year": 2025,
+  "yield_kg_ha": 4983.82,
+  "total_production_kg": 4983.82,
+  "confidence": 0.9,
+  "confidence_level": "high",
+  "stability_index": 0.921,
+  "yield_range": { "min": 3620, "max": 4920 },
+  "method": "ml_model"
+}
+```
+
+**GET** `/yield/profit?district=Anuradhapura&season=Maha&year=2025&area_ha=1`
+```json
+{
+  "success": true,
+  "estimated_profit": 255624.7,
+  "revenue": 423624.7,
+  "total_cost": 168000.0,
+  "roi": 152.2,
+  "profit_per_ha": 255624.7,
+  "break_even_yield": 1976.47,
+  "profitability_status": "highly_profitable"
+}
+```
+
+**GET** `/yield/warning?district=Anuradhapura&season=Maha&year=2025`
+```json
+{
+  "success": true,
+  "risk_level": "low",
+  "risk_score": 0.2,
+  "warnings": [],
+  "positive_indicators": [{ "type": "favorable_yield", "message": "..." }],
+  "recommendations": [{ "en": "...", "si": "..." }]
+}
+```
+
+**GET** `/yield/rankings`
+```json
+{
+  "success": true,
+  "rankings": [
+    { "district": "Polonnaruwa", "avg_yield": 4850, "stability": 0.92, "trend": 0.02, "overall_score": 89.5 },
+    { "district": "Ampara", "avg_yield": 4627, "stability": 0.91, "trend": 0.01, "overall_score": 87.2 }
+  ]
+}
+```
+
+**GET** `/yield/trends?district=&season=`
+```json
+{
+  "success": true,
+  "trends": [
+    { "year": 2015, "season": "Maha", "avg_yield_kg_ha": 3721.2, "total_production_mt": 3157873.5 },
+    { "year": 2015, "season": "Yala", "avg_yield_kg_ha": 3433.2, "total_production_mt": 2196964.4 }
+  ]
+}
+```
+
 ---
 
 ## 🧠 AI Model Information
@@ -558,6 +668,38 @@ The model includes **Gradient-weighted Class Activation Mapping** (Grad-CAM) to 
 - **Transparency**: Farmers can see the evidence behind diagnoses
 - **Trust**: Visual proof that the AI is looking at the right areas
 - **Education**: Helps farmers learn to identify symptoms themselves
+
+### Yield Prediction Model
+
+#### Data Source
+- **Historical Data**: 10 years of Sri Lankan paddy statistics (2015-2024)
+- **Coverage**: All 25 districts across 3 climate zones
+- **Seasons**: Maha (October-March) and Yala (April-September)
+- **Records**: 475+ data points with yield, production, and area metrics
+
+#### Climate Zones
+| Zone | Districts | Characteristics |
+|------|-----------|-----------------|
+| Wet Zone | Colombo, Gampaha, Kalutara, Galle, Matara, Ratnapura, Kegalle, Kandy, NuwaraEliya | High rainfall (>2500mm), no irrigation needed |
+| Dry Zone | Anuradhapura, Polonnaruwa, Ampara, Batticaloa, Trincomalee, Jaffna, Kilinochchi, Mullaitivu, Mannar, Vavuniya, Hambantota | Low rainfall, irrigation dependent |
+| Intermediate | Kurunegala, Puttalam, Matale, Badulla, Monaragala | Moderate conditions |
+
+#### Prediction Methods
+1. **ML Model**: Pre-trained model loaded from `yield_predictor.pkl`
+   - Uses historical patterns and district-specific features
+   - Applies trend adjustment and year-based variation
+2. **Statistical Fallback**: When ML model unavailable
+   - Base yield from district historical average
+   - Trend slope adjustment per year
+   - Season adjustment (Yala typically 8% lower)
+
+#### Key Metrics
+| Metric | Description |
+|--------|-------------|
+| `yield_kg_ha` | Predicted yield in kg per hectare |
+| `stability_index` | Consistency score (0-1, higher = more stable) |
+| `trend_slope` | Year-over-year change rate |
+| `confidence` | Prediction reliability (high/medium/low) |
 
 ### Training Configuration
 | Parameter | Value |
