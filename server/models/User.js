@@ -8,7 +8,13 @@ const UserSchema = new mongoose.Schema({
   gnDivision: { type: String, required: true },
   phone: { type: String, default: '' },
   
-  // Reputation System Fields
+  // Role System - Farmer or Government Officer
+  role: { type: String, enum: ['farmer', 'officer', 'admin', 'moderator'], default: 'farmer' },
+  officerId: { type: String, default: null }, // For government officers only
+  department: { type: String, default: null }, // e.g., "Department of Agriculture", "Agrarian Services"
+  designation: { type: String, default: null }, // e.g., "Agricultural Instructor", "Agrarian Development Officer"
+  
+  // Reputation System Fields (for farmers)
   reputation_score: { type: Number, default: 3.0, min: 1, max: 5 },
   total_sales: { type: Number, default: 0 },
   verified_listings: { type: Number, default: 0 },
@@ -20,9 +26,6 @@ const UserSchema = new mongoose.Schema({
   account_flagged: { type: Boolean, default: false },
   last_report_at: { type: Date },
   
-  // Role for admin moderation
-  role: { type: String, enum: ['farmer', 'admin', 'moderator'], default: 'farmer' },
-  
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -30,5 +33,7 @@ const UserSchema = new mongoose.Schema({
 UserSchema.index({ reputation_score: -1 });
 UserSchema.index({ role: 1 });
 UserSchema.index({ account_flagged: 1 });
+UserSchema.index({ officerId: 1 });
+UserSchema.index({ district: 1, role: 1 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -20,7 +20,7 @@ import CommunityAlerts from './CommunityAlerts';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
-const AlertsDashboard = ({ user, language = 'en' }) => {
+const AlertsDashboard = ({ user, language = 'en', isOfficer = false }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -102,7 +102,13 @@ const AlertsDashboard = ({ user, language = 'en' }) => {
     fetchSummary();
   }, [user?.district]);
 
-  const tabs = [
+  // Role-based tabs
+  const tabs = isOfficer ? [
+    { id: 'overview', label: language === 'si' ? 'දළ විශ්ලේෂණය' : 'Overview', icon: Activity },
+    { id: 'heatmap', label: language === 'si' ? 'තාප සිතියම' : 'Heatmap', icon: Map },
+    { id: 'trends', label: language === 'si' ? 'ප්‍රවණතා' : 'Trends', icon: TrendingUp },
+    { id: 'moderation', label: language === 'si' ? 'වාර්තා සත්‍යතා' : 'Verify Reports', icon: Shield }
+  ] : [
     { id: 'overview', label: text.overview, icon: Activity },
     { id: 'heatmap', label: text.heatmap, icon: Map },
     { id: 'trends', label: text.trends, icon: TrendingUp },
@@ -120,18 +126,28 @@ const AlertsDashboard = ({ user, language = 'en' }) => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 rounded-3xl p-6 text-white shadow-xl">
+      <div className={`bg-gradient-to-r ${isOfficer ? 'from-blue-600 via-cyan-500 to-teal-500' : 'from-red-600 via-orange-500 to-yellow-500'} rounded-3xl p-6 text-white shadow-xl`}>
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-3xl font-bold flex items-center gap-3">
               <AlertTriangle className="w-8 h-8" />
-              {text.title}
+              {isOfficer 
+                ? (language === 'si' ? 'ප්‍රදේශ රෝග අනතුරු ඇඟවීම්' : 'Area Disease Alerts')
+                : text.title
+              }
             </h1>
-            <p className="text-white/80 mt-1">{text.subtitle}</p>
-            {user?.gnDivision && (
-              <div className="flex items-center gap-2 mt-3 text-sm bg-white/20 w-fit px-3 py-1 rounded-full">
+            <p className="text-white/80 mt-1">
+              {isOfficer 
+                ? (language === 'si' 
+                  ? `${user?.district} දිස්ත්‍රික්කයේ සිටින සියලුම GN බිම්සැල සඳහා රෝග පැතිරීම් නිරීක්ෂණය කරන්න`
+                  : `Monitor disease outbreaks across all areas in ${user?.district} district`)
+                : text.subtitle
+              }
+            </p>
+            {user?.district && (
+              <div className={`flex items-center gap-2 mt-3 text-sm ${isOfficer ? 'bg-blue-400/20' : 'bg-white/20'} w-fit px-3 py-1 rounded-full`}>
                 <MapPin className="w-4 h-4" />
-                {user.gnDivision}, {user.district}
+                {isOfficer ? user.district : `${user.gnDivision}, ${user.district}`}
               </div>
             )}
           </div>

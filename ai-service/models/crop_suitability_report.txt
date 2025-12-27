@@ -1,0 +1,19 @@
+================================================================================
+CROP SUITABILITY MODEL TRAINING REPORT
+================================================================================
+
+Model Type: Random Forest Classifier
+Training Date: 2025-12-27 17:48:43.894353
+Test Accuracy: 0.9556 (95.56%)
+
+Classification Report:
+--------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+       Chili       0.93      0.93      0.93        30
+        Rice       0.93      0.93      0.93        30
+         Tea       1.00      1.00      1.00        30
+
+    accuracy                           0.96        90
+   macro avg       0.96      0.96      0.96        90
+weighted avg       0.96      0.96      0.96        90
