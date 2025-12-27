@@ -1,24 +1,51 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import axios from 'axios';
-import { User, MapPin, Lock, ArrowRight, Loader2, Sprout, Globe, KeyRound, Leaf, CheckCircle } from 'lucide-react';
-import { administrativeData } from '../data/sriLankaData'; 
+import {
+  User,
+  MapPin,
+  Lock,
+  ArrowRight,
+  Loader2,
+  Sprout,
+  Globe,
+  KeyRound,
+  Leaf,
+  CheckCircle,
+  Shield,
+  Building2,
+  Sun,
+  Cloud,
+  Droplets
+} from 'lucide-react';
+import { administrativeData } from '../data/sriLankaData';
 
 const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    username: '', password: '', district: '', dsDivision: '', gnDivision: ''
+    username: '',
+    password: '',
+    district: '',
+    dsDivision: '',
+    gnDivision: '',
+    role: 'farmer',
+    officerId: '',
+    department: '',
+    designation: ''
   });
 
   const districts = Object.keys(administrativeData);
   const dsDivisions = formData.district ? Object.keys(administrativeData[formData.district]) : [];
-  const gnDivisions = (formData.district && formData.dsDivision) 
-    ? administrativeData[formData.district][formData.dsDivision] : [];
+  const gnDivisions = formData.district && formData.dsDivision ? administrativeData[formData.district][formData.dsDivision] : [];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'district') setFormData({ ...formData, district: value, dsDivision: '', gnDivision: '' });
-    else if (name === 'dsDivision') setFormData({ ...formData, dsDivision: value, gnDivision: '' });
-    else setFormData({ ...formData, [name]: value });
+    if (name === 'district') {
+      setFormData({ ...formData, district: value, dsDivision: '', gnDivision: '' });
+    } else if (name === 'dsDivision') {
+      setFormData({ ...formData, dsDivision: value, gnDivision: '' });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -26,174 +53,317 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
     setLoading(true);
     try {
       const res = await axios.post('http://localhost:5000/api/register', formData);
-      
-      // AUTO-LOGGING LOGIC: Save the token and user object immediately
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
-      
-      // Notify the parent component (App.js) that registration/login was successful
-      onRegisterSuccess(res.data.user); 
+      onRegisterSuccess(res.data.user);
     } catch (err) {
-      alert(lang === 'si' ? "ලියාපදිංචි වීම අසාර්ථකයි. කරුණාකර නැවත උත්සාහ කරන්න." : "Registration failed. Please try again.");
+      alert(lang === 'si' ? 'ලියාපදිංචි වීම අසාර්ථකයි. කරුණාකර නැවත උත්සාහ කරන්න.' : 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  // Progress indicator
-  const getProgress = () => {
-    let filled = 0;
-    if (formData.username) filled++;
-    if (formData.password) filled++;
-    if (formData.district) filled++;
-    if (formData.dsDivision) filled++;
-    if (formData.gnDivision) filled++;
-    return (filled / 5) * 100;
+  const labels = {
+    en: {
+      selectRole: 'I am a',
+      farmer: 'Farmer',
+      officer: 'Government Officer',
+      fullName: 'Full Name',
+      password: 'Password',
+      district: 'District',
+      dsDivision: 'DS Division',
+      gnDivision: 'GN Division',
+      officerId: 'Officer ID Number',
+      officerIdPlaceholder: 'Ex: AGR/2024/001',
+      department: 'Department',
+      departmentPlaceholder: 'Ex: Department of Agriculture',
+      designation: 'Designation',
+      designationPlaceholder: 'Ex: Agricultural Instructor',
+      register: 'Create Account',
+      haveAccount: 'Already have an account?',
+      login: 'Login here'
+    },
+    si: {
+      selectRole: 'මම',
+      farmer: 'ගොවියෙක්',
+      officer: 'රජයේ නිලධාරියෙක්',
+      fullName: 'සම්පූර්ණ නම',
+      password: 'මුරපදය',
+      district: 'දිස්ත්‍රික්කය',
+      dsDivision: 'ප්‍රාදේශීය ලේකම් කොට්ඨාසය',
+      gnDivision: 'ග්‍රාම නිලධාරී කොට්ඨාසය',
+      officerId: 'නිලධාරී හැඳුනුම්පත් අංකය',
+      officerIdPlaceholder: 'උදා: AGR/2024/001',
+      department: 'දෙපාර්තමේන්තුව',
+      departmentPlaceholder: 'උදා: කෘෂිකර්ම දෙපාර්තමේන්තුව',
+      designation: 'තනතුර',
+      designationPlaceholder: 'උදා: කෘෂිකර්ම උපදේශක',
+      register: 'ගිණුම සාදන්න',
+      haveAccount: 'දැනටමත් ගිණුමක් තිබේද?',
+      login: 'මෙතනින් ප්‍රවිෂ්ට වන්න'
+    }
   };
 
+  const t = labels[lang] || labels.en;
+
   return (
-    <div className="w-full max-w-xl p-1 animate-in fade-in zoom-in duration-500">
-      <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/20">
-        
-        {/* Header */}
-        <div className="bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 p-8 text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iYSIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoNDUpIj48cGF0aCBkPSJNLTEwIDMwaDYwdjJoLTYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNhKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==')] opacity-50"></div>
-          <div className="relative">
-            <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-              <Sprout className="h-8 w-8 text-white" />
-            </div>
-            <h2 className="text-2xl font-black text-white mb-1 tracking-tight">
-              {lang === 'si' ? 'ගොවි ගිණුම සාදන්න' : 'Create Farmer Profile'}
-            </h2>
-            <p className="text-green-200 text-sm">
-              {lang === 'si' ? 'ශ්‍රී ලාංකීය ගොවි ප්‍රජාවට එකතු වන්න' : 'Join the Sri Lankan Farming Community'}
-            </p>
+    <div className="w-full max-w-xl p-1 animate-in fade-in zoom-in duration-700 relative">
+      {/* Floating decorative elements */}
+      <div className="absolute -left-6 top-10 opacity-20 animate-bounce" style={{ animationDuration: '3s' }}>
+        <Sun className="text-yellow-300" size={32} />
+      </div>
+      <div className="absolute right-0 top-40 opacity-20 animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}>
+        <Cloud className="text-blue-300" size={28} />
+      </div>
+      <div className="absolute left-10 bottom-24 opacity-20 animate-bounce" style={{ animationDuration: '3.5s', animationDelay: '0.5s' }}>
+        <Droplets className="text-cyan-300" size={24} />
+      </div>
+
+      <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] overflow-hidden border-2 border-white/30 transform hover:scale-[1.005] transition-transform duration-300">
+        {/* Header with animated gradient */}
+        <div className="bg-gradient-to-br from-green-500 via-emerald-600 to-teal-700 p-8 text-center relative overflow-hidden">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 bg-gradient-to-tr from-yellow-200/20 via-transparent to-blue-200/20 animate-pulse"></div>
+            <div className="absolute top-0 left-1/4 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }}></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-200/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}></div>
           </div>
-          
-          {/* Progress Bar */}
-          <div className="mt-6 mx-auto max-w-xs">
-            <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-white rounded-full transition-all duration-300"
-                style={{ width: `${getProgress()}%` }}
-              ></div>
+          <div className="relative">
+            <div className="w-20 h-20 mx-auto mb-4 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-sm shadow-xl transform hover:rotate-6 transition-transform duration-300">
+              <Sprout className="h-10 w-10 text-white drop-shadow-lg" />
             </div>
-            <p className="text-xs text-green-200 mt-2">{Math.round(getProgress())}% complete</p>
+            <h2 className="text-3xl font-black text-white mb-2 tracking-tight drop-shadow-lg">
+              {lang === 'si' ? ' ගණමක සදනන' : ' Create Your Profile'}
+            </h2>
+            <p className="text-green-100 text-sm font-medium">
+              {lang === 'si' ? 'ශර ලකය කෂකරමක පරජවට එකත වනන' : "Join Sri Lanka's Digital Farming Revolution"}
+            </p>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-8 space-y-5">
+        <form onSubmit={handleSubmit} className="p-8 space-y-6">
+          {/* Role Selection */}
+          <div className="mb-4">
+            <label className="text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider mb-3 block flex items-center gap-2">
+              <span className="text-lg">👤</span>
+              {t.selectRole}
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() => setFormData({ ...formData, role: 'farmer', officerId: '', department: '', designation: '' })}
+                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${
+                  formData.role === 'farmer'
+                    ? 'border-green-500 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg shadow-green-200/50'
+                    : 'border-gray-200 hover:border-green-300 bg-white hover:bg-green-50/30'
+                }`}
+              >
+                <Sprout className={`h-7 w-7 mx-auto mb-2 transition-all ${formData.role === 'farmer' ? 'text-green-600 drop-shadow' : 'text-gray-400'}`} />
+                <div className={`font-bold text-sm ${formData.role === 'farmer' ? 'text-green-700' : 'text-gray-600'}`}>{t.farmer}</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setFormData({ ...formData, role: 'officer' })}
+                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${
+                  formData.role === 'officer'
+                    ? 'border-blue-500 bg-gradient-to-br from-blue-50 to-cyan-50 shadow-lg shadow-blue-200/50'
+                    : 'border-gray-200 hover:border-blue-300 bg-white hover:bg-blue-50/30'
+                }`}
+              >
+                <Shield className={`h-7 w-7 mx-auto mb-2 transition-all ${formData.role === 'officer' ? 'text-blue-600 drop-shadow' : 'text-gray-400'}`} />
+                <div className={`font-bold text-sm ${formData.role === 'officer' ? 'text-blue-700' : 'text-gray-600'}`}>{t.officer}</div>
+              </button>
+            </div>
+          </div>
+
           {/* Account Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-gray-500 ml-1 uppercase tracking-wider flex items-center gap-1">
-                <User size={12} /> {lang === 'si' ? 'සම්පූර්ණ නම' : 'Full Name'}
+              <label className="text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider flex items-center gap-1">
+                <User size={12} /> {t.fullName}
               </label>
-              <input 
-                type="text" 
-                name="username" 
-                required 
-                placeholder="Ex: Namal Perera" 
-                onChange={handleChange} 
-                className="w-full p-4 bg-gray-50 border-2 border-gray-100 focus:border-green-500 focus:bg-white rounded-xl transition-all outline-none text-gray-700 font-medium" 
+              <input
+                type="text"
+                name="username"
+                required
+                placeholder="Ex: Namal Perera"
+                onChange={handleChange}
+                className="w-full p-4 bg-gradient-to-br from-gray-50 to-gray-100/50 border-2 border-gray-200 focus:border-green-500 focus:bg-white rounded-2xl transition-all outline-none text-gray-700 font-medium shadow-sm focus:shadow-lg focus:shadow-green-100"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-gray-500 ml-1 uppercase tracking-wider flex items-center gap-1">
-                <Lock size={12} /> {lang === 'si' ? 'මුරපදය' : 'Password'}
+              <label className="text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider flex items-center gap-1">
+                <Lock size={12} /> {t.password}
               </label>
-              <input 
-                type="password" 
-                name="password" 
-                required 
-                placeholder="••••••••" 
-                onChange={handleChange} 
-                className="w-full p-4 bg-gray-50 border-2 border-gray-100 focus:border-green-500 focus:bg-white rounded-xl transition-all outline-none text-gray-700" 
+              <input
+                type="password"
+                name="password"
+                required
+                placeholder="••••••••"
+                onChange={handleChange}
+                className="w-full p-4 bg-gradient-to-br from-gray-50 to-gray-100/50 border-2 border-gray-200 focus:border-green-500 focus:bg-white rounded-2xl transition-all outline-none text-gray-700 font-medium shadow-sm focus:shadow-lg focus:shadow-green-100"
               />
             </div>
           </div>
 
-          <hr className="border-gray-100 my-2" />
+          {/* Officer-specific fields */}
+          {formData.role === 'officer' && (
+            <div className="space-y-4 p-5 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-50 rounded-2xl border-2 border-blue-200 shadow-lg shadow-blue-100/50 animate-in fade-in slide-in-from-top duration-300">
+              <div className="flex items-center gap-2 text-blue-700 font-bold mb-2">
+                <Building2 size={18} className="drop-shadow" />
+                <span className="text-sm"> {lang === 'si' ? 'රජය නලධර තරතර' : 'Government Officer Information'}</span>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider flex items-center gap-1">
+                  <KeyRound size={12} /> {t.officerId} *
+                </label>
+                <input
+                  type="text"
+                  name="officerId"
+                  required={formData.role === 'officer'}
+                  placeholder={t.officerIdPlaceholder}
+                  value={formData.officerId}
+                  onChange={handleChange}
+                  className="w-full p-4 bg-white border-2 border-blue-200 focus:border-blue-500 focus:bg-blue-50/20 rounded-2xl transition-all outline-none text-gray-700 font-medium shadow-sm focus:shadow-lg focus:shadow-blue-100"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider">{t.department}</label>
+                  <input
+                    type="text"
+                    name="department"
+                    placeholder={t.departmentPlaceholder}
+                    value={formData.department}
+                    onChange={handleChange}
+                    className="w-full p-4 bg-white border-2 border-blue-200 focus:border-blue-500 focus:bg-blue-50/20 rounded-2xl transition-all outline-none text-gray-700 font-medium shadow-sm focus:shadow-lg focus:shadow-blue-100"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider">{t.designation}</label>
+                  <input
+                    type="text"
+                    name="designation"
+                    placeholder={t.designationPlaceholder}
+                    value={formData.designation}
+                    onChange={handleChange}
+                    className="w-full p-4 bg-white border-2 border-blue-200 focus:border-blue-500 focus:bg-blue-50/20 rounded-2xl transition-all outline-none text-gray-700 font-medium shadow-sm focus:shadow-lg focus:shadow-blue-100"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          <hr className="border-gray-200 my-4" />
 
           {/* Location Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="p-1.5 bg-green-100 rounded-lg">
-                <Globe className="text-green-600" size={14} />
+              <div className="p-2 bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl shadow-sm">
+                <MapPin className="text-green-600" size={16} />
               </div>
-              <span className="text-sm font-bold text-gray-600">{lang === 'si' ? 'ඔබේ ස්ථානය' : 'Your Location'}</span>
+              <span className="text-sm font-bold text-gray-700">{lang === 'si' ? '📍 ඔබේ ස්ථානය' : '📍 Your Location'}</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div className="space-y-1.5">
-                <label className="text-xs text-gray-400 ml-1">District</label>
-                <select 
-                  name="district" 
-                  required 
-                  value={formData.district} 
-                  onChange={handleChange} 
-                  className="w-full p-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:border-green-500 outline-none font-medium text-gray-600 text-sm cursor-pointer transition-all"
+                <label className="text-xs text-gray-500 ml-1 font-semibold">District</label>
+                <select
+                  name="district"
+                  required
+                  value={formData.district}
+                  onChange={handleChange}
+                  className="w-full p-3.5 bg-gradient-to-br from-gray-50 to-gray-100/50 border-2 border-gray-200 rounded-2xl focus:border-green-500 focus:bg-white outline-none font-medium text-gray-700 text-sm cursor-pointer transition-all shadow-sm focus:shadow-lg focus:shadow-green-100"
                 >
                   <option value="">Select District</option>
-                  {districts.map(d => <option key={d} value={d}>{d}</option>)}
+                  {districts.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs text-gray-400 ml-1">DS Division</label>
-                <select 
-                  name="dsDivision" 
-                  required 
-                  value={formData.dsDivision} 
-                  onChange={handleChange} 
+                <label className="text-xs text-gray-500 ml-1 font-semibold">DS Division</label>
+                <select
+                  name="dsDivision"
+                  required
+                  value={formData.dsDivision}
+                  onChange={handleChange}
                   disabled={!formData.district}
-                  className="w-full p-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:border-green-500 outline-none font-medium text-gray-600 text-sm disabled:opacity-40 cursor-pointer transition-all"
+                  className="w-full p-3.5 bg-gradient-to-br from-gray-50 to-gray-100/50 border-2 border-gray-200 rounded-2xl focus:border-green-500 focus:bg-white outline-none font-medium text-gray-700 text-sm disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-sm focus:shadow-lg focus:shadow-green-100"
                 >
                   <option value="">Select DS Division</option>
-                  {dsDivisions.map(ds => <option key={ds} value={ds}>{ds}</option>)}
+                  {dsDivisions.map((ds) => (
+                    <option key={ds} value={ds}>
+                      {ds}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs text-gray-400 ml-1">GN Division</label>
-                <select 
-                  name="gnDivision" 
-                  required 
-                  value={formData.gnDivision} 
-                  onChange={handleChange} 
+                <label className="text-xs text-gray-500 ml-1 font-semibold">GN Division</label>
+                <select
+                  name="gnDivision"
+                  required
+                  value={formData.gnDivision}
+                  onChange={handleChange}
                   disabled={!formData.dsDivision}
-                  className="w-full p-3.5 bg-gray-50 border-2 border-gray-100 rounded-xl focus:border-green-500 outline-none font-medium text-gray-600 text-sm disabled:opacity-40 cursor-pointer transition-all"
+                  className="w-full p-3.5 bg-gradient-to-br from-gray-50 to-gray-100/50 border-2 border-gray-200 rounded-2xl focus:border-green-500 focus:bg-white outline-none font-medium text-gray-700 text-sm disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all shadow-sm focus:shadow-lg focus:shadow-green-100"
                 >
                   <option value="">Select GN Division</option>
-                  {gnDivisions.map(gn => <option key={gn} value={gn}>{gn}</option>)}
+                  {gnDivisions.map((gn) => (
+                    <option key={gn} value={gn}>
+                      {gn}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
           </div>
 
           {/* Features List */}
-          <div className="bg-green-50 rounded-xl p-4 border border-green-100">
-            <p className="text-xs font-bold text-green-700 mb-2">What you'll get:</p>
-            <div className="grid grid-cols-2 gap-2 text-xs text-green-700">
-              <span className="flex items-center gap-1"><CheckCircle size={12} /> AI Disease Detection</span>
-              <span className="flex items-center gap-1"><CheckCircle size={12} /> Market Price Alerts</span>
-              <span className="flex items-center gap-1"><CheckCircle size={12} /> Weather Advisories</span>
-              <span className="flex items-center gap-1"><CheckCircle size={12} /> Community Network</span>
+          <div className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 rounded-2xl p-5 border-2 border-green-200 shadow-lg shadow-green-100/50">
+            <p className="text-xs font-bold text-green-800 mb-3 flex items-center gap-2">
+              <span className="text-lg">✨</span>
+              {lang === 'si' ? 'ඔබට ලැබෙන සේවා:' : "What you'll get:"}
+            </p>
+            <div className="grid grid-cols-2 gap-2.5 text-xs text-green-700 font-medium">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={14} className="text-green-600" /> {lang === 'si' ? 'AI රග හඳනගනම' : 'AI Disease Detection'}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={14} className="text-green-600" /> {lang === 'si' ? 'වළඳපල මල ඇඟවම' : 'Market Price Alerts'}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={14} className="text-green-600" /> {lang === 'si' ? 'කලගණ උපදස' : 'Weather Advisories'}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle size={14} className="text-green-600" /> {lang === 'si' ? 'පරජ ජලය' : 'Community Network'}
+              </span>
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white p-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-200 hover:-translate-y-0.5 disabled:opacity-70"
+            className="w-full bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 text-white py-4 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 hover:from-green-700 hover:via-emerald-700 hover:to-teal-700 transition-all shadow-xl shadow-green-300/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-400/60 disabled:opacity-70 disabled:cursor-not-allowed transform active:scale-95"
           >
             {loading ? (
-              <Loader2 className="animate-spin h-5 w-5" />
+              <>
+                <Loader2 className="animate-spin h-5 w-5" />
+                <span>{lang === 'si' ? 'සදමන...' : 'Creating...'}</span>
+              </>
             ) : (
               <>
-                <span>{lang === 'si' ? 'ලියාපදිංචිය අවසන් කරන්න' : 'Create My Account'}</span>
-                <ArrowRight size={18} />
+                <span>{lang === 'si' ? 'ලයපදචය අවසන කරනන' : 'Create My Account'}</span>
+                <ArrowRight size={20} />
               </>
             )}
           </button>
@@ -207,19 +377,20 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
             </div>
           </div>
 
-          <button 
-            type="button" 
+          <button
+            type="button"
             onClick={switchToLogin}
-            className="w-full p-3.5 border-2 border-green-200 text-green-700 font-bold rounded-xl hover:bg-green-50 transition-colors flex items-center justify-center gap-2"
+            className="w-full py-4 px-6 border-2 border-green-300 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 font-bold rounded-2xl hover:bg-gradient-to-r hover:from-green-100 hover:to-emerald-100 hover:border-green-400 transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
-            <KeyRound size={16} />
-            {lang === 'si' ? 'දැනටමත් ගිණුමක් තිබේද? ඇතුළු වන්න' : 'Already have an account? Login'}
+            <KeyRound size={18} />
+            {lang === 'si' ? 'දනටමත ගණමක තබද? ඇතළ වනන' : 'Already have an account? Login'}
           </button>
         </form>
       </div>
-      
-      <p className="text-center mt-6 text-green-100/60 text-xs font-medium">
-        🔒 Safe & Secure Digital Farming Ecosystem
+
+      <p className="text-center mt-6 text-white/80 text-xs font-medium flex items-center justify-center gap-2">
+        <span className="text-lg">🔒</span>
+        {lang === 'si' ? 'ආරක්ෂිත ඩිජිටල් ගොවිතැන පද්ධතිය' : 'Safe & Secure Digital Farming Ecosystem'}
       </p>
     </div>
   );

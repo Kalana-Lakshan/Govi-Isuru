@@ -147,32 +147,74 @@ app.get('/api/market-prices', (req, res) => {
 
 app.post('/api/register', async (req, res) => {
   try {
-    const { username, password, district, dsDivision, gnDivision } = req.body;
+    const { username, password, district, dsDivision, gnDivision, role, officerId, department, designation } = req.body;
 
     // 1. Check if user exists
     let user = await User.findOne({ username });
     if (user) return res.status(400).json({ msg: "User already exists" });
 
-    // 2. Hash Password
+    // 2. Validate officer ID if role is officer
+    if (role === 'officer') {
+      if (!officerId) {
+        return res.status(400).json({ msg: "Officer ID is required for government officers" });
+      }
+      // Check if officer ID already exists
+      const existingOfficer = await User.findOne({ officerId });
+      if (existingOfficer) {
+        return res.status(400).json({ msg: "Officer ID already registered" });
+      }
+    }
+
+    // 3. Hash Password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // 3. Create User
-    user = new User({
+    // 4. Create User
+    const userData = {
       username,
       password: hashedPassword,
       district,
       dsDivision,
-      gnDivision
-    });
+      gnDivision,
+      role: role || 'farmer'
+    };
 
+    // Add officer-specific fields if applicable
+    if (role === 'officer') {
+      userData.officerId = officerId;
+      userData.department = department || null;
+      userData.designation = designation || null;
+    }
+
+    user = new User(userData);
     await user.save();
 
-    // 4. Return Token (Login the user immediately, include username for reputation system)
-    const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || 'govi_secret', { expiresIn: '24h' });
-    res.json({ token, user: { username, district, dsDivision, gnDivision } });
+    // 5. Return Token (Login the user immediately)
+    const token = jwt.sign(
+      { id: user._id, username: user.username, role: user.role }, 
+      process.env.JWT_SECRET || 'govi_secret', 
+      { expiresIn: '24h' }
+    );
+    
+    const userResponse = {
+      username,
+      district,
+      dsDivision,
+      gnDivision,
+      role: user.role
+    };
+
+    // Include officer fields in response if applicable
+    if (user.role === 'officer') {
+      userResponse.officerId = user.officerId;
+      userResponse.department = user.department;
+      userResponse.designation = user.designation;
+    }
+
+    res.json({ token, user: userResponse });
 
   } catch (err) {
+    console.error('Registration error:', err);
     res.status(500).send("Server Error");
   }
 });
@@ -189,19 +231,32 @@ app.post('/api/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
-    // 3. Return Token (include username for reputation system)
-    const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || 'govi_secret', { expiresIn: '24h' });
-    res.json({ 
-      token, 
-      user: { 
-        username: user.username, 
-        district: user.district, 
-        dsDivision: user.dsDivision, 
-        gnDivision: user.gnDivision 
-      } 
-    });
+    // 3. Return Token with role information
+    const token = jwt.sign(
+      { id: user._id, username: user.username, role: user.role }, 
+      process.env.JWT_SECRET || 'govi_secret', 
+      { expiresIn: '24h' }
+    );
+    
+    const userResponse = { 
+      username: user.username, 
+      district: user.district, 
+      dsDivision: user.dsDivision, 
+      gnDivision: user.gnDivision,
+      role: user.role || 'farmer'
+    };
+
+    // Include officer fields if user is an officer
+    if (user.role === 'officer') {
+      userResponse.officerId = user.officerId;
+      userResponse.department = user.department;
+      userResponse.designation = user.designation;
+    }
+    
+    res.json({ token, user: userResponse });
 
   } catch (err) {
+    console.error('Login error:', err);
     res.status(500).send("Server Error");
   }
 });
