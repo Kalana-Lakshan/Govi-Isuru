@@ -329,9 +329,9 @@ const CommunityAlerts = ({ user, language = 'en' }) => {
 
             {/* Alert Cards - Show top 3 */}
             <div className="space-y-3">
-              {alerts.slice(0, 3).map((alert) => (
+              {alerts.slice(0, 3).map((alert, index) => (
                 <AlertCard
-                  key={alert.id}
+                  key={alert.id ? `inline-${alert.id}` : `alert-${index}`}
                   alert={alert}
                   language={language}
                   expanded={expandedAlert === alert.id}
@@ -399,9 +399,9 @@ const CommunityAlerts = ({ user, language = 'en' }) => {
             </div>
           ) : (
             <div className="space-y-3">
-              {alerts.map((alert) => (
+              {alerts.map((alert, index) => (
                 <AlertCard
-                  key={alert.id}
+                  key={alert.id ? `panel-${alert.id}` : `alert-panel-${index}`}
                   alert={alert}
                   language={language}
                   expanded={expandedAlert === alert.id}

@@ -11,11 +11,17 @@ const Login = ({ onLoginSuccess, switchToRegister, lang }) => {
     setLoading(true);
     try {
       const res = await axios.post('http://localhost:5000/api/login', formData);
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('user', JSON.stringify(res.data.user));
-      onLoginSuccess(res.data.user);
+      if (res.data && res.data.token && res.data.user) {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        onLoginSuccess(res.data.user);
+      } else {
+        throw new Error('Invalid response from server');
+      }
     } catch (err) {
-      alert(lang === 'si' ? "පිවිසීම අසාර්ථකයි. නම හෝ මුරපදය පරීක්ෂා කරන්න." : "Login failed. Check username/password.");
+      console.error('Login error:', err);
+      const errorMsg = err.response?.data?.msg || err.message;
+      alert(lang === 'si' ? `පිවිසීම අසාර්ථකයි: ${errorMsg}` : `Login failed: ${errorMsg}`);
     } finally {
       setLoading(false);
     }
