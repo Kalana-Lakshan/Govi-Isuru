@@ -13,6 +13,7 @@ import AlertsDashboard from './components/AlertsDashboard';
 import AgriNews from './components/AgriNews';
 import NewsWidget from './components/NewsWidget';
 import YieldPrediction from './components/YieldPrediction';
+import HomePage from './components/HomePage';
 
 const translations = {
   en: { 
@@ -45,7 +46,7 @@ const translations = {
 
 export default function App() {
   // 1. ALL HOOKS AT THE VERY TOP (Crucial for React Rules)
-  const [view, setView] = useState('doctor'); 
+  const [view, setView] = useState('home'); 
   const [lang, setLang] = useState('en');
   const [coords, setCoords] = useState({ lat: 8.3114, lon: 80.4037 }); // Default to Anuradhapura
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
@@ -76,31 +77,50 @@ export default function App() {
     window.location.reload(); // Refresh to show Register screen
   };
 
-  // 3. CONDITIONAL RENDER FOR REGISTRATION
+  // 3. CONDITIONAL RENDER FOR REGISTRATION OR HOME PAGE
   if (!user) {
-  return (
-    <div className="min-h-screen bg-green-900 flex flex-col items-center justify-center p-4">
-      <div className="mb-8 text-center text-white animate-in fade-in zoom-in duration-1000">
-         <Leaf className="h-16 w-16 text-green-300 mx-auto mb-2" />
-         <h1 className="text-4xl font-black tracking-tighter">GOVI ISURU</h1>
+    // Show HomePage if no user is logged in and view is 'home'
+    if (view === 'home') {
+      return (
+        <HomePage 
+          onLogin={() => setView('login')} 
+          onRegister={() => setView('register')}
+        />
+      );
+    }
+    
+    // Show Login or Register
+    return (
+      <div className="min-h-screen bg-green-900 flex flex-col items-center justify-center p-4">
+        <div className="mb-8 text-center text-white animate-in fade-in zoom-in duration-1000">
+          <Leaf className="h-16 w-16 text-green-300 mx-auto mb-2" />
+          <h1 className="text-4xl font-black tracking-tighter">GOVI ISURU</h1>
+        </div>
+        
+        {view === 'login' ? (
+          <Login 
+            onLoginSuccess={handleRegisterSuccess} 
+            switchToRegister={() => setView('register')} 
+            lang={lang} 
+          />
+        ) : (
+          <Register 
+            onRegisterSuccess={handleRegisterSuccess} 
+            switchToLogin={() => setView('login')}
+            lang={lang} 
+          />
+        )}
+        
+        {/* Back to Home button */}
+        <button
+          onClick={() => setView('home')}
+          className="mt-6 text-white/80 hover:text-white text-sm font-medium transition-colors"
+        >
+          ← {lang === 'si' ? 'මුල් පිටුවට' : 'Back to Home'}
+        </button>
       </div>
-      
-      {authMode === 'login' ? (
-        <Login 
-          onLoginSuccess={handleRegisterSuccess} 
-          switchToRegister={() => setAuthMode('register')} 
-          lang={lang} 
-        />
-      ) : (
-        <Register 
-          onRegisterSuccess={handleRegisterSuccess} 
-          switchToLogin={() => setAuthMode('login')} // Pass this prop to Register
-          lang={lang} 
-        />
-      )}
-    </div>
-  );
-}
+    );
+  }
 
   // Navigation items config
   const navItems = [
