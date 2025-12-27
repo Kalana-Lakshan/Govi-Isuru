@@ -1,0 +1,11 @@
+district,season,soil_ph,soil_type,drainage,slope,irrigation,rainfall_mm,temperature_c,land_size_ha,crop
+Anuradhapura,Maha,6.3,Loam,Moderate,Flat,True,1100,28,1.0,Rice
+Kurunegala,Yala,6.8,Clay,Moderate,Flat,True,900,29,1.2,Rice
+Badulla,Maha,5.0,Loam,Good,Steep,True,1800,22,0.8,Tea
+Nuwara Eliya,Maha,4.8,Loam,Good,Gentle,True,2000,18,0.6,Tea
+Matale,Yala,6.7,Sandy,Good,Gentle,True,800,30,0.5,Chili
+Monaragala,Yala,6.5,Sandy,Good,Flat,False,750,31,1.5,Chili
+Polonnaruwa,Maha,6.2,Clay,Moderate,Flat,True,1250,27,1.0,Rice
+Kandy,Maha,5.2,Loam,Good,Steep,True,1600,23,0.7,Tea
+Puttalam,Yala,6.9,Sandy,Moderate,Flat,False,700,30,1.3,Chili
+Hambantota,Yala,6.6,Sandy,Moderate,Flat,True,850,30,1.0,Chili

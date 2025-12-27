@@ -19,6 +19,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import uvicorn
 from enum import Enum
+from crop_suitability_model import predict_suitability
 
 # Configuration - Multi-crop support
 MODELS_CONFIG = {
@@ -61,6 +62,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# -------------------------------------------------------------
+# Crop Suitability Endpoint (tabular ML)
+# -------------------------------------------------------------
+@app.post("/suitability/predict")
+def suitability_predict(payload: dict):
+    try:
+        recs = predict_suitability(payload)
+        return {"recommendations": recs, "inputs": payload}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # Global variables for models and metadata (multi-crop)
 models = {}

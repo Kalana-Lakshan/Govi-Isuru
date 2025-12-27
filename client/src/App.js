@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper, BarChart3 } from 'lucide-react';
+import CropSuitability from './components/CropSuitability';
 import AIDoctor from './components/AIDoctor';
 import Marketplace from './components/Marketplace';
 import WeatherAdvisor from './components/WeatherAdvisor';
@@ -23,6 +24,7 @@ const translations = {
     alerts: "Disease Alerts",
     news: "Agri News",
     yieldForecast: "Yield Forecast",
+    suitability: "Crop Suitability",
     logout: "Logout",
     footer: "Empowering Sri Lankan Farmers" 
   },
@@ -35,6 +37,7 @@ const translations = {
     alerts: "රෝග අනතුරු ඇඟවීම්",
     news: "ගොවි ප්‍රවෘත්ති",
     yieldForecast: "අස්වැන්න අනාවැකි",
+    suitability: "බෝග සුදුසුකම",
     logout: "පද්ධතියෙන් ඉවත් වන්න",
     footer: "ශ්‍රී ලාංකීය ගොවීන් සවිබල ගැන්වීම" 
   }
@@ -108,6 +111,7 @@ export default function App() {
     { id: 'weather', icon: CloudSun, label: t.weather, emoji: '🌤️' },
     { id: 'alerts', icon: AlertTriangle, label: t.alerts, emoji: '⚠️' },
     { id: 'news', icon: Newspaper, label: t.news, emoji: '📰' },
+    { id: 'suitability', icon: Leaf, label: t.suitability, emoji: '🌱' },
   ];
 
   // 4. MAIN APP DASHBOARD
@@ -222,6 +226,7 @@ export default function App() {
             {view === 'alerts' && <AlertsDashboard user={user} language={lang} />}
             {view === 'news' && <AgriNews lang={lang} user={user} />}
             {view === 'yield' && <YieldPrediction lang={lang} />}
+            {view === 'suitability' && <CropSuitability lang={lang} user={user} coords={coords} />}
           </div>
         </div>
 
