@@ -1,2 +1,20 @@
 *.h5
 goviisuru.pem
+
+# Python virtual environment
+venv/
+ai-service/venv/
+__pycache__/
+
+# Python packages
+*.pyc
+*.pyo
+*.pyd
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / editor files
+.vscode/
+.idea/

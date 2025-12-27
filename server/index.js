@@ -1,4 +1,6 @@
-require('dotenv').config(); // 1. Load variables from .env file
+const dotenv = require('dotenv');
+dotenv.config();
+// 1. Load variables from .env file
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
