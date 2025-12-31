@@ -5,6 +5,7 @@ goviisuru.pem
 venv/
 ai-service/venv/
 __pycache__/
+ai-service/venv311/
 
 # Python packages
 *.pyc
