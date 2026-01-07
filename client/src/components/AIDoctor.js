@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { 
-  Upload, Loader2, CheckCircle, AlertTriangle, Bell, MapPin, Info,
+  Upload, Loader2, CheckCircle, AlertTriangle, MapPin, Info,
   Microscope, Stethoscope, Shield, Calendar, Leaf, Activity, Brain,
   FileText, ChevronRight, Coffee, Flame
 } from 'lucide-react';
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 const AI_API = process.env.REACT_APP_AI_URL || 'http://localhost:8000';
 
 const AIDoctor = ({ lang, user }) => {
@@ -15,8 +14,6 @@ const AIDoctor = ({ lang, user }) => {
   const [loading, setLoading] = useState(false);
   const [analysisStep, setAnalysisStep] = useState(0);
   const [result, setResult] = useState(null);
-  const [reportStatus, setReportStatus] = useState(null);
-  const [alertsTriggered, setAlertsTriggered] = useState([]);
   const [showGradCam, setShowGradCam] = useState(false);
   const [cropType, setCropType] = useState('rice'); // 'rice', 'tea', or 'chili'
 
@@ -43,11 +40,7 @@ const AIDoctor = ({ lang, user }) => {
       show: "Show",
       description: "Description",
       context: "Diagnosis Context",
-      communityStatus: "Community Monitoring",
-      monitoringActive: "Community monitoring active",
-      reportLogged: "Report logged for",
-      alertTriggered: "Alert Triggered!",
-      multipleCases: "Multiple cases detected in your area. Nearby farmers will be notified.",
+
       selectCrop: "Select Crop Type",
       rice: "Rice",
       tea: "Tea",
@@ -78,11 +71,7 @@ const AIDoctor = ({ lang, user }) => {
       show: "පෙන්වන්න",
       description: "විස්තරය",
       context: "විශ්ලේෂණ සන්දර්භය",
-      communityStatus: "ප්‍රජා අධීක්ෂණය",
-      monitoringActive: "ප්‍රජා අධීක්ෂණය සක්‍රියයි",
-      reportLogged: "වාර්තාව සටහන් විය",
-      alertTriggered: "අනතුරු ඇඟවීම!",
-      multipleCases: "ඔබගේ ප්‍රදේශයේ රෝග අවස්ථා කිහිපයක් හඳුනාගෙන ඇත. අසල්වැසි ගොවීන්ට දැනුම් දෙනු ලැබේ.",
+
       selectCrop: "බෝග වර්ගය තෝරන්න",
       rice: "වී",
       tea: "තේ",
@@ -100,39 +89,7 @@ const AIDoctor = ({ lang, user }) => {
     setFile(selectedFile);
     setPreview(URL.createObjectURL(selectedFile));
     setResult(null);
-    setReportStatus(null);
-    setAlertsTriggered([]);
     setAnalysisStep(0);
-  };
-
-  const reportToAlertSystem = async (predictionResult) => {
-    if (!user?.gnDivision) return;
-
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post(
-        `${API_BASE}/api/alerts/disease-report`,
-        {
-          crop: cropType === 'rice' ? 'Rice' : cropType === 'tea' ? 'Tea' : 'Chili',
-          disease: predictionResult.disease,
-          confidence: predictionResult.confidence,
-          district: user.district,
-          dsDivision: user.dsDivision,
-          gnDivision: user.gnDivision,
-          treatment: predictionResult.treatment,
-          farmerUsername: user.username
-        },
-        { headers: token ? { Authorization: `Bearer ${token}` } : {} }
-      );
-
-      setReportStatus('success');
-      if (response.data.alertsTriggered > 0) {
-        setAlertsTriggered(response.data.alerts);
-      }
-    } catch (error) {
-      console.error('Failed to report disease:', error);
-      setReportStatus('error');
-    }
   };
 
   const handleAnalyze = async () => {
@@ -168,15 +125,7 @@ const AIDoctor = ({ lang, user }) => {
       
       setResult(mappedResult);
       
-      // Check if it's a disease (not healthy)
-      const isHealthy = data.prediction.toLowerCase().includes('healthy');
-      if (data.prediction && !isHealthy) {
-        await reportToAlertSystem({
-          disease: data.prediction,
-          confidence: data.confidence,
-          treatment: Array.isArray(data.treatment) ? data.treatment[0] : data.treatment
-        });
-      }
+      // Process prediction result
     } catch (error) {
       console.error("Error connecting to AI service", error);
       alert(lang === 'en' 
@@ -518,34 +467,7 @@ const AIDoctor = ({ lang, user }) => {
               )}
             </div>
 
-            {/* Community Status */}
-            {reportStatus === 'success' && user?.gnDivision && (
-              <div className="flex items-center justify-between bg-green-50 rounded-xl p-4 border border-green-200">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-100 rounded-full">
-                    <Bell className="h-4 w-4 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-green-700">{text.communityStatus}</p>
-                    <p className="text-xs text-green-600">{text.reportLogged} {user.gnDivision}</p>
-                  </div>
-                </div>
-                <span className="bg-green-100 text-green-700 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
-                  <CheckCircle className="h-3 w-3" /> {text.monitoringActive}
-                </span>
-              </div>
-            )}
 
-            {/* Alert Triggered */}
-            {alertsTriggered.length > 0 && (
-              <div className="border-l-4 border-red-500 bg-red-50 rounded-r-xl p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <AlertTriangle className="h-5 w-5 text-red-600" />
-                  <span className="text-sm font-bold text-red-700">🚨 {text.alertTriggered}</span>
-                </div>
-                <p className="text-sm text-red-600">{text.multipleCases}</p>
-              </div>
-            )}
           </div>
         </div>
       )}

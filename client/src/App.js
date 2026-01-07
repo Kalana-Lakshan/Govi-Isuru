@@ -292,18 +292,7 @@ export default function App() {
             {/* Farmer Views */}
             {(!user?.role || user?.role === 'farmer') && (
               <>
-                {/* Show Community Alerts on AI Doctor view */}
-                {view === 'doctor' && <CommunityAlerts user={user} language={lang} />}
-                {view === 'doctor' && (
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div className="lg:col-span-2">
-                      <AIDoctor lang={lang} user={user} />
-                    </div>
-                    <div className="lg:col-span-1">
-                      <NewsWidget lang={lang} onViewAll={() => setView('news')} maxItems={4} />
-                    </div>
-                  </div>
-                )}
+                {view === 'doctor' && <AIDoctor lang={lang} user={user} />}
                 {view === 'market' && <Marketplace lang={lang} currentUser={user} />}
                 {view === 'weather' && <WeatherAdvisor lang={lang} lat={coords.lat} lon={coords.lon} />}
                 {view === 'trends' && <MarketTrends lang={lang} />}
