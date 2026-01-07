@@ -35,7 +35,9 @@ const Marketplace = ({ lang, currentUser }) => {
         active: "Active",
         delete: "Delete",
         deleteConfirm: "Are you sure you want to delete this listing?",
-        postingAs: "Posting as"
+        postingAs: "Posting as",
+        buyerViewOnly: "Buyers can browse listings. Posting is for farmers only.",
+        loginToPost: "Please log in as a farmer to post listings."
     },
     si: { 
         header: "අලෙවිසැල", 
@@ -51,10 +53,14 @@ const Marketplace = ({ lang, currentUser }) => {
         soldOut: "විකුණන ලද ලෙස සලකුණු කරන්න",
         active: "ක්‍රියාකාරී",
         delete: "මකන්න",
-        deleteConfirm: "මෙම දැන්වීම මැකීමට ඔබට විශ්වාසද?",
-        postingAs: "ලෙස පළ කිරීම"
+          deleteConfirm: "මෙම දැන්වීම මැකීමට ඔබට විශ්වාසද?",
+          postingAs: "ලෙස පළ කිරීම",
+          buyerViewOnly: "ගැණුම්කරුවන්ට දැන්වීම් බැලීමට පමණක් හැකිය. දැන්වීම් පළ කරන්නේ ගොවියන් විසින් පමණි.",
+          loginToPost: "දැන්වීම් පළ කිරීමට ගොවියෙකු ලෙස පුරනය වන්න."
     }
   };
+
+        const isBuyer = currentUser?.role === 'buyer';
 
   useEffect(() => {
     fetchListings();
@@ -123,14 +129,26 @@ const Marketplace = ({ lang, currentUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isBuyer) {
+      alert(t[lang].buyerViewOnly);
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert(t[lang].loginToPost);
+      return;
+    }
+
     try {
-      const token = localStorage.getItem('token');
-      await axios.post(`${API_BASE}/api/listings`, {
-        ...form,
-        farmerName: currentUser?.username || 'Anonymous'
-      }, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {}
-      });
+      await axios.post(
+        `${API_BASE}/api/listings`,
+        {
+          ...form,
+          farmerName: currentUser?.username || 'Anonymous'
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       fetchListings();
       setForm({ cropType: '', quantity: '', price: '', location: '', phone: '' });
       alert(lang === 'en' ? "Success! Your crop is listed." : "සාර්ථකයි! දැන්වීම ඇතුළත් කරන ලදී.");
@@ -186,31 +204,40 @@ const Marketplace = ({ lang, currentUser }) => {
       )}
 
       {/* Sell Form */}
-      <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 mb-8">
-        <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <div className="p-2 bg-green-100 rounded-lg">
-            <PlusCircle className="h-5 w-5 text-green-600" />
+      {!isBuyer ? (
+        <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 mb-8">
+          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <div className="p-2 bg-green-100 rounded-lg">
+              <PlusCircle className="h-5 w-5 text-green-600" />
+            </div>
+            {t[lang].formTitle}
+          </h3>
+          <div className="mb-4 p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200 flex items-center gap-2">
+            <div className="p-1.5 bg-green-500 rounded-full">
+              <User size={14} className="text-white" />
+            </div>
+            <span className="text-sm text-gray-600">{t[lang].postingAs}:</span>
+            <span className="font-bold text-green-700">{currentUser?.username}</span>
           </div>
-          {t[lang].formTitle}
-        </h3>
-        <div className="mb-4 p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200 flex items-center gap-2">
-          <div className="p-1.5 bg-green-500 rounded-full">
-            <User size={14} className="text-white" />
-          </div>
-          <span className="text-sm text-gray-600">{t[lang].postingAs}:</span>
-          <span className="font-bold text-green-700">{currentUser?.username}</span>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input name="cropType" value={form.cropType} onChange={handleChange} placeholder="Crop (e.g. Rice)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
+            <input name="quantity" value={form.quantity} onChange={handleChange} placeholder="Qty (e.g. 500kg)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
+            <input name="price" value={form.price} onChange={handleChange} placeholder="Price (LKR)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
+            <input name="location" value={form.location} onChange={handleChange} placeholder="Location" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
+            <input name="phone" value={form.phone} onChange={handleChange} placeholder="Phone (e.g. 0771234567)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
+            <button type="submit" className="md:col-span-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3.5 rounded-xl font-bold hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              {t[lang].btn}
+            </button>
+          </form>
         </div>
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input name="cropType" value={form.cropType} onChange={handleChange} placeholder="Crop (e.g. Rice)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
-          <input name="quantity" value={form.quantity} onChange={handleChange} placeholder="Qty (e.g. 500kg)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
-          <input name="price" value={form.price} onChange={handleChange} placeholder="Price (LKR)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
-          <input name="location" value={form.location} onChange={handleChange} placeholder="Location" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
-          <input name="phone" value={form.phone} onChange={handleChange} placeholder="Phone (e.g. 0771234567)" className="p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all" required />
-          <button type="submit" className="md:col-span-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3.5 rounded-xl font-bold hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-            {t[lang].btn}
-          </button>
-        </form>
-      </div>
+      ) : (
+        <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 mb-8">
+          <div className="flex items-center gap-3 text-amber-700 font-semibold">
+            <PlusCircle className="h-5 w-5 text-amber-600" />
+            <span>{t[lang].buyerViewOnly}</span>
+          </div>
+        </div>
+      )}
 
       {/* Listings Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

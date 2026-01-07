@@ -10,6 +10,7 @@ import {
   Globe,
   KeyRound,
   Leaf,
+  ShoppingBag,
   CheckCircle,
   Shield,
   Building2,
@@ -68,6 +69,7 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
       selectRole: 'I am a',
       farmer: 'Farmer',
       officer: 'Government Officer',
+      buyer: 'Buyer',
       fullName: 'Full Name',
       password: 'Password',
       district: 'District',
@@ -87,6 +89,7 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
       selectRole: 'මම',
       farmer: 'ගොවියෙක්',
       officer: 'රජයේ නිලධාරියෙක්',
+      buyer: 'ගැණුම්කරු',
       fullName: 'සම්පූර්ණ නම',
       password: 'මුරපදය',
       district: 'දිස්ත්‍රික්කය',
@@ -147,7 +150,7 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
               <span className="text-lg">👤</span>
               {t.selectRole}
             </label>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, role: 'farmer', officerId: '', department: '', designation: '' })}
@@ -172,6 +175,19 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
               >
                 <Shield className={`h-7 w-7 mx-auto mb-2 transition-all ${formData.role === 'officer' ? 'text-blue-600 drop-shadow' : 'text-gray-400'}`} />
                 <div className={`font-bold text-sm ${formData.role === 'officer' ? 'text-blue-700' : 'text-gray-600'}`}>{t.officer}</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setFormData({ ...formData, role: 'buyer', officerId: '', department: '', designation: '' })}
+                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${
+                  formData.role === 'buyer'
+                    ? 'border-amber-500 bg-gradient-to-br from-amber-50 to-yellow-50 shadow-lg shadow-amber-200/50'
+                    : 'border-gray-200 hover:border-amber-300 bg-white hover:bg-amber-50/30'
+                }`}
+              >
+                <ShoppingBag className={`h-7 w-7 mx-auto mb-2 transition-all ${formData.role === 'buyer' ? 'text-amber-600 drop-shadow' : 'text-gray-400'}`} />
+                <div className={`font-bold text-sm ${formData.role === 'buyer' ? 'text-amber-700' : 'text-gray-600'}`}>{t.buyer}</div>
               </button>
             </div>
           </div>

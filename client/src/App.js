@@ -15,6 +15,7 @@ import NewsWidget from './components/NewsWidget';
 import YieldPrediction from './components/YieldPrediction';
 import HomePage from './components/HomePage';
 import OfficerDashboard from './components/OfficerDashboard';
+import BuyerDashboard from './components/BuyerDashboard';
 import { districtCoordinates } from './data/sriLankaCoordinates';
 
 const translations = {
@@ -34,7 +35,10 @@ const translations = {
     diseaseAlerts: "Disease Alerts",
     areaReports: "Area Reports",
     outbreak: "Outbreak Management",
-    areaAnalytics: "Area Reports & Analytics"
+    areaAnalytics: "Area Reports & Analytics",
+    buyerDashboard: "Buyer Dashboard",
+    marketplace: "Marketplace",
+    agriNews: "Agri News"
   },
   si: { 
     title: "ගොවි ඉසුරු", 
@@ -52,7 +56,10 @@ const translations = {
     diseaseAlerts: "රෝග අනතුරු ඇඟවීම්",
     areaReports: "ප්‍රදේශ වාර්තා",
     outbreak: "පිපිරීම් කළමනාකරණ",
-    areaAnalytics: "ප්‍රදේශ වාර්තා හා විශ්ලේෂණ"
+    areaAnalytics: "ප්‍රදේශ වාර්තා හා විශ්ලේෂණ",
+    buyerDashboard: "ගැණුම්කරු උපකරණ පුවරුව",
+    marketplace: "වෙළඳසැල",
+    agriNews: "ගොවි ප්‍රවෘත්ති"
   }
 };
 
@@ -119,7 +126,9 @@ export default function App() {
   useEffect(() => {
     // If user exists and view hasn't been set to a dashboard yet, set it based on role
     if (user && (view === 'home' || view === 'login' || view === 'register')) {
-      const initialView = user?.role === 'officer' ? 'officerDashboard' : 'doctor';
+      let initialView = 'doctor';
+      if (user?.role === 'officer') initialView = 'officerDashboard';
+      else if (user?.role === 'buyer') initialView = 'buyerDashboard';
       setView(initialView);
     }
   }, [user]);
@@ -128,7 +137,9 @@ export default function App() {
   const handleRegisterSuccess = (userData) => {
     setUser(userData);
     // Set initial view based on role
-    const initialView = userData?.role === 'officer' ? 'officerDashboard' : 'doctor';
+    let initialView = 'doctor';
+    if (userData?.role === 'officer') initialView = 'officerDashboard';
+    else if (userData?.role === 'buyer') initialView = 'buyerDashboard';
     setView(initialView);
   };
 
@@ -186,7 +197,8 @@ export default function App() {
   // Navigation items config - role-based
   const getNavItems = () => {
     const isFarmer = !user?.role || user?.role === 'farmer';
-    
+    const isBuyer = user?.role === 'buyer';
+
     if (isFarmer) {
       // Farmer tabs
       return [
@@ -198,6 +210,13 @@ export default function App() {
         { id: 'alerts', icon: AlertTriangle, label: t.alerts, emoji: '⚠️' },
         { id: 'news', icon: Newspaper, label: t.news, emoji: '📰' },
         { id: 'suitability', icon: Leaf, label: t.suitability, emoji: '🌱' },
+      ];
+    } else if (isBuyer) {
+      // Buyer tabs
+      return [
+        { id: 'buyerDashboard', icon: LayoutDashboard, label: t.buyerDashboard, emoji: '🛍️' },
+        { id: 'marketplace', icon: ShoppingBag, label: t.marketplace, emoji: '🛒' },
+        { id: 'news', icon: Newspaper, label: t.agriNews, emoji: '📰' },
       ];
     } else {
       // Government Officer tabs
@@ -337,6 +356,15 @@ export default function App() {
                 {view === 'news' && <AgriNews lang={lang} user={user} />}
                 {view === 'yield' && <YieldPrediction lang={lang} />}
                 {view === 'suitability' && <CropSuitability lang={lang} user={user} coords={coords} />}
+              </>
+            )}
+
+            {/* Buyer Views */}
+            {user?.role === 'buyer' && (
+              <>
+                {view === 'buyerDashboard' && <BuyerDashboard user={user} language={lang} onNavigate={setView} />}
+                {view === 'marketplace' && <Marketplace lang={lang} currentUser={user} />}
+                {view === 'news' && <AgriNews lang={lang} user={user} />}
               </>
             )}
 

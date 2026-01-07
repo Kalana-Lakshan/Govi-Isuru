@@ -8,8 +8,8 @@ const UserSchema = new mongoose.Schema({
   gnDivision: { type: String, required: true },
   phone: { type: String, default: '' },
   
-  // Role System - Farmer or Government Officer
-  role: { type: String, enum: ['farmer', 'officer', 'admin', 'moderator'], default: 'farmer' },
+  // Role System - Farmer, Government Officer, or Buyer
+  role: { type: String, enum: ['farmer', 'officer', 'buyer', 'admin', 'moderator'], default: 'farmer' },
   officerId: { type: String, default: null }, // For government officers only
   department: { type: String, default: null }, // e.g., "Department of Agriculture", "Agrarian Services"
   designation: { type: String, default: null }, // e.g., "Agricultural Instructor", "Agrarian Development Officer"

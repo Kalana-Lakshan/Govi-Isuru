@@ -74,26 +74,40 @@ app.get('/api/listings', async (req, res) => {
 
 // POST: Add new item with farmer association
 app.post('/api/listings', async (req, res) => {
-    try {
-        // Try to find farmer by username to associate listing
-        let farmerId = null;
-        if (req.body.farmerName) {
-            const farmer = await User.findOne({ username: req.body.farmerName });
-            if (farmer) {
-                farmerId = farmer._id;
-            }
-        }
-        
-        const newItem = new Listing({
-            ...req.body,
-            farmer_id: farmerId,
-            status: 'active'
-        });
-        const savedItem = await newItem.save();
-        res.status(201).json(savedItem);
-    } catch (err) {
-        res.status(400).json({ error: "Validation failed. Check your data." });
+  try {
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+    if (!token) {
+      return res.status(401).json({ error: "Authentication required" });
     }
+
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET || 'govi_secret');
+    } catch (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return res.status(401).json({ error: "User not found" });
+    }
+
+    if (user.role === 'buyer') {
+      return res.status(403).json({ error: "Buyers cannot create listings" });
+    }
+        
+    const newItem = new Listing({
+      ...req.body,
+      farmer_id: user._id,
+      farmerName: user.username,
+      status: 'active'
+    });
+    const savedItem = await newItem.save();
+    res.status(201).json(savedItem);
+  } catch (err) {
+    console.error("Failed to create listing", err);
+    res.status(400).json({ error: "Validation failed. Check your data." });
+  }
 });
 
 // DELETE: Remove a listing (only by the owner)
