@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { MessageCircle, Send, Bot, User, Leaf, HelpCircle, X, Minimize2, Maximize2, RotateCcw, ImagePlus, Loader2, AlertTriangle, Lightbulb, Mic, MicOff } from 'lucide-react';
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const AI_API = process.env.REACT_APP_AI_URL || 'http://localhost:8000';
+
 
 // Follow-up suggestions based on intent
 const followUpSuggestions = {
@@ -443,7 +446,7 @@ export default function CropChatbot({ lang = 'en' }) {
       // Add current message to history
       history.push({ role: 'user', content: text.trim() });
 
-      const response = await axios.post('http://localhost:5000/api/chatbot/chat', {
+      const response = await axios.post(`${API_BASE}/api/chatbot/chat`, {
         message: text.trim(),
         language: lang,
         history: history.slice(-10) // Send last 10 messages for context
@@ -562,7 +565,7 @@ export default function CropChatbot({ lang = 'en' }) {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await axios.post(`http://localhost:8000/predict/${selectedCropType}`, formData, {
+      const response = await axios.post(`${AI_API}/predict/${selectedCropType}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
