@@ -6,7 +6,7 @@ import {
   FileText, ChevronRight, Coffee, Flame
 } from 'lucide-react';
 
-const AI_API = process.env.REACT_APP_AI_URL || 'http://localhost:8000';
+const AI_API = process.env.REACT_APP_AI_URL || '/ai';
 
 const AIDoctor = ({ lang, user }) => {
   const [file, setFile] = useState(null);

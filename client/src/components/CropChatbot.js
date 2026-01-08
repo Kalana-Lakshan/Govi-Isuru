@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { MessageCircle, Send, Bot, User, Leaf, HelpCircle, X, Minimize2, Maximize2, RotateCcw, ImagePlus, Loader2, AlertTriangle, Lightbulb, Mic, MicOff } from 'lucide-react';
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-const AI_API = process.env.REACT_APP_AI_URL || 'http://localhost:8000';
+const AI_API = process.env.REACT_APP_AI_URL || '/ai';
 
 
 // Follow-up suggestions based on intent

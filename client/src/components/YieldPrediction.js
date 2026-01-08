@@ -18,7 +18,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 
-const API_BASE = process.env.REACT_APP_AI_API_URL || 'http://localhost:8000';
+const API_BASE = process.env.REACT_APP_AI_API_URL || '/ai';
 
 // Sri Lanka Districts
 const DISTRICTS = [
