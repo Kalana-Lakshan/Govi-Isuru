@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Loader2, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Sparkles, Languages } from 'lucide-react';
 import axios from 'axios';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
@@ -10,6 +10,7 @@ export default function LlamaChatbot({ lang = 'en' }) {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [chatLang, setChatLang] = useState('en'); // Internal language state for chatbot
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -27,14 +28,14 @@ export default function LlamaChatbot({ lang = 'en' }) {
         {
           role: 'assistant',
           content:
-            lang === 'si'
-              ? 'ආයුබෝවන්! මම Llama 3.1 AI සහායකයා. වී, තේ සහ මිරිස් ගොවිතැන ගැන ඔබට උදව් කළ හැක. ඔබේ ප්‍රශ්නය අහන්න!'
-              : 'Hello! I\'m your Llama 3.1 AI farming assistant. I can help with rice, tea, and chili cultivation. What would you like to know?',
+            chatLang === 'si'
+              ? 'ආයුබෝවන්! මම Llama 3.3 70B AI සහායකයා. වී, තේ සහ මිරිස් ගොවිතැන ගැන ඔබට උදව් කළ හැක. ප්ලැට්ෆෝම් භාවිතය ගැනත් මම උදව් කරන්නම්. ඔබේ ප්‍රශ්නය අහන්න!'
+              : 'Hello! I\'m your Llama 3.3 70B AI assistant. I can help with rice, tea, and chili cultivation, and guide you on using the platform. What would you like to know?',
           timestamp: new Date(),
         },
       ]);
     }
-  }, [isOpen, messages.length, lang]);
+  }, [isOpen, messages.length, chatLang]);
 
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
@@ -61,8 +62,9 @@ export default function LlamaChatbot({ lang = 'en' }) {
         message: userMessage.content,
         history: history,
         options: {
-          temperature: 0.7,
+          temperature: 0.6,
           max_tokens: 512,
+          language: chatLang, // Pass language preference
         },
       });
 
@@ -140,16 +142,28 @@ export default function LlamaChatbot({ lang = 'en' }) {
               <Sparkles size={20} />
               <div>
                 <h3 className="font-bold text-lg">AI Farming Assistant</h3>
-                <p className="text-xs text-green-100">Powered by Llama 3.1</p>
+                <p className="text-xs text-green-100">Powered by Llama 3.3</p>
               </div>
             </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="hover:bg-white/20 p-1 rounded-full transition-colors"
-              aria-label="Close chat"
-            >
-              <X size={24} />
-            </button>
+            <div className="flex items-center gap-2">
+              {/* Language Toggle Button */}
+              <button
+                onClick={() => setChatLang(chatLang === 'en' ? 'si' : 'en')}
+                className="hover:bg-white/20 p-2 rounded-full transition-colors flex items-center gap-1"
+                aria-label="Toggle language"
+                title={chatLang === 'en' ? 'Switch to Sinhala' : 'Switch to English'}
+              >
+                <Languages size={20} />
+                <span className="text-xs font-medium">{chatLang === 'en' ? 'EN' : 'සිං'}</span>
+              </button>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="hover:bg-white/20 p-1 rounded-full transition-colors"
+                aria-label="Close chat"
+              >
+                <X size={24} />
+              </button>
+            </div>
           </div>
 
           {/* Messages Container */}

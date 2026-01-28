@@ -24,6 +24,11 @@ async function callModelAPI(messages, options = {}, modelName = PRIMARY_MODEL) {
   }
 
   try {
+    const language = options.language || 'en';
+    const languageInstruction = language === 'si' 
+      ? '\n\n**IMPORTANT**: Please respond in Sinhala (සිංහල) language.'
+      : '\n\n**IMPORTANT**: Please respond in English.';
+
     // Add system message for agricultural context with platform knowledge
     const systemMessage = {
       role: 'system',
@@ -77,7 +82,7 @@ async function callModelAPI(messages, options = {}, modelName = PRIMARY_MODEL) {
 - To check weather: Click Weather Advisory in sidebar
 - To predict yield: Go to Yield Prediction → Enter district, season, year
 
-Provide clear, step-by-step instructions when users ask "how do I..." questions. Keep agricultural advice concise and practical. Support both English and Sinhala when appropriate.`
+Provide clear, step-by-step instructions when users ask "how do I..." questions. Keep agricultural advice concise and practical. Support both English and Sinhala when appropriate.${languageInstruction}`
     };
 
     const allMessages = [systemMessage, ...messages];
