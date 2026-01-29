@@ -87,11 +87,11 @@ Provide clear, step-by-step instructions when users ask "how do I..." questions.
 
     const allMessages = [systemMessage, ...messages];
 
-    // OpenAI-compatible request format with optimized parameters for free tier
+    // OpenAI-compatible request format - no token limit restriction
     const payload = {
       model: modelName,
       messages: allMessages,
-      max_tokens: options.max_tokens || 512,  // Keep ≤512 for free tier
+      max_tokens: options.max_tokens || 4096,  // Allow full responses
       temperature: options.temperature || 0.6, // 0.6 for factual farming advice
       top_p: options.top_p || 0.9,
     };

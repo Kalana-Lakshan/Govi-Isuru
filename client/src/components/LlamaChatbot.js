@@ -248,7 +248,6 @@ export default function LlamaChatbot({ lang = 'en' }) {
         history: history,
         options: {
           temperature: 0.6,
-          max_tokens: 512,
           language: chatLang, // Pass language preference
         },
       });
