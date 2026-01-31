@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { User, Lock, ArrowRight, Loader2, KeyRound, Leaf, Sparkles, Sun, Cloud, Droplets } from 'lucide-react';
+import { User, Lock, ArrowRight, Loader2, KeyRound, Leaf, Sparkles, Sun, Cloud, Droplets, AlertCircle, Mail } from 'lucide-react';
 
-const Login = ({ onLoginSuccess, switchToRegister, lang }) => {
+const Login = ({ onLoginSuccess, switchToRegister, switchToForgotPassword, lang }) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ username: '', password: '' });
+  const [error, setError] = useState('');
+  const [showResendVerification, setShowResendVerification] = useState(false);
+  const [unverifiedEmail, setUnverifiedEmail] = useState('');
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendSuccess, setResendSuccess] = useState(false);
   const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
+    setShowResendVerification(false);
     try {
       const res = await axios.post(`${API_BASE}/api/login`, formData);
       if (res.data && res.data.token && res.data.user) {
@@ -22,11 +29,47 @@ const Login = ({ onLoginSuccess, switchToRegister, lang }) => {
     } catch (err) {
       console.error('Login error:', err);
       const errorMsg = err.response?.data?.msg || err.message;
-      alert(lang === 'si' ? `පිවිසීම අසාර්ථකයි: ${errorMsg}` : `Login failed: ${errorMsg}`);
+      const errorCode = err.response?.data?.code;
+      
+      if (errorCode === 'EMAIL_NOT_VERIFIED') {
+        setShowResendVerification(true);
+        setUnverifiedEmail(err.response?.data?.email || '');
+        setError(lang === 'si' ? 'කරුණාකර පිවිසීමට පෙර ඔබගේ විද්‍යුත් තැපෑල තහවුරු කරන්න' : 'Please verify your email before logging in');
+      } else {
+        setError(lang === 'si' ? `පිවිසීම අසාර්ථකයි: ${errorMsg}` : `Login failed: ${errorMsg}`);
+      }
     } finally {
       setLoading(false);
     }
   };
+
+  const handleResendVerification = async () => {
+    if (!unverifiedEmail) return;
+    setResendLoading(true);
+    try {
+      await axios.post(`${API_BASE}/api/auth/resend-verification`, { email: unverifiedEmail });
+      setResendSuccess(true);
+    } catch (err) {
+      setError(err.response?.data?.msg || 'Failed to resend verification email');
+    } finally {
+      setResendLoading(false);
+    }
+  };
+
+  const labels = {
+    en: {
+      forgotPassword: 'Forgot Password?',
+      resendVerification: 'Resend Verification Email',
+      verificationSent: 'Verification email sent! Check your inbox.'
+    },
+    si: {
+      forgotPassword: 'මුරපදය අමතකද?',
+      resendVerification: 'තහවුරු කිරීමේ විද්‍යුත් තැපෑල නැවත යවන්න',
+      verificationSent: 'තහවුරු කිරීමේ විද්‍යුත් තැපෑල යවන ලදී! ඔබගේ inbox පරීක්ෂා කරන්න.'
+    }
+  };
+
+  const t = labels[lang] || labels.en;
 
   return (
     <div className="w-full max-w-md p-1 animate-in fade-in zoom-in duration-700 relative">
@@ -64,6 +107,34 @@ const Login = ({ onLoginSuccess, switchToRegister, lang }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="p-8 space-y-6">
+          {/* Error Display */}
+          {error && (
+            <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-4 animate-in fade-in duration-300">
+              <div className="flex items-center gap-3">
+                <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
+                <p className="text-red-700 text-sm font-medium">{error}</p>
+              </div>
+              {showResendVerification && !resendSuccess && (
+                <button
+                  type="button"
+                  onClick={handleResendVerification}
+                  disabled={resendLoading}
+                  className="mt-3 w-full py-2 px-4 bg-red-100 hover:bg-red-200 text-red-700 font-medium rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
+                >
+                  {resendLoading ? (
+                    <Loader2 className="animate-spin h-4 w-4" />
+                  ) : (
+                    <Mail size={16} />
+                  )}
+                  {t.resendVerification}
+                </button>
+              )}
+              {resendSuccess && (
+                <p className="mt-3 text-green-600 text-sm font-medium text-center">{t.verificationSent}</p>
+              )}
+            </div>
+          )}
+
           <div className="space-y-4">
             <div className="relative group">
               <div className="absolute left-4 top-4 text-green-600 group-focus-within:text-emerald-600 transition-colors">
@@ -89,6 +160,19 @@ const Login = ({ onLoginSuccess, switchToRegister, lang }) => {
                 onChange={(e) => setFormData({...formData, password: e.target.value})} 
               />
             </div>
+            
+            {/* Forgot Password Link */}
+            {switchToForgotPassword && (
+              <div className="text-right">
+                <button
+                  type="button"
+                  onClick={switchToForgotPassword}
+                  className="text-sm text-green-600 hover:text-green-700 font-medium hover:underline transition-all"
+                >
+                  {t.forgotPassword}
+                </button>
+              </div>
+            )}
           </div>
 
           <button 

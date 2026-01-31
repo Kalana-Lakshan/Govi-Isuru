@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper, BarChart3 } from 'lucide-react';
+import { BrowserRouter, Routes, Route, useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import CropSuitability from './components/CropSuitability';
 import AIDoctor from './components/AIDoctor';
 import Marketplace from './components/Marketplace';
@@ -7,6 +8,9 @@ import WeatherAdvisor from './components/WeatherAdvisor';
 import MarketTrends from './components/MarketTrends';
 import Register from './components/Register';
 import Login from './components/Login';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
+import VerifyEmail from './components/VerifyEmail';
 import LlamaChatbot from './components/LlamaChatbot';
 import CommunityAlerts from './components/CommunityAlerts';
 import AlertsDashboard from './components/AlertsDashboard';
@@ -63,7 +67,47 @@ const translations = {
   }
 };
 
-export default function App() {
+// Verify Email Page Component
+const VerifyEmailPage = () => {
+  const [lang] = useState('en');
+  const navigate = useNavigate();
+  
+  return (
+    <div className="min-h-screen bg-green-900 flex flex-col items-center justify-center p-4">
+      <div className="mb-8 text-center text-white animate-in fade-in zoom-in duration-1000">
+        <Leaf className="h-16 w-16 text-green-300 mx-auto mb-2" />
+        <h1 className="text-4xl font-black tracking-tighter">GOVI ISURU</h1>
+      </div>
+      <VerifyEmail 
+        switchToLogin={() => navigate('/')}
+        lang={lang} 
+      />
+    </div>
+  );
+};
+
+// Reset Password Page Component
+const ResetPasswordPage = () => {
+  const [lang] = useState('en');
+  const navigate = useNavigate();
+  
+  return (
+    <div className="min-h-screen bg-green-900 flex flex-col items-center justify-center p-4">
+      <div className="mb-8 text-center text-white animate-in fade-in zoom-in duration-1000">
+        <Leaf className="h-16 w-16 text-green-300 mx-auto mb-2" />
+        <h1 className="text-4xl font-black tracking-tighter">GOVI ISURU</h1>
+      </div>
+      <ResetPassword 
+        switchToLogin={() => navigate('/')}
+        lang={lang} 
+      />
+    </div>
+  );
+};
+
+// Main App Component
+function MainApp() {
+  const navigate = useNavigate();
   // 1. ALL HOOKS AT THE VERY TOP (Crucial for React Rules)
   const [view, setView] = useState('home'); 
   const [lang, setLang] = useState('en');
@@ -161,7 +205,7 @@ export default function App() {
       );
     }
     
-    // Show Login or Register
+    // Show Login, Register, Forgot Password, etc.
     return (
       <div className="min-h-screen bg-green-900 flex flex-col items-center justify-center p-4">
         <div className="mb-8 text-center text-white animate-in fade-in zoom-in duration-1000">
@@ -169,15 +213,39 @@ export default function App() {
           <h1 className="text-4xl font-black tracking-tighter">GOVI ISURU</h1>
         </div>
         
-        {view === 'login' ? (
+        {view === 'login' && (
           <Login 
             onLoginSuccess={handleRegisterSuccess} 
-            switchToRegister={() => setView('register')} 
+            switchToRegister={() => setView('register')}
+            switchToForgotPassword={() => setView('forgotPassword')}
             lang={lang} 
           />
-        ) : (
+        )}
+        
+        {view === 'register' && (
           <Register 
             onRegisterSuccess={handleRegisterSuccess} 
+            switchToLogin={() => setView('login')}
+            lang={lang} 
+          />
+        )}
+        
+        {view === 'forgotPassword' && (
+          <ForgotPassword 
+            switchToLogin={() => setView('login')}
+            lang={lang} 
+          />
+        )}
+        
+        {view === 'resetPassword' && (
+          <ResetPassword 
+            switchToLogin={() => setView('login')}
+            lang={lang} 
+          />
+        )}
+        
+        {view === 'verifyEmail' && (
+          <VerifyEmail 
             switchToLogin={() => setView('login')}
             lang={lang} 
           />
@@ -391,4 +459,17 @@ export default function App() {
   );
 }
 
-// Placeholder components removed; officer area insights now live in OfficerDashboard analytics tab
+// Main App Export with Router
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Special auth routes that need URL parameters */}
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        {/* Main app route */}
+        <Route path="/*" element={<MainApp />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}

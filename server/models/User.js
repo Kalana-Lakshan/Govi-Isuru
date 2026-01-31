@@ -2,11 +2,22 @@ const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
+  fullName: { type: String, required: true },
+  email: { type: String, required: true, unique: true, lowercase: true },
   password: { type: String, required: true },
   district: { type: String, required: true },
   dsDivision: { type: String, required: true },
   gnDivision: { type: String, required: true },
   phone: { type: String, default: '' },
+  
+  // Email Verification
+  isEmailVerified: { type: Boolean, default: false },
+  verificationToken: { type: String },
+  verificationTokenExpires: { type: Date },
+  
+  // Password Reset
+  passwordResetToken: { type: String },
+  passwordResetExpires: { type: Date },
   
   // Role System - Farmer, Government Officer, or Buyer
   role: { type: String, enum: ['farmer', 'officer', 'buyer', 'admin', 'moderator'], default: 'farmer' },
@@ -35,5 +46,7 @@ UserSchema.index({ role: 1 });
 UserSchema.index({ account_flagged: 1 });
 UserSchema.index({ officerId: 1 });
 UserSchema.index({ district: 1, role: 1 });
+UserSchema.index({ verificationToken: 1 });
+UserSchema.index({ passwordResetToken: 1 });
 
 module.exports = mongoose.model('User', UserSchema);

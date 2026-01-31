@@ -18,6 +18,7 @@ const suitabilityRoutes = require('./routes/suitability');
 const officerRoutes = require('./routes/officer');
 const analyticsRoutes = require('./routes/analytics');
 const officerWorkflowRoutes = require('./routes/officerWorkflow');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
@@ -51,6 +52,9 @@ app.use('/api/analytics', analyticsRoutes);
 
 // Officer Workflow API Routes (Performance, Field Visits, Internal Notes)
 app.use('/api/officer-workflow', officerWorkflowRoutes);
+
+// Authentication API Routes (Login, Register, Email Verification, Password Reset)
+app.use('/api/auth', authRoutes);
 
 // 2. Connect to Database using environment variable
 // We remove the hardcoded string and the deprecated options (no longer needed in Mongoose 6+)
@@ -174,11 +178,24 @@ app.get('/api/market-prices', (req, res) => {
     res.json(marketData);
 });
 
+// ==========================================
+// LEGACY AUTH ROUTES (Backward Compatibility)
+// These routes support existing users without email
+// New registrations should use /api/auth/register
+// ==========================================
 
 app.post('/api/register', async (req, res) => {
   try {
-    const { username, password, district, dsDivision, gnDivision, role, officerId, department, designation } = req.body;
+    const { username, email, password, district, dsDivision, gnDivision, phone, role, officerId, department, designation } = req.body;
 
+    // If email is provided, redirect to new auth system
+    if (email) {
+      // Forward to new auth route
+      const authRouter = require('./routes/auth');
+      return authRouter.handle(req, res);
+    }
+
+    // Legacy registration for users without email (backward compatibility)
     // 1. Check if user exists
     let user = await User.findOne({ username });
     if (user) return res.status(400).json({ msg: "User already exists" });
@@ -188,7 +205,6 @@ app.post('/api/register', async (req, res) => {
       if (!officerId) {
         return res.status(400).json({ msg: "Officer ID is required for government officers" });
       }
-      // Check if officer ID already exists
       const existingOfficer = await User.findOne({ officerId });
       if (existingOfficer) {
         return res.status(400).json({ msg: "Officer ID already registered" });
@@ -199,14 +215,17 @@ app.post('/api/register', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // 4. Create User
+    // 4. Create User (legacy - no email verification)
     const userData = {
       username,
+      email: `${username}@legacy.goviisuru.lk`, // Placeholder email for legacy users
       password: hashedPassword,
       district,
       dsDivision,
       gnDivision,
-      role: role || 'farmer'
+      phone: phone || '',
+      role: role || 'farmer',
+      isEmailVerified: true // Legacy users are auto-verified
     };
 
     // Add officer-specific fields if applicable
@@ -260,15 +279,29 @@ app.post('/api/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // 1. Find user
-    const user = await User.findOne({ username });
+    // 1. Find user by username or email
+    const user = await User.findOne({
+      $or: [
+        { username },
+        { email: username.toLowerCase() }
+      ]
+    });
     if (!user) return res.status(400).json({ msg: "User does not exist" });
 
-    // 2. Validate password
+    // 2. Check email verification (skip for legacy users)
+    if (!user.isEmailVerified && !user.email.endsWith('@legacy.goviisuru.lk')) {
+      return res.status(403).json({ 
+        msg: "Please verify your email before logging in",
+        code: 'EMAIL_NOT_VERIFIED',
+        email: user.email
+      });
+    }
+
+    // 3. Validate password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
-    // 3. Return Token with role information
+    // 4. Return Token with role information
     const token = jwt.sign(
       { 
         id: user._id, 
@@ -283,7 +316,8 @@ app.post('/api/login', async (req, res) => {
     );
     
     const userResponse = { 
-      username: user.username, 
+      username: user.username,
+      email: user.email,
       district: user.district, 
       dsDivision: user.dsDivision, 
       gnDivision: user.gnDivision,
@@ -304,6 +338,7 @@ app.post('/api/login', async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
 // 5. Start Server using dynamic port for deployment
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Market Server running on Port ${PORT}`));
