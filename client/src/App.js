@@ -20,6 +20,7 @@ import YieldPrediction from './components/YieldPrediction';
 import HomePage from './components/HomePage';
 import OfficerDashboard from './components/OfficerDashboard';
 import BuyerDashboard from './components/BuyerDashboard';
+import UserProfile from './components/UserProfile';
 import { districtCoordinates } from './data/sriLankaCoordinates';
 
 const translations = {
@@ -266,7 +267,8 @@ function MainApp() {
   const getNavItems = () => {
     const isFarmer = !user?.role || user?.role === 'farmer';
     const isBuyer = user?.role === 'buyer';
-
+    // Add profile tab for all users
+    const profileTab = { id: 'profile', icon: Leaf, label: lang === 'si' ? 'පැතිකඩ' : 'Profile', emoji: '👤' };
     if (isFarmer) {
       // Farmer tabs
       return [
@@ -278,6 +280,7 @@ function MainApp() {
         { id: 'alerts', icon: AlertTriangle, label: t.alerts, emoji: '⚠️' },
         { id: 'news', icon: Newspaper, label: t.news, emoji: '📰' },
         { id: 'suitability', icon: Leaf, label: t.suitability, emoji: '🌱' },
+        profileTab,
       ];
     } else if (isBuyer) {
       // Buyer tabs
@@ -285,6 +288,7 @@ function MainApp() {
         { id: 'buyerDashboard', icon: LayoutDashboard, label: t.buyerDashboard, emoji: '🛍️' },
         { id: 'marketplace', icon: ShoppingBag, label: t.marketplace, emoji: '🛒' },
         { id: 'news', icon: Newspaper, label: t.agriNews, emoji: '📰' },
+        profileTab,
       ];
     } else {
       // Government Officer tabs
@@ -292,6 +296,7 @@ function MainApp() {
         { id: 'officerDashboard', icon: LayoutDashboard, label: 'Area Dashboard', emoji: '📊' },
         { id: 'diseaseAlerts', icon: AlertTriangle, label: t.diseaseAlerts, emoji: '⚠️' },
         { id: 'news', icon: Newspaper, label: t.news, emoji: '📰' },
+        profileTab,
       ];
     }
   };
@@ -424,6 +429,7 @@ function MainApp() {
                 {view === 'news' && <AgriNews lang={lang} user={user} />}
                 {view === 'yield' && <YieldPrediction lang={lang} />}
                 {view === 'suitability' && <CropSuitability lang={lang} user={user} coords={coords} />}
+                {view === 'profile' && <UserProfile />}
               </>
             )}
 
@@ -433,6 +439,7 @@ function MainApp() {
                 {view === 'buyerDashboard' && <BuyerDashboard user={user} language={lang} onNavigate={setView} />}
                 {view === 'marketplace' && <Marketplace lang={lang} currentUser={user} />}
                 {view === 'news' && <AgriNews lang={lang} user={user} />}
+                {view === 'profile' && <UserProfile />}
               </>
             )}
 
@@ -443,6 +450,7 @@ function MainApp() {
                 {view === 'diseaseAlerts' && <AlertsDashboard user={user} language={lang} isOfficer={true} />}
                 {view === 'areaAnalytics' && <OfficerDashboard user={user} language={lang} initialTab="analytics" />}
                 {view === 'news' && <AgriNews lang={lang} user={user} />}
+                {view === 'profile' && <UserProfile />}
               </>
             )}
           </div>
