@@ -72,3 +72,8 @@ Yes, you can deploy without Dockerfiles! Railway uses **Nixpacks** to automatica
 ## Troubleshooting
 - If Frontend gives "Invalid Host Header", ensure `serve` is running correctly.
 - If Backend fails, check `MONGO_URI` connection string.
+- **If AI Service fails with `ImportError: libxcb.so.1: cannot open shared object file`**:
+  - This is already fixed in `ai-service/nixpacks.toml` with the required system libraries.
+  - Ensure you've committed and pushed the updated `nixpacks.toml` file.
+  - Redeploy the AI service on Railway to apply the changes.
+
