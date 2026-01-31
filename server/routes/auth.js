@@ -11,15 +11,15 @@ const { sendVerificationEmail, sendPasswordResetEmail, sendPasswordChangedEmail 
 // Helper function to generate tokens
 const generateTokens = (user) => {
   const accessToken = jwt.sign(
-    {
-      id: user._id,
-      username: user.username,
+    { 
+      id: user._id, 
+      username: user.username, 
       role: user.role,
       district: user.district,
       dsDivision: user.dsDivision,
       gnDivision: user.gnDivision
-    },
-    process.env.JWT_SECRET || 'govi_secret',
+    }, 
+    process.env.JWT_SECRET || 'govi_secret', 
     { expiresIn: '15m' } // Short-lived access token
   );
 
@@ -38,15 +38,15 @@ const getDeviceInfo = (req) => {
   return {
     userAgent,
     ip: req.ip || req.connection?.remoteAddress || '',
-    browser: userAgent.includes('Chrome') ? 'Chrome' :
-      userAgent.includes('Firefox') ? 'Firefox' :
-        userAgent.includes('Safari') ? 'Safari' :
-          userAgent.includes('Edge') ? 'Edge' : 'Unknown',
+    browser: userAgent.includes('Chrome') ? 'Chrome' : 
+             userAgent.includes('Firefox') ? 'Firefox' : 
+             userAgent.includes('Safari') ? 'Safari' : 
+             userAgent.includes('Edge') ? 'Edge' : 'Unknown',
     os: userAgent.includes('Windows') ? 'Windows' :
-      userAgent.includes('Mac') ? 'MacOS' :
+        userAgent.includes('Mac') ? 'MacOS' :
         userAgent.includes('Linux') ? 'Linux' :
-          userAgent.includes('Android') ? 'Android' :
-            userAgent.includes('iOS') ? 'iOS' : 'Unknown'
+        userAgent.includes('Android') ? 'Android' :
+        userAgent.includes('iOS') ? 'iOS' : 'Unknown'
   };
 };
 
@@ -60,7 +60,7 @@ const authMiddleware = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'govi_secret');
     const user = await User.findById(decoded.id);
-
+    
     if (!user) {
       return res.status(401).json({ error: 'User not found' });
     }
@@ -81,7 +81,7 @@ const authMiddleware = async (req, res, next) => {
 // ==========================================
 const validatePassword = (password) => {
   const errors = [];
-
+  
   if (password.length < 8) {
     errors.push('Password must be at least 8 characters long');
   }
@@ -97,7 +97,7 @@ const validatePassword = (password) => {
   if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
     errors.push('Password must contain at least one special character (!@#$%^&*(),.?":{}|<>)');
   }
-
+  
   return {
     isValid: errors.length === 0,
     errors
@@ -109,20 +109,20 @@ const validatePassword = (password) => {
 // ==========================================
 router.post('/register', async (req, res) => {
   try {
-    const {
+    const { 
       fullName,
-      username,
-      email,
+      username, 
+      email, 
       password,
       confirmPassword,
-      district,
-      dsDivision,
-      gnDivision,
+      district, 
+      dsDivision, 
+      gnDivision, 
       phone,
-      role,
-      officerId,
-      department,
-      designation
+      role, 
+      officerId, 
+      department, 
+      designation 
     } = req.body;
 
     // Validate required fields
@@ -141,7 +141,7 @@ router.post('/register', async (req, res) => {
     // Validate password strength
     const passwordValidation = validatePassword(password);
     if (!passwordValidation.isValid) {
-      return res.status(400).json({
+      return res.status(400).json({ 
         msg: "Password does not meet requirements",
         errors: passwordValidation.errors
       });
@@ -153,10 +153,10 @@ router.post('/register', async (req, res) => {
     }
 
     // Check if user exists by username or email
-    let existingUser = await User.findOne({
-      $or: [{ username }, { email: email.toLowerCase() }]
+    let existingUser = await User.findOne({ 
+      $or: [{ username }, { email: email.toLowerCase() }] 
     });
-
+    
     if (existingUser) {
       if (existingUser.username === username) {
         return res.status(400).json({ msg: "Username already exists" });
@@ -211,12 +211,12 @@ router.post('/register', async (req, res) => {
 
     // Send verification email (using fullName for greeting)
     const emailResult = await sendVerificationEmail(email, fullName, verificationToken);
-
+    
     if (!emailResult.success) {
       console.error('Failed to send verification email:', emailResult.error);
     }
 
-    res.status(201).json({
+    res.status(201).json({ 
       success: true,
       msg: "Registration successful! Please check your email to verify your account.",
       emailSent: emailResult.success
@@ -241,8 +241,8 @@ router.get('/verify-email/:token', async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).json({
-        msg: "Invalid or expired verification link. Please request a new one."
+      return res.status(400).json({ 
+        msg: "Invalid or expired verification link. Please request a new one." 
       });
     }
 
@@ -252,9 +252,9 @@ router.get('/verify-email/:token', async (req, res) => {
     user.verificationTokenExpires = undefined;
     await user.save();
 
-    res.json({
+    res.json({ 
       success: true,
-      msg: "Email verified successfully! You can now log in."
+      msg: "Email verified successfully! You can now log in." 
     });
 
   } catch (err) {
@@ -271,7 +271,7 @@ router.post('/resend-verification', async (req, res) => {
     const { email } = req.body;
 
     const user = await User.findOne({ email: email.toLowerCase() });
-
+    
     if (!user) {
       return res.status(404).json({ msg: "No account found with this email" });
     }
@@ -293,9 +293,9 @@ router.post('/resend-verification', async (req, res) => {
       return res.status(500).json({ msg: "Failed to send verification email. Please try again." });
     }
 
-    res.json({
+    res.json({ 
       success: true,
-      msg: "Verification email sent! Please check your inbox."
+      msg: "Verification email sent! Please check your inbox." 
     });
 
   } catch (err) {
@@ -325,7 +325,7 @@ router.post('/login', async (req, res) => {
 
     // Check if email is verified
     if (!user.isEmailVerified) {
-      return res.status(403).json({
+      return res.status(403).json({ 
         msg: "Please verify your email before logging in",
         code: 'EMAIL_NOT_VERIFIED',
         email: user.email
@@ -350,12 +350,12 @@ router.post('/login', async (req, res) => {
     await session.save();
 
     // Prepare user response
-    const userResponse = {
+    const userResponse = { 
       username: user.username,
       fullName: user.fullName,
       email: user.email,
-      district: user.district,
-      dsDivision: user.dsDivision,
+      district: user.district, 
+      dsDivision: user.dsDivision, 
       gnDivision: user.gnDivision,
       role: user.role || 'farmer'
     };
@@ -367,7 +367,7 @@ router.post('/login', async (req, res) => {
       userResponse.designation = user.designation;
     }
 
-    res.json({
+    res.json({ 
       token: accessToken,  // For backward compatibility
       accessToken,
       refreshToken,
@@ -401,10 +401,10 @@ router.post('/refresh-token', async (req, res) => {
     }
 
     // Check if session exists and is active
-    const session = await Session.findOne({
-      refreshToken,
+    const session = await Session.findOne({ 
+      refreshToken, 
       userId: decoded.id,
-      isActive: true
+      isActive: true 
     });
 
     if (!session) {
@@ -485,9 +485,9 @@ router.post('/logout-all', authMiddleware, async (req, res) => {
 // ==========================================
 router.get('/sessions', authMiddleware, async (req, res) => {
   try {
-    const sessions = await Session.find({
-      userId: req.user._id,
-      isActive: true
+    const sessions = await Session.find({ 
+      userId: req.user._id, 
+      isActive: true 
     }).select('deviceInfo lastActivity createdAt');
 
     res.json({ sessions });
@@ -506,12 +506,12 @@ router.post('/forgot-password', async (req, res) => {
     const { email } = req.body;
 
     const user = await User.findOne({ email: email.toLowerCase() });
-
+    
     // Always return success to prevent email enumeration
     if (!user) {
-      return res.json({
+      return res.json({ 
         success: true,
-        msg: "If an account exists with this email, you will receive a password reset link."
+        msg: "If an account exists with this email, you will receive a password reset link." 
       });
     }
 
@@ -526,7 +526,7 @@ router.post('/forgot-password', async (req, res) => {
     // Send reset email (using fullName for greeting)
     const emailResult = await sendPasswordResetEmail(user.email, user.fullName || user.username, resetToken);
 
-    res.json({
+    res.json({ 
       success: true,
       msg: "If an account exists with this email, you will receive a password reset link."
     });
@@ -551,7 +551,7 @@ router.post('/reset-password', async (req, res) => {
     // Validate password strength
     const passwordValidation = validatePassword(password);
     if (!passwordValidation.isValid) {
-      return res.status(400).json({
+      return res.status(400).json({ 
         msg: "Password does not meet requirements",
         errors: passwordValidation.errors
       });
@@ -591,9 +591,9 @@ router.post('/reset-password', async (req, res) => {
     // Send confirmation email
     await sendPasswordChangedEmail(user.email, user.username);
 
-    res.json({
+    res.json({ 
       success: true,
-      msg: "Password reset successful! You can now log in with your new password."
+      msg: "Password reset successful! You can now log in with your new password." 
     });
 
   } catch (err) {
@@ -616,7 +616,7 @@ router.post('/change-password', authMiddleware, async (req, res) => {
     // Validate password strength
     const passwordValidation = validatePassword(newPassword);
     if (!passwordValidation.isValid) {
-      return res.status(400).json({
+      return res.status(400).json({ 
         msg: "Password does not meet requirements",
         errors: passwordValidation.errors
       });
@@ -643,7 +643,7 @@ router.post('/change-password', authMiddleware, async (req, res) => {
     // Invalidate all other sessions
     const currentRefreshToken = req.body.refreshToken;
     await Session.updateMany(
-      {
+      { 
         userId: user._id,
         refreshToken: { $ne: currentRefreshToken }
       },
@@ -653,9 +653,9 @@ router.post('/change-password', authMiddleware, async (req, res) => {
     // Send confirmation email
     await sendPasswordChangedEmail(user.email, user.username);
 
-    res.json({
+    res.json({ 
       success: true,
-      msg: "Password changed successfully"
+      msg: "Password changed successfully" 
     });
 
   } catch (err) {
@@ -670,7 +670,7 @@ router.post('/change-password', authMiddleware, async (req, res) => {
 router.get('/me', authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.user._id).select('-password -verificationToken -passwordResetToken');
-
+    
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
@@ -690,24 +690,15 @@ router.get('/me', authMiddleware, async (req, res) => {
 router.get('/user/profile', authMiddleware, async (req, res) => {
   try {
     const user = req.user;
-    const responseData = {
+    res.json({
       fullName: user.fullName,
       username: user.username,
       email: user.email,
-      phone: user.phone || '', // Include phone
       district: user.district,
       dsDivision: user.dsDivision,
       gnDivision: user.gnDivision,
       role: user.role
-    };
-
-    if (user.role === 'officer') {
-      responseData.officerId = user.officerId;
-      responseData.department = user.department;
-      responseData.designation = user.designation;
-    }
-
-    res.json(responseData);
+    });
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch profile' });
   }
@@ -716,82 +707,14 @@ router.get('/user/profile', authMiddleware, async (req, res) => {
 router.put('/user/profile', authMiddleware, async (req, res) => {
   try {
     const user = req.user;
-    const {
-      fullName,
-      email,
-      phone,
-      district,
-      dsDivision,
-      gnDivision,
-      department,
-      designation
-    } = req.body;
-
-    // Validate required fields
+    const { fullName } = req.body;
     if (!fullName || fullName.length < 2) {
       return res.status(400).json({ error: 'Full name is required' });
     }
-
-    // Update basic fields
     user.fullName = fullName;
-    if (phone !== undefined) user.phone = phone;
-    if (district) user.district = district;
-    if (dsDivision) user.dsDivision = dsDivision;
-    if (gnDivision) user.gnDivision = gnDivision;
-
-    // Update officer fields if applicable
-    if (user.role === 'officer') {
-      if (department !== undefined) user.department = department;
-      if (designation !== undefined) user.designation = designation;
-    }
-
-    let emailChanged = false;
-    // Handle Email Change
-    if (email && email.toLowerCase() !== user.email) {
-      // Check if email is already taken
-      const existingUser = await User.findOne({ email: email.toLowerCase() });
-      if (existingUser) {
-        return res.status(400).json({ error: 'Email already in use by another account' });
-      }
-
-      user.email = email.toLowerCase();
-      user.isEmailVerified = false;
-      user.verificationToken = crypto.randomBytes(32).toString('hex');
-      user.verificationTokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
-      emailChanged = true;
-    }
-
     await user.save();
-
-    let msg = 'Profile updated successfully';
-    if (emailChanged) {
-      // Send verification email
-      const emailResult = await sendVerificationEmail(user.email, user.fullName, user.verificationToken);
-      if (emailResult.success) {
-        msg = 'Profile updated. Please check your email to verify your new address.';
-      } else {
-        msg = 'Profile updated, but failed to send verification email.';
-      }
-    }
-
-    res.json({
-      msg,
-      user: {
-        fullName: user.fullName,
-        username: user.username,
-        email: user.email,
-        phone: user.phone,
-        district: user.district,
-        dsDivision: user.dsDivision,
-        gnDivision: user.gnDivision,
-        role: user.role,
-        department: user.department,
-        designation: user.designation
-      },
-      emailChanged
-    });
+    res.json({ msg: 'Profile updated', fullName: user.fullName });
   } catch (err) {
-    console.error('Profile update error:', err);
     res.status(500).json({ error: 'Failed to update profile' });
   }
 });
@@ -801,7 +724,7 @@ router.put('/user/profile', authMiddleware, async (req, res) => {
 // ==========================================
 router.get('/validate', authMiddleware, async (req, res) => {
   try {
-    res.json({
+    res.json({ 
       valid: true,
       user: {
         username: req.user.username,

@@ -29,7 +29,13 @@ Yes, you can deploy without Dockerfiles! Railway uses **Nixpacks** to automatica
 3. **Variables**:
    - `MONGO_URI`: (Paste `MONGO_URL`)
    - `JWT_SECRET`: (Set a strong secret)
-   - `AI_SERVICE_URL`: (Leave empty for now)
+   - `REFRESH_TOKEN_SECRET`: (3f6cee2a0e49e05bded468cde1bb7d1d30ee93aa3c628d1cb41c74b1df9fc931)
+   - `AI_SERVICE_URL`: `https://govi-ai.up.railway.app` (Add this after deploying AI Service)
+   - `HUGGINGFACE_API_TOKEN`: `hf_...` (Your Hugging Face Token)
+   - `NEWS_API_KEY`: `...` (Your News API Key)
+   - `GMAIL_USER`: `your-email@gmail.com`
+   - `GMAIL_APP_PASSWORD`: `your-app-password`
+   - `FRONTEND_URL`: `https://govi-isuru.up.railway.app` (Add this after deploying Frontend)
 4. **Deploy**. Railway will build utilizing Nixpacks.
 5. Go to **Networking** -> Generate Domain (e.g., `govi-backend.up.railway.app`).
 

@@ -34,10 +34,10 @@ const validatePasswordStrength = (password) => {
     hasNumber: /[0-9]/.test(password),
     hasSpecial: /[!@#$%^&*(),.?":{}|<>]/.test(password)
   };
-  
+
   const passedChecks = Object.values(checks).filter(Boolean).length;
   const strength = passedChecks <= 2 ? 'weak' : passedChecks <= 4 ? 'medium' : 'strong';
-  
+
   return { checks, strength, isValid: Object.values(checks).every(Boolean) };
 };
 
@@ -309,11 +309,10 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, role: 'farmer', officerId: '', department: '', designation: '' })}
-                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${
-                  formData.role === 'farmer'
+                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${formData.role === 'farmer'
                     ? 'border-green-500 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg shadow-green-200/50'
                     : 'border-gray-200 hover:border-green-300 bg-white hover:bg-green-50/30'
-                }`}
+                  }`}
               >
                 <Sprout className={`h-7 w-7 mx-auto mb-2 transition-all ${formData.role === 'farmer' ? 'text-green-600 drop-shadow' : 'text-gray-400'}`} />
                 <div className={`font-bold text-sm ${formData.role === 'farmer' ? 'text-green-700' : 'text-gray-600'}`}>{t.farmer}</div>
@@ -322,11 +321,10 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, role: 'officer' })}
-                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${
-                  formData.role === 'officer'
+                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${formData.role === 'officer'
                     ? 'border-blue-500 bg-gradient-to-br from-blue-50 to-cyan-50 shadow-lg shadow-blue-200/50'
                     : 'border-gray-200 hover:border-blue-300 bg-white hover:bg-blue-50/30'
-                }`}
+                  }`}
               >
                 <Shield className={`h-7 w-7 mx-auto mb-2 transition-all ${formData.role === 'officer' ? 'text-blue-600 drop-shadow' : 'text-gray-400'}`} />
                 <div className={`font-bold text-sm ${formData.role === 'officer' ? 'text-blue-700' : 'text-gray-600'}`}>{t.officer}</div>
@@ -335,11 +333,10 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, role: 'buyer', officerId: '', department: '', designation: '' })}
-                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${
-                  formData.role === 'buyer'
+                className={`p-5 rounded-2xl border-2 transition-all transform hover:scale-105 ${formData.role === 'buyer'
                     ? 'border-amber-500 bg-gradient-to-br from-amber-50 to-yellow-50 shadow-lg shadow-amber-200/50'
                     : 'border-gray-200 hover:border-amber-300 bg-white hover:bg-amber-50/30'
-                }`}
+                  }`}
               >
                 <ShoppingBag className={`h-7 w-7 mx-auto mb-2 transition-all ${formData.role === 'buyer' ? 'text-amber-600 drop-shadow' : 'text-gray-400'}`} />
                 <div className={`font-bold text-sm ${formData.role === 'buyer' ? 'text-amber-700' : 'text-gray-600'}`}>{t.buyer}</div>
@@ -421,28 +418,26 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
-            
+
             {/* Password Strength Indicator */}
             {formData.password && (
               <div className="space-y-2 mt-2 p-3 bg-gray-50 rounded-xl border border-gray-200">
                 {/* Strength Bar */}
                 <div className="flex items-center gap-2">
                   <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full transition-all duration-300 ${
-                        passwordValidation.strength === 'weak' ? 'w-1/3 bg-red-500' :
-                        passwordValidation.strength === 'medium' ? 'w-2/3 bg-yellow-500' : 'w-full bg-green-500'
-                      }`}
+                    <div
+                      className={`h-full transition-all duration-300 ${passwordValidation.strength === 'weak' ? 'w-1/3 bg-red-500' :
+                          passwordValidation.strength === 'medium' ? 'w-2/3 bg-yellow-500' : 'w-full bg-green-500'
+                        }`}
                     />
                   </div>
-                  <span className={`text-xs font-bold ${
-                    passwordValidation.strength === 'weak' ? 'text-red-600' :
-                    passwordValidation.strength === 'medium' ? 'text-yellow-600' : 'text-green-600'
-                  }`}>
+                  <span className={`text-xs font-bold ${passwordValidation.strength === 'weak' ? 'text-red-600' :
+                      passwordValidation.strength === 'medium' ? 'text-yellow-600' : 'text-green-600'
+                    }`}>
                     {t.passwordStrength[passwordValidation.strength]}
                   </span>
                 </div>
-                
+
                 {/* Requirements Checklist */}
                 <div className="space-y-1">
                   <p className="text-xs font-semibold text-gray-600">{t.passwordRequirements.title}</p>
@@ -486,13 +481,12 @@ const Register = ({ onRegisterSuccess, switchToLogin, lang }) => {
                 placeholder="••••••••"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={`w-full p-4 pr-12 bg-gradient-to-br from-gray-50 to-gray-100/50 border-2 ${
-                  formData.confirmPassword 
-                    ? passwordsMatch 
-                      ? 'border-green-500 focus:border-green-500' 
+                className={`w-full p-4 pr-12 bg-gradient-to-br from-gray-50 to-gray-100/50 border-2 ${formData.confirmPassword
+                    ? passwordsMatch
+                      ? 'border-green-500 focus:border-green-500'
                       : 'border-red-400 focus:border-red-500'
                     : 'border-gray-200 focus:border-green-500'
-                } focus:bg-white rounded-2xl transition-all outline-none text-gray-700 font-medium shadow-sm focus:shadow-lg focus:shadow-green-100`}
+                  } focus:bg-white rounded-2xl transition-all outline-none text-gray-700 font-medium shadow-sm focus:shadow-lg focus:shadow-green-100`}
               />
               <button
                 type="button"
