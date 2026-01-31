@@ -1,12 +1,13 @@
 const { Resend } = require('resend');
 
-// Initialize Resend with API key
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend with API key (only if present)
+let resend = null;
 
-// Verify API key is present
 if (!process.env.RESEND_API_KEY) {
   console.error('❌ RESEND_API_KEY is not set. Email service will not work.');
+  console.error('   Add RESEND_API_KEY to your Railway environment variables.');
 } else {
+  resend = new Resend(process.env.RESEND_API_KEY);
   console.log('✅ Resend email service initialized');
 }
 
@@ -16,6 +17,11 @@ if (!process.env.RESEND_API_KEY) {
 const sendVerificationEmail = async (email, username, verificationToken) => {
   const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
   const verificationLink = `${frontendUrl}/verify-email?token=${verificationToken}`;
+
+  if (!resend) {
+    console.error('Cannot send email: RESEND_API_KEY not configured');
+    return { success: false, error: 'Email service not configured' };
+  }
 
   try {
     const { data, error } = await resend.emails.send({
@@ -90,6 +96,11 @@ const sendPasswordResetEmail = async (email, username, resetToken) => {
   const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
   const resetLink = `${frontendUrl}/reset-password?token=${resetToken}`;
 
+  if (!resend) {
+    console.error('Cannot send email: RESEND_API_KEY not configured');
+    return { success: false, error: 'Email service not configured' };
+  }
+
   try {
     const { data, error } = await resend.emails.send({
       from: 'Govi Isuru <onboarding@resend.dev>',
@@ -163,6 +174,11 @@ const sendPasswordResetEmail = async (email, username, resetToken) => {
  * Send password changed confirmation email
  */
 const sendPasswordChangedEmail = async (email, username) => {
+  if (!resend) {
+    console.error('Cannot send email: RESEND_API_KEY not configured');
+    return { success: false, error: 'Email service not configured' };
+  }
+
   try {
     const { data, error } = await resend.emails.send({
       from: 'Govi Isuru <onboarding@resend.dev>',
