@@ -2,11 +2,18 @@ const nodemailer = require('nodemailer');
 
 // Create transporter using Gmail
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // true for 465, false for other ports
   auth: {
     user: process.env.GMAIL_USER,
     pass: process.env.GMAIL_APP_PASSWORD
-  }
+  },
+  tls: {
+    rejectUnauthorized: false // Helps with some self-signed cert issues during dev
+  },
+  debug: true, // Show debug output
+  logger: true // Log information to console
 });
 
 // Verify transporter connection
