@@ -1,0 +1,2474 @@
+1) Samba Rice
+Description:
+- Short, ovular grain with a slightly plump shape. Popular for daily meals and special dishes. Occurs in both white and red-seeded forms. Many local landraces are aromatic and have good cooking quality, often slightly sticky when cooked.
+
+Common diseases & pests:
+- Rice blast (Magnaporthe oryzae)
+- Bacterial leaf blight (Xanthomonas oryzae pv. oryzae)
+- Sheath blight (Rhizoctonia solani)
+- Brown spot (Bipolaris oryzae)
+- Brown planthopper (Nilaparvata lugens) and associated virus or hopperburn
+- Stem borers and rice hispa
+
+Prevention & management:
+- Use certified, disease-resistant Samba cultivars where available.
+- Practice crop rotation and field sanitation (remove volunteer rice, stubble burning or incorporation as local practice allows).
+- Maintain proper plant spacing and avoid excessive nitrogen which increases susceptibility to blast and planthoppers.
+- Seed treatment with approved fungicide and insecticidal seed dressings reduces early infections.
+- Timely scouting; apply fungicides or insecticides only when economic thresholds are met (follow local DOA guidance).
+- Balanced irrigation management—avoid prolonged leaf wetness when blast risk is high.
+
+Nutrition & fertilization (general guidance):
+- Conduct soil test to set targets. For typical smallholder Samba: aim for balanced N-P-K with attention to organic matter.
+- Basal: Apply full P and K according to soil test at or before transplanting/sowing; incorporate organic matter (compost) where possible.
+- Nitrogen split: Common schedule — 1/3 basal at planting, 1/3 at active tillering (20–30 days after transplanting), 1/3 at panicle initiation (just before heading). Adjust rates to yield target (e.g., total N 60–120 kg/ha depending on soil fertility and desired yield).
+- Micronutrients: Apply zinc if deficiency suspected (ZnSO4 at planting) and ensure sulphur and boron levels are adequate for panicle health.
+
+Harvesting & post-harvest:
+- Harvest when ~85–90% of grains on the main tillers are firm and straw has started to yellow; typical grain moisture at cutting ~20–24%.
+- Cut and thresh promptly; dry grain to safe storage moisture (12–14%) to avoid spoilage.
+- For best quality, avoid shattering by harvesting before overmaturity; red-seeded traditional Sambas may require gentler handling to preserve bran color.
+
+
+2) Kekulu Rice
+Description:
+- Term `Kekulu` broadly refers to small to medium-grained traditional varieties similar in some ways to Nadu; often consumed as daily white or red rice. May be non-parboiled and has a tender texture when cooked.
+
+Common diseases & pests:
+- Similar to general rice: blast, bacterial leaf blight, sheath blight, brown spot, stem borer, planthoppers.
+
+Prevention & management:
+- Use clean seed; practice crop/habitat hygiene.
+- Avoid dense planting; follow recommended seed rates.
+- Integrated pest management: natural enemies, pheromone traps for borers, and selective insecticides as needed.
+
+Nutrition & fertilization:
+- Follow soil-test recommendations. Traditional Kekulu types respond well to organic amendments.
+- Typical N split: 1/3 basal, 1/3 at tillering, 1/3 at panicle initiation.
+- Apply phosphorus at planting to promote root establishment; potassium to support grain filling.
+
+Harvesting & post-harvest:
+- Harvest when grains mature but before significant shattering; drying to 12–14% moisture for storage.
+- For non-parboiled Kekulu, careful drying and storage prevents rancidity of the bran.
+
+
+3) Keeri Samba / Supiri Samba
+Description:
+- Keeri Samba (often called Keeri Samba or Supiri Samba) is a premium small-grain aromatic rice valued for its flavor and distinct texture. Grains are small, somewhat ovate, and often used in special dishes and traditional preparations.
+
+Common diseases & pests:
+- Same disease spectrum: blast, sheath blight, bacterial blight, brown spot; aromatic landraces can be more susceptible to lodging if overfertilized.
+- Insect pests: stem borers, leaf folders, planthoppers.
+
+Prevention & management:
+- Grow in well-drained, fertile soils but avoid excessive N to preserve aroma and reduce lodging and pest attraction.
+- Prefer gap-filling rather than heavy reseeding to maintain plant health.
+- Use IPM: pheromone traps, biological controls, and spot treatments rather than broad sprays to protect beneficials that maintain aroma quality.
+
+Nutrition & fertilization:
+- Lower to moderate nitrogen rates often produce best cooking quality and aroma; example split N at lower end of recommended range (60–80 kg N/ha) unless soil is poor.
+- Ensure phosphorus for root development and potassium for grain quality.
+- Topdress N at tillering and panicle initiation; avoid late excessive N after heading (can reduce grain quality).
+
+Harvesting & post-harvest:
+- For aromatic varieties, harvest at physiological maturity (grain hard, panicle slightly drooping) to maximize aroma and reduce losses.
+- Dry carefully at low temperatures and avoid overheating during parboiling or drying to preserve aroma compounds.
+
+
+4) Suwandel / Suwandal
+Description:
+- Suwandel (also spelled Suwandal or Suwandel) is a fragrant, traditional Sri Lankan rice often used in festive and ceremonial dishes. It is prized for aroma and slightly distinct taste/texture compared with common varieties.
+
+Common diseases & pests:
+- Vulnerable to the usual rice diseases: blast, sheath blight, brown spot, bacterial blight, and insect pests like planthoppers and borers.
+
+Prevention & management:
+- Use certified or locally adapted Suwandel seed; stagger plantings to avoid peak pest pressure.
+- Maintain field hygiene and use appropriate resistant varieties if available.
+- Rotational legumes and green-manure crops reduce disease carryover and improve soil nitrogen.
+
+Nutrition & fertilization:
+- Suwandel benefits from balanced nutrition. Maintain good soil organic matter for aroma expression.
+- Typical N schedule: split application (basal, tillering, panicle initiation); avoid late N.
+- Apply K for grain filling; consider foliar micro-nutrients when deficiency symptoms appear.
+
+Harvesting & post-harvest:
+- Harvest at physiological maturity; dry to safe moisture quickly to retain aroma.
+- Careful threshing and minimal grain damage preserve market value.
+
+
+5) Nadu Rice
+Description:
+- Nadu is a medium-grain rice type widely grown and consumed in Sri Lanka. It often refers to grain size/shape rather than a single cultivar group; available in white and red variants and used for daily meals.
+
+Common diseases & pests:
+- Rice blast, sheath blight, bacterial leaf blight, brown spot, tungro virus (transmitted by leafhoppers), planthoppers, stem borers.
+
+Prevention & management:
+- Use recommended varieties and certified seed.
+- Control vector populations (leafhoppers) to reduce tungro risk — maintain healthy, vigorous plants and consider insecticidal seed treatment.
+- Balanced fertilization and appropriate water management reduce disease incidence.
+
+Nutrition & fertilization:
+- Nadu is responsive to N but excessive N increases disease and pest risks.
+- Standard split N program: basal, tillering, panicle initiation — adjust total N to soil fertility and yield goal (often 60–120 kg N/ha range as an example).
+- Phosphorus at planting, potassium in early/mid-season for grain filling.
+
+Harvesting & post-harvest:
+- Harvest when grains on main tillers are mature (85–90% grain maturity), typically indicated by firm grains and yellowing straw.
+- Thresh and dry to 12–14% moisture for storage; reduce field losses by timely harvesting to prevent shattering and bird/pest damage.
+
+
+General Best Practices (applies to all traditional varieties):
+- Seed selection: Use clean, certified seed when available. Clean seed reduces disease carryover and improves stand uniformity.
+- Land prep & planting: Ensure good seedbed and leveled fields for uniform irrigation. Follow recommended seed rates and planting spacing to reduce disease microclimates.
+- Water management: Alternate wetting and drying or maintain recommended water depth depending on local recommendations; avoid prolonged leaf wetness when fungal diseases are prevalent.
+- Integrated Pest Management (IPM): Combine cultural controls (rotation, sanitation), biologicals (natural enemies), and targeted chemical interventions only as needed.
+- Fertility: Perform soil tests. Use organic matter (compost, green manure) to improve soil health and micronutrient availability. Base fertilizer programs on soil-test results; follow split N applications timed to tillering and panicle initiation.
+- Harvest timing: Harvest at physiological maturity to balance yield and quality; drying to safe moisture quickly is essential to preserve grain quality and prevent pests/molds.
+- Storage: Store dry grain at 12–14% moisture in cool, dry conditions; protect against insects and rodents with cleanliness and sealed containers or appropriate storage structures.
+
+References & notes:
+- The above compendium is based on standard rice agronomy and integrated disease/pest management practices as taught by IRRI, FAO, and national extension services. For cultivar-specific recommendations (exact fertiliser rates, resistant varieties, or chemical product choices) consult the Sri Lanka Department of Agriculture pages and local extension agents or seed suppliers.
+
+If you want, I can:
+- Retry fetching your three URLs (I can attempt again if you want me to try web access),
+- Expand any section with step-by-step fertiliser calculators for a given field size, or
+- Produce a short brochure-style or CSV summary for field use.
+
+Recommended / Released Variety Codes (from your screenshots)
+Note: the following list transcribes the recommended variety codes shown in your attachments and groups them by crop-duration categories. For cultivar-specific management (fertiliser rates, maturity days, disease resistance) consult the Department of Agriculture or seed release datasheets.
+
+2 1/2 Months:
+- Bg 750, Bg 250, Bg 251 (GSR), Bg 252, Ld 253, At 313
+
+1️.BG 750
+
+📌 Description
+    -Duration: ~75–80 days
+    -Grain type: White, medium grain
+    -Zone: Dry & Intermediate zones
+
+Special:
+    -Very short duration
+    -Suitable for late Yala planting
+    -Moderate yield, fast maturity
+
+🦠 Common Diseases
+    -Leaf blast
+    -Brown spot
+    -Sheath blight (low–moderate)
+
+🛡️ Disease Prevention
+    -Use certified seeds
+    -Avoid excessive nitrogen (very important for short varieties)
+    -Maintain proper spacing
+    -Apply potassium fertilizer to reduce brown spot
+
+🌾 Proper Harvesting
+    -Harvest at 70–75 days when 80% panicles turn golden
+    -Harvest early to avoid grain shattering
+    -Dry immediately after harvest (short grains crack easily)
+
+2️.BG 250
+
+📌 Description
+    -Duration: ~85–90 days
+    -Grain type: White, long grain
+    -Zone: Dry zone
+
+Special:
+    -Good drought tolerance
+    -Suitable for low-input farming
+
+🦠 Common Diseases
+    -Blast
+    -Leaf scald
+    -Brown spot
+
+🛡️ Disease Prevention
+    -Ensure good land leveling
+    -Avoid water stress during flowering
+    -Balanced NPK fertilizer application
+
+🌾 Proper Harvesting
+    -Harvest when grains are firm but not brittle
+    -Avoid delayed harvest → increases grain loss
+    -Sun-dry slowly to prevent cracking
+
+3️⃣ BG 251 (GSR – Green Super Rice)
+📌 Description
+
+Duration: ~85 days
+
+Grain type: White, medium grain
+
+Zone: Dry & Intermediate zones
+
+Special:
+
+Green Super Rice (GSR)
+
+Needs less fertilizer
+
+Tolerant to drought and pests
+
+🦠 Common Diseases
+
+Blast (low incidence)
+
+Brown spot (rare)
+
+Minor sheath blight
+
+🛡️ Disease Prevention
+
+Very suitable for low-chemical farming
+
+Use organic manure
+
+Maintain clean field conditions
+
+🌾 Proper Harvesting
+
+Harvest when panicles bend downward
+
+Harvest promptly after maturity
+
+Dry to 12–14% moisture
+
+4️⃣ BG 252
+📌 Description
+
+Duration: ~90 days
+
+Grain type: White, long grain
+
+Zone: Dry zone
+
+Special:
+
+High yield for a short-duration variety
+
+Good market acceptance
+
+🦠 Common Diseases
+
+Blast
+
+Bacterial leaf blight (BLB)
+
+Sheath rot
+
+🛡️ Disease Prevention
+
+Avoid continuous flooding
+
+Use recommended seed rate
+
+Remove infected straw after harvest
+
+🌾 Proper Harvesting
+
+Harvest when 85% grains mature
+
+Mechanical harvesting is suitable
+
+Proper threshing to reduce broken grains
+
+5️⃣ LD 253
+📌 Description
+
+Duration: ~90 days
+
+Grain type: White, medium grain
+
+Zone: Wet zone & Intermediate zone
+
+Special:
+
+Good resistance to lodging
+
+Performs well in high rainfall areas
+
+🦠 Common Diseases
+
+Sheath blight
+
+BLB
+
+Grain discoloration
+
+🛡️ Disease Prevention
+
+Ensure good drainage (very important)
+
+Avoid dense planting
+
+Apply fungicide only if severe infection
+
+🌾 Proper Harvesting
+
+Harvest during dry weather
+
+Avoid harvesting wet panicles
+
+Dry quickly to avoid grain discoloration
+
+6️⃣ AT 313
+📌 Description
+
+Duration: ~85–90 days
+
+Grain type: White, medium grain
+
+Zone: Dry zone
+
+Special:
+
+Suitable for rain-fed cultivation
+
+Performs well under water stress
+
+🦠 Common Diseases
+
+Blast
+
+Brown spot
+
+Minor sheath blight
+
+🛡️ Disease Prevention
+
+Proper seed treatment before sowing
+
+Balanced fertilizer (especially potassium)
+
+Timely weeding to reduce disease spread
+
+🌾 Proper Harvesting
+
+Harvest when panicles turn fully yellow
+
+Avoid over-drying in field
+
+Store in clean, ventilated conditions
+
+----COMMON ISSUES IN SHORT-DURATION RICE---------------------------------
+
+| Issue              | Reason          | Solution                        |
+| ------------------ | --------------- | ------------------------------- |
+| Grain shattering   | Late harvest    | Harvest immediately at maturity |
+| Poor grain filling | Water stress    | Irrigate at flowering stage     |
+| High blast risk    | Excess nitrogen | Reduce urea application         |
+
+
+
+3 Months:
+- H 10, 62-355, Bg-34-8, Bg 276-5, Bw 272-6b
+- Bg 300, Bg 301, Bw 302, At 303, Bg 304
+- Bg 305, At 306, At 307, At 308, At 309
+- Bg 310, At 311, Bg 314
+
+1️⃣ H 10
+📌 Description
+
+Duration: ~95 days
+
+Grain: White, medium grain
+
+Zone: Wet & Intermediate
+
+Special: Early improved variety, stable yield
+
+🦠 Diseases
+
+Blast
+
+Sheath blight
+
+Brown spot
+
+🛡️ Prevention
+
+Proper spacing
+
+Avoid excess nitrogen
+
+Field sanitation
+
+🌾 Harvesting
+
+Harvest when 80–85% grains yellow
+
+Dry immediately after harvest
+
+2️⃣ 62-355
+📌 Description
+
+Duration: ~95 days
+
+Grain: White, long grain
+
+Zone: Dry zone
+
+Special: Old but drought tolerant
+
+🦠 Diseases
+
+Blast
+
+Leaf scald
+
+🛡️ Prevention
+
+Balanced fertilizer
+
+Adequate irrigation at flowering
+
+🌾 Harvesting
+
+Harvest promptly to avoid shattering
+
+Sun-dry slowly
+
+3️⃣ BG-34-8
+📌 Description
+
+Duration: ~90–95 days
+
+Grain: White, medium grain
+
+Zone: Intermediate zone
+
+Special: Good grain quality
+
+🦠 Diseases
+
+Blast
+
+Brown spot
+
+🛡️ Prevention
+
+Seed treatment
+
+Potassium application
+
+🌾 Harvesting
+
+Harvest when panicles bend downward
+
+Avoid wet harvesting
+
+4️⃣ BG 276-5
+📌 Description
+
+Duration: ~95 days
+
+Grain: White, medium grain
+
+Zone: Dry zone
+
+Special: High tillering ability
+
+🦠 Diseases
+
+Sheath blight
+
+BLB (moderate)
+
+🛡️ Prevention
+
+Proper spacing
+
+Good water management
+
+🌾 Harvesting
+
+Harvest at full maturity
+
+Mechanical harvesting suitable
+
+5️⃣ BW 272-6B
+📌 Description
+
+Duration: ~90 days
+
+Grain: White, short grain
+
+Zone: Wet zone
+
+Special: Tolerant to high rainfall
+
+🦠 Diseases
+
+Sheath blight
+
+Grain discoloration
+
+🛡️ Prevention
+
+Ensure drainage
+
+Avoid dense planting
+
+🌾 Harvesting
+
+Harvest during dry weather
+
+Quick drying essential
+
+🌾 GROUP 2
+BG 300, BG 301, BW 302, AT 303, BG 304
+6️⃣ BG 300
+📌 Description
+
+Duration: ~90 days
+
+Grain: White, long grain
+
+Zone: Dry & Intermediate
+
+Special: Drought tolerant
+
+🦠 Diseases
+
+Blast
+
+Brown spot
+
+🛡️ Prevention
+
+Balanced fertilizer
+
+Timely irrigation
+
+🌾 Harvesting
+
+Harvest when grains harden
+
+Avoid delayed harvesting
+
+7️⃣ BG 301
+📌 Description
+
+Duration: ~95 days
+
+Grain: White, medium grain
+
+Zone: Dry zone
+
+Special: Good yield stability
+
+🦠 Diseases
+
+Blast
+
+Sheath blight
+
+🛡️ Prevention
+
+Proper spacing
+
+Avoid excess nitrogen
+
+🌾 Harvesting
+
+Harvest at 85% grain maturity
+
+Dry to 12–14% moisture
+
+8️⃣ BW 302
+📌 Description
+
+Duration: ~95 days
+
+Grain: White, short grain
+
+Zone: Wet zone
+
+Special: Lodging resistant
+
+🦠 Diseases
+
+BLB
+
+Sheath blight
+
+🛡️ Prevention
+
+Good drainage
+
+Clean seed use
+
+🌾 Harvesting
+
+Harvest early to avoid lodging losses
+
+Gentle threshing
+
+9️⃣ AT 303
+📌 Description
+
+Duration: ~90–95 days
+
+Grain: White, medium grain
+
+Zone: Dry zone
+
+Special: Performs well in rain-fed fields
+
+🦠 Diseases
+
+Blast
+
+Brown spot
+
+🛡️ Prevention
+
+Seed treatment
+
+Potassium fertilizer
+
+🌾 Harvesting
+
+Harvest immediately at maturity
+
+Dry under shade initially
+
+🔟 BG 304
+📌 Description
+
+Duration: ~95 days
+
+Grain: White, medium grain
+
+Zone: Dry & Intermediate
+
+Special: High yield potential
+
+🦠 Diseases
+
+Blast
+
+Sheath rot
+
+🛡️ Prevention
+
+Crop rotation
+
+Balanced fertilizer
+
+🌾 Harvesting
+
+Harvest when panicles fully yellow
+
+Proper threshing required
+
+🌾 GROUP 3
+BG 305, AT 306, AT 307, AT 308, AT 309
+1️⃣1️⃣ BG 305
+📌 Description
+
+Duration: ~95–100 days
+
+Grain: White, medium grain
+
+Zone: Dry zone
+
+Special: High yield, strong stem
+
+🦠 Diseases
+
+Blast
+
+BLB
+
+🛡️ Prevention
+
+Field sanitation
+
+Proper fertilizer timing
+
+🌾 Harvesting
+
+Harvest at 80–85% maturity
+
+Mechanical harvesting suitable
+
+1️⃣2️⃣ AT 306
+📌 Description
+
+Duration: ~95 days
+
+Grain: White
+
+Zone: Dry zone
+
+Special: Stress tolerant
+
+🦠 Diseases
+
+Brown spot
+
+Blast
+
+🛡️ Prevention
+
+Potassium application
+
+Weed control
+
+🌾 Harvesting
+
+Harvest promptly
+
+Dry immediately
+
+1️⃣3️⃣ AT 307
+📌 Description
+
+Duration: ~95 days
+
+Grain: White
+
+Zone: Dry zone
+
+Special: Suitable for low-input farming
+
+🦠 Diseases
+
+Minor blast
+
+Leaf scald
+
+🛡️ Prevention
+
+Balanced nutrition
+
+Avoid excess urea
+
+🌾 Harvesting
+
+Harvest when grains are firm
+
+Avoid field over-drying
+
+1️⃣4️⃣ AT 308
+📌 Description
+
+Duration: ~95 days
+
+Grain: White
+
+Zone: Dry zone
+
+Special: Uniform maturity
+
+🦠 Diseases
+
+Sheath blight
+
+Brown spot
+
+🛡️ Prevention
+
+Proper spacing
+
+Drain excess water
+
+🌾 Harvesting
+
+Harvest in one operation
+
+Proper threshing
+
+1️⃣5️⃣ AT 309
+📌 Description
+
+Duration: ~100 days
+
+Grain: White
+
+Zone: Dry zone
+
+Special: Good grain filling
+
+🦠 Diseases
+
+Blast
+
+Grain discoloration
+
+🛡️ Prevention
+
+Timely irrigation
+
+Avoid harvesting during rain
+
+🌾 Harvesting
+
+Harvest when grains fully mature
+
+Quick drying recommended
+
+🌾 GROUP 4
+BG 310, AT 311, BG 314
+1️⃣6️⃣ BG 310
+📌 Description
+
+Duration: ~100 days
+
+Grain: White, medium grain
+
+Zone: Dry & Intermediate
+
+Special: High yield, strong plant type
+
+🦠 Diseases
+
+Blast
+
+Sheath blight
+
+🛡️ Prevention
+
+Balanced fertilizer
+
+Proper water management
+
+🌾 Harvesting
+
+Harvest at correct maturity
+
+Mechanical harvesting suitable
+
+1️⃣7️⃣ AT 311
+📌 Description
+
+Duration: ~95 days
+
+Grain: White
+
+Zone: Dry zone
+
+Special: Performs well under rain-fed conditions
+
+🦠 Diseases
+
+Brown spot
+
+Blast
+
+🛡️ Prevention
+
+Seed treatment
+
+Timely weeding
+
+🌾 Harvesting
+
+Harvest immediately after maturity
+
+Dry properly before storage
+
+1️⃣8️⃣ BG 314
+📌 Description
+
+Duration: ~100 days
+
+Grain: White, medium grain
+
+Zone: Dry zone
+
+Special: Good milling quality
+
+🦠 Diseases
+
+BLB
+
+Sheath rot
+
+🛡️ Prevention
+
+Good drainage
+
+Remove infected residues
+
+🌾 Harvesting
+
+Harvest at 85% grain maturity
+
+Store at safe moisture level
+
+3 1/2 Months:
+- H 7, At 16, Bw 266-7, Bw 267-3, Bg 34-6
+- Bg 94-1, Bg 94-2, Bg 350, Bw 351, Bg 352
+- At 353, At 354, Ld 355, Ld 356, Bg 357
+- Bg 358, Bg 359, Bg 360, Bw 361, At 362
+- Bw 363, Bw 364, Ld 365, Bg 366, Bw 367
+- Ld 368, Bg 369, Bg 370, Ld 371, Bw 372
+- At 373, Bg 374, Bg 375, Bg 377, Ld 376
+- Bg 381 IP
+
+GROUP 1
+H 7, AT 16, BW 266-7, BW 267-3, BG 34-6
+1️⃣ H 7
+
+Description
+
+Duration: ~110 days
+
+White, medium grain
+
+Wet & Intermediate zones
+
+Stable yield, good grain quality
+
+Diseases
+
+Blast
+
+Sheath blight
+
+Prevention
+
+Proper plant spacing
+
+Avoid excess nitrogen
+
+Field sanitation
+
+Harvesting
+
+Harvest at 80–85% grain maturity
+
+Dry immediately after harvest
+
+2️⃣ AT 16
+
+Description
+
+~110 days
+
+White grain
+
+Dry zone
+
+Drought-tolerant
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Balanced NPK fertilizer
+
+Potassium application
+
+Harvesting
+
+Harvest promptly
+
+Avoid over-drying in field
+
+3️⃣ BW 266-7
+
+Description
+
+~105 days
+
+Short grain
+
+Wet zone
+
+Lodging resistant
+
+Diseases
+
+Sheath blight
+
+Grain discoloration
+
+Prevention
+
+Good drainage
+
+Moderate nitrogen
+
+Harvesting
+
+Harvest during dry weather
+
+Quick drying essential
+
+4️⃣ BW 267-3
+
+Description
+
+~110 days
+
+White grain
+
+Wet zone
+
+Diseases
+
+Bacterial Leaf Blight (BLB)
+
+Sheath blight
+
+Prevention
+
+Certified seed
+
+Good water control
+
+Harvesting
+
+Harvest early to reduce discoloration
+
+5️⃣ BG 34-6
+
+Description
+
+~110 days
+
+Medium grain
+
+Intermediate zone
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Seed treatment
+
+Balanced fertilizer
+
+Harvesting
+
+Harvest when panicles bend down
+
+🔹 GROUP 2
+BG 94-1, BG 94-2, BG 350, BW 351, BG 352
+6️⃣ BG 94-1
+
+Description
+
+~110 days
+
+White grain
+
+Dry zone
+
+Diseases
+
+Blast
+
+Sheath rot
+
+Prevention
+
+Proper spacing
+
+Remove infected residues
+
+Harvesting
+
+Harvest at full grain hardness
+
+7️⃣ BG 94-2
+
+Description
+
+~110 days
+
+Improved grain filling
+
+Dry zone
+
+Diseases
+
+Blast
+
+BLB
+
+Prevention
+
+Avoid excess urea
+
+Balanced fertilization
+
+Harvesting
+
+Harvest immediately at maturity
+
+8️⃣ BG 350
+
+Description
+
+~110 days
+
+White grain
+
+Dry & Intermediate zones
+
+Diseases
+
+Blast
+
+Sheath blight
+
+Prevention
+
+Proper drainage
+
+Balanced fertilizer
+
+Harvesting
+
+Mechanical harvesting suitable
+
+9️⃣ BW 351
+
+Description
+
+~110 days
+
+Wet zone
+
+Lodging resistant
+
+Diseases
+
+Grain discoloration
+
+Prevention
+
+Drain excess water at maturity
+
+Harvesting
+
+Harvest before heavy rain
+
+🔟 BG 352
+
+Description
+
+~110 days
+
+High-yield popular variety
+
+Dry & Intermediate zones
+
+Diseases
+
+Blast
+
+BLB (moderate)
+
+Prevention
+
+Proper spacing
+
+Balanced nitrogen
+
+Harvesting
+
+Harvest at 80–85% maturity
+
+🔹 GROUP 3
+AT 353, AT 354, LD 355, LD 356, BG 357
+1️⃣1️⃣ AT 353
+
+Description
+
+~110 days
+
+Dry zone
+
+Stress tolerant
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Potassium fertilizer
+
+Weed control
+
+Harvesting
+
+Timely harvesting required
+
+1️⃣2️⃣ AT 354
+
+Description
+
+~110 days
+
+Dry zone
+
+Better grain quality than AT 353
+
+Diseases
+
+Blast
+
+Prevention
+
+Avoid dense planting
+
+Harvesting
+
+Harvest at uniform maturity
+
+1️⃣3️⃣ LD 355
+
+Description
+
+~110 days
+
+Wet zone
+
+High tillering
+
+Diseases
+
+Sheath blight
+
+BLB
+
+Prevention
+
+Good drainage
+
+Proper spacing
+
+Harvesting
+
+Avoid harvesting wet panicles
+
+1️⃣4️⃣ LD 356
+
+Description
+
+~110 days
+
+Wet zone
+
+Diseases
+
+Grain discoloration
+
+Prevention
+
+Harvest during dry days
+
+Harvesting
+
+Quick drying after harvest
+
+1️⃣5️⃣ BG 357
+
+Description
+
+~110 days
+
+Dry & Intermediate zones
+
+High yield
+
+Diseases
+
+Blast
+
+Sheath rot
+
+Prevention
+
+Balanced fertilizer
+
+Harvesting
+
+Mechanical harvesting suitable
+
+🔹 GROUP 4
+BG 358, BG 359, BG 360, BW 361, AT 362
+1️⃣6️⃣ BG 358
+
+Description
+
+~110 days
+
+White grain
+
+Diseases
+
+Blast
+
+Prevention
+
+Seed treatment
+
+Harvesting
+
+Harvest immediately at maturity
+
+1️⃣7️⃣ BG 359
+
+Description
+
+~110 days
+
+Strong stem
+
+Good milling quality
+
+Diseases
+
+Sheath blight
+
+Prevention
+
+Proper spacing
+
+Harvesting
+
+Avoid delayed harvesting
+
+1️⃣8️⃣ BG 360
+
+Description
+
+~110 days
+
+High tillering
+
+Dry zone
+
+Diseases
+
+Brown spot
+
+Prevention
+
+Potassium application
+
+Harvesting
+
+Uniform harvesting recommended
+
+1️⃣9️⃣ BW 361
+
+Description
+
+~110 days
+
+Wet zone
+
+Lodging resistant
+
+Diseases
+
+BLB
+
+Prevention
+
+Use clean seed
+
+Harvesting
+
+Harvest before heavy rain
+
+2️⃣0️⃣ AT 362
+
+Description
+
+~110 days
+
+Dry zone
+
+Drought tolerant
+
+Diseases
+
+Blast
+
+Prevention
+
+Balanced fertilizer
+
+Harvesting
+
+Harvest promptly
+
+🔹 GROUP 5–7 (Same pattern applies)
+BW 363, BW 364, LD 365, BG 366, BW 367
+LD 368, BG 369, BG 370, LD 371, BW 372
+AT 373, BG 374, BG 375, BG 377, LD 376
+
+Common Diseases
+
+Blast
+
+Sheath blight
+
+BLB (wet zone types)
+
+Prevention
+
+Proper drainage
+
+Balanced fertilizer
+
+Crop residue removal
+
+Harvesting
+
+Harvest at 80–85% maturity
+
+Dry to 12–14% moisture
+
+4 - 4 1/2 Months:
+- H 4, H 8, Bg 11-11, Bg 90-2, Bg 379-2
+- Bg 400-1, Bg 380, Ld 66, Bw 78, Bw 100
+- MI 273, Bw 400, At 401, At 402, Bg 403
+- At 405, Bg 406, Bg 407H, Ld 408, Bg 450
+- Bw 451, Bw 452, Bw 453, Bg 454, Bg 455
+- Bg 409
+
+🔹 GROUP 1
+H 4, H 8, BG 11-11, BG 90-2, BG 379-2
+1️⃣ H 4
+
+Description
+
+Duration: ~130 days
+
+White, medium grain
+
+Wet & Intermediate zones
+
+Stable traditional improved variety
+
+Diseases
+
+Blast
+
+Sheath blight
+
+Prevention
+
+Proper spacing
+
+Balanced nitrogen application
+
+Harvesting
+
+Harvest at 80–85% grain maturity
+
+Dry immediately after harvest
+
+2️⃣ H 8
+
+Description
+
+~130 days
+
+White grain
+
+Wet zone
+
+Tolerant to heavy rainfall
+
+Diseases
+
+Sheath blight
+
+Grain discoloration
+
+Prevention
+
+Good drainage
+
+Avoid dense planting
+
+Harvesting
+
+Harvest during dry periods
+
+Quick drying essential
+
+3️⃣ BG 11-11
+
+Description
+
+~125–130 days
+
+Medium grain
+
+Dry & Intermediate zones
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Seed treatment
+
+Potassium fertilizer
+
+Harvesting
+
+Harvest when grains harden fully
+
+4️⃣ BG 90-2
+
+Description
+
+~130 days
+
+White grain
+
+Dry zone
+
+High yield potential
+
+Diseases
+
+Blast
+
+Sheath rot
+
+Prevention
+
+Balanced fertilizer
+
+Residue removal
+
+Harvesting
+
+Harvest promptly at maturity
+
+5️⃣ BG 379-2
+
+Description
+
+~130 days
+
+White grain
+
+Dry & Intermediate zones
+
+Diseases
+
+Blast
+
+BLB (moderate)
+
+Prevention
+
+Avoid excess nitrogen
+
+Proper irrigation
+
+Harvesting
+
+Mechanical harvesting suitable
+
+🔹 GROUP 2
+BG 400-1, BG 380, LD 66, BW 78, BW 100
+6️⃣ BG 400-1
+
+Description
+
+~130–135 days
+
+White grain
+
+Dry zone
+
+High yield, strong stem
+
+Diseases
+
+Blast
+
+Sheath blight
+
+Prevention
+
+Proper spacing
+
+Balanced fertilizer
+
+Harvesting
+
+Harvest at correct maturity
+
+7️⃣ BG 380
+
+Description
+
+~125–130 days
+
+Medium grain
+
+Intermediate zone
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Potassium fertilizer
+
+Weed control
+
+Harvesting
+
+Harvest when panicles fully yellow
+
+8️⃣ LD 66
+
+Description
+
+~130 days
+
+Wet zone variety
+
+Good tillering ability
+
+Diseases
+
+Sheath blight
+
+BLB
+
+Prevention
+
+Good drainage
+
+Clean seed
+
+Harvesting
+
+Avoid harvesting wet panicles
+
+9️⃣ BW 78
+
+Description
+
+~125 days
+
+Wet zone
+
+Lodging resistant
+
+Diseases
+
+Grain discoloration
+
+Sheath blight
+
+Prevention
+
+Drain excess water near maturity
+
+Harvesting
+
+Harvest before heavy rain
+
+🔟 BW 100
+
+Description
+
+~130 days
+
+White grain
+
+Wet zone
+
+Diseases
+
+BLB
+
+Sheath blight
+
+Prevention
+
+Proper water management
+
+Field sanitation
+
+Harvesting
+
+Quick drying after harvest
+
+🔹 GROUP 3
+MI 273, BW 400, AT 401, AT 402, BG 403
+1️⃣1️⃣ MI 273
+
+Description
+
+~125–130 days
+
+Medium grain
+
+Intermediate zone
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Balanced fertilizer
+
+Seed treatment
+
+Harvesting
+
+Harvest at full maturity
+
+1️⃣2️⃣ BW 400
+
+Description
+
+~130 days
+
+Wet zone
+
+Strong stem
+
+Diseases
+
+Sheath blight
+
+Grain discoloration
+
+Prevention
+
+Drainage management
+
+Harvesting
+
+Harvest during dry weather
+
+1️⃣3️⃣ AT 401
+
+Description
+
+~125–130 days
+
+Dry zone
+
+Drought tolerant
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Balanced NPK
+
+Potassium fertilizer
+
+Harvesting
+
+Timely harvesting essential
+
+1️⃣4️⃣ AT 402
+
+Description
+
+~130 days
+
+Dry zone
+
+Stable yield
+
+Diseases
+
+Blast
+
+Prevention
+
+Avoid excess nitrogen
+
+Harvesting
+
+Harvest promptly at maturity
+
+1️⃣5️⃣ BG 403
+
+Description
+
+~130 days
+
+White grain
+
+Dry & Intermediate zones
+
+Diseases
+
+Blast
+
+Sheath rot
+
+Prevention
+
+Crop residue removal
+
+Harvesting
+
+Mechanical harvesting suitable
+
+🔹 GROUP 4
+AT 405, BG 406, BG 407H, LD 408, BG 450
+1️⃣6️⃣ AT 405
+
+Description
+
+~130–135 days
+
+Dry zone
+
+Stress tolerant
+
+Diseases
+
+Blast
+
+Brown spot
+
+Prevention
+
+Potassium fertilizer
+
+Harvesting
+
+Harvest at uniform maturity
+
+1️⃣7️⃣ BG 406
+
+Description
+
+~130 days
+
+White grain
+
+High yield
+
+Diseases
+
+Blast
+
+BLB
+
+Prevention
+
+Balanced fertilizer
+
+Harvesting
+
+Avoid delayed harvesting
+
+1️⃣8️⃣ BG 407H
+
+Description
+
+~130 days
+
+Hybrid type
+
+Very high yield
+
+Diseases
+
+Blast (moderate)
+
+Prevention
+
+Proper spacing
+
+Balanced nitrogen
+
+Harvesting
+
+Harvest at correct maturity
+
+1️⃣9️⃣ LD 408
+
+Description
+
+~130 days
+
+Wet zone
+
+Good grain quality
+
+Diseases
+
+Sheath blight
+
+Grain discoloration
+
+Prevention
+
+Drain excess water
+
+Harvesting
+
+Quick drying required
+
+2️⃣0️⃣ BG 450
+
+Description
+
+~135 days
+
+Dry zone
+
+High yield, strong plant type
+
+Diseases
+
+Blast
+
+BLB
+
+Prevention
+
+Proper spacing
+
+Harvesting
+
+Mechanical harvesting suitable
+
+🔹 GROUP 5
+BW 451, BW 452, BW 453, BG 454, BG 455
+2️⃣1️⃣ BW 451
+
+Description
+
+~130 days
+
+Wet zone
+
+Diseases
+
+Sheath blight
+
+Prevention
+
+Drainage management
+
+Harvesting
+
+Harvest before lodging
+
+2️⃣2️⃣ BW 452
+
+Description
+
+~130 days
+
+Wet zone
+
+Diseases
+
+BLB
+
+Prevention
+
+Clean seed
+
+Harvesting
+
+Harvest at maturity
+
+2️⃣3️⃣ BW 453
+
+Description
+
+~130 days
+
+Wet zone
+
+Diseases
+
+Grain discoloration
+
+Prevention
+
+Harvest on dry days
+
+Harvesting
+
+Quick drying
+
+2️⃣4️⃣ BG 454
+
+Description
+
+~130 days
+
+Dry & Intermediate zones
+
+Diseases
+
+Blast
+
+Prevention
+
+Balanced fertilizer
+
+Harvesting
+
+Harvest promptly
+
+2️⃣5️⃣ BG 455
+
+Description
+
+~135 days
+
+White grain
+
+High yield
+
+Diseases
+
+Sheath rot
+
+Prevention
+
+Crop residue removal
+
+Harvesting
+
+Mechanical harvesting suitable
+
+🔹 FINAL VARIETY
+2️⃣6️⃣ BG 409
+
+Description
+
+~130 days
+
+Stable yield
+
+Good milling quality
+
+Diseases
+
+Blast
+
+Sheath blight
+
+Prevention
+
+Proper spacing
+
+Balanced fertilizer
+
+Harvesting
+
+Harvest at 80–85% grain maturity
+
+
+5 - 6 Months:
+- H 9, Bg 3-5, Bg 38, Bg 407, Bg 745
+
+H 9
+
+Description:
+H 9 is a long-duration traditional rice variety with tall plants and strong straw. It performs well in lowland paddy fields with good water availability and is valued for its stable yield.
+
+Major Diseases:
+
+Blast disease
+
+Bacterial leaf blight
+
+Sheath blight
+
+Disease Prevention:
+
+Use certified disease-free seeds
+
+Maintain proper water management
+
+Avoid excessive nitrogen fertilizer
+
+Apply recommended fungicides when symptoms appear
+
+Harvesting:
+Harvest when 80–85% of grains are mature and straw turns yellow. Cut plants close to the ground and dry grains properly before storage.
+
+Bg 3-5
+
+Description:
+Bg 3-5 is a high-yielding improved variety with long growth duration. It has good adaptability to different environments and produces medium-sized grains.
+
+Major Diseases:
+
+Blast
+
+Brown spot
+
+Bacterial leaf blight
+
+Disease Prevention:
+
+Practice crop rotation
+
+Use balanced fertilizer application
+
+Ensure proper field drainage
+
+Apply fungicides if disease incidence is high
+
+Harvesting:
+Harvest at full maturity when grains are hard and panicles bend downward. Timely harvesting prevents grain shattering.
+
+Bg 38
+
+Description:
+Bg 38 is a traditional long-duration rice variety known for its tolerance to varied soil conditions. It has moderate yield with good grain quality.
+
+Major Diseases:
+
+Blast
+
+Leaf scald
+
+Brown spot
+
+Disease Prevention:
+
+Use resistant or healthy seed stock
+
+Maintain proper spacing between plants
+
+Avoid water stagnation for long periods
+
+Apply recommended plant protection chemicals
+
+Harvesting:
+Harvest when grains reach physiological maturity. Dry harvested panicles under sunlight to reduce moisture content.
+
+Bg 407
+
+Description:
+Bg 407 is an improved long-duration variety with high tillering ability and good yield potential. It performs well under irrigated conditions.
+
+Major Diseases:
+
+Blast
+
+Sheath blight
+
+Bacterial leaf blight
+
+Disease Prevention:
+
+Avoid dense planting
+
+Maintain field hygiene
+
+Use recommended fertilizer levels
+
+Apply fungicides or bactericides as needed
+
+Harvesting:
+Harvest when 85% of grains turn golden yellow. Delay in harvesting may cause lodging and yield loss.
+
+Bg 745
+
+Description:
+Bg 745 is a long-duration, high-yielding variety suitable for fertile lands with reliable water supply. It produces bold grains and strong straw.
+
+Major Diseases:
+
+Blast
+
+Brown spot
+
+Sheath rot
+
+Disease Prevention:
+
+Select certified seeds
+
+Apply proper water and nutrient management
+
+Remove infected plant residues
+
+Follow integrated pest and disease management practices
+
+Harvesting:
+Harvest at full grain maturity. Ensure grains are properly dried to safe moisture levels before storage to prevent spoilage.
+
+How these codes relate to the earlier sections:
+- Codes beginning with `Bg`, `At`, `Bw`, `Ld`, `H`, `MI` are released or tested breeding lines and recommended varieties; many correspond to high-yield modern varieties or improved lines. Traditional types like `Samba`, `Kekulu`, `Nadu`, `Keeri Samba`, and `Suwandel` are landrace/traditional categories discussed earlier and may not map one-to-one to these codes.
+- Use the above codes to look up official release information (maturity days, yield potential, recommended fertilizer rates, and disease resistance) from the Department of Agriculture or variety release bulletins.
+
+
+
+Additional Traditional Varieties (extracted from Wikipedia & Lakpura pages)
+
+Suwandel / Suwandal
+
+Description: Fragrant white heirloom rice with a strong natural aroma; widely used for festive, ceremonial, and special dishes.
+
+Nutrients: ~90% carbohydrates, ~7% protein, ~0.7% fat, ~0.1% fiber; relatively higher glutamic acid and some vitamins.
+
+Typical maturity: ~3 months (varies by line and season).
+
+Major diseases: Blast, brown spot, bacterial leaf blight.
+
+Disease prevention: Use healthy traditional seed stock; avoid excessive nitrogen; maintain good drainage; apply fungicide only if disease is severe.
+
+Harvesting: Harvest when panicles turn golden yellow and grains are hard. Cut plants early morning and sun-dry grains properly.
+
+Kalu Heenati
+
+Description: Nutritious red rice with dark husk; traditionally valued for daily consumption and medicinal use.
+
+Nutrients: High antioxidants, iron, and dietary fiber.
+
+Typical maturity: ~3.5–4 months.
+
+Major diseases: Blast, leaf scald, sheath blight.
+
+Disease prevention: Proper plant spacing; balanced fertilizer use; field sanitation after harvest.
+
+Harvesting: Harvest at 85% grain maturity; delay may cause lodging due to tall plants.
+
+Maa-Wee (Ma-Wee)
+
+Description: Reddish-brown rice with lower carbohydrate and higher protein and fiber than common rice.
+
+Nutrients: ~84.5% carbohydrates, ~9.4% protein, ~3.6% fat, ~1.1% fiber; low glycemic index.
+
+Typical maturity: Medium to long duration depending on season.
+
+Major diseases: Brown spot, blast, sheath rot.
+
+Disease prevention: Crop rotation; organic matter incorporation; avoid stagnant water.
+
+Harvesting: Harvest when grains are fully filled; soaking straw before threshing reduces grain loss.
+
+Pachchaperumal
+
+Description: Burgundy-red medium-grain rice; used traditionally for alms-giving and sacred occasions.
+
+Nutrients: Rich in antioxidants, minerals, and fiber.
+
+Typical maturity: ~3–4 months.
+
+Major diseases: Blast, leaf scald.
+
+Disease prevention: Use resistant local lines; timely weeding; good air circulation.
+
+Harvesting: Harvest when panicles bend naturally and grains are firm.
+
+Kuruluthuda
+
+Description: Nutritious red rice with pleasant taste; suitable for regular consumption.
+
+Nutrients: Higher protein and fiber than white rice.
+
+Typical maturity: ~3.5–4 months.
+
+Major diseases: Blast, brown spot.
+
+Disease prevention: Seed treatment before sowing; balanced nutrient management.
+
+Harvesting: Harvest at full maturity; avoid late harvesting to prevent grain shattering.
+
+Water Lilly Rice (Olu Sahal)
+
+Description: Traditional heritage rice linked with regional food culture and traditional diets.
+
+Nutrients: Traditionally considered nutritious and strengthening.
+
+Typical maturity: Medium duration (varies by locality).
+
+Major diseases: Blast, bacterial leaf blight.
+
+Disease prevention: Proper water control; removal of infected plants.
+
+Harvesting: Harvest once grains are fully mature; dry thoroughly due to higher moisture content.
+
+Sudu Heeneti
+
+Description: Small-grain white heirloom rice with mild flavor; used in medicinal dishes.
+
+Nutrients: Rich in antioxidants; easy to digest.
+
+Typical maturity: ~3–3.5 months.
+
+Major diseases: Blast, brown spot.
+
+Disease prevention: Avoid overcrowding; ensure proper sunlight exposure.
+
+Harvesting: Harvest when straw turns yellow; handle gently to avoid grain cracking.
+
+Dahanala
+
+Description: Rare reddish-hued traditional rice; commonly used for porridge and health foods.
+
+Nutrients: High mineral and fiber content.
+
+Typical maturity: ~4 months.
+
+Major diseases: Leaf scald, blast.
+
+Disease prevention: Maintain clean fields; use compost-based nutrition.
+
+Harvesting: Harvest at physiological maturity; sun-dry slowly to preserve grain quality.
+
+Dik Wee
+
+Description: Medium-grain red rice; tall plants up to ~150 cm with strong straw.
+
+Nutrients: Moderate protein and fiber.
+
+Typical maturity: ~4–4.5 months.
+
+Major diseases: Sheath blight, blast.
+
+Disease prevention: Avoid excessive nitrogen; maintain water depth properly.
+
+Harvesting: Harvest when panicles fully mature; late harvesting increases lodging risk.
+
+Ma Wee (Traditional tall types)
+
+Description: Tall traditional red rice; some selections reach extreme heights; resilient and nutritious.
+
+Nutrients: Traditionally valued for strength and stamina.
+
+Typical maturity: Long duration, season-dependent.
+
+Major diseases: Brown spot, sheath rot.
+
+Disease prevention: Use field hygiene; improve soil fertility naturally.
+
+Harvesting: Harvest carefully due to tall plants; manual harvesting preferred.
+
+Masuran
+
+Description: Medium-grain red rice; some lines resistant to lodging.
+
+Nutrients: Good fiber and mineral content.
+
+Typical maturity: ~3.5 months (Yala), ~4.5 months (Maha).
+
+Major diseases: Blast, brown spot.
+
+Disease prevention: Timely planting according to season; balanced fertilizer.
+
+Harvesting: Harvest as soon as grains mature to prevent yield loss.
+
+Pokkali
+
+Description: Traditional red rice adapted to special ecological conditions; medium-tall plants.
+
+Nutrients: Moderate fiber and mineral content.
+
+Typical maturity: ~3.5 months.
+
+Major diseases: Blast, sheath blight.
+
+Disease prevention: Proper water exchange; resistant seed selection.
+
+Harvesting: Harvest at maturity; quick drying recommended.
+
+Madathawalu
+
+Description: Short-grain red rice with good taste and nutrition.
+
+Nutrients: Good dietary fiber and antioxidants.
+
+Typical maturity: ~4 months.
+
+Major diseases: Blast, leaf scald.
+
+Disease prevention: Maintain field cleanliness; avoid excess moisture.
+
+Harvesting: Harvest when grains are fully hardened.
+
+Gonabaru
+
+Description: Medium-grain traditional rice with strong straw; tall plants (~140 cm).
+
+Nutrients: Nutritious and filling.
+
+Typical maturity: ~5 months.
+
+Major diseases: Brown spot, sheath rot.
+
+Disease prevention: Proper drainage; residue management.
+
+Harvesting: Harvest carefully due to long duration; ensure full maturity.
+
+Goda Heeneti
+
+Description: Medium-grain red heeneti type; valued for medicinal use.
+
+Nutrients: Rich in antioxidants and fiber.
+
+Typical maturity: ~3.5 months.
+
+Major diseases: Blast, leaf scald.
+
+Disease prevention: Adequate spacing; organic nutrient sources preferred.
+
+Harvesting: Harvest at correct maturity to preserve grain color and quality.
+
+Rath Suwandal (Rathsuwandal)
+
+Description: Aromatic red rice combining fragrance with high nutrition.
+
+Nutrients: High antioxidants and minerals.
+
+Typical maturity: ~3.5 months.
+
+Major diseases: Blast, brown spot.
+
+Disease prevention: Seed purification; balanced nutrient management.
+
+Harvesting: Harvest when aroma is fully developed and grains are mature.
+
+
+---
+
+

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper, BarChart3 } from 'lucide-react';
+import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper, BarChart3, BookOpen } from 'lucide-react';
 import { BrowserRouter, Routes, Route, useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import CropSuitability from './components/CropSuitability';
 import AIDoctor from './components/AIDoctor';
@@ -21,6 +21,7 @@ import HomePage from './components/HomePage';
 import OfficerDashboard from './components/OfficerDashboard';
 import BuyerDashboard from './components/BuyerDashboard';
 import UserProfile from './components/UserProfile';
+import TraditionalRice from './components/TraditionalRice';
 import { districtCoordinates } from './data/sriLankaCoordinates';
 
 const translations = {
@@ -34,6 +35,7 @@ const translations = {
     news: "Agri News",
     yieldForecast: "Yield Forecast",
     suitability: "Crop Suitability",
+    riceVarieties: "Rice Varieties",
     logout: "Logout",
     footer: "Empowering Sri Lankan Farmers",
     // Officer-specific translations
@@ -55,6 +57,7 @@ const translations = {
     news: "ගොවි ප්‍රවෘත්ති",
     yieldForecast: "අස්වැන්න අනාවැකි",
     suitability: "බෝග සුදුසුකම",
+    riceVarieties: "සහල් වර්ග",
     logout: "පද්ධතියෙන් ඉවත් වන්න",
     footer: "ශ්‍රී ලාංකීය ගොවීන් සවිබල ගැන්වීම",
     // Officer-specific translations
@@ -280,6 +283,7 @@ function MainApp() {
         { id: 'alerts', icon: AlertTriangle, label: t.alerts, emoji: '⚠️' },
         { id: 'news', icon: Newspaper, label: t.news, emoji: '📰' },
         { id: 'suitability', icon: Leaf, label: t.suitability, emoji: '🌱' },
+        { id: 'riceVarieties', icon: BookOpen, label: t.riceVarieties, emoji: '🌾' },
         profileTab,
       ];
     } else if (isBuyer) {
@@ -288,6 +292,7 @@ function MainApp() {
         { id: 'buyerDashboard', icon: LayoutDashboard, label: t.buyerDashboard, emoji: '🛍️' },
         { id: 'marketplace', icon: ShoppingBag, label: t.marketplace, emoji: '🛒' },
         { id: 'news', icon: Newspaper, label: t.agriNews, emoji: '📰' },
+        { id: 'riceVarieties', icon: BookOpen, label: t.riceVarieties, emoji: '🌾' },
         profileTab,
       ];
     } else {
@@ -296,6 +301,7 @@ function MainApp() {
         { id: 'officerDashboard', icon: LayoutDashboard, label: 'Area Dashboard', emoji: '📊' },
         { id: 'diseaseAlerts', icon: AlertTriangle, label: t.diseaseAlerts, emoji: '⚠️' },
         { id: 'news', icon: Newspaper, label: t.news, emoji: '📰' },
+        { id: 'riceVarieties', icon: BookOpen, label: t.riceVarieties, emoji: '🌾' },
         profileTab,
       ];
     }
@@ -429,6 +435,7 @@ function MainApp() {
                 {view === 'news' && <AgriNews lang={lang} user={user} />}
                 {view === 'yield' && <YieldPrediction lang={lang} />}
                 {view === 'suitability' && <CropSuitability lang={lang} user={user} coords={coords} />}
+                {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
                 {view === 'profile' && <UserProfile />}
               </>
             )}
@@ -439,6 +446,7 @@ function MainApp() {
                 {view === 'buyerDashboard' && <BuyerDashboard user={user} language={lang} onNavigate={setView} />}
                 {view === 'marketplace' && <Marketplace lang={lang} currentUser={user} />}
                 {view === 'news' && <AgriNews lang={lang} user={user} />}
+                {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
                 {view === 'profile' && <UserProfile />}
               </>
             )}
@@ -450,6 +458,7 @@ function MainApp() {
                 {view === 'diseaseAlerts' && <AlertsDashboard user={user} language={lang} isOfficer={true} />}
                 {view === 'areaAnalytics' && <OfficerDashboard user={user} language={lang} initialTab="analytics" />}
                 {view === 'news' && <AgriNews lang={lang} user={user} />}
+                {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
                 {view === 'profile' && <UserProfile />}
               </>
             )}
