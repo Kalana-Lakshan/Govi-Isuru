@@ -10,8 +10,12 @@ import json
 import base64
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
+try:
+    import tf_keras as keras
+    from tf_keras import layers
+except Exception:
+    import keras
+    from keras import layers
 from PIL import Image
 import cv2
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
@@ -20,6 +24,12 @@ from fastapi.responses import JSONResponse
 import uvicorn
 from enum import Enum
 from crop_suitability_model import predict_suitability
+
+# Allow loading legacy/serialized Keras objects when supported
+try:
+    keras.config.enable_unsafe_deserialization()
+except Exception:
+    pass
 
 # Configuration - Multi-crop support
 MODELS_CONFIG = {
@@ -93,7 +103,11 @@ def load_crop_model(crop_type: str):
     
     # Load model
     if os.path.exists(config["model_path"]):
-        models[crop_type] = keras.models.load_model(config["model_path"])
+        models[crop_type] = keras.models.load_model(
+            config["model_path"],
+            compile=False,
+            safe_mode=False
+        )
         print(f"✅ {crop_type.title()} model loaded from {config['model_path']}")
     else:
         print(f"⚠️ {crop_type.title()} model not found at {config['model_path']}")
@@ -314,10 +328,14 @@ def create_heatmap_only(heatmap):
 @app.on_event("startup")
 async def startup_event():
     """Load all models on startup"""
-    results = load_all_models()
-    for crop, success in results.items():
-        if not success:
-            print(f"⚠️ {crop.title()} model loading failed. Please train the model first.")
+    try:
+        results = load_all_models()
+        for crop, success in results.items():
+            if not success:
+                print(f"⚠️ {crop.title()} model loading failed. Please train the model first.")
+    except Exception as e:
+        print(f"⚠️ Error during model loading startup: {str(e)[:200]}")
+        print("⚠️ API will still be available, models will load on first use")
 
 @app.get("/")
 async def root():

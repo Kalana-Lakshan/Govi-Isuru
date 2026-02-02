@@ -2,7 +2,7 @@
 goviisuru.pem
 
 # Python virtual environment
-venv/
+.venv/
 ai-service/venv/
 __pycache__/
 ai-service/venv311/
