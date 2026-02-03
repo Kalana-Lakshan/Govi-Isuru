@@ -1,0 +1,60 @@
+name: govi-isuru
+region: sgp
+
+services:
+  - name: backend
+    source_dir: /server
+    dockerfile_path: /server/Dockerfile
+    http_port: 5000
+    instance_size_slug: basic-xxs
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "5000"
+      - key: JWT_SECRET
+        scope: RUN_TIME
+        type: SECRET
+        value: "${JWT_SECRET}"
+      - key: MONGO_URI
+        scope: RUN_TIME
+        type: SECRET
+        value: "${MONGO_URI}"
+      - key: AI_SERVICE_URL
+        scope: RUN_TIME
+        value: "${AI_SERVICE_URL}"
+      - key: NEWS_API_KEY
+        scope: RUN_TIME
+        type: SECRET
+        value: "${NEWS_API_KEY}"
+      - key: SMTP_HOST
+        scope: RUN_TIME
+        value: "${SMTP_HOST}"
+      - key: SMTP_PORT
+        scope: RUN_TIME
+        value: "${SMTP_PORT}"
+      - key: SMTP_USER
+        scope: RUN_TIME
+        type: SECRET
+        value: "${SMTP_USER}"
+      - key: SMTP_PASS
+        scope: RUN_TIME
+        type: SECRET
+        value: "${SMTP_PASS}"
+
+  - name: ai-service
+    source_dir: /ai-service
+    dockerfile_path: /ai-service/Dockerfile
+    http_port: 8000
+    instance_size_slug: basic-xxs
+
+static_sites:
+  - name: frontend
+    source_dir: /client
+    build_command: npm ci && npm run build
+    output_dir: /build
+    envs:
+      - key: REACT_APP_API_URL
+        value: "${REACT_APP_API_URL}"
+    routes:
+      - path: /

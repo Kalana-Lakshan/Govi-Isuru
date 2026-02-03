@@ -20,10 +20,10 @@
 - [API Documentation](#-api-documentation)
 - [AI Model Information](#-ai-model-information)
 - [Environment Variables](#-environment-variables)
+- [Docker & Deployment](#-docker--deployment)
 - [Screenshots](#-screenshots)
 - [Contributing](#-contributing)
 - [License](#-license)
- - [Docker Deploy](#-docker-deploy)
 
 ---
 

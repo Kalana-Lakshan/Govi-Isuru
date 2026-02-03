@@ -339,6 +339,26 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// Health check endpoint for Docker & load balancers
+app.get('/health', async (req, res) => {
+  try {
+    // Check MongoDB connection
+    const mongoHealth = mongoose.connection.readyState === 1 ? 'ok' : 'disconnected';
+    
+    res.json({
+      status: mongoHealth === 'ok' ? 'healthy' : 'degraded',
+      timestamp: new Date().toISOString(),
+      database: mongoHealth,
+      uptime: process.uptime()
+    });
+  } catch (err) {
+    res.status(503).json({
+      status: 'unhealthy',
+      error: err.message
+    });
+  }
+});
+
 // 5. Start Server using dynamic port for deployment
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Market Server running on Port ${PORT}`));
