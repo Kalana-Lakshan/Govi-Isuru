@@ -62,8 +62,7 @@ const HomePage = ({ onLogin, onRegister }) => {
         cta2: "Learn More",
         stats: [
           { value: "8+", label: "Crop Diseases Detected" },
-          { value: "25", label: "Districts Covered" },
-          { value: "1000+", label: "Active Farmers" }
+          { value: "25", label: "Districts Covered" }
         ]
       },
       nav: {
@@ -77,7 +76,7 @@ const HomePage = ({ onLogin, onRegister }) => {
           {
             icon: Sparkles,
             title: "AI Crop Doctor",
-            description: "Upload crop photos for instant disease detection with 94% accuracy using advanced deep learning",
+            description: "Upload crop photos for instant disease detection with 80% accuracy using advanced deep learning",
             color: "emerald"
           },
           {
@@ -158,8 +157,7 @@ const HomePage = ({ onLogin, onRegister }) => {
         cta2: "තව දැනගන්න",
         stats: [
           { value: "8+", label: "බෝග රෝග හඳුනාගනී" },
-          { value: "25", label: "දිස්ත්‍රික්ක ආවරණය" },
-          { value: "1000+", label: "ක්‍රියාකාරී ගොවීන්" }
+          { value: "25", label: "දිස්ත්‍රික්ක ආවරණය" }
         ]
       },
       nav: {
@@ -261,7 +259,26 @@ const HomePage = ({ onLogin, onRegister }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-green-50/30">
+    <div style={{
+      backgroundImage: 'url(/backgrounds/farming-training.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed'
+    }} className="min-h-screen">
+      {/* Dark overlay */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'rgba(255, 255, 255, 0.4)',
+        zIndex: 0,
+        pointerEvents: 'none'
+      }} />
+      
+      {/* Content wrapper */}
+      <div style={{ position: 'relative', zIndex: 1 }}>
       {/* Navigation Bar */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'
@@ -388,23 +405,13 @@ const HomePage = ({ onLogin, onRegister }) => {
                       <CheckCircle className="h-6 w-6 text-green-600" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-slate-700">94% Accuracy</div>
+                      <div className="text-sm font-semibold text-slate-700">80% Accuracy</div>
                       <div className="text-xs text-slate-500">Disease Detection</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 animate-float" style={{ animationDelay: '1s' }}>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                      <Users className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-slate-700">1000+ Farmers</div>
-                      <div className="text-xs text-slate-500">Active Community</div>
-                    </div>
-                  </div>
-                </div>
+                {/* Removed 1000+ Farmers card */}
               </div>
             </div>
           </div>
@@ -599,6 +606,7 @@ const HomePage = ({ onLogin, onRegister }) => {
           to { opacity: 1; }
         }
       `}</style>
+      </div>
     </div>
   );
 };
