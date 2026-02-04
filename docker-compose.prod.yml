@@ -65,6 +65,7 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_URL: "/api"
+        REACT_APP_AI_URL: "http://54.255.163.38:8000"
     container_name: govi-frontend
     restart: unless-stopped
     ports:
