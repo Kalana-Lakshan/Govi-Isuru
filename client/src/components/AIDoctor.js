@@ -160,7 +160,7 @@ const AIDoctor = ({ lang, user }) => {
       };
 
       const response = await axios.post(
-        `${API_BASE}/api/alerts/disease-report`,
+        `${API_BASE}/alerts/disease-report`,
         reportData,
         {
           headers: token ? { Authorization: `Bearer ${token}` } : {}
