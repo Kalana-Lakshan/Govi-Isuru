@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper, BarChart3, BookOpen } from 'lucide-react';
+import { Leaf, ShoppingBag, Languages, LayoutDashboard, CloudSun, TrendingUp, LogOut, AlertTriangle, Newspaper, BarChart3, BookOpen, X } from 'lucide-react';
 import { BrowserRouter, Routes, Route, useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import CropSuitability from './components/CropSuitability';
 import AIDoctor from './components/AIDoctor';
@@ -118,6 +118,7 @@ function MainApp() {
   const [coords, setCoords] = useState({ lat: 8.3114, lon: 80.4037 }); // Default to Anuradhapura
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
   const [authMode, setAuthMode] = useState('login'); // 'login' or 'register'
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const t = translations[lang];
 
@@ -358,8 +359,22 @@ function MainApp() {
         zIndex: 0,
         pointerEvents: 'none'
       }} />
+      {/* Mobile overlay */}
+      {isSidebarOpen && (
+        <button
+          aria-label="Close menu"
+          onClick={() => setIsSidebarOpen(false)}
+          className="fixed inset-0 bg-black/40 z-30 md:hidden"
+        />
+      )}
+
       {/* Sidebar Navigation - Enhanced */}
-      <nav className="w-full md:w-72 bg-gradient-to-b from-green-800 to-green-900 text-white shadow-2xl flex-shrink-0 flex flex-col" style={{ position: 'relative', zIndex: 1 }}>
+      <nav
+        className={`fixed md:static inset-y-0 left-0 z-40 w-72 max-w-[85%] md:max-w-none bg-gradient-to-b from-green-800 to-green-900 text-white shadow-2xl flex-shrink-0 flex flex-col transform transition-transform duration-200 ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+        }`}
+        style={{ position: 'relative' }}
+      >
         {/* Logo Header */}
         <div className="p-6 flex items-center gap-3 border-b border-green-700/50 bg-green-800/50">
           <div className="p-2 bg-green-600 rounded-xl shadow-lg">
@@ -369,6 +384,13 @@ function MainApp() {
             <span className="text-2xl font-black tracking-tight leading-none block">{t.title}</span>
             <span className="text-xs text-green-300">Smart Farming Platform</span>
           </div>
+          <button
+            className="ml-auto md:hidden p-2 rounded-lg hover:bg-white/10"
+            onClick={() => setIsSidebarOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={18} />
+          </button>
         </div>
 
         {/* Navigation Items */}
@@ -379,7 +401,10 @@ function MainApp() {
             return (
               <button 
                 key={item.id}
-                onClick={() => setView(item.id)}
+                onClick={() => {
+                  setView(item.id);
+                  setIsSidebarOpen(false);
+                }}
                 className={`group flex items-center gap-3 w-full p-3.5 rounded-xl font-semibold transition-all duration-200 ${
                   isActive 
                     ? 'bg-white text-green-800 shadow-lg shadow-green-900/20 translate-x-1' 
@@ -439,6 +464,22 @@ function MainApp() {
       {/* Main Content Area */}
       <main className="flex-1 overflow-y-auto p-4 md:p-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)', position: 'relative', zIndex: 1 }}>
         <div className="max-w-5xl mx-auto">
+          {/* Mobile Top Bar */}
+          <div className="md:hidden mb-4 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="p-2 bg-green-600 rounded-lg shadow">
+                <Leaf className="h-5 w-5 text-green-200" />
+              </div>
+              <span className="text-lg font-bold text-green-900">{t.title}</span>
+            </div>
+            <button
+              className="p-2 rounded-lg bg-white shadow border border-slate-200"
+              onClick={() => setIsSidebarOpen(true)}
+              aria-label="Open menu"
+            >
+              <LayoutDashboard size={18} />
+            </button>
+          </div>
           {/* Welcome Header - Enhanced */}
           <div className="mb-6 p-5 bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div>
