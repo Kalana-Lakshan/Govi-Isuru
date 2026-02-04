@@ -283,45 +283,45 @@ const HomePage = ({ onLogin, onRegister }) => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Logo */}
-            <div className="flex items-center gap-3 group cursor-pointer">
-              <div className="p-2.5 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
-                <Leaf className="h-7 w-7 text-white" />
+            <div className="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+              <div className="p-1.5 sm:p-2.5 bg-gradient-to-br from-green-600 to-emerald-700 rounded-lg sm:rounded-xl shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
+                <Leaf className="h-5 w-5 sm:h-7 sm:w-7 text-white" />
               </div>
               <div>
-                <span className="text-2xl font-black text-slate-800 tracking-tight">
+                <span className="text-lg sm:text-2xl font-black text-slate-800 tracking-tight">
                   {lang === 'si' ? 'ගොවි ඉසුරු' : 'Govi Isuru'}
                 </span>
-                <div className="text-xs text-slate-500 font-medium">Smart Farming Platform</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 font-medium hidden xs:block">Smart Farming Platform</div>
               </div>
             </div>
 
             {/* Auth Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-3">
               {/* Language Toggle */}
               <button
                 onClick={() => setLang(lang === 'en' ? 'si' : 'en')}
-                className="p-2.5 text-slate-700 hover:text-green-600 hover:bg-green-50 rounded-lg transition-all flex items-center gap-2 font-semibold"
+                className="p-2 sm:p-2.5 text-slate-700 hover:text-green-600 hover:bg-green-50 rounded-lg transition-all flex items-center gap-1 sm:gap-2 font-semibold"
                 title={lang === 'en' ? 'Switch to Sinhala' : 'Switch to English'}
               >
-                <Globe size={20} />
-                <span className="text-sm hidden sm:inline">{lang === 'en' ? 'සිංහල' : 'English'}</span>
+                <Globe size={18} className="sm:w-5 sm:h-5" />
+                <span className="text-xs sm:text-sm hidden sm:inline">{lang === 'en' ? 'සිංහල' : 'English'}</span>
               </button>
               
               <button
                 onClick={onLogin}
-                className="px-6 py-2.5 text-slate-700 font-semibold hover:text-green-600 transition-colors"
+                className="px-3 py-2 sm:px-6 sm:py-2.5 text-slate-700 text-sm sm:text-base font-semibold hover:text-green-600 transition-colors"
               >
                 {t.nav.login}
               </button>
               <button
                 onClick={onRegister}
-                className="px-6 py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-2"
+                className="px-3 py-2 sm:px-6 sm:py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-sm sm:text-base font-semibold rounded-lg sm:rounded-xl hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-1 sm:gap-2"
               >
                 {t.nav.register}
-                <ArrowRight size={18} />
+                <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
             </div>
           </div>
@@ -329,60 +329,60 @@ const HomePage = ({ onLogin, onRegister }) => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="pt-20 sm:pt-28 pb-12 sm:pb-20 px-3 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-green-300/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-40 sm:w-72 h-40 sm:h-72 bg-green-300/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-emerald-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8 animate-in fade-in slide-in-from-left duration-700">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 border border-green-200 rounded-full">
-                <Sparkles className="h-4 w-4 text-green-600" />
-                <span className="text-sm font-semibold text-green-700">{t.hero.badge}</span>
+            <div className="space-y-4 sm:space-y-8 animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-green-100 border border-green-200 rounded-full">
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
+                <span className="text-xs sm:text-sm font-semibold text-green-700">{t.hero.badge}</span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 leading-tight">
                 {t.hero.title}
               </h1>
 
-              <p className="text-xl text-slate-600 leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
                 {t.hero.subtitle}
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <button
                   onClick={onRegister}
-                  className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold rounded-xl hover:from-green-700 hover:to-emerald-700 shadow-xl hover:shadow-2xl transition-all hover:scale-105 flex items-center gap-2 text-lg"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold rounded-xl hover:from-green-700 hover:to-emerald-700 shadow-xl hover:shadow-2xl transition-all hover:scale-105 flex items-center justify-center gap-2 text-base sm:text-lg"
                 >
                   {t.hero.cta1}
-                  <ArrowRight size={20} />
+                  <ArrowRight size={18} className="sm:w-5 sm:h-5" />
                 </button>
                 <button
                   onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}
-                  className="px-8 py-4 bg-white text-slate-700 font-bold rounded-xl border-2 border-slate-200 hover:border-green-500 hover:text-green-600 transition-all flex items-center gap-2 text-lg"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-slate-700 font-bold rounded-xl border-2 border-slate-200 hover:border-green-500 hover:text-green-600 transition-all flex items-center justify-center gap-2 text-base sm:text-lg"
                 >
                   {t.hero.cta2}
-                  <ChevronRight size={20} />
+                  <ChevronRight size={18} className="sm:w-5 sm:h-5" />
                 </button>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 pt-4 sm:pt-8">
                 {t.hero.stats.map((stat, idx) => (
-                  <div key={idx} className="text-center">
-                    <div className="text-3xl font-black text-green-600">{stat.value}</div>
-                    <div className="text-sm text-slate-600 font-medium mt-1">{stat.label}</div>
+                  <div key={idx} className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-100">
+                    <div className="text-2xl sm:text-3xl font-black text-green-600">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-slate-600 font-medium mt-1">{stat.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Right Visual */}
-            <div className="relative animate-in fade-in slide-in-from-right duration-700 delay-200">
+            <div className="relative animate-in fade-in slide-in-from-right duration-700 delay-200 hidden lg:block">
               <div className="relative">
                 <div className="aspect-square bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600 rounded-3xl shadow-2xl overflow-hidden">
                   {/* Placeholder for hero image - you can replace with actual image */}
@@ -419,31 +419,31 @@ const HomePage = ({ onLogin, onRegister }) => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="features" className="py-12 sm:py-16 lg:py-20 px-3 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-in fade-in zoom-in duration-700">
-            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-in fade-in zoom-in duration-700">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-slate-900 mb-3 sm:mb-4">
               {t.features.title}
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto px-4">
               {t.features.subtitle}
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {t.features.items.map((feature, idx) => {
               const Icon = feature.icon;
               const colors = colorMap[feature.color];
               return (
                 <div
                   key={idx}
-                  className="group p-6 bg-white rounded-2xl border-2 border-slate-100 hover:border-green-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer animate-in fade-in slide-in-from-bottom duration-700"
+                  className="group p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl border-2 border-slate-100 hover:border-green-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-in fade-in slide-in-from-bottom duration-700"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
-                  <div className={`w-14 h-14 ${colors.light} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <Icon className={`h-7 w-7 ${colors.text}`} />
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 ${colors.light} rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform`}>
+                    <Icon className={`h-6 w-6 sm:h-7 sm:w-7 ${colors.text}`} />
                   </div>
-                  <h3 className="text-lg font-bold text-slate-800 mb-2">{feature.title}</h3>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-2">{feature.title}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
                 </div>
               );
@@ -453,28 +453,28 @@ const HomePage = ({ onLogin, onRegister }) => {
       </section>
 
       {/* Latest News Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-emerald-50/50">
+      <section className="py-12 sm:py-16 lg:py-20 px-3 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-emerald-50/50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-green-200 rounded-full mb-4">
-              <Newspaper className="h-4 w-4 text-green-600" />
-              <span className="text-sm font-semibold text-green-700">{t.news.subtitle}</span>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white border border-green-200 rounded-full mb-3 sm:mb-4">
+              <Newspaper className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
+              <span className="text-xs sm:text-sm font-semibold text-green-700">{t.news.subtitle}</span>
             </div>
-            <h2 className="text-4xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-3 sm:mb-4 px-4">
               {t.news.title}
             </h2>
           </div>
 
           {loadingNews ? (
-            <div className="flex justify-center items-center py-20">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+            <div className="flex justify-center items-center py-12 sm:py-20">
+              <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-green-600"></div>
             </div>
           ) : (
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
               {news.map((article, idx) => (
                 <div
                   key={idx}
-                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-green-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 hover:border-green-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   {article.urlToImage && (
                     <div className="aspect-video overflow-hidden">
@@ -485,22 +485,22 @@ const HomePage = ({ onLogin, onRegister }) => {
                       />
                     </div>
                   )}
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
+                  <div className="p-4 sm:p-6">
+                    <div className="flex items-center gap-2 text-xs text-slate-500 mb-2 sm:mb-3">
                       <Clock size={14} />
                       <span>{new Date(article.publishedAt).toLocaleDateString(lang === 'si' ? 'si-LK' : 'en-LK')}</span>
                     </div>
-                    <h3 className="font-bold text-slate-800 mb-3 line-clamp-2 group-hover:text-green-600 transition-colors">
+                    <h3 className="font-bold text-sm sm:text-base text-slate-800 mb-2 sm:mb-3 line-clamp-2 group-hover:text-green-600 transition-colors">
                       {article.title}
                     </h3>
-                    <p className="text-sm text-slate-600 mb-4 line-clamp-3">
+                    <p className="text-xs sm:text-sm text-slate-600 mb-3 sm:mb-4 line-clamp-3">
                       {article.description}
                     </p>
                     <a
                       href={article.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
+                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-green-600 hover:text-green-700"
                     >
                       {t.news.readMore}
                       <ExternalLink size={14} />
@@ -514,33 +514,33 @@ const HomePage = ({ onLogin, onRegister }) => {
           <div className="text-center">
             <button
               onClick={onRegister}
-              className="px-8 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 shadow-lg hover:shadow-xl transition-all flex items-center gap-2 mx-auto"
+              className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-green-600 text-white text-sm sm:text-base font-semibold rounded-xl hover:bg-green-700 shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 mx-auto"
             >
               {t.news.viewAll}
-              <ArrowRight size={18} />
+              <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
             </button>
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 px-3 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-black text-slate-900 text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 text-center mb-8 sm:mb-12 px-4">
             {t.benefits.title}
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {t.benefits.items.map((benefit, idx) => {
               const Icon = benefit.icon;
               return (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100"
+                  className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl sm:rounded-2xl border border-green-100"
                 >
-                  <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Icon className="h-6 w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-600 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
-                  <p className="text-slate-700 font-medium pt-2">{benefit.text}</p>
+                  <p className="text-sm sm:text-base text-slate-700 font-medium pt-1 sm:pt-2">{benefit.text}</p>
                 </div>
               );
             })}
@@ -549,40 +549,40 @@ const HomePage = ({ onLogin, onRegister }) => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 px-3 sm:px-6 lg:px-8 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iYSIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoNDUpIj48cGF0aCBkPSJNLTIwIDYwaDEyMHY0aC0xMjB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjYSkiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz48L3N2Zz4=')] opacity-30"></div>
-        <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+        <div className="max-w-4xl mx-auto text-center relative px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 sm:mb-4">
             {t.cta.title}
           </h2>
-          <p className="text-xl text-green-100 mb-8">
+          <p className="text-base sm:text-lg lg:text-xl text-green-100 mb-6 sm:mb-8">
             {t.cta.subtitle}
           </p>
           <button
             onClick={onRegister}
-            className="px-10 py-4 bg-white text-green-600 font-bold rounded-xl hover:bg-green-50 shadow-2xl hover:shadow-3xl transition-all hover:scale-105 flex items-center gap-3 mx-auto text-lg"
+            className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-white text-green-600 font-bold rounded-xl hover:bg-green-50 shadow-2xl hover:shadow-3xl transition-all hover:scale-105 flex items-center justify-center gap-2 sm:gap-3 mx-auto text-base sm:text-lg"
           >
-            <Sparkles size={20} />
+            <Sparkles size={18} className="sm:w-5 sm:h-5" />
             {t.cta.button}
-            <ArrowRight size={20} />
+            <ArrowRight size={18} className="sm:w-5 sm:h-5" />
           </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+      <footer className="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-600 rounded-xl">
-                <Leaf className="h-6 w-6" />
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 bg-green-600 rounded-lg sm:rounded-xl">
+                <Leaf className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div>
-                <div className="text-xl font-black">{lang === 'si' ? 'ගොවි ඉසුරු' : 'Govi Isuru'}</div>
-                <div className="text-sm text-slate-400">{t.footer.tagline}</div>
+                <div className="text-lg sm:text-xl font-black">{lang === 'si' ? 'ගොවි ඉසුරු' : 'Govi Isuru'}</div>
+                <div className="text-xs sm:text-sm text-slate-400">{t.footer.tagline}</div>
               </div>
             </div>
-            <div className="text-sm text-slate-400 text-center">
+            <div className="text-xs sm:text-sm text-slate-400 text-center">
               {t.footer.copyright}
             </div>
           </div>
