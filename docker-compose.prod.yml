@@ -43,8 +43,7 @@ services:
       - HUGGINGFACE_API_TOKEN=${HUGGINGFACE_API_TOKEN}
       - TZ=Asia/Colombo
     depends_on:
-      ai-service:
-        condition: service_healthy
+      - ai-service
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/health"]
       interval: 30s
