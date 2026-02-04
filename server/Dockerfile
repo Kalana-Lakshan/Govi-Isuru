@@ -2,7 +2,7 @@
 FROM node:22-alpine as builder
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install --legacy-peer-deps --prefer-offline --omit=dev
 
 # Production stage
 FROM node:22-alpine

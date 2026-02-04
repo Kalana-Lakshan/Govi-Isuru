@@ -2,7 +2,7 @@
 FROM node:22-alpine as build
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci
+RUN npm install --legacy-peer-deps --prefer-offline
 ARG REACT_APP_API_URL=""
 ENV REACT_APP_API_URL=$REACT_APP_API_URL
 COPY . .
@@ -14,9 +14,6 @@ FROM nginx:alpine
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 # Copy Nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-# Create non-root user
-RUN addgroup -g 101 -S nginx && adduser -S nginx -u 100
-USER nginx
 EXPOSE 80
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \

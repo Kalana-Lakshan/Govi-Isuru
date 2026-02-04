@@ -14,9 +14,8 @@ WORKDIR /app
 
 # Install Python deps first (better layer caching)
 COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
-
-# Copy application code (models and data included)
+RUN pip config set global.require-hashes false \
+    && pip install --no-cache-dir --default-timeout=1000 -r /app/requirements.txt
 COPY . /app
 
 EXPOSE 8000
