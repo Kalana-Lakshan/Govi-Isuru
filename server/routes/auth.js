@@ -311,6 +311,11 @@ router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    // Validate required fields
+    if (!username || !password) {
+      return res.status(400).json({ msg: "Username and password are required" });
+    }
+
     // Find user by username or email
     const user = await User.findOne({
       $or: [
