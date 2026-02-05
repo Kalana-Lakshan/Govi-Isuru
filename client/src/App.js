@@ -353,28 +353,27 @@ function MainApp() {
         />
       )}
 
-      {/* Sidebar Navigation - Mobile Optimized */}
+      {/* Sidebar Navigation - Modern Mobile Drawer */}
       <nav
-        className={`fixed md:static inset-y-0 left-0 z-40 w-64 md:w-80 max-w-[90%] md:max-w-none bg-gradient-to-b from-green-800 to-green-900 text-white shadow-2xl flex-shrink-0 flex flex-col transform transition-transform duration-300 ease-out ${
+        className={`fixed md:static inset-y-0 left-0 z-40 w-72 md:w-80 max-w-[85%] md:max-w-none bg-gradient-to-b from-green-800 to-green-900 text-white shadow-2xl flex-shrink-0 flex flex-col transform transition-transform duration-300 ease-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
-        style={{ position: 'relative' }}
       >
         {/* Logo Header */}
-        <div className="sticky top-0 z-10 p-4 md:p-6 flex items-center gap-2 md:gap-3 border-b border-green-700/50 bg-green-800/95 backdrop-blur-sm">
+        <div className="sticky top-0 z-10 p-3 md:p-6 flex items-center gap-2 md:gap-3 border-b border-green-700/50 bg-green-800/95 backdrop-blur-sm">
           <div className="p-1.5 md:p-2 bg-green-600 rounded-lg md:rounded-xl shadow-lg">
             <Leaf className="h-5 w-5 md:h-8 md:w-8 text-green-200" />
           </div>
           <div className="flex-1">
-            <span className="text-lg md:text-2xl font-black tracking-tight leading-tight block">{t.title}</span>
-            <span className="text-[10px] md:text-xs text-green-300">Smart Farming</span>
+            <span className="text-base md:text-2xl font-black tracking-tight leading-tight block">{t.title}</span>
+            <span className="text-[9px] md:text-xs text-green-300">Smart Farming</span>
           </div>
           <button
             className="md:hidden p-1.5 rounded-lg hover:bg-white/10 transition-colors"
             onClick={() => setIsSidebarOpen(false)}
             aria-label="Close menu"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
@@ -443,30 +442,35 @@ function MainApp() {
         </div>
       </nav>
 
-      {/* Main Content Area - Full Mobile Layout */}
+      {/* Main Content Area - Clean Mobile Layout */}
       <main className="flex-1 overflow-y-auto bg-white" style={{ position: 'relative', zIndex: 1 }}>
         <div className="w-full h-full flex flex-col">
-          {/* Mobile Top Bar - Minimal */}
-          <div className="md:hidden sticky top-0 z-20 bg-white shadow-sm border-b border-slate-100">
-            <div className="flex items-center justify-between px-3 py-2.5">
-              <div className="flex items-center gap-2">
-                <div className="p-1 bg-green-600 rounded-md">
+          {/* Mobile Top Bar - Integrated User Info */}
+          <div className="md:hidden sticky top-0 z-20 bg-gradient-to-r from-green-600 to-emerald-600 shadow-md">
+            <div className="flex items-center justify-between px-3 py-2">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
+                <div className="p-1 bg-white/20 rounded-lg">
                   <Leaf className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-sm font-bold text-green-900">{t.title}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-bold text-white truncate">{user.username}</p>
+                  <p className="text-[8px] text-green-100 truncate">
+                    {user?.role === 'officer' ? `📍 ${user.district}` : `📍 ${user.gnDivision}`}
+                  </p>
+                </div>
               </div>
               <button
-                className="p-1.5 rounded-lg bg-green-50 hover:bg-green-100 transition-colors active:scale-95"
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors active:scale-95 backdrop-blur-sm"
                 onClick={() => setIsSidebarOpen(true)}
                 aria-label="Open menu"
               >
-                <LayoutDashboard size={18} className="text-green-700" />
+                <LayoutDashboard size={20} className="text-white" />
               </button>
             </div>
             
-            {/* Mobile Horizontal Tabs - Scrollable */}
-            <div className="md:hidden overflow-x-auto px-3 py-2 border-t border-slate-100">
-              <div className="flex gap-2 min-w-min pb-1">
+            {/* Mobile Horizontal Tabs - Compact */}
+            <div className="overflow-x-auto px-3 py-1.5 bg-white/10 backdrop-blur-sm">
+              <div className="flex gap-1.5 min-w-min">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = view === item.id;
@@ -474,13 +478,13 @@ function MainApp() {
                     <button
                       key={item.id}
                       onClick={() => setView(item.id)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full whitespace-nowrap text-xs font-medium transition-all active:scale-95 flex-shrink-0 ${
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-full whitespace-nowrap text-[10px] font-medium transition-all active:scale-95 flex-shrink-0 ${
                         isActive
-                          ? 'bg-green-600 text-white shadow-sm'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          ? 'bg-white text-green-700 shadow-sm'
+                          : 'bg-white/20 text-white hover:bg-white/30'
                       }`}
                     >
-                      <Icon size={14} />
+                      <Icon size={12} />
                       <span className="hidden xs:inline">{item.emoji}</span>
                     </button>
                   );
@@ -489,39 +493,37 @@ function MainApp() {
             </div>
           </div>
 
-          {/* Content Wrapper - Minimal Mobile Spacing */}
+          {/* Content Wrapper - Direct Content Access */}
           <div className="flex-1 overflow-y-auto">
             <div className="w-full mx-auto">
-              {/* Welcome Header - Super Compact Mobile */}
-              <div className="bg-slate-50 border-b border-slate-200 px-3 py-2 md:m-4 md:rounded-xl md:border md:shadow-sm">
-                <div className="flex flex-col gap-1">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[10px] text-slate-500">
-                        {lang === 'si' ? 'ආයුබෝවන්' : 'Welcome back'},
-                      </p>
-                      <p className="text-base md:text-xl font-bold text-slate-800 truncate">{user.username}</p>
-                    </div>
-                    <div className="flex items-center gap-1 flex-shrink-0">
-                      {user?.role === 'officer' ? (
-                        <span className="text-[9px] md:text-xs bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded-full font-semibold whitespace-nowrap">
-                          {user.district}
-                        </span>
-                      ) : (
-                        <span className="text-[9px] md:text-xs bg-green-50 text-green-700 px-1.5 py-0.5 rounded-full font-semibold whitespace-nowrap max-w-[100px] truncate">
-                          {user.gnDivision}
-                        </span>
-                      )}
-                    </div>
+              {/* Desktop Welcome Header Only */}
+              <div className="hidden md:block bg-slate-50 border-b border-slate-200 md:m-4 md:rounded-xl md:border md:shadow-sm p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-slate-500">
+                      {lang === 'si' ? 'ආයුබෝවන්' : 'Welcome back'},
+                    </p>
+                    <p className="text-xl font-bold text-slate-800 truncate">{user.username}</p>
                   </div>
-                  <span className="text-[9px] md:text-xs text-slate-400 font-medium">
-                    {new Date().toLocaleDateString(lang === 'si' ? 'si-LK' : 'en-LK', { weekday: 'short', day: 'numeric', month: 'short' })}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {user?.role === 'officer' ? (
+                      <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full font-semibold">
+                        📍 {user.district}
+                      </span>
+                    ) : (
+                      <span className="text-xs bg-green-50 text-green-700 px-2 py-1 rounded-full font-semibold">
+                        📍 {user.gnDivision}
+                      </span>
+                    )}
+                  </div>
                 </div>
+                <span className="text-xs text-slate-400 font-medium mt-1 block">
+                  {new Date().toLocaleDateString(lang === 'si' ? 'si-LK' : 'en-LK', { weekday: 'long', day: 'numeric', month: 'long' })}
+                </span>
               </div>
 
-              {/* Main Content - Minimal Mobile Padding */}
-              <div className="px-3 py-3 md:px-8 md:py-6 space-y-3 md:space-y-6">
+              {/* Main Content - Immediate Access */}
+              <div className="px-3 py-2 md:px-8 md:py-6 space-y-3 md:space-y-6">
                 {/* Farmer Views */}
                 {(!user?.role || user?.role === 'farmer') && (
                   <>
