@@ -49,6 +49,24 @@ const TraditionalRice = ({ lang = 'en' }) => {
 
   const t = translations[lang];
 
+  const zoneTranslations = {
+    'All zones': 'සියලු කලාප',
+    'Dry zone': 'වියලි කලාපය',
+    'Dry & Intermediate': 'වියලි හා අතරමැදි',
+    'Dry & Intermediate zones': 'වියලි හා අතරමැදි කලාප',
+    'Wet zone': 'තෙත් කලාපය',
+    'Wet & Intermediate': 'තෙත් හා අතරමැදි',
+    'All zones (except highlands)': 'උසබිම් හැර සියලු කලාප'
+  };
+
+  const getLocalizedZone = (zone) => {
+    if (lang !== 'si') return zone;
+    return zoneTranslations[zone] || zone;
+  };
+
+  const getPrimaryName = (variety) => (lang === 'si' ? variety.nameLocal : variety.name);
+  const getSecondaryName = (variety) => (lang === 'si' ? variety.name : variety.nameLocal);
+
   // Traditional varieties data
   const traditionalVarieties = [
     {
@@ -301,9 +319,11 @@ const TraditionalRice = ({ lang = 'en' }) => {
   const allVarieties = [...traditionalVarieties, ...modernVarieties];
 
   const filteredVarieties = allVarieties.filter(variety => {
-    const matchesSearch = variety.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const normalizedSearch = searchTerm.toLowerCase();
+    const localizedZone = getLocalizedZone(variety.zone).toLowerCase();
+    const matchesSearch = variety.name.toLowerCase().includes(normalizedSearch) ||
                          variety.nameLocal.includes(searchTerm) ||
-                         variety.zone.toLowerCase().includes(searchTerm.toLowerCase());
+                         localizedZone.includes(normalizedSearch);
     const matchesCategory = selectedCategory === 'all' || variety.type === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -373,8 +393,8 @@ const TraditionalRice = ({ lang = 'en' }) => {
               <div className={`p-6 ${variety.type === 'traditional' ? 'bg-gradient-to-r from-amber-500 to-orange-500' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`}>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-1">{variety.name}</h3>
-                    <p className="text-white/90 text-lg">{variety.nameLocal}</p>
+                    <h3 className="text-2xl font-bold text-white mb-1">{getPrimaryName(variety)}</h3>
+                    <p className="text-white/90 text-lg">{getSecondaryName(variety)}</p>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-sm font-semibold ${getDurationColor(variety.duration)}`}>
                     {variety.duration} {t.days}
@@ -400,7 +420,7 @@ const TraditionalRice = ({ lang = 'en' }) => {
                     <Droplets className="h-5 w-5 text-blue-600" />
                     <div>
                       <p className="text-xs text-gray-500">{t.zone}</p>
-                      <p className="font-semibold text-gray-800">{variety.zone}</p>
+                      <p className="font-semibold text-gray-800">{getLocalizedZone(variety.zone)}</p>
                     </div>
                   </div>
                 </div>
