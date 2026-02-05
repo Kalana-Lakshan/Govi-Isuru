@@ -334,18 +334,18 @@ const HomePage = ({ onLogin, onRegister }) => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-28 pb-12 sm:pb-20 px-3 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="pt-32 sm:pt-28 pb-12 sm:pb-20 px-3 sm:px-6 lg:px-8 relative overflow-hidden min-h-[85vh] sm:min-h-0 flex items-center">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-40 sm:w-72 h-40 sm:h-72 bg-green-300/20 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-emerald-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative">
+        <div className="max-w-7xl mx-auto relative w-full">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-4 sm:space-y-8 animate-in fade-in slide-in-from-left duration-700">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-green-100 border border-green-200 rounded-full">
+            <div className="space-y-3 sm:space-y-8 animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-green-100/90 backdrop-blur-sm border border-green-200 rounded-full">
                 <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
                 <span className="text-xs sm:text-sm font-semibold text-green-700">{t.hero.badge}</span>
               </div>
@@ -354,31 +354,31 @@ const HomePage = ({ onLogin, onRegister }) => {
                 {t.hero.title}
               </h1>
 
-              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
+              <p className="text-sm sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
                 {t.hero.subtitle}
               </p>
 
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-4 pt-6 sm:pt-0">
                 <button
                   onClick={onRegister}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold rounded-xl hover:from-green-700 hover:to-emerald-700 shadow-xl hover:shadow-2xl transition-all hover:scale-105 flex items-center justify-center gap-2 text-base sm:text-lg"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold rounded-xl hover:from-green-700 hover:to-emerald-700 shadow-xl hover:shadow-2xl transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-lg"
                 >
                   {t.hero.cta1}
-                  <ArrowRight size={18} className="sm:w-5 sm:h-5" />
+                  <ArrowRight size={16} className="sm:w-5 sm:h-5" />
                 </button>
                 <button
                   onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-slate-700 font-bold rounded-xl border-2 border-slate-200 hover:border-green-500 hover:text-green-600 transition-all flex items-center justify-center gap-2 text-base sm:text-lg"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/90 backdrop-blur-sm text-slate-700 font-bold rounded-xl border-2 border-slate-200 hover:border-green-500 hover:text-green-600 transition-all flex items-center justify-center gap-2 text-sm sm:text-lg"
                 >
                   {t.hero.cta2}
-                  <ChevronRight size={18} className="sm:w-5 sm:h-5" />
+                  <ChevronRight size={16} className="sm:w-5 sm:h-5" />
                 </button>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 gap-4 sm:gap-6 pt-4 sm:pt-8">
+              <div className="grid grid-cols-2 gap-3 sm:gap-6 pt-8 sm:pt-8">
                 {t.hero.stats.map((stat, idx) => (
-                  <div key={idx} className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-100">
+                  <div key={idx} className="text-center bg-white/90 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-slate-100 shadow-sm">
                     <div className="text-2xl sm:text-3xl font-black text-green-600">{stat.value}</div>
                     <div className="text-xs sm:text-sm text-slate-600 font-medium mt-1">{stat.label}</div>
                   </div>
