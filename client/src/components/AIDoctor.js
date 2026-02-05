@@ -204,107 +204,102 @@ const AIDoctor = ({ lang, user }) => {
 
   return (
     <div className="font-sans text-gray-800 w-full">
-      {/* Section Header - Mobile Responsive */}
-      <div className="mb-4 md:mb-6">
-        <h2 className="text-xl md:text-2xl font-bold text-green-800 flex items-center gap-2 mb-1">
-          <Stethoscope className="h-5 w-5 md:h-7 md:w-7 flex-shrink-0" />
+      {/* Section Header - Clean Mobile Design */}
+      <div className="bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm border border-slate-100 mb-3 md:mb-4">
+        <h2 className="text-base md:text-xl font-bold text-green-800 flex items-center gap-2">
+          <Stethoscope className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
           {text.sectionTitle}
         </h2>
-        <p className="text-xs md:text-sm text-gray-500">{text.subtitle}</p>
+        <p className="text-xs md:text-sm text-slate-500 mt-1">{text.subtitle}</p>
       </div>
 
-      {/* Crop Type Selector - Mobile Responsive */}
-      <div className="mb-4 md:mb-6">
-        <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2 md:mb-3">{text.selectCrop}</label>
-        <div className="grid grid-cols-3 gap-2 md:gap-4">
-          {/* Rice Button */}
+      {/* Crop Type Selector - Clean Cards */}
+      <div className="mb-3 md:mb-4">
+        <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-2 px-1">{text.selectCrop}</label>
+        <div className="grid grid-cols-3 gap-2 md:gap-3">{/* Rice Button */}
           <button
             onClick={() => { setCropType('rice'); setResult(null); }}
-            className={`flex flex-col items-center gap-1.5 md:gap-3 p-2 md:p-4 rounded-lg md:rounded-xl border-2 transition-all active:scale-95 ${
+            className={`flex flex-col items-center gap-1.5 p-2 md:p-3 rounded-lg md:rounded-xl border-2 transition-all active:scale-95 shadow-sm ${
               cropType === 'rice' 
                 ? 'border-green-500 bg-green-50 shadow-md' 
-                : 'border-gray-200 hover:border-green-300 hover:bg-green-50/30'
+                : 'border-slate-200 bg-white hover:border-green-300 hover:bg-green-50/30'
             }`}
           >
-            <div className={`p-1 md:p-2 rounded-lg flex-shrink-0 ${cropType === 'rice' ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
-              <Leaf className="h-4 w-4 md:h-6 md:w-6" />
+            <div className={`p-1.5 md:p-2 rounded-lg flex-shrink-0 ${cropType === 'rice' ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-600'}`}>
+              <Leaf className="h-4 w-4 md:h-5 md:w-5" />
             </div>
             <div className="text-center">
-              <div className={`font-semibold text-xs md:text-sm ${cropType === 'rice' ? 'text-green-700' : 'text-gray-700'}`}>
+              <div className={`font-semibold text-xs md:text-sm ${cropType === 'rice' ? 'text-green-700' : 'text-slate-700'}`}>
                 🌾 {text.rice}
               </div>
-              <div className="text-[10px] md:text-xs text-gray-500 hidden md:block">{text.riceDesc}</div>
             </div>
           </button>
           
           {/* Tea Button */}
           <button
             onClick={() => { setCropType('tea'); setResult(null); }}
-            className={`flex flex-col items-center gap-1.5 md:gap-3 p-2 md:p-4 rounded-lg md:rounded-xl border-2 transition-all active:scale-95 ${
+            className={`flex flex-col items-center gap-1.5 p-2 md:p-3 rounded-lg md:rounded-xl border-2 transition-all active:scale-95 shadow-sm ${
               cropType === 'tea' 
                 ? 'border-green-500 bg-green-50 shadow-md' 
-                : 'border-gray-200 hover:border-green-300 hover:bg-green-50/30'
+                : 'border-slate-200 bg-white hover:border-green-300 hover:bg-green-50/30'
             }`}
           >
-            <div className={`p-1 md:p-2 rounded-lg flex-shrink-0 ${cropType === 'tea' ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
-              <Coffee className="h-4 w-4 md:h-6 md:w-6" />
+            <div className={`p-1.5 md:p-2 rounded-lg flex-shrink-0 ${cropType === 'tea' ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-600'}`}>
+              <Coffee className="h-4 w-4 md:h-5 md:w-5" />
             </div>
             <div className="text-center">
-              <div className={`font-semibold text-xs md:text-sm ${cropType === 'tea' ? 'text-green-700' : 'text-gray-700'}`}>
+              <div className={`font-semibold text-xs md:text-sm ${cropType === 'tea' ? 'text-green-700' : 'text-slate-700'}`}>
                 🍵 {text.tea}
               </div>
-              <div className="text-[10px] md:text-xs text-gray-500 hidden md:block">{text.teaDesc}</div>
             </div>
           </button>
 
           {/* Chili Button */}
           <button
             onClick={() => { setCropType('chili'); setResult(null); }}
-            className={`flex flex-col items-center gap-1.5 md:gap-3 p-2 md:p-4 rounded-lg md:rounded-xl border-2 transition-all active:scale-95 ${
+            className={`flex flex-col items-center gap-1.5 p-2 md:p-3 rounded-lg md:rounded-xl border-2 transition-all active:scale-95 shadow-sm ${
               cropType === 'chili' 
                 ? 'border-red-500 bg-red-50 shadow-md' 
-                : 'border-gray-200 hover:border-red-300 hover:bg-red-50/30'
+                : 'border-slate-200 bg-white hover:border-red-300 hover:bg-red-50/30'
             }`}
           >
-            <div className={`p-1 md:p-2 rounded-lg flex-shrink-0 ${cropType === 'chili' ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-600'}`}>
-              <Flame className="h-4 w-4 md:h-6 md:w-6" />
+            <div className={`p-1.5 md:p-2 rounded-lg flex-shrink-0 ${cropType === 'chili' ? 'bg-red-500 text-white' : 'bg-slate-100 text-slate-600'}`}>
+              <Flame className="h-4 w-4 md:h-5 md:w-5" />
             </div>
             <div className="text-center">
-              <div className={`font-semibold text-xs md:text-sm ${cropType === 'chili' ? 'text-red-700' : 'text-gray-700'}`}>
+              <div className={`font-semibold text-xs md:text-sm ${cropType === 'chili' ? 'text-red-700' : 'text-slate-700'}`}>
                 🌶️ {text.chili}
               </div>
-              <div className="text-[10px] md:text-xs text-gray-500 hidden md:block">{text.chiliDesc}</div>
             </div>
           </button>
         </div>
       </div>
 
-      {/* Upload Card - Mobile Optimized */}
-      <div className="bg-white rounded-lg md:rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-        <div className="p-3 md:p-6">
-          {/* Upload Area */}
-          <div className={`relative border-2 border-dashed rounded-lg md:rounded-xl p-4 md:p-6 transition-all duration-300 ${
-            preview ? 'border-green-400 bg-green-50/50' : 'border-gray-200 hover:border-green-400 hover:bg-green-50/30'
+      {/* Upload Card - Cleaner Design */}
+      <div className="bg-white rounded-lg md:rounded-xl shadow-sm border border-slate-100">
+        <div className="p-3 md:p-4">{/* Upload Area */}
+          <div className={`relative border-2 border-dashed rounded-lg p-3 md:p-4 transition-all duration-300 ${
+            preview ? 'border-green-400 bg-green-50/50' : 'border-slate-300 hover:border-green-400 hover:bg-green-50/30'
           }`}>
-            <div className="flex flex-col items-center gap-3 md:gap-4">
+            <div className="flex flex-col items-center gap-3">
               {preview ? (
                 <div className="relative w-full">
                   <img 
                     src={preview} 
                     alt="Crop preview" 
-                    className="w-full max-h-40 md:max-h-56 object-cover rounded-lg md:rounded-xl shadow-md" 
+                    className="w-full max-h-48 md:max-h-64 object-cover rounded-lg shadow-sm" 
                   />
-                  <div className="absolute top-2 right-2 bg-green-500 text-white px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-bold flex items-center gap-1">
+                  <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-[10px] md:text-xs font-bold flex items-center gap-1 shadow-md">
                     <CheckCircle className="h-3 w-3" /> Ready
                   </div>
                 </div>
               ) : (
-                <div className="w-full h-32 md:h-40 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg md:rounded-xl flex flex-col items-center justify-center">
-                  <div className="p-2 md:p-4 bg-white rounded-full shadow-md mb-2 md:mb-3">
-                    <Upload className="h-6 w-6 md:h-8 md:w-8 text-green-500" />
+                <div className="w-full py-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg flex flex-col items-center justify-center">
+                  <div className="p-3 bg-white rounded-full shadow-md mb-2">
+                    <Upload className="h-6 w-6 md:h-7 md:w-7 text-green-500" />
                   </div>
-                  <p className="text-xs md:text-sm text-gray-500 font-medium">{text.uploadTitle}</p>
-                  <p className="text-[10px] md:text-xs text-gray-400 mt-0.5 md:mt-1 text-center px-2 md:px-4">{text.uploadDesc}</p>
+                  <p className="text-xs md:text-sm text-slate-600 font-medium">{text.uploadTitle}</p>
+                  <p className="text-[10px] md:text-xs text-slate-400 mt-1 text-center px-2">{text.uploadDesc}</p>
                 </div>
               )}
               
@@ -312,23 +307,23 @@ const AIDoctor = ({ lang, user }) => {
                 type="file" 
                 accept="image/*"
                 onChange={handleFileChange} 
-                className="block w-full text-xs md:text-sm text-gray-500 
-                  file:mr-2 md:file:mr-4 file:py-1.5 md:file:py-2.5 file:px-3 md:file:px-5 
+                className="block w-full text-xs md:text-sm text-slate-500 
+                  file:mr-2 md:file:mr-3 file:py-2 md:file:py-2.5 file:px-4 md:file:px-5 
                   file:rounded-full file:border-0 
                   file:text-xs md:file:text-sm file:font-bold
                   file:bg-green-100 file:text-green-700 
                   hover:file:bg-green-200 file:cursor-pointer
-                  file:transition-all file:duration-200 file:active:scale-95"
+                  file:transition-all file:duration-200 file:active:scale-95 file:shadow-sm"
               />
             </div>
           </div>
 
-          {/* Analyze Button with Progress */}
+          {/* Analyze Button */}
           <button
             onClick={handleAnalyze}
             disabled={!file || loading}
-            className={`w-full mt-3 md:mt-5 py-3 md:py-4 rounded-lg md:rounded-xl font-bold text-white text-sm md:text-base flex flex-col items-center justify-center gap-1 shadow-lg transition-all duration-300 active:scale-95 ${
-              !file ? 'bg-gray-300 cursor-not-allowed' : loading ? 'bg-green-600' : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 hover:shadow-xl hover:-translate-y-0.5'
+            className={`w-full mt-3 py-3 md:py-3.5 rounded-lg md:rounded-xl font-bold text-white text-sm md:text-base flex flex-col items-center justify-center gap-1 shadow-md transition-all duration-300 active:scale-95 ${
+              !file ? 'bg-slate-300 cursor-not-allowed' : loading ? 'bg-green-600' : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 hover:shadow-lg'
             }`}
           >
             {loading ? (
@@ -337,7 +332,7 @@ const AIDoctor = ({ lang, user }) => {
                   <Loader2 className="animate-spin h-4 w-4 md:h-5 md:w-5" />
                   <span>{text.analyzing}</span>
                 </div>
-                <div className="flex items-center gap-2 text-[10px] md:text-xs text-green-200 mt-0.5 md:mt-1">
+                <div className="flex items-center gap-2 text-[10px] md:text-xs text-green-200 mt-0.5">
                   {analysisStep > 0 && (
                     <>
                       <Activity className="h-3 w-3" />

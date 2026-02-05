@@ -342,23 +342,8 @@ function MainApp() {
 
   // 4. MAIN APP DASHBOARD
   return (
-    <div className="min-h-screen font-sans flex flex-col md:flex-row" style={{
-      backgroundImage: `url(${getBackgroundImage()})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed'
-    }}>
-      {/* Dark overlay */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'rgba(255, 255, 255, 0.15)',
-        zIndex: 0,
-        pointerEvents: 'none'
-      }} />
+    <div className="min-h-screen font-sans flex flex-col md:flex-row bg-slate-50">
+      {/* Remove fixed background image overlay on mobile */}
       {/* Mobile overlay */}
       {isSidebarOpen && (
         <button
@@ -458,64 +443,61 @@ function MainApp() {
         </div>
       </nav>
 
-      {/* Main Content Area - Mobile Optimized */}
-      <main className="flex-1 overflow-y-auto" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)', position: 'relative', zIndex: 1 }}>
+      {/* Main Content Area - Cleaner Mobile Layout */}
+      <main className="flex-1 overflow-y-auto bg-slate-50" style={{ position: 'relative', zIndex: 1 }}>
         <div className="w-full h-full flex flex-col">
-          {/* Mobile Top Bar - Sticky */}
-          <div className="md:hidden sticky top-0 z-20 bg-white/95 backdrop-blur-sm shadow-sm">
-            <div className="flex items-center justify-between p-3 md:p-4 border-b border-slate-100">
+          {/* Mobile Top Bar - Cleaner Design */}
+          <div className="md:hidden sticky top-0 z-20 bg-white shadow-sm">
+            <div className="flex items-center justify-between px-4 py-3">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 bg-green-600 rounded-lg shadow-sm">
-                  <Leaf className="h-4 w-4 md:h-5 md:w-5 text-green-200" />
+                <div className="p-1.5 bg-green-600 rounded-lg">
+                  <Leaf className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-base md:text-lg font-bold text-green-900">{t.title}</span>
+                <span className="text-base font-bold text-green-900">{t.title}</span>
               </div>
               <button
-                className="p-2 rounded-lg bg-green-50 hover:bg-green-100 transition-colors border border-slate-200 active:scale-95"
+                className="p-2 rounded-lg bg-green-50 hover:bg-green-100 transition-colors active:scale-95"
                 onClick={() => setIsSidebarOpen(true)}
                 aria-label="Open menu"
               >
-                <LayoutDashboard size={18} className="text-green-700" />
+                <LayoutDashboard size={20} className="text-green-700" />
               </button>
             </div>
           </div>
 
-          {/* Content Wrapper */}
-          <div className="flex-1 overflow-y-auto px-3 md:px-8 py-4 md:py-8">
-            <div className="max-w-5xl mx-auto">
-              {/* Welcome Header - Mobile Responsive */}
-              <div className="mb-4 md:mb-6 p-3 md:p-5 bg-white rounded-lg md:rounded-2xl shadow-sm border border-slate-100 space-y-3 md:space-y-0">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
-                  <div className="flex-1">
-                    <p className="text-xs md:text-sm text-slate-500">
-                      {lang === 'si' ? 'ආයුබෝවන්' : 'Welcome back'},
-                    </p>
-                    <p className="text-lg md:text-xl font-bold text-slate-800 truncate">{user.username}</p>
-                    {user?.role === 'officer' && (
-                      <p className="text-[10px] md:text-xs text-slate-500 mt-0.5 md:mt-1">
-                        🏛️ {lang === 'si' ? 'ගෙවැ‍ර්නන්ට නිලධාරී' : 'Government Officer'}
+          {/* Content Wrapper - Better Mobile Spacing */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="w-full mx-auto">
+              {/* Welcome Header - Compact & Clean */}
+              <div className="bg-white border-b border-slate-100 px-4 py-3 md:m-4 md:rounded-xl md:border md:shadow-sm">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-slate-500">
+                        {lang === 'si' ? 'ආයුබෝවන්' : 'Welcome back'},
                       </p>
-                    )}
+                      <p className="text-lg md:text-xl font-bold text-slate-800 truncate">{user.username}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      {user?.role === 'officer' ? (
+                        <span className="text-[10px] md:text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full font-semibold whitespace-nowrap">
+                          📍 {user.district}
+                        </span>
+                      ) : (
+                        <span className="text-[10px] md:text-xs bg-green-50 text-green-700 px-2 py-1 rounded-full font-semibold whitespace-nowrap max-w-[120px] truncate">
+                          📍 {user.gnDivision}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {user?.role === 'officer' ? (
-                      <span className="text-[10px] md:text-xs bg-blue-100 text-blue-700 px-2 md:px-3 py-1 md:py-1.5 rounded-full font-semibold whitespace-nowrap">
-                        📍 {user.district}
-                      </span>
-                    ) : (
-                      <span className="text-[10px] md:text-xs bg-green-100 text-green-700 px-2 md:px-3 py-1 md:py-1.5 rounded-full font-semibold whitespace-nowrap truncate">
-                        📍 {user.gnDivision}
-                      </span>
-                    )}
-                    <span className="text-[10px] md:text-xs bg-slate-100 text-slate-500 px-2 md:px-3 py-1 md:py-1.5 rounded-full font-medium whitespace-nowrap">
-                      {new Date().toLocaleDateString(lang === 'si' ? 'si-LK' : 'en-LK', { weekday: 'short', day: 'numeric', month: 'short' })}
-                    </span>
-                  </div>
+                  <span className="text-[10px] md:text-xs text-slate-400 font-medium">
+                    {new Date().toLocaleDateString(lang === 'si' ? 'si-LK' : 'en-LK', { weekday: 'short', day: 'numeric', month: 'short' })}
+                  </span>
                 </div>
               </div>
 
-              {/* Main Content */}
-              <div className="space-y-4 md:space-y-6">
+              {/* Main Content - Proper Padding */}
+              <div className="px-4 py-4 md:px-8 md:py-6 space-y-4 md:space-y-6">
                 {/* Farmer Views */}
                 {(!user?.role || user?.role === 'farmer') && (
                   <>
@@ -556,8 +538,8 @@ function MainApp() {
                 )}
               </div>
 
-              {/* Footer */}
-              <footer className="text-center text-slate-400 text-[10px] md:text-xs py-6 md:py-10 mt-6 md:mt-8 border-t border-slate-100">
+              {/* Footer - Compact */}
+              <footer className="text-center text-slate-400 text-[10px] md:text-xs py-4 md:py-6 px-4 border-t border-slate-100 bg-white">
                 <p>© 2025 <span className="font-semibold text-green-600">{t.title}</span> — {t.footer}</p>
               </footer>
             </div>
