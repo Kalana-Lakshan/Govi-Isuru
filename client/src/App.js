@@ -368,33 +368,33 @@ function MainApp() {
         />
       )}
 
-      {/* Sidebar Navigation - Enhanced */}
+      {/* Sidebar Navigation - Mobile Optimized */}
       <nav
-        className={`fixed md:static inset-y-0 left-0 z-40 w-72 max-w-[85%] md:max-w-none bg-gradient-to-b from-green-800 to-green-900 text-white shadow-2xl flex-shrink-0 flex flex-col transform transition-transform duration-200 ${
+        className={`fixed md:static inset-y-0 left-0 z-40 w-64 md:w-80 max-w-[90%] md:max-w-none bg-gradient-to-b from-green-800 to-green-900 text-white shadow-2xl flex-shrink-0 flex flex-col transform transition-transform duration-300 ease-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
         style={{ position: 'relative' }}
       >
         {/* Logo Header */}
-        <div className="p-6 flex items-center gap-3 border-b border-green-700/50 bg-green-800/50">
-          <div className="p-2 bg-green-600 rounded-xl shadow-lg">
-            <Leaf className="h-8 w-8 text-green-200" />
+        <div className="sticky top-0 z-10 p-4 md:p-6 flex items-center gap-2 md:gap-3 border-b border-green-700/50 bg-green-800/95 backdrop-blur-sm">
+          <div className="p-1.5 md:p-2 bg-green-600 rounded-lg md:rounded-xl shadow-lg">
+            <Leaf className="h-5 w-5 md:h-8 md:w-8 text-green-200" />
           </div>
-          <div>
-            <span className="text-2xl font-black tracking-tight leading-none block">{t.title}</span>
-            <span className="text-xs text-green-300">Smart Farming Platform</span>
+          <div className="flex-1">
+            <span className="text-lg md:text-2xl font-black tracking-tight leading-tight block">{t.title}</span>
+            <span className="text-[10px] md:text-xs text-green-300">Smart Farming</span>
           </div>
           <button
-            className="ml-auto md:hidden p-2 rounded-lg hover:bg-white/10"
+            className="md:hidden p-1.5 rounded-lg hover:bg-white/10 transition-colors"
             onClick={() => setIsSidebarOpen(false)}
             aria-label="Close menu"
           >
-            <X size={18} />
+            <X size={20} />
           </button>
         </div>
 
-        {/* Navigation Items */}
-        <div className="p-4 flex flex-col gap-1.5 flex-grow">
+        {/* Navigation Items - Scrollable */}
+        <div className="flex-1 overflow-y-auto p-2 md:p-4 flex flex-col gap-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = view === item.id;
@@ -405,156 +405,164 @@ function MainApp() {
                   setView(item.id);
                   setIsSidebarOpen(false);
                 }}
-                className={`group flex items-center gap-3 w-full p-3.5 rounded-xl font-semibold transition-all duration-200 ${
+                className={`group flex items-center gap-2 md:gap-3 w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg md:rounded-xl font-semibold text-sm md:text-base transition-all duration-200 active:scale-95 ${
                   isActive 
-                    ? 'bg-white text-green-800 shadow-lg shadow-green-900/20 translate-x-1' 
-                    : 'hover:bg-white/10 hover:translate-x-1'
+                    ? 'bg-white text-green-800 shadow-lg' 
+                    : 'text-green-100 hover:bg-white/10'
                 }`}
               >
-                <div className={`p-1.5 rounded-lg transition-colors ${isActive ? 'bg-green-100' : 'bg-green-700/50 group-hover:bg-green-600/50'}`}>
+                <div className={`p-1 md:p-1.5 rounded-lg transition-colors flex-shrink-0 ${isActive ? 'bg-green-100' : 'bg-green-700/50'}`}>
                   <Icon size={18} className={isActive ? 'text-green-700' : 'text-green-200'} />
                 </div>
-                <span className="flex-grow text-left">{item.label}</span>
+                <span className="flex-grow text-left truncate">{item.label}</span>
                 {isActive && (
-                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse flex-shrink-0"></span>
                 )}
               </button>
             );
           })}
         </div>
 
-        {/* User Info */}
+        {/* User Info Card */}
         {user && (
-          <div className="mx-4 mb-2 p-3 bg-green-700/30 rounded-xl border border-green-600/30">
-            <p className="text-xs text-green-300 font-medium">
-              {user?.role === 'officer' ? '🏛️ Government Officer' : '👨‍🌾 Farmer'}
+          <div className="mx-2 md:mx-4 mb-2 p-3 bg-green-700/40 backdrop-blur-sm rounded-lg md:rounded-xl border border-green-600/30">
+            <p className="text-[10px] md:text-xs text-green-300 font-medium">
+              {user?.role === 'officer' ? '🏛️ Officer' : '👨‍🌾 Farmer'}
             </p>
-            <p className="text-sm font-bold text-white truncate">{user.username}</p>
-            <p className="text-xs text-green-400 mt-0.5 truncate">
+            <p className="text-xs md:text-sm font-bold text-white truncate mt-0.5">{user.username}</p>
+            <p className="text-[10px] md:text-xs text-green-400 mt-1 truncate">
               {user?.role === 'officer' 
-                ? `📋 ${user.officerId}` 
+                ? `📋 ${user.officerId || user.district}` 
                 : `📍 ${user.gnDivision}`}
             </p>
-            {user?.role === 'officer' && user.department && (
-              <p className="text-xs text-green-400 truncate">{user.department}</p>
-            )}
           </div>
         )}
 
         {/* Bottom Actions */}
-        <div className="p-4 border-t border-green-700/50 space-y-2">
+        <div className="p-2 md:p-4 border-t border-green-700/50 space-y-1.5 md:space-y-2">
           <button 
             onClick={() => setLang(lang === 'en' ? 'si' : 'en')}
-            className="flex items-center gap-2 w-full p-3 rounded-xl font-semibold border border-green-600/50 hover:bg-green-700/50 hover:border-green-500 text-sm transition-all"
+            className="flex items-center gap-2 md:gap-3 w-full px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-xl font-semibold border border-green-600/50 hover:bg-green-700/50 hover:border-green-500 text-xs md:text-sm text-green-100 transition-all active:scale-95"
           >
-            <Languages size={18} /> 
+            <Languages size={16} className="md:w-[18px] md:h-[18px]" />
             <span>{lang === 'en' ? 'සිංහල' : 'English'}</span>
-            <span className="ml-auto text-xs bg-green-700 px-2 py-0.5 rounded-full">{lang.toUpperCase()}</span>
+            <span className="ml-auto text-[9px] md:text-xs bg-green-700 px-1.5 md:px-2 py-0.5 rounded-full font-bold">{lang === 'en' ? 'EN' : 'SI'}</span>
           </button>
 
           <button 
             onClick={handleLogout}
-            className="flex items-center gap-2 w-full p-3 rounded-xl font-semibold text-red-300 hover:bg-red-500/20 hover:text-red-200 text-sm transition-all"
+            className="flex items-center gap-2 md:gap-3 w-full px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-xl font-semibold text-red-300 hover:bg-red-500/20 hover:text-red-200 text-xs md:text-sm transition-all active:scale-95"
           >
-            <LogOut size={18} /> {t.logout}
+            <LogOut size={16} className="md:w-[18px] md:h-[18px]" /> {t.logout}
           </button>
         </div>
       </nav>
 
-      {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto p-4 md:p-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)', position: 'relative', zIndex: 1 }}>
-        <div className="max-w-5xl mx-auto">
-          {/* Mobile Top Bar */}
-          <div className="md:hidden mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="p-2 bg-green-600 rounded-lg shadow">
-                <Leaf className="h-5 w-5 text-green-200" />
+      {/* Main Content Area - Mobile Optimized */}
+      <main className="flex-1 overflow-y-auto" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)', position: 'relative', zIndex: 1 }}>
+        <div className="w-full h-full flex flex-col">
+          {/* Mobile Top Bar - Sticky */}
+          <div className="md:hidden sticky top-0 z-20 bg-white/95 backdrop-blur-sm shadow-sm">
+            <div className="flex items-center justify-between p-3 md:p-4 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <div className="p-1.5 bg-green-600 rounded-lg shadow-sm">
+                  <Leaf className="h-4 w-4 md:h-5 md:w-5 text-green-200" />
+                </div>
+                <span className="text-base md:text-lg font-bold text-green-900">{t.title}</span>
               </div>
-              <span className="text-lg font-bold text-green-900">{t.title}</span>
-            </div>
-            <button
-              className="p-2 rounded-lg bg-white shadow border border-slate-200"
-              onClick={() => setIsSidebarOpen(true)}
-              aria-label="Open menu"
-            >
-              <LayoutDashboard size={18} />
-            </button>
-          </div>
-          {/* Welcome Header - Enhanced */}
-          <div className="mb-6 p-5 bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <div>
-              <p className="text-slate-500 text-sm">
-                {lang === 'si' ? 'ආයුබෝවන්' : 'Welcome back'},
-              </p>
-              <p className="text-xl font-bold text-slate-800">{user.username}</p>
-              {user?.role === 'officer' && (
-                <p className="text-xs text-slate-500 mt-1">
-                  {lang === 'si' ? '🏛️ ගෙවැ‍ර්නන්ට නිලධාරී' : '🏛️ Government Officer'} 
-                  {user.district && ` • ${user.district}`}
-                </p>
-              )}
-            </div>
-            <div className="flex items-center gap-2">
-              {user?.role === 'officer' ? (
-                <span className="text-xs bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full font-semibold flex items-center gap-1">
-                  📍 {user.district}
-                </span>
-              ) : (
-                <span className="text-xs bg-green-100 text-green-700 px-3 py-1.5 rounded-full font-semibold flex items-center gap-1">
-                  📍 {user.gnDivision}
-                </span>
-              )}
-              <span className="text-xs bg-slate-100 text-slate-500 px-3 py-1.5 rounded-full font-medium">
-                {new Date().toLocaleDateString(lang === 'si' ? 'si-LK' : 'en-LK', { weekday: 'short', day: 'numeric', month: 'short' })}
-              </span>
+              <button
+                className="p-2 rounded-lg bg-green-50 hover:bg-green-100 transition-colors border border-slate-200 active:scale-95"
+                onClick={() => setIsSidebarOpen(true)}
+                aria-label="Open menu"
+              >
+                <LayoutDashboard size={18} className="text-green-700" />
+              </button>
             </div>
           </div>
 
-          <div className="space-y-6">
-            {/* Farmer Views */}
-            {(!user?.role || user?.role === 'farmer') && (
-              <>
-                {view === 'doctor' && <AIDoctor lang={lang} user={user} />}
-                {view === 'market' && <Marketplace lang={lang} currentUser={user} />}
-                {view === 'weather' && <WeatherAdvisor lang={lang} lat={coords.lat} lon={coords.lon} user={user} />}
-                {view === 'trends' && <MarketTrends lang={lang} />}
-                {view === 'alerts' && <AlertsDashboard user={user} language={lang} />}
-                {view === 'news' && <AgriNews lang={lang} user={user} />}
-                {view === 'yield' && <YieldPrediction lang={lang} />}
-                {view === 'suitability' && <CropSuitability lang={lang} user={user} coords={coords} />}
-                {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
-                {view === 'profile' && <UserProfile />}
-              </>
-            )}
+          {/* Content Wrapper */}
+          <div className="flex-1 overflow-y-auto px-3 md:px-8 py-4 md:py-8">
+            <div className="max-w-5xl mx-auto">
+              {/* Welcome Header - Mobile Responsive */}
+              <div className="mb-4 md:mb-6 p-3 md:p-5 bg-white rounded-lg md:rounded-2xl shadow-sm border border-slate-100 space-y-3 md:space-y-0">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
+                  <div className="flex-1">
+                    <p className="text-xs md:text-sm text-slate-500">
+                      {lang === 'si' ? 'ආයුබෝවන්' : 'Welcome back'},
+                    </p>
+                    <p className="text-lg md:text-xl font-bold text-slate-800 truncate">{user.username}</p>
+                    {user?.role === 'officer' && (
+                      <p className="text-[10px] md:text-xs text-slate-500 mt-0.5 md:mt-1">
+                        🏛️ {lang === 'si' ? 'ගෙවැ‍ර්නන්ට නිලධාරී' : 'Government Officer'}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {user?.role === 'officer' ? (
+                      <span className="text-[10px] md:text-xs bg-blue-100 text-blue-700 px-2 md:px-3 py-1 md:py-1.5 rounded-full font-semibold whitespace-nowrap">
+                        📍 {user.district}
+                      </span>
+                    ) : (
+                      <span className="text-[10px] md:text-xs bg-green-100 text-green-700 px-2 md:px-3 py-1 md:py-1.5 rounded-full font-semibold whitespace-nowrap truncate">
+                        📍 {user.gnDivision}
+                      </span>
+                    )}
+                    <span className="text-[10px] md:text-xs bg-slate-100 text-slate-500 px-2 md:px-3 py-1 md:py-1.5 rounded-full font-medium whitespace-nowrap">
+                      {new Date().toLocaleDateString(lang === 'si' ? 'si-LK' : 'en-LK', { weekday: 'short', day: 'numeric', month: 'short' })}
+                    </span>
+                  </div>
+                </div>
+              </div>
 
-            {/* Buyer Views */}
-            {user?.role === 'buyer' && (
-              <>
-                {view === 'buyerDashboard' && <BuyerDashboard user={user} language={lang} onNavigate={setView} />}
-                {view === 'marketplace' && <Marketplace lang={lang} currentUser={user} />}
-                {view === 'news' && <AgriNews lang={lang} user={user} />}
-                {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
-                {view === 'profile' && <UserProfile />}
-              </>
-            )}
+              {/* Main Content */}
+              <div className="space-y-4 md:space-y-6">
+                {/* Farmer Views */}
+                {(!user?.role || user?.role === 'farmer') && (
+                  <>
+                    {view === 'doctor' && <AIDoctor lang={lang} user={user} />}
+                    {view === 'market' && <Marketplace lang={lang} currentUser={user} />}
+                    {view === 'weather' && <WeatherAdvisor lang={lang} lat={coords.lat} lon={coords.lon} user={user} />}
+                    {view === 'trends' && <MarketTrends lang={lang} />}
+                    {view === 'alerts' && <AlertsDashboard user={user} language={lang} />}
+                    {view === 'news' && <AgriNews lang={lang} user={user} />}
+                    {view === 'yield' && <YieldPrediction lang={lang} />}
+                    {view === 'suitability' && <CropSuitability lang={lang} user={user} coords={coords} />}
+                    {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
+                    {view === 'profile' && <UserProfile />}
+                  </>
+                )}
 
-            {/* Officer Views */}
-            {user?.role === 'officer' && (
-              <>
-                {view === 'officerDashboard' && <OfficerDashboard user={user} language={lang} />}
-                {view === 'diseaseAlerts' && <AlertsDashboard user={user} language={lang} isOfficer={true} />}
-                {view === 'areaAnalytics' && <OfficerDashboard user={user} language={lang} initialTab="analytics" />}
-                {view === 'news' && <AgriNews lang={lang} user={user} />}
-                {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
-                {view === 'profile' && <UserProfile />}
-              </>
-            )}
+                {/* Buyer Views */}
+                {user?.role === 'buyer' && (
+                  <>
+                    {view === 'buyerDashboard' && <BuyerDashboard user={user} language={lang} onNavigate={setView} />}
+                    {view === 'marketplace' && <Marketplace lang={lang} currentUser={user} />}
+                    {view === 'news' && <AgriNews lang={lang} user={user} />}
+                    {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
+                    {view === 'profile' && <UserProfile />}
+                  </>
+                )}
+
+                {/* Officer Views */}
+                {user?.role === 'officer' && (
+                  <>
+                    {view === 'officerDashboard' && <OfficerDashboard user={user} language={lang} />}
+                    {view === 'diseaseAlerts' && <AlertsDashboard user={user} language={lang} isOfficer={true} />}
+                    {view === 'areaAnalytics' && <OfficerDashboard user={user} language={lang} initialTab="analytics" />}
+                    {view === 'news' && <AgriNews lang={lang} user={user} />}
+                    {view === 'riceVarieties' && <TraditionalRice lang={lang} />}
+                    {view === 'profile' && <UserProfile />}
+                  </>
+                )}
+              </div>
+
+              {/* Footer */}
+              <footer className="text-center text-slate-400 text-[10px] md:text-xs py-6 md:py-10 mt-6 md:mt-8 border-t border-slate-100">
+                <p>© 2025 <span className="font-semibold text-green-600">{t.title}</span> — {t.footer}</p>
+              </footer>
+            </div>
           </div>
         </div>
-
-        <footer className="text-center text-slate-400 text-xs py-10 mt-8 border-t border-slate-100">
-          <p>© 2025 <span className="font-semibold text-green-600">{t.title}</span> — {t.footer}</p>
-        </footer>
       </main>
 
       {/* Llama 3.1 AI Chatbot - Available on all pages */}
