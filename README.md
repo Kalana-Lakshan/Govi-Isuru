@@ -172,33 +172,179 @@
 
 ## 🛠️ Tech Stack
 
-### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| React | 19.x | UI Framework with Hooks |
-| Tailwind CSS | 3.4.x | Utility-first Styling |
-| Lucide React | Latest | Icon Library |
-| Recharts | 3.6.x | Data Visualization |
-| Axios | 1.13.x | HTTP Client |
+### Frontend (React 19.2.3)
+| Technology | Version | Purpose | Details |
+|------------|---------|---------|---------|
+| React | 19.2.3 | UI Framework | Component-based with Hooks (useState, useEffect, useContext) |
+| React Router DOM | 7.13.0 | Client-side Routing | SPA navigation with protected routes |
+| Tailwind CSS | 3.4.1 | Utility-first Styling | Mobile-first responsive design |
+| Lucide React | 0.561.0 | Icon Library | 400+ customizable SVG icons |
+| Recharts | 3.6.0 | Data Visualization | Interactive charts for market trends & yield analytics |
+| Axios | 1.13.2 | HTTP Client | API communication with backend (JWT auth headers) |
+| PostCSS | 8.4.31 | CSS Processing | Tailwind CSS compilation pipeline |
+| Autoprefixer | 10.4.16 | Vendor Prefixes | Cross-browser CSS compatibility |
+| React Scripts | 5.0.1 | Build Tool | Create React App build system (Webpack, Babel) |
 
-### Backend (Node.js Server)
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Node.js | 22.x | Runtime Environment |
-| Express | 5.x | Web Framework |
-| MongoDB | Atlas | Cloud Database |
-| Mongoose | 9.x | ODM for MongoDB |
-| JWT | 9.x | Authentication |
-| Bcrypt.js | 3.x | Password Hashing |
+**Key Frontend Features:**
+- Bilingual interface (English/Sinhala) with language toggle
+- Responsive mobile design (tested on 320px-1920px screens)
+- Real-time data updates with Axios interceptors
+- Component-level code splitting for faster load times
+- Local Storage for user session persistence
+- Web Speech API for voice input (Sinhala & English)
+- Gradient UI components with Tailwind animations
 
-### AI Service (Python)
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| FastAPI | Latest | High-performance API |
-| TensorFlow/Keras | 2.x | Deep Learning |
-| MobileNetV2 | Pre-trained | Base Model |
-| Grad-CAM | Custom | Model Explainability |
-| Pillow | Latest | Image Processing |
+---
+
+### Backend (Node.js 22.x + Express 5.2.1)
+| Technology | Version | Purpose | Details |
+|------------|---------|---------|---------|
+| Node.js | 22.x | Runtime | V8 engine for server-side JavaScript |
+| Express.js | 5.2.1 | Web Framework | RESTful API with middleware pipeline |
+| MongoDB | Atlas | Database | Cloud NoSQL database with automatic backups |
+| Mongoose | 9.0.2 | ODM | Schema validation & model relationships |
+| JWT | 9.0.3 | Authentication | Token-based stateless auth (HS256) |
+| Bcrypt.js | 3.0.3 | Password Hashing | 10-round salted hashing (OWASP recommended) |
+| Nodemailer | 7.0.13 | Email Notifications | SMTP relay for alert emails |
+| Web Push | 3.6.7 | Push Notifications | Browser push notifications (VAPID protocol) |
+| CORS | 2.8.5 | Cross-Origin | Controlled API access from frontend |
+| Dotenv | 17.2.3 | Config Management | Environment variable loading |
+| Nodemon | 3.1.11 | Dev Tool | Auto-restart on file changes |
+
+**Backend Architecture:**
+- RESTful API with 20+ endpoints
+- Middleware stack: auth, validation, error handling, CORS
+- Service layer pattern for business logic separation
+- Mongoose schema validation with custom validators
+- Officer role-based access control (RBAC)
+- Action audit logging for compliance
+- Transaction support for reputation system
+- Connection pooling to MongoDB Atlas
+
+**Supported Routes:**
+- Authentication: `/api/register`, `/api/login`
+- Marketplace: `/api/listings` (CRUD operations)
+- Reputation: `/api/reputation/*` (ratings & feedback)
+- Alerts: `/api/alerts` (community disease alerts)
+- Analytics: `/api/price-trends`, `/api/market-prices`
+- News: `/api/news/*` (articles + AI summaries + TTS)
+- Officer Workflow: `/api/officer/*`, `/api/officer-workflow/*`
+
+---
+
+### AI Service (Python 3.8+)
+| Technology | Version | Purpose | Details |
+|------------|---------|---------|---------|
+| FastAPI | Latest | Web Framework | Async Python API (ASGI) with auto-documentation |
+| TensorFlow | 2.20.0 | Deep Learning | Neural network training & inference |
+| Keras | 3.13.0 | Neural Networks | High-level API on top of TensorFlow |
+| MobileNetV2 | Pre-trained | Base Model | Efficient CNN for image classification |
+| OpenCV | 4.12.0.88 | Computer Vision | Image processing & augmentation |
+| Pillow | 12.0.0 | Image Library | PIL fork for image I/O |
+| Scikit-learn | 1.8.0 | ML Library | Yield prediction model (Random Forest) |
+| NumPy | 2.2.6 | Numerical Computing | Array operations & matrix math |
+| Pandas | 2.3.3 | Data Analysis | Dataset manipulation & statistics |
+| SciPy | 1.16.3 | Scientific Computing | Statistical functions & optimization |
+| Joblib | 1.5.3 | Model Persistence | Pickle alternative for large models |
+| Pydantic | 2.12.5 | Data Validation | Request/response schema validation |
+| Python-multipart | 0.0.21 | File Uploads | Multipart form data handling |
+
+**Disease Detection Models:**
+- **Rice Model (8 classes):** Bacterial Leaf Blight, Brown Spot, Leaf Blast, Leaf Scald, Narrow Brown Leaf Spot, Rice Hispa, Sheath Blight, Healthy
+- **Tea Model (5 classes):** Blister Blight, Brown Blight, Gray Blight, Red Rust, Healthy
+- **Chili Model (4 classes):** Leaf Spot, Thrips Damage, Yellow Virus, Healthy
+
+**AI Capabilities:**
+- Transfer learning with MobileNetV2 backbone (frozen base + trainable head)
+- Grad-CAM explainability for model transparency
+- Confidence scoring with calibrated probabilities
+- Bilingual treatment recommendations (EN/SI)
+- Yield prediction (10 years historical data for 25 districts)
+- Profit calculation with ROI analysis
+- Early warning system for risk assessment
+- District rankings by yield, stability, and performance
+
+**Model Architecture:**
+```
+Input (224×224×3) 
+→ MobileNetV2 (frozen) 
+→ GlobalAveragePooling2D 
+→ Dense(256, ReLU, Dropout(0.3)) 
+→ Dense(128, ReLU) 
+→ Dense(N, Softmax)  [N = 8/5/4 classes]
+```
+
+---
+
+### DevOps & Infrastructure
+| Technology | Version | Purpose | Details |
+|------------|---------|---------|---------|
+| Docker | Latest | Containerization | Multi-stage builds for optimized images |
+| Docker Compose | Latest | Orchestration | Local 4-container setup (frontend, backend, AI, MongoDB) |
+| Nginx | Latest | Reverse Proxy | Static file serving + API proxying (production) |
+| MongoDB Atlas | Cloud | Database Hosting | Managed service with 99.99% uptime SLA |
+
+**Deployment Targets:**
+- Local development (Docker Compose)
+- AWS EC2 instances (Ubuntu 22.04 LTS)
+- Traditional shared hosting (via Docker containers)
+
+---
+
+## 🌿 Current Branch Status
+
+### Local Branch Information
+**Branch Name:** `local`  
+**Latest Commit:** `d153e58` - "essential things work"  
+**Remote Origin:** `origin/local`
+
+### Recent Work (Latest Commits)
+```
+d153e58 (HEAD -> local, origin/local) essential things work
+a0d50c3 home page modified
+9ba9804 background images changed
+a6a8d7f changed name and icon
+3127e00 Rice Varities page added
+aaef7d3 package-lock.json error fixed
+a979486 (Kalana2) user profile done
+```
+
+### Features Implemented on Local Branch
+✅ **Core Functionality:**
+- User registration and authentication with JWT
+- Home page with dashboard overview
+- Rice varieties guide with Sinhala localization
+- Disease detection (AI integration)
+- Marketplace with P2P trading
+- Reputation system with farmer ratings
+- Community disease alerts with heatmap
+- Weather advisory integration
+- Market price trends and analytics
+- Yield prediction with profit calculator
+
+✅ **Recent Enhancements:**
+- Sinhala language support for rice varieties (zone names & variety names)
+- Disease heatmap with coordinate clamping to prevent marker overflow
+- Prevention of farmers rating their own marketplace listings (UI + backend validation)
+- Icon and branding updates
+- UI/UX improvements to home page
+
+### Related Branches
+```
+* local    (current)
+  Kalana1  - changes from Kalana2
+  Kalana2  - user profile feature
+  Kalana3  - heatmap fix, rice sinhala, farmer self-rating prevention
+  Rashmika - email service resilience improvements
+  main     - stable production branch
+```
+
+### Development Status
+- **Stability:** ✅ Essential features stable
+- **Testing:** Unit tested core functionality
+- **Documentation:** Complete API documentation
+- **Deployment:** Ready for Docker deployment
+- **Performance:** Optimized with lazy loading & caching
 
 ---
 
@@ -334,75 +480,169 @@ REACT_APP_WEATHER_KEY=your_openweathermap_api_key
 
 Generate VAPID keys for web push at: https://web-push-codelab.glitch.me/
 
-### Quick Start
+### Quick Start (Three Terminals Setup)
 
-#### 1. Clone the Repository
+#### Step 0: Clone and Navigate
 ```bash
 git clone https://github.com/Kalana-Lakshan/Govi-Isuru.git
 cd Govi-Isuru
 ```
 
-#### 2. Setup Backend Server (Node.js)
-```bash
+---
+
+### Terminal 1: Backend Server (Node.js + Express)
+
+#### Setup Backend
+```powershell
+# Open Terminal 1 and run:
 cd server
 npm install
 
-# Create .env file with required environment variables
-# On Windows PowerShell:
+# Create .env file with required variables
+# Windows PowerShell:
 @"
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key_here
+MONGO_URI=mongodb+srv://your_user:your_password@your_cluster.mongodb.net/govi_isuru
+JWT_SECRET=your_secret_key_here_min_32_chars_long
 PORT=5000
 NEWS_API_KEY=your_newsapi_key_from_newsapi.org
-VAPID_PUBLIC_KEY=your_vapid_public_key
-VAPID_PRIVATE_KEY=your_vapid_private_key
+VAPID_PUBLIC_KEY=your_vapid_public_key_from_glitch
+VAPID_PRIVATE_KEY=your_vapid_private_key_from_glitch
 "@ | Out-File -FilePath .env -Encoding utf8
 
-# Start the server
+# Start Backend Server
 node index.js
-# Server runs on http://localhost:5000
+# ✅ Backend runs on http://localhost:5000
+# REST API available at http://localhost:5000/api
 ```
 
-#### 3. Setup Frontend Client (React)
-```bash
+**Backend Tech Stack:**
+- **Framework:** Express.js 5.x
+- **Database:** MongoDB 9.0 with Mongoose ODM
+- **Authentication:** JWT (jsonwebtoken 9.0.3)
+- **Password:** Bcrypt.js 3.0.3
+- **Key Dependencies:**
+  - axios@1.13.2 (HTTP client for external APIs)
+  - nodemailer@7.0.13 (Email notifications)
+  - web-push@3.6.7 (Push notifications)
+  - dotenv@17.2.3 (Environment variable management)
+  - cors@2.8.5 (Cross-origin resource sharing)
+  - nodemon@3.1.11 (Development auto-reload)
+
+---
+
+### Terminal 2: Frontend Client (React + Tailwind)
+
+#### Setup Frontend
+```powershell
+# Open Terminal 2 and run:
 cd ../client
 npm install
 
 # Create .env file
-# On Windows PowerShell:
+# Windows PowerShell:
 @"
 REACT_APP_WEATHER_KEY=your_openweathermap_api_key
 "@ | Out-File -FilePath .env -Encoding utf8
 
-# Start development server
+# Start Development Server
 npm start
-# Frontend runs on http://localhost:3000
+# ✅ Frontend runs on http://localhost:3000
+# Browser will automatically open the app
 ```
 
-#### 4. Setup AI Service (Python with Virtual Environment)
-```bash
+**Frontend Tech Stack:**
+- **Framework:** React 19.2.3 with Hooks
+- **Styling:** Tailwind CSS 3.4.1
+- **Routing:** React Router DOM 7.13.0
+- **HTTP Client:** Axios 1.13.2
+- **Charts:** Recharts 3.6.0 (Data visualization)
+- **Icons:** Lucide React 0.561.0
+- **Build Tool:** React Scripts 5.0.1
+- **CSS Processing:**
+  - PostCSS 8.4.31
+  - Autoprefixer 10.4.16
+- **Key Features:**
+  - Component-based UI with bilingual (English/Sinhala) support
+  - Real-time data visualization with Recharts
+  - Responsive mobile-first design
+  - Client-side routing and state management with React hooks
+
+---
+
+### Terminal 3: AI Service (FastAPI + TensorFlow)
+
+#### Setup AI Service
+```powershell
+# Open Terminal 3 and run:
 cd ../ai-service
 
-# Create Python virtual environment
+# Create Python Virtual Environment
 python -m venv venv
 
-# Activate virtual environment
-# On Windows PowerShell:
+# Activate Virtual Environment
+# Windows PowerShell:
 .\venv\Scripts\Activate.ps1
 
-# On macOS/Linux:
+# macOS/Linux:
 source venv/bin/activate
 
-# Install dependencies
+# Install Python Dependencies
 pip install -r requirements.txt
 
-# Start the AI service
+# Start AI Service
 uvicorn main:app --reload --port 8000
-# AI Service runs on http://localhost:8000
+# ✅ AI Service runs on http://localhost:8000
 # Swagger API docs available at http://localhost:8000/docs
+# ReDoc documentation at http://localhost:8000/redoc
 ```
 
-**Note:** Make sure you have Python 3.8+ installed. The virtual environment isolates project dependencies and prevents conflicts with system-wide Python packages.
+**AI Service Tech Stack:**
+- **Framework:** FastAPI (latest)
+- **Deep Learning:** TensorFlow 2.20.0 with Keras 3.13.0
+- **Base Model:** MobileNetV2 (pre-trained on ImageNet)
+- **Image Processing:** Pillow 12.0.0, OpenCV 4.12.0.88
+- **ML Libraries:**
+  - scikit-learn 1.8.0 (Yield prediction ML model)
+  - NumPy 2.2.6 (Numerical computing)
+  - Pandas 2.3.3 (Data manipulation)
+  - SciPy 1.16.3 (Scientific computing)
+  - joblib 1.5.3 (Model persistence)
+- **Model Explainability:** Custom Grad-CAM implementation (Gradient-weighted Class Activation Mapping)
+- **Key Features:**
+  - Multi-crop disease detection (Rice, Tea, Chili)
+  - Grad-CAM visualization for model transparency
+  - Yield prediction with district-level statistics
+  - Profit calculator with ROI analysis
+  - Early warning system for risk assessment
+  - Bilingual (EN/SI) treatment recommendations
+
+**Python Virtual Environment:**
+The virtual environment isolates project dependencies from system-wide Python packages, preventing version conflicts. Ensure Python 3.8+ is installed.
+
+---
+
+### Verification: All Three Services Running
+
+Once all three terminals are running, verify services:
+
+| Service | URL | Status |
+|---------|-----|--------|
+| Frontend | http://localhost:3000 | React app (check browser) |
+| Backend API | http://localhost:5000/api | REST API endpoints |
+| AI Service Docs | http://localhost:8000/docs | Swagger UI |
+| AI Service | http://localhost:8000 | FastAPI server |
+
+**Quick Health Check Endpoints:**
+```powershell
+# Backend status (from any terminal)
+curl http://localhost:5000/api
+
+# AI Service status
+curl http://localhost:8000/docs
+
+# Frontend (open in browser)
+http://localhost:3000
+```
 
 ### Access Points
 | Service | URL | Description |
@@ -457,95 +697,172 @@ uvicorn main:app --reload --port 8001
 - Get a free key from [newsapi.org](https://newsapi.org)
 - Restart the server after updating .env file
 
+#### MongoDB Connection Issues?
+```bash
+# Test MongoDB connection (Windows PowerShell):
+$connectionString = "mongodb+srv://user:password@cluster.mongodb.net"
+[System.Net.ServicePointManager]::SecurityProtocol = 'Tls12'
+# Verify IP whitelist in MongoDB Atlas → Network Access
+```
+
+#### npm install fails (node_modules issue)?
+```bash
+# Clear npm cache and reinstall
+npm cache clean --force
+rm -r node_modules package-lock.json  # On Windows: del package-lock.json, rmdir /s node_modules
+npm install
+```
+
+### Troubleshooting Multi-Terminal Setup
+
+#### Services not communicating?
+1. **Check all services are running:**
+   ```powershell
+   # Terminal 1: curl http://localhost:5000/api
+   # Terminal 2: open http://localhost:3000 (browser)
+   # Terminal 3: curl http://localhost:8000/docs
+   ```
+
+2. **Frontend can't reach backend?**
+   - Ensure backend is running on port 5000
+   - Check for CORS errors in browser console
+   - Verify `axios` requests use correct base URL
+
+3. **Backend can't reach AI service?**
+   - Ensure AI service is running on port 8000
+   - Check `AI_SERVICE_URL` environment variable in backend `.env`
+   - Verify network connectivity between containers
+
+4. **MongoDB connection timeout?**
+   - Add your EC2/machine IP to MongoDB Atlas whitelist
+   - Check internet connection and firewall settings
+   - Verify `MONGO_URI` string format
+
+#### Development Mode Issues?
+```bash
+# For React hot reloading issues:
+rm -r client/node_modules
+npm install --legacy-peer-deps
+
+# For backend auto-reload not working:
+# Ensure nodemon is installed globally:
+npm install -g nodemon
+
+# For TensorFlow GPU issues on Windows:
+# Use CPU-only version:
+pip install tensorflow-cpu
+```
+
+### Access Points for Multi-Terminal Setup
+
+| Service | Port | URL | Purpose |
+|---------|------|-----|---------|
+| **Frontend (React)** | 3000 | http://localhost:3000 | Main application UI |
+| **Backend API** | 5000 | http://localhost:5000/api | REST API endpoints |
+| **AI Service** | 8000 | http://localhost:8000 | Disease detection & yield prediction |
+| **AI Swagger Docs** | 8000 | http://localhost:8000/docs | Interactive API documentation |
+| **AI ReDoc** | 8000 | http://localhost:8000/redoc | Alternative documentation |
+
 ---
+
+## Docker Deployment
 
 ## 📁 Project Structure
 
 ```
 govi-isuru/
-├── 📂 client/                       # React Frontend
-│   ├── public/                      # Static assets
+├── 📂 client/                       # React Frontend (19.2.3)
+│   ├── public/                      # Static assets & favicon
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── AIDoctor.js          # Multi-crop disease detection + Grad-CAM
 │   │   │   ├── CropChatbot.js       # AI chatbot with voice & image diagnosis
 │   │   │   ├── AgriNews.js          # News feed with AI summaries & TTS
-│   │   │   ├── CommunityAlerts.js   # Disease alert system
-│   │   │   ├── Marketplace.js       # P2P marketplace
-│   │   │   ├── MarketTrends.js      # Analytics dashboard
-│   │   │   ├── YieldPrediction.js   # 📊 Yield forecasting & analytics
+│   │   │   ├── AlertsDashboard.js   # Community disease alerts with heatmap
+│   │   │   ├── DiseaseHeatmap.js    # SVG map with coordinate clamping
+│   │   │   ├── Marketplace.js       # P2P marketplace with reputation
+│   │   │   ├── MarketTrends.js      # Analytics dashboard (Recharts)
+│   │   │   ├── YieldPrediction.js   # Yield forecasting & analytics
 │   │   │   ├── PriceAnalytics.js    # Price trend charts
-│   │   │   ├── PriceComparison.js   # District comparison
-│   │   │   ├── WeatherAdvisor.js    # Weather forecast
-│   │   │   ├── WeatherTab.js        # Weather tab component
-│   │   │   ├── ReputationBadge.js   # Farmer ratings
-│   │   │   ├── FeedbackForm.js      # Review system
+│   │   │   ├── PriceComparison.js   # District price comparison
+│   │   │   ├── WeatherAdvisor.js    # Weather forecast + recommendations
+│   │   │   ├── TraditionalRice.js   # Rice varieties guide (Sinhala localized)
+│   │   │   ├── ReputationBadge.js   # Farmer star ratings display
+│   │   │   ├── FeedbackForm.js      # Review submission form
+│   │   │   ├── HomePage.js          # Dashboard home page
 │   │   │   ├── Register.js          # User registration
-│   │   │   └── Login.js             # User login
+│   │   │   ├── Login.js             # User authentication
+│   │   │   └── OfficerDashboard.js  # Government officer tools
 │   │   ├── data/
-│   │   │   └── sriLankaData.js      # Administrative divisions
-│   │   ├── App.js                   # Main app with sidebar
-│   │   ├── App.css                  # Global animations
-│   │   └── index.js                 # Entry point
-│   ├── package.json
-│   └── tailwind.config.js
+│   │   │   ├── sriLankaData.js      # Administrative divisions
+│   │   │   └── sriLankaCoordinates.js # District coordinates for maps
+│   │   ├── App.js                   # Main routing & layout
+│   │   ├── App.css                  # Global styles & animations
+│   │   └── index.js                 # React entry point
+│   ├── package.json                 # Dependencies & build scripts
+│   ├── tailwind.config.js           # Tailwind customization
+│   └── Dockerfile                   # Container image for production
 │
-├── 📂 server/                       # Node.js Backend
+├── 📂 server/                       # Node.js Express Backend (5.2.1)
 │   ├── models/
-│   │   ├── User.js                  # User schema
+│   │   ├── User.js                  # User schema (auth, profile)
 │   │   ├── Listing.js               # Marketplace listings
-│   │   ├── CommunityAlert.js        # Disease alerts
-│   │   ├── DiseaseReport.js         # Disease reports
-│   │   ├── Feedback.js              # User feedback
-│   │   ├── FieldVisit.js            # Field visit records
-│   │   ├── InternalNote.js          # Officer internal notes
-│   │   ├── Notification.js          # Push notifications
-│   │   └── OfficerActionLog.js      # Officer action audit log
+│   │   ├── CommunityAlert.js        # Disease alert reports
+│   │   ├── DiseaseReport.js         # AI-generated disease reports
+│   │   ├── Feedback.js              # Farmer reputation feedback
+│   │   ├── FieldVisit.js            # Officer field visit records
+│   │   ├── InternalNote.js          # Officer internal case notes
+│   │   ├── Notification.js          # Push notification queue
+│   │   └── OfficerActionLog.js      # Audit trail of officer actions
 │   ├── routes/
-│   │   ├── alerts.js                # Disease alert endpoints
-│   │   ├── analytics.js             # Analytics endpoints
+│   │   ├── alerts.js                # POST/GET alerts endpoints
+│   │   ├── analytics.js             # Market & usage analytics
+│   │   ├── auth.js                  # Register & login endpoints
 │   │   ├── chatbot.js               # Chatbot API endpoints
-│   │   ├── news.js                  # News API + AI summaries + TTS
-│   │   ├── officer.js               # Officer user endpoints
-│   │   ├── officerWorkflow.js       # Officer workflow & verification
-│   │   ├── reputation.js            # Farmer ratings
-│   │   └── suitability.js           # Crop suitability endpoints
+│   │   ├── news.js                  # News feed + AI summaries + TTS
+│   │   ├── officer.js               # Officer verification & stats
+│   │   ├── officerWorkflow.js       # Field visits & internal notes
+│   │   ├── reputation.js            # Ratings & feedback endpoints
+│   │   ├── listings.js              # Marketplace CRUD
+│   │   └── suitability.js           # Crop suitability analysis
 │   ├── services/
-│   │   ├── alertService.js          # Alert management
-│   │   ├── analyticsService.js      # Market & usage analytics
-│   │   ├── fieldVisitService.js     # Field visit scheduling & records
-│   │   ├── internalNoteService.js   # Internal note handling
-│   │   ├── officerPerformanceService.js # Officer performance metrics
-│   │   ├── officerService.js        # Officer-related operations
-│   │   └── reputationService.js     # Reputation system
+│   │   ├── alertService.js          # Alert creation & filtering
+│   │   ├── analyticsService.js      # Market data aggregation
+│   │   ├── fieldVisitService.js     # Field visit scheduling
+│   │   ├── internalNoteService.js   # Case note management
+│   │   ├── officerPerformanceService.js # KPI calculations
+│   │   ├── officerService.js        # Officer operations
+│   │   └── reputationService.js     # Reputation calculations & self-rating prevention
 │   ├── utils/
-│   │   └── intentDetector.js        # Chatbot intent detection
+│   │   ├── intentDetector.js        # Chatbot NLU
+│   │   └── authMiddleware.js        # JWT verification
 │   ├── knowledge/
-│   │   └── agriculture.json         # Agricultural knowledge base
-│   ├── index.js                     # Express server
-│   └── package.json
+│   │   └── agriculture.json         # Bilingual agricultural knowledge base
+│   ├── index.js                     # Express server entry
+│   ├── package.json                 # Dependencies & start script
+│   └── Dockerfile                   # Container image for production
 │
-├── 📂 ai-service/                   # Python AI Service
-│   ├── venv/                        # Virtual environment (created with python -m venv venv)
-│   ├── dataset/                     # Rice training images
-│   │   ├── train/                   # Training set (8 classes)
+├── 📂 ai-service/                   # Python FastAPI + TensorFlow
+│   ├── venv/                        # Python virtual environment
+│   ├── dataset/                     # Rice disease training images
+│   │   ├── train/                   # 8 rice disease classes
 │   │   ├── valid/                   # Validation set
 │   │   └── test/                    # Test set
-│   ├── tea_dataset/                 # Tea training images
-│   │   ├── train/                   # Training set (5 classes)
+│   ├── tea_dataset/                 # Tea disease training images
+│   │   ├── train/                   # 5 tea disease classes
 │   │   ├── valid/                   # Validation set
 │   │   └── test/                    # Test set
-│   ├── chili_dataset/               # Chili training images
-│   │   ├── train/                   # Training set (4 classes)
+│   ├── chili_dataset/               # Chili disease training images
+│   │   ├── train/                   # 4 chili disease classes
 │   │   ├── valid/                   # Validation set
 │   │   └── test/                    # Test set
-│   ├── paddy_data/                  # 📊 Yield prediction data
-│   │   └── paddy_statistics.json    # 10-year historical data (2015-2024)
+│   ├── paddy_data/                  # Yield prediction historical data
+│   │   └── paddy_statistics.json    # 10 years (2015-2024) for 25 districts
 │   ├── models/
-│   │   ├── best_model.keras         # Rice disease model
-│   │   ├── class_indices.json       # Rice class mappings
+│   │   ├── best_model.keras         # Rice disease detection model
+│   │   ├── class_indices.json       # Rice class mapping
 │   │   ├── disease_info.json        # Rice disease details (EN/SI)
-│   │   ├── yield_predictor.pkl      # 📊 Yield prediction ML model
+│   │   ├── yield_predictor.pkl      # Yield ML model (scikit-learn)
 │   │   ├── tea/
 │   │   │   ├── tea_best_model.keras # Tea disease model
 │   │   │   ├── tea_class_indices.json
@@ -554,19 +871,32 @@ govi-isuru/
 │   │       ├── chili_best_model.keras # Chili disease model
 │   │       ├── chili_class_indices.json
 │   │       └── chili_disease_info.json
-│   ├── main.py                      # FastAPI server + Grad-CAM + Yield APIs
-│   ├── yield_predictor.py           # 📊 Yield prediction ML module
-│   ├── train_model.py               # Rice training script
-│   ├── train_tea_model.py           # Tea training script
-│   ├── train_chili_model.py         # Chili training script
+│   ├── main.py                      # FastAPI server + all endpoints
+│   ├── yield_predictor.py           # Yield prediction ML module
+│   ├── train_model.py               # Rice model training script
+│   ├── train_tea_model.py           # Tea model training script
+│   ├── train_chili_model.py         # Chili model training script
 │   ├── prepare_tea_dataset.py       # Tea dataset preparation
 │   ├── prepare_chili_dataset.py     # Chili dataset preparation
 │   ├── requirements.txt             # Python dependencies
-│   └── test_model.py                # Model evaluation
+│   ├── test_model.py                # Model evaluation
+│   └── Dockerfile                   # Container image for production
 │
-├── docker-compose.yml               # Container orchestration
-└── README.md                        # Documentation
-```
+├── docker-compose.yml               # Local development (4 services)
+├── docker-compose.prod.yml          # Production deployment (optimized)
+├── .env.example                     # Environment variables template
+├── .gitignore                       # Git exclusions
+├── README.md                        # This documentation
+└── lk.json                          # Sri Lanka GeoJSON data
+
+### Key Directories Explained
+
+**`client/src/components/`** - React components with bilingual support, responsive design
+**`client/src/data/`** - Static data for districts, divisions, and geographic boundaries
+**`server/routes/`** - REST API endpoints organized by feature
+**`server/services/`** - Business logic separated from routes for testability
+**`ai-service/models/`** - Pre-trained TensorFlow models + yield prediction ML
+**`ai-service/dataset/`** - Training images (not in git, downloaded separately)
 
 ---
 
