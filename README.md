@@ -1342,9 +1342,209 @@ We welcome contributions from the community! To contribute:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
+## 👥 Authors & Team
 
-- **Your Team Name** - *Initial work*
+- **Kalana Lakshan** - Full Stack Development & Project Lead
+- **Rashmika** - Backend Services & Email Integration
+- **Team Members** - Contributing to various features
+
+---
+
+## ⚡ Quick Setup Instructions
+
+Follow these steps to set up the entire project locally. Open **three separate terminals** and run commands in parallel.
+
+### **Step 1: Prerequisites Check** ✅
+
+Before starting, ensure you have installed:
+- **Node.js** v22.x or higher - [Download](https://nodejs.org/)
+- **Python** 3.8+ - [Download](https://www.python.org/)
+- **Git** - [Download](https://git-scm.com/)
+- **MongoDB Atlas** account - [Sign up free](https://mongodb.com/cloud/atlas)
+
+### **Step 2: Clone Repository**
+
+```powershell
+git clone https://github.com/Kalana-Lakshan/Govi-Isuru.git
+cd Govi-Isuru
+```
+
+### **Step 3: Terminal 1 - Backend Server (Node.js)**
+
+```powershell
+# Navigate to server directory
+cd server
+
+# Install dependencies
+npm install
+
+# Create .env file with your configuration
+@"
+MONGO_URI=mongodb+srv://your_user:your_password@your_cluster.mongodb.net/govi_isuru
+JWT_SECRET=your_secret_key_here_min_32_chars_long
+PORT=5000
+NEWS_API_KEY=your_newsapi_key_from_newsapi.org
+VAPID_PUBLIC_KEY=your_vapid_public_key_from_glitch
+VAPID_PRIVATE_KEY=your_vapid_private_key_from_glitch
+"@ | Out-File -FilePath .env -Encoding utf8
+
+# Start the backend server
+node index.js
+
+# ✅ Backend will run on http://localhost:5000
+```
+
+**Don't close this terminal - keep it running.**
+
+### **Step 4: Terminal 2 - Frontend Client (React)**
+
+```powershell
+# Navigate to client directory (from project root)
+cd client
+
+# Install dependencies
+npm install
+
+# Create .env file
+@"
+REACT_APP_WEATHER_KEY=your_openweathermap_api_key
+"@ | Out-File -FilePath .env -Encoding utf8
+
+# Start the development server
+npm start
+
+# ✅ Frontend will run on http://localhost:3000
+# Browser will automatically open the app
+```
+
+**Don't close this terminal - keep it running.**
+
+### **Step 5: Terminal 3 - AI Service (Python)**
+
+```powershell
+# Navigate to ai-service directory (from project root)
+cd ai-service
+
+# Create Python virtual environment
+python -m venv venv
+
+# Activate virtual environment (Windows PowerShell)
+.\venv\Scripts\Activate.ps1
+
+# On macOS/Linux use:
+# source venv/bin/activate
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Start the AI service
+uvicorn main:app --reload --port 8000
+
+# ✅ AI Service will run on http://localhost:8000
+# Swagger docs available at http://localhost:8000/docs
+```
+
+**Don't close this terminal - keep it running.**
+
+### **Step 6: Verify All Services Running**
+
+Once all three terminals are showing "running" messages, verify services:
+
+```powershell
+# From any new terminal, check:
+
+# Check Backend
+curl http://localhost:5000/api
+
+# Check AI Service
+curl http://localhost:8000/docs
+
+# Check Frontend - Open browser
+http://localhost:3000
+```
+
+### **Step 7: Access the Application**
+
+| Service | URL | What to do |
+|---------|-----|-----------|
+| **Frontend** | http://localhost:3000 | Open in browser, register a new account |
+| **Backend API** | http://localhost:5000/api | Test endpoints if needed |
+| **AI Service Docs** | http://localhost:8000/docs | Explore API documentation |
+
+### **Step 8: Get API Keys**
+
+To enable all features, get free API keys from:
+
+1. **OpenWeatherMap** (Weather Advisory)
+   - Go to https://openweathermap.org/api
+   - Sign up and get API key
+   - Add to `client/.env` as `REACT_APP_WEATHER_KEY`
+
+2. **NewsAPI** (Agricultural News Feed)
+   - Go to https://newsapi.org
+   - Sign up and get API key
+   - Add to `server/.env` as `NEWS_API_KEY`
+
+3. **MongoDB Atlas** (Database)
+   - Go to https://mongodb.com/cloud/atlas
+   - Create free cluster
+   - Get connection string
+   - Add to `server/.env` as `MONGO_URI`
+
+4. **VAPID Keys** (Push Notifications)
+   - Go to https://web-push-codelab.glitch.me/
+   - Generate VAPID keys
+   - Add to `server/.env` as `VAPID_PUBLIC_KEY` and `VAPID_PRIVATE_KEY`
+
+### **Step 9: Troubleshooting**
+
+**Backend won't start?**
+- Ensure MongoDB connection string is valid
+- Check if port 5000 is available: `netstat -ano | findstr :5000`
+- Verify all .env variables are set
+
+**Frontend won't load?**
+- Clear browser cache: `Ctrl+Shift+Delete`
+- Check if backend is running (Step 3)
+- Delete `node_modules` and run `npm install` again
+
+**Python venv won't activate?**
+- Run: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+- Then try: `.\venv\Scripts\Activate.ps1`
+
+**Port already in use?**
+```powershell
+# Find process using port
+netstat -ano | findstr :8000
+
+# Kill the process (replace PID with actual number)
+taskkill /PID <PID> /F
+```
+
+**TensorFlow won't install?**
+- Ensure virtual environment is activated
+- Run: `pip install --upgrade -r requirements.txt`
+
+### **Step 10: Start Development**
+
+Once all services are running:
+
+1. **Frontend Development**
+   - Edit files in `client/src/components/`
+   - Changes auto-reload in browser
+   - Test bilingual support (English/Sinhala toggle)
+
+2. **Backend Development**
+   - Edit files in `server/routes/` or `server/services/`
+   - Server auto-restarts with nodemon
+   - Check console for errors
+
+3. **AI Service Development**
+   - Edit files in `ai-service/`
+   - Server auto-reloads with `--reload` flag
+   - Test endpoints in Swagger UI (http://localhost:8000/docs)
+
+---
 
 ## 🙏 Acknowledgments
 
