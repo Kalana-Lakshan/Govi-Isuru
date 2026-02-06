@@ -9,6 +9,13 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green.svg)](https://www.mongodb.com/atlas)
 [![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)](https://www.docker.com/)
 
+**Team members**
+ - H.M.Kalana Lakshan
+ - G.H.Lasana Pahanga
+ - A.M.R.Nawanjana Aththanayake
+
+**This branch is the deployed branch in AWS. For local functionallity checking you can use the ""local"" branch**
+
 **Govi Isuru** (Sinhala: ගොවි ඉසුරු) is a comprehensive digital farming platform designed to empower Sri Lankan farmers with AI-driven crop disease detection, real-time market intelligence, weather advisory, community disease alerts, and a peer-to-peer marketplace. The name "Govi Isuru" translates to "Farmer's Fortune" in Sinhala, reflecting our mission to bring prosperity to the agricultural community.
 
 🌟 **Key Statistics:**
