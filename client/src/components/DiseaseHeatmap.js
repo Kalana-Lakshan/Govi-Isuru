@@ -11,6 +11,7 @@ import {
   Target,
   Activity
 } from 'lucide-react';
+import { SRI_LANKA_BOUNDS } from '../data/sriLankaCoordinates';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -127,6 +128,18 @@ const DiseaseHeatmap = ({ user, language = 'en' }) => {
 
   const text = t[language] || t.en;
 
+  const getClampBounds = () => {
+    if (geoData) return getGeoBounds;
+    return [SRI_LANKA_BOUNDS.west, SRI_LANKA_BOUNDS.south, SRI_LANKA_BOUNDS.east, SRI_LANKA_BOUNDS.north];
+  };
+
+  const clampLatLng = (lat, lng) => {
+    const [minLng, minLat, maxLng, maxLat] = getClampBounds();
+    const safeLat = Math.min(maxLat - 0.02, Math.max(minLat + 0.02, lat));
+    const safeLng = Math.min(maxLng - 0.02, Math.max(minLng + 0.02, lng));
+    return { lat: safeLat, lng: safeLng };
+  };
+
   // Load GeoJSON data for map
   useEffect(() => {
     fetch('/lk.json')
@@ -216,20 +229,23 @@ const DiseaseHeatmap = ({ user, language = 'en' }) => {
       const response = await axios.get(`${API_BASE}/alerts/heatmap?${params}`);
       let data = response.data.data || [];
       
-      // If data has no coordinates, assign district coordinates
+      // If data has no coordinates, assign district coordinates and clamp to map bounds
       data = data.map(point => {
-        if (!point.lat || !point.lng) {
+        let lat = point.lat;
+        let lng = point.lng;
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
           const districtCoord = districtCoordinates[point.district];
           if (districtCoord) {
-            return {
-              ...point,
-              lat: districtCoord.lat + (Math.random() - 0.5) * 0.1,
-              lng: districtCoord.lng + (Math.random() - 0.5) * 0.1
-            };
+            lat = districtCoord.lat + (Math.random() - 0.5) * 0.05;
+            lng = districtCoord.lng + (Math.random() - 0.5) * 0.05;
           }
         }
+        if (Number.isFinite(lat) && Number.isFinite(lng)) {
+          const clamped = clampLatLng(lat, lng);
+          return { ...point, lat: clamped.lat, lng: clamped.lng };
+        }
         return point;
-      });
+      }).filter(point => Number.isFinite(point.lat) && Number.isFinite(point.lng));
       
       setHeatmapData(data);
       
@@ -279,13 +295,14 @@ const DiseaseHeatmap = ({ user, language = 'en' }) => {
   const latLngToPosition = (lat, lng) => {
     // Use the same bounds as GeoJSON rendering for consistent positioning
     const [minLng, minLat, maxLng, maxLat] = getGeoBounds;
+    const clamped = clampLatLng(lat, lng);
     const padding = 30; // Same padding as SVG path rendering
     const svgWidth = 400;
     const svgHeight = 500;
     
     // Calculate position as percentage of container
-    const x = (padding + ((lng - minLng) / (maxLng - minLng)) * (svgWidth - 2 * padding)) / svgWidth * 100;
-    const y = (padding + ((maxLat - lat) / (maxLat - minLat)) * (svgHeight - 2 * padding)) / svgHeight * 100;
+    const x = (padding + ((clamped.lng - minLng) / (maxLng - minLng)) * (svgWidth - 2 * padding)) / svgWidth * 100;
+    const y = (padding + ((maxLat - clamped.lat) / (maxLat - minLat)) * (svgHeight - 2 * padding)) / svgHeight * 100;
     
     return { x: Math.max(5, Math.min(95, x)), y: Math.max(5, Math.min(95, y)) };
   };

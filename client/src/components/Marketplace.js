@@ -241,7 +241,12 @@ const Marketplace = ({ lang, currentUser }) => {
 
       {/* Listings Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {listings.map((item) => (
+        {listings.map((item) => {
+          const isOwnListing =
+            currentUser &&
+            (item.farmerName === currentUser.username || item.farmer_id?.username === currentUser.username);
+
+          return (
           <div key={item._id} className="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transition-all border-l-4 border-green-500 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-start mb-2">
@@ -325,16 +330,18 @@ const Marketplace = ({ lang, currentUser }) => {
 
               {/* Rate Seller & Mark Sold Buttons */}
               <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => setFeedbackListing(item)}
-                  className="flex items-center justify-center gap-1 bg-amber-100 text-amber-700 py-2 rounded-xl font-bold text-xs hover:bg-amber-200 transition"
-                >
-                  <Star size={14} /> {t[lang].rateSeller}
-                </button>
+                {!isOwnListing && (
+                  <button
+                    onClick={() => setFeedbackListing(item)}
+                    className="flex items-center justify-center gap-1 bg-amber-100 text-amber-700 py-2 rounded-xl font-bold text-xs hover:bg-amber-200 transition"
+                  >
+                    <Star size={14} /> {t[lang].rateSeller}
+                  </button>
+                )}
                 
                 <button
                   onClick={() => setViewFeedbackListing(item)}
-                  className="flex items-center justify-center gap-1 bg-purple-100 text-purple-700 py-2 rounded-xl font-bold text-xs hover:bg-purple-200 transition"
+                  className={`flex items-center justify-center gap-1 py-2 rounded-xl font-bold text-xs transition ${isOwnListing ? 'col-span-2 bg-purple-100 text-purple-700 hover:bg-purple-200' : 'bg-purple-100 text-purple-700 hover:bg-purple-200'}`}
                 >
                   <MessageSquare size={14} /> {t[lang].viewReviews}
                 </button>
@@ -359,7 +366,8 @@ const Marketplace = ({ lang, currentUser }) => {
               )}
             </div>
           </div>
-        ))}
+        );
+        })}
       </div>
 
       {/* Feedback Form Modal */}

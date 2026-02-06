@@ -112,8 +112,7 @@ const AlertsDashboard = ({ user, language = 'en', isOfficer = false }) => {
     { id: 'overview', label: text.overview, icon: Activity },
     { id: 'heatmap', label: text.heatmap, icon: Map },
     { id: 'trends', label: text.trends, icon: TrendingUp },
-    { id: 'alerts', label: text.alerts, icon: Bell },
-    { id: 'moderation', label: text.moderation, icon: Shield }
+    { id: 'alerts', label: text.alerts, icon: Bell }
   ];
 
   // Severity colors for disease badges
@@ -341,7 +340,7 @@ const AlertsDashboard = ({ user, language = 'en', isOfficer = false }) => {
           <CommunityAlerts user={user} language={language} />
         )}
 
-        {activeTab === 'moderation' && (
+        {isOfficer && activeTab === 'moderation' && (
           <AdminModerationPanel user={user} language={language} />
         )}
       </div>

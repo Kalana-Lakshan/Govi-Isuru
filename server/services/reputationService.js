@@ -203,6 +203,11 @@ async function submitFeedback(feedbackData) {
       throw new Error('Listing not found');
     }
 
+    // Prevent farmers from rating their own listings
+    if (feedbackData.buyer_id && listing.farmer_id && String(listing.farmer_id) === String(feedbackData.buyer_id)) {
+      throw new Error('You cannot rate your own listing');
+    }
+
     // Create feedback
     const feedback = await Feedback.create({
       listing_id,
