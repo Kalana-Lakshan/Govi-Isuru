@@ -296,6 +296,123 @@ Input (224×224×3)
 
 ---
 
+## 🐳 Docker Deployment (For Judges & Production)
+
+Quick start builds and runs all services (frontend + backend + AI + MongoDB) locally or on an EC2 host.
+
+### Prerequisites
+- Docker and Docker Compose installed
+- For EC2: open security group ports 80 (HTTP). 5000/8000 are optional for direct access.
+
+### Environment Variables
+Optional (overrides defaults): create a `.env` at repo root with:
+
+```
+JWT_SECRET=your_secret
+MONGO_URI=mongodb+srv://<user>:<pass>@<cluster>/govi_isuru?retryWrites=true&w=majority
+AI_SERVICE_URL=http://ai-service:8000
+NEWS_API_KEY=your_key
+```
+
+If `MONGO_URI` is not provided, a local MongoDB container is used at `mongodb://mongo:27017/govi_isuru`.
+
+### Quick Start with Docker Compose
+
+```bash
+# From the root directory
+docker compose build
+docker compose up -d
+```
+
+**Access Services:**
+- **Frontend:** http://localhost/ (EC2: http://<ec2-public-ip>/)
+- **Backend API:** http://localhost:5000/api
+- **AI Service:** http://localhost:8000/docs
+
+Frontend is served by Nginx and proxies `/api/*` to the backend, so the app works behind a single public port 80.
+
+### Common Docker Commands
+
+```bash
+# View running services
+docker compose ps
+
+# View logs for all services
+docker compose logs -f
+
+# View logs for specific service
+docker compose logs -f backend
+
+# Restart all services
+docker compose restart
+
+# Restart specific service
+docker compose restart ai-service
+
+# Stop all services
+docker compose down
+
+# Stop and remove volumes (clean start)
+docker compose down -v
+
+# Rebuild and restart
+docker compose up -d --build
+```
+
+### Docker Services Included
+
+| Service | Container | Port | Purpose |
+|---------|-----------|------|---------|
+| **Frontend** | Nginx | 80 | Static files + reverse proxy |
+| **Backend** | Node.js 22 | 5000 | Express API server |
+| **AI Service** | Python 3.8+ | 8000 | FastAPI + TensorFlow |
+| **Database** | MongoDB 7 | 27017 | NoSQL database |
+
+### Troubleshooting Docker Deployment
+
+**Services won't start?**
+```bash
+# Check logs
+docker compose logs
+
+# Rebuild without cache
+docker compose build --no-cache
+docker compose up -d
+```
+
+**MongoDB container not starting?**
+- Ensure port 27017 is not in use
+- Check disk space: `docker system df`
+- Remove old volumes: `docker compose down -v && docker compose up -d`
+
+**Memory issues?**
+- Increase Docker Desktop memory (Settings → Resources)
+- Reduce TensorFlow threads: export `TF_CPP_THREAD_POOL_SIZE=2`
+
+**Fresh database needed?**
+```bash
+# Wipe MongoDB and restart
+docker compose down -v
+docker compose up -d
+```
+
+### Production Notes
+
+**For EC2/Server Deployment:**
+- Use `docker-compose.prod.yml` with production optimizations
+- Set `MONGO_URI` to MongoDB Atlas for data persistence
+- Configure SSL/TLS on Nginx reverse proxy
+- Whitelist EC2 public IP in MongoDB Atlas → Network Access
+- Keep only port 80 open in security group; 5000/8000 remain closed internally
+
+**Environment Hardening:**
+- Set all `JWT_SECRET`, `API_KEY` values securely
+- Use `.env` files with restricted permissions (600)
+- Never commit `.env` to git
+- Rotate secrets regularly
+
+---
+
 ## 🌿 Current Branch Status
 
 ### Local Branch Information
@@ -353,48 +470,6 @@ a979486 (Kalana2) user profile done
 
 ---
 
-## 🚀 Docker Deploy
-
-- Quick start builds and runs all services (frontend + backend + AI + MongoDB) locally or on an EC2 host.
-
-### Prerequisites
-- Docker and Docker Compose installed
-- For EC2: open security group ports 80 (HTTP). 5000/8000 are optional for direct access.
-
-### Environment
-- Optional (overrides defaults): create a `.env` at repo root with:
-
-```
-JWT_SECRET=your_secret
-MONGO_URI=mongodb+srv://<user>:<pass>@<cluster>/govi_isuru?retryWrites=true&w=majority
-AI_SERVICE_URL=http://ai-service:8000
-NEWS_API_KEY=
-```
-
-If `MONGO_URI` is not provided, a local MongoDB container is used at `mongodb://mongo:27017/govi_isuru`.
-
-### Run
-
-```bash
-docker compose build
-docker compose up -d
-```
-
-- Frontend: http://localhost/ (EC2: http://<ec2-public-ip>/)
-- API (direct): http://localhost:5000/api
-- AI Service (direct): http://localhost:8000/docs
-
-Frontend is served by Nginx and proxies `/api/*` to the backend, so the app works behind a single public port 80.
-
-### Stop
-
-```bash
-docker compose down
-```
-
-### Notes
-- To use MongoDB Atlas on EC2, ensure the EC2 public IP is whitelisted in Atlas or use VPC peering.
-- For production, keep only port 80 open in the security group; 5000/8000 can remain closed.
 | NumPy | Latest | Numerical Computing |
 
 ### DevOps & Deployment
@@ -769,8 +844,6 @@ pip install tensorflow-cpu
 | **AI ReDoc** | 8000 | http://localhost:8000/redoc | Alternative documentation |
 
 ---
-
-## Docker Deployment
 
 ## 📁 Project Structure
 
