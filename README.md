@@ -9,7 +9,84 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green.svg)](https://www.mongodb.com/atlas)
 [![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)](https://www.docker.com/)
 
+**Team Members:**
+- H.M. Kalana Lakshan (Full Stack Development & Project Lead)
+- G.H. Lasana Pahanga (Contributing Member)  
+- A.M.R. Nawanjana Aththanayake (Contributing Member)
+
+---
+
+## 🚀 Quick Start
+
 **Govi Isuru** (Sinhala: ගොවි ඉසුරු) is a comprehensive digital farming platform designed to empower Sri Lankan farmers with AI-driven crop disease detection, real-time market intelligence, weather advisory, community disease alerts, and a peer-to-peer marketplace. The name "Govi Isuru" translates to "Farmer's Fortune" in Sinhala, reflecting our mission to bring prosperity to the agricultural community.
+
+### Prerequisites
+- **Node.js** v22.x or higher - [Download](https://nodejs.org/)
+- **Python** 3.8+ - [Download](https://www.python.org/)
+- **MongoDB Atlas** - [Sign up free](https://mongodb.com/cloud/atlas)
+- **OpenWeatherMap API Key** - [Get free](https://openweathermap.org/api)
+- **NewsAPI Key** - [Get free](https://newsapi.org)
+- **Git** - [Download](https://git-scm.com/)
+
+### Setup in 3 Steps
+
+**1. Clone & Navigate:**
+```bash
+git clone https://github.com/Kalana-Lakshan/Govi-Isuru.git
+cd Govi-Isuru
+```
+
+**2. Create `.env` files:**
+
+**server/.env:**
+```
+MONGO_URI=mongodb+srv://user:password@cluster.mongodb.net/dbname
+JWT_SECRET=your_secret_key_min_32_chars
+PORT=5000
+NEWS_API_KEY=your_newsapi_key
+VAPID_PUBLIC_KEY=your_vapid_public_key
+VAPID_PRIVATE_KEY=your_vapid_private_key
+```
+
+**client/.env:**
+```
+REACT_APP_WEATHER_KEY=your_openweathermap_api_key
+```
+
+**3. Run Three Terminals:**
+
+**Terminal 1 - Backend:**
+```bash
+cd server && npm install && node index.js
+# Runs on http://localhost:5000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd client && npm install && npm start
+# Runs on http://localhost:3000
+```
+
+**Terminal 3 - AI Service:**
+```bash
+cd ai-service
+python -m venv venv
+.\venv\Scripts\Activate.ps1  # Windows PowerShell
+# source venv/bin/activate  # macOS/Linux
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+# Runs on http://localhost:8000 | Docs: http://localhost:8000/docs
+```
+
+### Services Overview
+| Service | URL | Technology |
+|---------|-----|------------|
+| Frontend | http://localhost:3000 | React 19.2.3 |
+| Backend API | http://localhost:5000 | Express 5.2.1 + MongoDB |
+| AI Service | http://localhost:8000 | FastAPI + TensorFlow 2.20.0 |
+| API Docs | http://localhost:8000/docs | Swagger UI |
+
+---
 
 🌟 **Key Statistics:**
 - 🤖 **3 ML Models** - Rice (8 classes), Tea (5 classes), Chili (4 classes)
@@ -23,27 +100,10 @@
 
 ## 📋 Table of Contents
 
+- [Quick Start](#-quick-start)
 - [Features](#-features)
-  - [AI Crop Doctor](#-ai-crop-doctor-with-grad-cam-explainability)
-  - [Agricultural News](#-agricultural-news-feed-with-ai-features)
-  - [Community Alerts](#-community-disease-alert-system)
-  - [Market Intelligence](#-market-intelligence-dashboard)
-  - [Marketplace](#-agrolink-marketplace-with-reputation-system)
-  - [Weather Advisory](#-weather-advisory)
-  - [Yield Prediction](#-yield-prediction--analytics)
-  - [AI Chatbot](#-ai-crop-chatbot-with-advanced-features)
-  - [Crop Suitability](#-crop-suitability-advisor)
-  - [Traditional Rice Guide](#-traditional-rice-varieties-guide)
-  - [User System](#-user-authentication--profiles)
-  - [Government Officer Features](#-government-officer-features)
-  - [Buyer Dashboard](#-buyer-dashboard)
 - [Tech Stack](#-tech-stack)
 - [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Quick Start Guide](#quick-start-guide)
-  - [Development Setup](#development-setup)
-  - [Docker Deployment](#-docker-deployment)
 - [Project Structure](#-project-structure)
 - [API Documentation](#-api-documentation)
 - [AI Model Information](#-ai-model-information)
@@ -402,161 +462,7 @@ External APIs:
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-- **Node.js** v22.x or higher (download from [nodejs.org](https://nodejs.org/))
-- **Python** 3.8+ (download from [python.org](https://www.python.org/))
-- **MongoDB Atlas** account (free tier available at [mongodb.com/cloud/atlas](https://mongodb.com/cloud/atlas))
-- **OpenWeatherMap API Key** (free tier available at [openweathermap.org/api](https://openweathermap.org/api))
-- **NewsAPI Key** (free tier available at [newsapi.org](https://newsapi.org))
-- **Git** for version control
-
-### Environment Variables Required
-
-#### Server (.env)
-```
-MONGO_URI=mongodb+srv://user:password@cluster.mongodb.net/dbname
-JWT_SECRET=your_secret_key_min_32_chars
-PORT=5000
-NEWS_API_KEY=your_newsapi_key
-VAPID_PUBLIC_KEY=your_web_push_vapid_public_key
-VAPID_PRIVATE_KEY=your_web_push_vapid_private_key
-```
-
-#### Client (.env)
-```
-REACT_APP_WEATHER_KEY=your_openweathermap_api_key
-```
-
-Generate VAPID keys for web push at: https://web-push-codelab.glitch.me/
-
-### Quick Start
-
-#### 1. Clone the Repository
-```bash
-git clone https://github.com/Kalana-Lakshan/Govi-Isuru.git
-cd Govi-Isuru
-```
-
-#### 2. Setup Backend Server (Node.js)
-```bash
-cd server
-npm install
-
-# Create .env file with required environment variables
-# On Windows PowerShell:
-@"
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key_here
-PORT=5000
-NEWS_API_KEY=your_newsapi_key_from_newsapi.org
-VAPID_PUBLIC_KEY=your_vapid_public_key
-VAPID_PRIVATE_KEY=your_vapid_private_key
-"@ | Out-File -FilePath .env -Encoding utf8
-
-# Start the server
-node index.js
-# Server runs on http://localhost:5000
-```
-
-#### 3. Setup Frontend Client (React)
-```bash
-cd ../client
-npm install
-
-# Create .env file
-# On Windows PowerShell:
-@"
-REACT_APP_WEATHER_KEY=your_openweathermap_api_key
-"@ | Out-File -FilePath .env -Encoding utf8
-
-# Start development server
-npm start
-# Frontend runs on http://localhost:3000
-```
-
-#### 4. Setup AI Service (Python with Virtual Environment)
-```bash
-cd ../ai-service
-
-# Create Python virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On Windows PowerShell:
-.\venv\Scripts\Activate.ps1
-
-# On macOS/Linux:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Start the AI service
-uvicorn main:app --reload --port 8000
-# AI Service runs on http://localhost:8000
-# Swagger API docs available at http://localhost:8000/docs
-```
-
-**Note:** Make sure you have Python 3.8+ installed. The virtual environment isolates project dependencies and prevents conflicts with system-wide Python packages.
-
-### Access Points
-| Service | URL | Description |
-|---------|-----|-------------|
-| Frontend | http://localhost:3000 | React Application |
-| Backend API | http://localhost:5000 | Express Server + REST API |
-| AI Service | http://localhost:8000 | FastAPI + TensorFlow Models |
-| AI Docs | http://localhost:8000/docs | Swagger API Documentation |
-| MongoDB Atlas | https://cloud.mongodb.com | Database Management |
-
-### Docker Deployment
-
-```bash
-# From the root directory
-docker-compose up --build
-
-# Access: Frontend at http://localhost:80, Backend at http://localhost:5000, AI Service at http://localhost:8000
-# To stop containers:
-docker-compose down
-```
-
-### Troubleshooting Virtual Environment Issues
-
-#### Python Virtual Environment not activating?
-```bash
-# On Windows, if you get an execution policy error:
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Then try activating again:
-.\venv\Scripts\Activate.ps1
-```
-
-#### Module 'tensorflow' not found?
-```bash
-# Make sure your virtual environment is activated, then reinstall:
-pip install --upgrade -r requirements.txt
-```
-
-#### Port already in use?
-```bash
-# Find process using port (Windows):
-netstat -ano | findstr :8000
-# Kill process by PID:
-taskkill /PID <PID> /F
-
-# Or run on different port:
-uvicorn main:app --reload --port 8001
-```
-
-#### News API returns 401 errors?
-- Ensure you have a valid NEWS_API_KEY in `server/.env`
-- Get a free key from [newsapi.org](https://newsapi.org)
-- Restart the server after updating .env file
-
----
-
-## 📁 Project Structure
+##  Project Structure
 
 ```
 govi-isuru/
