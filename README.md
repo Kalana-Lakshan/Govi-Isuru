@@ -13,120 +13,317 @@
 
 ---
 
-## 🐳 Docker Deployment (For local functionality)
-
-Quick start builds and runs all services (frontend + backend + AI + MongoDB) locally or on an EC2 host.
+## � Getting Started
 
 ### Prerequisites
-- Docker and Docker Compose installed
-- For EC2: open security group ports 80 (HTTP). 5000/8000 are optional for direct access.
+- **Node.js** v22.x or higher (download from [nodejs.org](https://nodejs.org/))
+- **Python** 3.8+ (download from [python.org](https://www.python.org/))
+- **MongoDB Atlas** account (free tier available at [mongodb.com/cloud/atlas](https://mongodb.com/cloud/atlas))
+- **OpenWeatherMap API Key** (free tier available at [openweathermap.org/api](https://openweathermap.org/api))
+- **NewsAPI Key** (free tier available at [newsapi.org](https://newsapi.org))
+- **Git** for version control
 
-### Environment Variables
-Optional (overrides defaults): create a `.env` at repo root with:
+### Environment Variables Required
 
+#### Server (.env)
 ```
-JWT_SECRET=your_secret
-MONGO_URI=mongodb+srv://<user>:<pass>@<cluster>/govi_isuru?retryWrites=true&w=majority
-AI_SERVICE_URL=http://ai-service:8000
-NEWS_API_KEY=your_key
+MONGO_URI=mongodb+srv://user:password@cluster.mongodb.net/dbname
+JWT_SECRET=your_secret_key_min_32_chars
+PORT=5000
+NEWS_API_KEY=your_newsapi_key
+VAPID_PUBLIC_KEY=your_web_push_vapid_public_key
+VAPID_PRIVATE_KEY=your_web_push_vapid_private_key
 ```
 
-If `MONGO_URI` is not provided, a local MongoDB container is used at `mongodb://mongo:27017/govi_isuru`.
+#### Client (.env)
+```
+REACT_APP_WEATHER_KEY=your_openweathermap_api_key
+```
 
-### Quick Start with Docker Compose
+Generate VAPID keys for web push at: https://web-push-codelab.glitch.me/
+
+### Quick Start (Three Terminals Setup)
+
+#### Step 0: Clone and Navigate
+```bash
+git clone https://github.com/Kalana-Lakshan/Govi-Isuru.git
+cd Govi-Isuru
+```
+
+---
+
+### Terminal 1: Backend Server (Node.js + Express)
+
+#### Setup Backend
+```powershell
+# Open Terminal 1 and run:
+cd server
+npm install
+
+# Create .env file with required variables
+# Windows PowerShell:
+@"
+MONGO_URI=mongodb+srv://your_user:your_password@your_cluster.mongodb.net/govi_isuru
+JWT_SECRET=your_secret_key_here_min_32_chars_long
+PORT=5000
+NEWS_API_KEY=your_newsapi_key_from_newsapi.org
+VAPID_PUBLIC_KEY=your_vapid_public_key_from_glitch
+VAPID_PRIVATE_KEY=your_vapid_private_key_from_glitch
+"@ | Out-File -FilePath .env -Encoding utf8
+
+# Start Backend Server
+node index.js
+# ✅ Backend runs on http://localhost:5000
+# REST API available at http://localhost:5000/api
+```
+
+**Backend Tech Stack:**
+- **Framework:** Express.js 5.x
+- **Database:** MongoDB 9.0 with Mongoose ODM
+- **Authentication:** JWT (jsonwebtoken 9.0.3)
+- **Password:** Bcrypt.js 3.0.3
+- **Key Dependencies:**
+  - axios@1.13.2 (HTTP client for external APIs)
+  - nodemailer@7.0.13 (Email notifications)
+  - web-push@3.6.7 (Push notifications)
+  - dotenv@17.2.3 (Environment variable management)
+  - cors@2.8.5 (Cross-origin resource sharing)
+  - nodemon@3.1.11 (Development auto-reload)
+
+---
+
+### Terminal 2: Frontend Client (React + Tailwind)
+
+#### Setup Frontend
+```powershell
+# Open Terminal 2 and run:
+cd ../client
+npm install
+
+# Create .env file
+# Windows PowerShell:
+@"
+REACT_APP_WEATHER_KEY=your_openweathermap_api_key
+"@ | Out-File -FilePath .env -Encoding utf8
+
+# Start Development Server
+npm start
+# ✅ Frontend runs on http://localhost:3000
+# Browser will automatically open the app
+```
+
+**Frontend Tech Stack:**
+- **Framework:** React 19.2.3 with Hooks
+- **Styling:** Tailwind CSS 3.4.1
+- **Routing:** React Router DOM 7.13.0
+- **HTTP Client:** Axios 1.13.2
+- **Charts:** Recharts 3.6.0 (Data visualization)
+- **Icons:** Lucide React 0.561.0
+- **Build Tool:** React Scripts 5.0.1
+- **CSS Processing:**
+  - PostCSS 8.4.31
+  - Autoprefixer 10.4.16
+- **Key Features:**
+  - Component-based UI with bilingual (English/Sinhala) support
+  - Real-time data visualization with Recharts
+  - Responsive mobile-first design
+  - Client-side routing and state management with React hooks
+
+---
+
+### Terminal 3: AI Service (FastAPI + TensorFlow)
+
+#### Setup AI Service
+```powershell
+# Open Terminal 3 and run:
+cd ../ai-service
+
+# Create Python Virtual Environment
+python -m venv venv
+
+# Activate Virtual Environment
+# Windows PowerShell:
+.\venv\Scripts\Activate.ps1
+
+# macOS/Linux:
+source venv/bin/activate
+
+# Install Python Dependencies
+pip install -r requirements.txt
+
+# Start AI Service
+uvicorn main:app --reload --port 8000
+# ✅ AI Service runs on http://localhost:8000
+# Swagger API docs available at http://localhost:8000/docs
+# ReDoc documentation at http://localhost:8000/redoc
+```
+
+**AI Service Tech Stack:**
+- **Framework:** FastAPI (latest)
+- **Deep Learning:** TensorFlow 2.20.0 with Keras 3.13.0
+- **Base Model:** MobileNetV2 (pre-trained on ImageNet)
+- **Image Processing:** Pillow 12.0.0, OpenCV 4.12.0.88
+- **ML Libraries:**
+  - scikit-learn 1.8.0 (Yield prediction ML model)
+  - NumPy 2.2.6 (Numerical computing)
+  - Pandas 2.3.3 (Data manipulation)
+  - SciPy 1.16.3 (Scientific computing)
+  - joblib 1.5.3 (Model persistence)
+- **Model Explainability:** Custom Grad-CAM implementation (Gradient-weighted Class Activation Mapping)
+- **Key Features:**
+  - Multi-crop disease detection (Rice, Tea, Chili)
+  - Grad-CAM visualization for model transparency
+  - Yield prediction with district-level statistics
+  - Profit calculator with ROI analysis
+  - Early warning system for risk assessment
+  - Bilingual (EN/SI) treatment recommendations
+
+**Python Virtual Environment:**
+The virtual environment isolates project dependencies from system-wide Python packages, preventing version conflicts. Ensure Python 3.8+ is installed.
+
+---
+
+### Verification: All Three Services Running
+
+Once all three terminals are running, verify services:
+
+| Service | URL | Status |
+|---------|-----|--------|
+| Frontend | http://localhost:3000 | React app (check browser) |
+| Backend API | http://localhost:5000/api | REST API endpoints |
+| AI Service Docs | http://localhost:8000/docs | Swagger UI |
+| AI Service | http://localhost:8000 | FastAPI server |
+
+**Quick Health Check Endpoints:**
+```powershell
+# Backend status (from any terminal)
+curl http://localhost:5000/api
+
+# AI Service status
+curl http://localhost:8000/docs
+
+# Frontend (open in browser)
+http://localhost:3000
+```
+
+### Access Points
+| Service | URL | Description |
+|---------|-----|-------------|
+| Frontend | http://localhost:3000 | React Application |
+| Backend API | http://localhost:5000 | Express Server + REST API |
+| AI Service | http://localhost:8000 | FastAPI + TensorFlow Models |
+| AI Docs | http://localhost:8000/docs | Swagger API Documentation |
+| MongoDB Atlas | https://cloud.mongodb.com | Database Management |
+
+### Docker Deployment
 
 ```bash
 # From the root directory
-docker compose build
-docker compose up -d
+docker-compose up --build
+
+# Access: Frontend at http://localhost:80, Backend at http://localhost:5000, AI Service at http://localhost:8000
+# To stop containers:
+docker-compose down
 ```
 
-**Access Services:**
-- **Frontend:** http://localhost/ (EC2: http://<ec2-public-ip>/)
-- **Backend API:** http://localhost:5000/api
-- **AI Service:** http://localhost:8000/docs
+### Troubleshooting Virtual Environment Issues
 
-Frontend is served by Nginx and proxies `/api/*` to the backend, so the app works behind a single public port 80.
-
-### Common Docker Commands
-
+#### Python Virtual Environment not activating?
 ```bash
-# View running services
-docker compose ps
+# On Windows, if you get an execution policy error:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-# View logs for all services
-docker compose logs -f
-
-# View logs for specific service
-docker compose logs -f backend
-
-# Restart all services
-docker compose restart
-
-# Restart specific service
-docker compose restart ai-service
-
-# Stop all services
-docker compose down
-
-# Stop and remove volumes (clean start)
-docker compose down -v
-
-# Rebuild and restart
-docker compose up -d --build
+# Then try activating again:
+.\venv\Scripts\Activate.ps1
 ```
 
-### Docker Services Included
-
-| Service | Container | Port | Purpose |
-|---------|-----------|------|---------|
-| **Frontend** | Nginx | 80 | Static files + reverse proxy |
-| **Backend** | Node.js 22 | 5000 | Express API server |
-| **AI Service** | Python 3.8+ | 8000 | FastAPI + TensorFlow |
-| **Database** | MongoDB 7 | 27017 | NoSQL database |
-
-### Troubleshooting Docker Deployment
-
-**Services won't start?**
+#### Module 'tensorflow' not found?
 ```bash
-# Check logs
-docker compose logs
-
-# Rebuild without cache
-docker compose build --no-cache
-docker compose up -d
+# Make sure your virtual environment is activated, then reinstall:
+pip install --upgrade -r requirements.txt
 ```
 
-**MongoDB container not starting?**
-- Ensure port 27017 is not in use
-- Check disk space: `docker system df`
-- Remove old volumes: `docker compose down -v && docker compose up -d`
-
-**Memory issues?**
-- Increase Docker Desktop memory (Settings → Resources)
-- Reduce TensorFlow threads: export `TF_CPP_THREAD_POOL_SIZE=2`
-
-**Fresh database needed?**
+#### Port already in use?
 ```bash
-# Wipe MongoDB and restart
-docker compose down -v
-docker compose up -d
+# Find process using port (Windows):
+netstat -ano | findstr :8000
+# Kill process by PID:
+taskkill /PID <PID> /F
+
+# Or run on different port:
+uvicorn main:app --reload --port 8001
 ```
 
-### Production Notes
+#### News API returns 401 errors?
+- Ensure you have a valid NEWS_API_KEY in `server/.env`
+- Get a free key from [newsapi.org](https://newsapi.org)
+- Restart the server after updating .env file
 
-**For EC2/Server Deployment:**
-- Use `docker-compose.prod.yml` with production optimizations
-- Set `MONGO_URI` to MongoDB Atlas for data persistence
-- Configure SSL/TLS on Nginx reverse proxy
-- Whitelist EC2 public IP in MongoDB Atlas → Network Access
-- Keep only port 80 open in security group; 5000/8000 remain closed internally
+#### MongoDB Connection Issues?
+```bash
+# Test MongoDB connection (Windows PowerShell):
+$connectionString = "mongodb+srv://user:password@cluster.mongodb.net"
+[System.Net.ServicePointManager]::SecurityProtocol = 'Tls12'
+# Verify IP whitelist in MongoDB Atlas → Network Access
+```
 
-**Environment Hardening:**
-- Set all `JWT_SECRET`, `API_KEY` values securely
-- Use `.env` files with restricted permissions (600)
-- Never commit `.env` to git
-- Rotate secrets regularly
+#### npm install fails (node_modules issue)?
+```bash
+# Clear npm cache and reinstall
+npm cache clean --force
+rm -r node_modules package-lock.json  # On Windows: del package-lock.json, rmdir /s node_modules
+npm install
+```
+
+### Troubleshooting Multi-Terminal Setup
+
+#### Services not communicating?
+1. **Check all services are running:**
+   ```powershell
+   # Terminal 1: curl http://localhost:5000/api
+   # Terminal 2: open http://localhost:3000 (browser)
+   # Terminal 3: curl http://localhost:8000/docs
+   ```
+
+2. **Frontend can't reach backend?**
+   - Ensure backend is running on port 5000
+   - Check for CORS errors in browser console
+   - Verify `axios` requests use correct base URL
+
+3. **Backend can't reach AI service?**
+   - Ensure AI service is running on port 8000
+   - Check `AI_SERVICE_URL` environment variable in backend `.env`
+   - Verify network connectivity between containers
+
+4. **MongoDB connection timeout?**
+   - Add your EC2/machine IP to MongoDB Atlas whitelist
+   - Check internet connection and firewall settings
+   - Verify `MONGO_URI` string format
+
+#### Development Mode Issues?
+```bash
+# For React hot reloading issues:
+rm -r client/node_modules
+npm install --legacy-peer-deps
+
+# For backend auto-reload not working:
+# Ensure nodemon is installed globally:
+npm install -g nodemon
+
+# For TensorFlow GPU issues on Windows:
+# Use CPU-only version:
+pip install tensorflow-cpu
+```
+
+### Access Points for Multi-Terminal Setup
+
+| Service | Port | URL | Purpose |
+|---------|------|-----|---------|
+| **Frontend (React)** | 3000 | http://localhost:3000 | Main application UI |
+| **Backend API** | 5000 | http://localhost:5000/api | REST API endpoints |
+| **AI Service** | 8000 | http://localhost:8000 | Disease detection & yield prediction |
+| **AI Swagger Docs** | 8000 | http://localhost:8000/docs | Interactive API documentation |
+| **AI ReDoc** | 8000 | http://localhost:8000/redoc | Alternative documentation |
 
 ---
 
@@ -136,11 +333,10 @@ docker compose up -d
 
 ## 📋 Table of Contents
 
-- [Docker Deployment](#-docker-deployment-for-local-functionality)
+- [Getting Started](#-getting-started)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
 - [Project Structure](#-project-structure)
 - [API Documentation](#-api-documentation)
 - [AI Model Information](#-ai-model-information)
